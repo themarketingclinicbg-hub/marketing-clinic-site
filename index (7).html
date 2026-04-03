@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Marketing Clinic</title>
+<meta name="description" content="The Marketing Clinic. Маркетинг агенция за реални резултати. Meta Ads, Google Ads, Брандинг, Уеб Дизайн, Lead Generation.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F5F0E8;
+  --bg2:#ede7db;
+  --green:#1E3A2F;
+  --green2:#2a5040;
+  --border:rgba(30,58,47,0.14);
+  --border-light:rgba(245,240,232,0.14);
+  --muted:rgba(30,58,47,0.6);
+  --muted-light:rgba(245,240,232,0.72);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--green);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+.cur{width:10px;height:10px;background:var(--green);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:multiply}
+.cur2{width:36px;height:36px;border:1px solid rgba(30,58,47,0.28);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998}
+
+/* ───── NAV ───── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,240,232,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green)}
+.logo svg{width:32px;height:32px;flex-shrink:0}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;line-height:1.1}
+.nav-links{display:flex;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;padding:8px 13px;display:block}
+.nav-links a:hover,.nav-links li.active a{color:var(--green)}
+.nav-cta{background:var(--green);color:var(--bg);padding:10px 22px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .25s;white-space:nowrap}
+.nav-cta:hover{background:var(--green2)}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:6px;border:none;background:transparent;align-items:center;justify-content:center}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--green);transition:all .3s;transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Mobile overlay */
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;background:var(--green);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:88px 32px 56px;opacity:0;pointer-events:none;transition:opacity .35s ease;overflow-y:auto}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:0;width:100%}
+.mobile-menu ul li a{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:rgba(245,240,232,0.88);text-decoration:none;display:block;padding:14px 0;border-bottom:1px solid rgba(245,240,232,0.1);transition:color .2s;letter-spacing:-.01em;line-height:1.1}
+.mobile-menu ul li a:hover{color:var(--bg)}
+.mobile-menu .menu-cta{margin-top:36px;background:var(--bg);color:var(--green);padding:16px 40px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:400;display:inline-block}
+
+/* ───── BUTTONS ───── */
+.btn{background:var(--green);color:var(--bg);padding:14px 32px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background .25s;font-weight:400;display:inline-block;border:none;cursor:pointer}
+.btn:hover{background:var(--green2)}
+.btn-outline{border:2px solid var(--green);padding:12px 28px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;font-family:'DM Sans',sans-serif;transition:all .25s;display:inline-block;background:transparent}
+.btn-outline:hover{background:var(--green);color:var(--bg)}
+.btn-light{background:var(--bg);color:var(--green);padding:14px 32px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background .25s;font-weight:400;display:inline-block}
+.btn-light:hover{background:var(--bg2)}
+
+/* Accent text */
+.accent{color:var(--green);font-style:italic}
+.accent-light{color:rgba(245,240,232,0.6);font-style:italic}
+
+/* ───── HERO ───── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 72px;position:relative;overflow:hidden}
+.hero-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(80px,14vw,220px);font-weight:700;color:rgba(30,58,47,0.05);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.02em}
+.hero-tag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;opacity:0;transform:translateY(14px);animation:fadeUp .8s forwards .3s}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,106px);font-weight:600;line-height:.95;letter-spacing:-.025em;max-width:880px;opacity:0;transform:translateY(26px);animation:fadeUp 1s forwards .5s}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:52px;opacity:0;animation:fadeUp .8s forwards .85s}
+.hero-desc{max-width:360px;font-size:15px;line-height:1.8;color:var(--muted)}
+.hero-cta-row{display:flex;gap:14px;align-items:center}
+
+/* ───── STATS ───── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-item{padding:28px 36px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;line-height:1;margin-bottom:6px}
+.stat-label{font-size:13px;color:var(--muted)}
+
+/* ───── MARQUEE ───── */
+.marquee-wrap{padding:16px 0;overflow:hidden;background:var(--green)}
+.marquee-track{display:flex;animation:marquee 32s linear infinite;white-space:nowrap}
+.m-item{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,0.55);padding:0 24px;display:flex;align-items:center;gap:24px;flex-shrink:0}
+.m-dot{width:3px;height:3px;border-radius:50%;background:rgba(245,240,232,0.35);display:inline-block}
+
+/* ───── SECTION BASE ───── */
+.sec{padding:88px 48px;border-top:1px solid var(--border)}
+.sec-green{background:var(--green);padding:88px 48px}
+.lbl{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:12px;color:var(--muted)}
+.sec-green .lbl{color:rgba(245,240,232,0.6)}
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,56px);font-weight:600;line-height:1.05;letter-spacing:-.01em}
+.sec-green .h2{color:var(--bg)}
+
+/* ───── SERVICES HEADER ───── */
+.svc-header{display:grid;grid-template-columns:40% 1fr;align-items:center;margin-bottom:52px}
+.svc-logo-wrap{display:flex;align-items:center;gap:16px;padding-right:48px;border-right:1px solid var(--border);min-height:110px}
+.svc-logo-wrap svg{width:52px;height:52px;flex-shrink:0}
+.svc-logo-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--green);line-height:1.1}
+.svc-right{padding-left:48px}
+.svc-intro{font-size:14px;line-height:1.8;color:var(--muted);margin-top:14px;max-width:420px}
+
+/* ───── SERVICE GRID ───── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.svc{padding:36px 30px;position:relative;cursor:pointer;transition:opacity .2s;border:1px solid var(--border)}
+.svc:hover{opacity:.84}
+.svc-odd{background:var(--bg);color:var(--green)}
+.svc-even{background:var(--green);color:var(--bg)}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:12px;opacity:.28;margin-bottom:16px;letter-spacing:.1em}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.1;margin-bottom:12px}
+.svc-desc{font-size:13px;line-height:1.8}
+.svc-odd .svc-desc{color:var(--muted)}
+.svc-even .svc-desc{color:rgba(245,240,232,0.72)}
+.svc-tag{display:inline-flex;align-items:center;margin-top:18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px}
+.svc-odd .svc-tag{color:var(--green);background:rgba(30,58,47,0.09)}
+.svc-even .svc-tag{color:var(--bg);background:rgba(245,240,232,0.1)}
+.svc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+
+/* Selected badge */
+.svc-badge{
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  padding:4px 9px;font-family:'DM Sans',sans-serif;font-weight:500;
+  opacity:0;transform:translateY(-3px);
+  transition:opacity .2s,transform .2s;
+  pointer-events:none;flex-shrink:0;
+}
+.svc-odd .svc-badge{background:var(--green);color:var(--bg)}
+.svc-even .svc-badge{background:var(--bg);color:var(--green)}
+.svc.svc-selected .svc-badge{opacity:1;transform:translateY(0)}
+.svc.svc-selected{opacity:1 !important}
+
+/* ───── ABOUT ───── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-p{font-size:15px;line-height:1.85;color:rgba(245,240,232,0.82);margin-top:20px;max-width:420px}
+.about-vals{margin-top:36px}
+.about-val{padding:16px 0;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:18px}
+.about-val:first-child{border-top:1px solid var(--border-light)}
+.val-n{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(245,240,232,0.22);width:28px;flex-shrink:0}
+.val-t{font-size:14px;color:rgba(245,240,232,0.85)}
+.about-vis{position:relative;height:400px}
+.avc{position:absolute;background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.14);padding:24px 28px}
+.avc-big{width:100%;top:0;left:0;height:230px;display:flex;flex-direction:column;justify-content:space-between}
+.avc-sm{width:60%;bottom:0;right:0;padding:20px 24px}
+.avc-num{font-family:'Cormorant Garamond',serif;font-size:68px;font-weight:600;line-height:1;color:var(--bg)}
+.avc-num span{font-size:28px;opacity:.42}
+.avc-lbl{font-size:11px;color:rgba(245,240,232,0.52);margin-bottom:4px;display:flex;justify-content:space-between}
+.avc-track{height:2px;background:rgba(245,240,232,0.1);border-radius:1px;margin-top:6px}
+.avc-fill{height:100%;background:rgba(245,240,232,0.52);border-radius:1px}
+.avc-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.42);margin-bottom:6px}
+
+/* ───── AUDIT ───── */
+.audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.audit-p{font-size:15px;line-height:1.8;color:var(--muted);margin-top:18px;max-width:380px}
+.bars{margin-top:28px;display:flex;flex-direction:column;gap:16px}
+.bar-row{display:flex;flex-direction:column;gap:7px}
+.bar-lbl{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.bar-track{height:2px;background:rgba(30,58,47,0.1);border-radius:1px;overflow:hidden}
+.bar-fill{height:100%;background:var(--green);border-radius:1px;animation:grow 1.4s ease forwards}
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:28px}
+.step{background:var(--bg);padding:26px 22px}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:rgba(30,58,47,0.08);line-height:1;margin-bottom:12px}
+.step-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;margin-bottom:8px}
+.step-desc{font-size:13px;line-height:1.75;color:var(--muted)}
+
+/* ───── TESTIMONIALS ───── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(245,240,232,0.1);margin-top:48px}
+.testi{background:rgba(245,240,232,0.04);padding:32px 28px;display:flex;flex-direction:column;gap:18px;transition:background .3s}
+.testi:hover{background:rgba(245,240,232,0.09)}
+.stars{display:flex;gap:4px}
+.star{width:11px;height:11px;background:var(--bg);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.testi-q{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;line-height:1.55;color:rgba(245,240,232,0.88);flex:1}
+.testi-div{border-top:1px solid rgba(245,240,232,0.1);padding-top:16px}
+.testi-name{font-size:14px;font-weight:500;color:var(--bg);margin-bottom:4px}
+.testi-role{font-size:12px;color:rgba(245,240,232,0.6)}
+
+/* ───── CONTACT ───── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5vw,68px);font-weight:600;line-height:1;letter-spacing:-.02em}
+.contact-p{margin-top:18px;font-size:15px;line-height:1.8;color:var(--muted);max-width:340px}
+.email-box{margin-top:28px;padding:18px 22px;border:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;gap:14px}
+.email-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.email-box a{font-size:14px;color:var(--green);text-decoration:none;word-break:break-all}
+.soc-row{display:flex;gap:10px;margin-top:18px}
+.soc-btn{border:2px solid rgba(30,58,47,0.28);padding:9px 20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;transition:all .25s}
+.soc-btn:hover{background:var(--green);color:var(--bg);border-color:var(--green)}
+
+/* ───── FORM ───── */
+.form{display:flex;flex-direction:column;gap:22px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea,.field select{background:transparent;border:none;border-bottom:1.5px solid rgba(30,58,47,0.2);padding:10px 0;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--green);outline:none;transition:border-color .25s;resize:none;-webkit-appearance:none}
+.field select option{background:var(--bg);color:var(--green)}
+.field input:focus,.field textarea:focus,.field select:focus{border-bottom-color:var(--green)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(30,58,47,0.32)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+/* Multi-select chips */
+.chips-wrap{border:1.5px solid rgba(30,58,47,0.2);padding:8px;min-height:48px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;transition:border-color .25s;background:transparent;cursor:text}
+.chips-wrap:focus-within{border-color:var(--green)}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:var(--bg);padding:5px 12px 5px 14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+.chip-remove{background:none;border:none;color:rgba(245,240,232,0.65);cursor:pointer;font-size:15px;line-height:1;padding:0;display:flex;align-items:center;transition:color .15s}
+.chip-remove:hover{color:var(--bg)}
+.chips-placeholder{font-size:13px;color:rgba(30,58,47,0.32);padding:2px 4px;pointer-events:none}
+.limit-hint{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-top:6px;display:none}
+.limit-hint.show{display:block}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.limit-hint.pulse{animation:pulse .5s ease 2}
+
+/* Service picker */
+.svc-picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pick-btn{padding:7px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.pick-btn:hover{border-color:var(--green);color:var(--green)}
+.pick-btn.active{background:var(--green);color:var(--bg);border-color:var(--green)}
+
+/* Dynamic service fields */
+.svc-fields{display:none;border-top:1px solid var(--border);padding-top:22px;margin-top:4px}
+.svc-fields.show{display:flex;flex-direction:column;gap:20px}
+.svc-fields-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.svc-fields-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--border)}
+.checkbox-group{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.cb-item{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;color:var(--muted)}
+.cb-item input{width:15px;height:15px;accent-color:var(--green);flex-shrink:0}
+.no-selection-hint{font-size:14px;color:var(--muted);padding:18px 0;line-height:1.7}
+
+/* ───── FOOTER ───── */
+footer{background:var(--green);padding:26px 48px;display:flex;justify-content:space-between;align-items:center}
+.f-copy{font-size:12px;color:rgba(245,240,232,0.55)}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:12px;color:rgba(245,240,232,0.55);text-decoration:none;transition:color .25s}
+.f-links a:hover{color:var(--bg)}
+
+/* ───── ANIMATIONS ───── */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes grow{from{width:0}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ───── DESKTOP ONLY ───── */
+@media(min-width:901px){
+  .hamburger{display:none !important}
+  .mobile-menu{display:none !important}
+}
+
+/* ═══════════════════════════
+   MOBILE STYLES
+═══════════════════════════ */
+@media(max-width:900px){
+  body{cursor:auto}
+  .cur,.cur2{display:none}
+
+  /* Nav */
+  nav{padding:0 22px;height:72px}
+  .logo svg{width:30px;height:30px}
+  .logo-text{font-size:16px}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex !important;width:44px;height:44px;align-items:center;justify-content:center}
+  .hamburger span{width:22px}
+
+  /* Hero */
+  .hero{min-height:100svh;padding:0 24px 56px}
+  .hero-wm{font-size:clamp(68px,20vw,120px)}
+  .hero-tag{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
+  .hero-h1{font-size:clamp(42px,10.5vw,58px);line-height:.96;max-width:100%}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px;margin-top:36px}
+  .hero-desc{font-size:14px;line-height:1.76;max-width:100%}
+  .hero-cta-row{flex-direction:column;align-items:stretch;width:100%;gap:12px}
+  .hero-cta-row .btn,.hero-cta-row .btn-outline{text-align:center;padding:17px 24px;font-size:13px;letter-spacing:.08em;width:100%}
+
+  /* Stats: 2x2 */
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat-item{padding:22px 20px}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3){border-top:1px solid var(--border);border-right:1px solid var(--border)}
+  .stat-item:nth-child(4){border-top:1px solid var(--border);border-right:none}
+  .stat-num{font-size:36px;margin-bottom:5px}
+  .stat-label{font-size:12px}
+
+  /* Marquee */
+  .m-item{font-size:10px;gap:18px;padding:0 18px}
+
+  /* Sections */
+  .sec{padding:60px 24px}
+  .sec-green{padding:60px 24px}
+  .lbl{font-size:10px;letter-spacing:.18em;margin-bottom:10px}
+  .h2{font-size:clamp(30px,8.5vw,44px);line-height:1.06}
+
+  /* Services header */
+  .svc-header{grid-template-columns:1fr;gap:0;margin-bottom:36px}
+  .svc-logo-wrap{border-right:none;padding-right:0;min-height:auto;padding-bottom:28px;border-bottom:1px solid var(--border);margin-bottom:28px;gap:14px}
+  .svc-logo-wrap svg{width:40px;height:40px}
+  .svc-logo-text{font-size:22px}
+  .svc-right{padding-left:0}
+  .svc-intro{font-size:14px;margin-top:10px}
+
+  /* Service grid: single col */
+  .svc-grid{grid-template-columns:1fr}
+  .svc{padding:30px 24px;border-bottom:none}
+  .svc-name{font-size:22px}
+  .svc-desc{font-size:14px;line-height:1.76}
+  .svc-tag{padding:6px 12px;font-size:10px}
+  .svc-footer{margin-top:18px}
+
+  /* About */
+  .about-grid{grid-template-columns:1fr}
+  .about-p{font-size:14px;max-width:100%}
+  .about-vis{display:none}
+  .val-t{font-size:13px}
+  .about-val{padding:14px 0}
+
+  /* Audit */
+  .audit-grid{grid-template-columns:1fr}
+  .audit-p{font-size:14px;max-width:100%}
+  .bar-lbl{font-size:12px}
+  .steps-grid{grid-template-columns:1fr}
+  .step{padding:22px 20px}
+  .step-n{font-size:28px}
+  .step-name{font-size:18px}
+  .step-desc{font-size:13px}
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:1fr}
+  .testi{padding:28px 24px}
+  .testi-q{font-size:17px}
+  .testi-name{font-size:13px}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr}
+  .contact-h2{font-size:clamp(38px,10vw,54px)}
+  .contact-p{font-size:14px;max-width:100%}
+  .email-box{flex-direction:column;align-items:flex-start;gap:4px;padding:16px 18px}
+  .email-box a{font-size:13px}
+
+  /* Form */
+  .field-row{grid-template-columns:1fr}
+  .field label{font-size:11px}
+  .field input,.field textarea,.field select{font-size:16px;padding:12px 0}
+  .form .btn{width:100%;text-align:center;padding:17px}
+  .svc-picker{gap:7px}
+  .pick-btn{padding:8px 13px;font-size:11px}
+  .chip{font-size:11px;padding:6px 12px 6px 14px}
+  .cb-item{font-size:13px}
+  .svc-fields{padding-top:20px}
+
+  /* Footer */
+  footer{padding:24px 22px;flex-direction:column;gap:14px;text-align:center}
+  .f-links{flex-wrap:wrap;justify-content:center;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c1"></div>
+<div class="cur2" id="c2"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#nacalo" onclick="closeMenu()">Начало</a></li>
+    <li><a href="#uslugi" onclick="closeMenu()">Услуги</a></li>
+    <li><a href="#za-nas" onclick="closeMenu()">За нас</a></li>
+    <li><a href="#audit" onclick="closeMenu()">Одит</a></li>
+    <li><a href="#otzyvi" onclick="closeMenu()">Отзиви</a></li>
+    <li><a href="#kontakt" onclick="closeMenu()">Контакт</a></li>
+  </ul>
+  <a href="#kontakt" class="menu-cta" onclick="closeMenu()">Направи запитване</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#nacalo" class="logo">
+    <svg viewBox="0 0 36 36" fill="none">
+      <circle cx="15" cy="15" r="11" stroke="#1E3A2F" stroke-width="2.4" fill="none"/>
+      <line x1="23" y1="23" x2="33" y2="33" stroke="#1E3A2F" stroke-width="2.4" stroke-linecap="round"/>
+      <rect x="9" y="18" width="3" height="4" fill="#1E3A2F" rx="0.5"/>
+      <rect x="13" y="14" width="3" height="8" fill="#1E3A2F" rx="0.5"/>
+      <rect x="17" y="11" width="3" height="11" fill="#1E3A2F" rx="0.5"/>
+    </svg>
+    <div class="logo-text">Marketing<br>Clinic</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nacalo">Начало</a></li>
+    <li><a href="#uslugi">Услуги</a></li>
+    <li><a href="#za-nas">За нас</a></li>
+    <li><a href="#audit">Одит</a></li>
+    <li><a href="#otzyvi">Отзиви</a></li>
+    <li><a href="#kontakt">Контакт</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Направи запитване</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="nacalo">
+  <div class="hero-wm">КЛИНИКА</div>
+  <p class="hero-tag">The Marketing Clinic</p>
+  <h1 class="hero-h1">
+    Диагностицираме.<br>
+    <em class="accent">Лекуваме.</em><br>
+    Растем заедно.
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">Маркетинг агенция за реални резултати. От анализ и стратегия до реклами и сайтове, всичко на едно място.</p>
+    <div class="hero-cta-row">
+      <a href="#kontakt" class="btn">Направи запитване</a>
+      <a href="#uslugi" class="btn-outline">Вижте услугите</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">87<span style="font-size:18px;opacity:.45">+</span></div>
+    <div class="stat-label">Доволни клиенти</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.08s">
+    <div class="stat-num">3.8<span style="font-size:18px;opacity:.45">×</span></div>
+    <div class="stat-label">Среден ROAS</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.16s">
+    <div class="stat-num">4<span style="font-size:18px;opacity:.45">г.</span></div>
+    <div class="stat-label">Опит в бранша</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.24s">
+    <div class="stat-num">100<span style="font-size:18px;opacity:.45">%</span></div>
+    <div class="stat-label">Прозрачност</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">Meta Ads <span class="m-dot"></span> Google Ads <span class="m-dot"></span> Брандинг <span class="m-dot"></span> SEO <span class="m-dot"></span> Бизнес Одит <span class="m-dot"></span> Съдържание <span class="m-dot"></span> Уеб Дизайн <span class="m-dot"></span> Lead Generation <span class="m-dot"></span> Маркетинг Стратегия <span class="m-dot"></span> Full Stack <span class="m-dot"></span> Meta Ads <span class="m-dot"></span> Google Ads <span class="m-dot"></span> Брандинг <span class="m-dot"></span> SEO <span class="m-dot"></span> Бизнес Одит <span class="m-dot"></span> Съдържание <span class="m-dot"></span> Уеб Дизайн <span class="m-dot"></span> Lead Generation <span class="m-dot"></span> Маркетинг Стратегия <span class="m-dot"></span> Full Stack <span class="m-dot"></span></div>
+    <div class="m-item" aria-hidden="true">Meta Ads <span class="m-dot"></span> Google Ads <span class="m-dot"></span> Брандинг <span class="m-dot"></span> SEO <span class="m-dot"></span> Бизнес Одит <span class="m-dot"></span> Съдържание <span class="m-dot"></span> Уеб Дизайн <span class="m-dot"></span> Lead Generation <span class="m-dot"></span> Маркетинг Стратегия <span class="m-dot"></span> Full Stack <span class="m-dot"></span> Meta Ads <span class="m-dot"></span> Google Ads <span class="m-dot"></span> Брандинг <span class="m-dot"></span> SEO <span class="m-dot"></span> Бизнес Одит <span class="m-dot"></span> Съдържание <span class="m-dot"></span> Уеб Дизайн <span class="m-dot"></span> Lead Generation <span class="m-dot"></span> Маркетинг Стратегия <span class="m-dot"></span> Full Stack <span class="m-dot"></span></div>
+  </div>
+</div>
+
+<!-- УСЛУГИ -->
+<section class="sec" id="uslugi">
+  <div class="svc-header reveal">
+    <div class="svc-logo-wrap">
+      <svg width="52" height="52" viewBox="0 0 36 36" fill="none">
+        <circle cx="15" cy="15" r="11" stroke="#1E3A2F" stroke-width="2.2" fill="none"/>
+        <line x1="23" y1="23" x2="33" y2="33" stroke="#1E3A2F" stroke-width="2.2" stroke-linecap="round"/>
+        <rect x="9" y="18" width="3" height="4" fill="#1E3A2F" rx="0.5"/>
+        <rect x="13" y="14" width="3" height="8" fill="#1E3A2F" rx="0.5"/>
+        <rect x="17" y="11" width="3" height="11" fill="#1E3A2F" rx="0.5"/>
+      </svg>
+      <span class="svc-logo-text">Marketing<br>Clinic</span>
+    </div>
+    <div class="svc-right">
+      <p class="lbl">Какво правим</p>
+      <h2 class="h2">Нашите <em class="accent">рецепти</em><br>за растеж.</h2>
+      <p class="svc-intro">Всеки бизнес е различен. Изграждаме стратегия специално за теб, след задълбочен анализ, не по шаблон.</p>
+    </div>
+  </div>
+
+  <div class="svc-grid">
+
+    <div class="svc svc-odd reveal" data-service="audit" onclick="toggleService('audit')">
+      <div class="svc-num">01</div>
+      <div class="svc-name">Бизнес Одит</div>
+      <p class="svc-desc">Анализираме целия ти маркетинг и намираме точно кое работи, кое не и как да подобрим резултатите бързо.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Основна услуга</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-even reveal" data-service="meta" onclick="toggleService('meta')" style="transition-delay:.07s">
+      <div class="svc-num">02</div>
+      <div class="svc-name">Meta Ads</div>
+      <p class="svc-desc">Рекламни кампании във Facebook и Instagram, насочени към точните хора в точния момент.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Платена реклама</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-odd reveal" data-service="google" onclick="toggleService('google')" style="transition-delay:.14s">
+      <div class="svc-num">03</div>
+      <div class="svc-name">Google Ads</div>
+      <p class="svc-desc">Search, Display и Shopping реклами в Google. Твоят бизнес се появява точно когато хората търсят теб.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Платена реклама</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-even reveal" data-service="branding" onclick="toggleService('branding')" style="transition-delay:.07s">
+      <div class="svc-num">04</div>
+      <div class="svc-name">Брандинг</div>
+      <p class="svc-desc">Визуална идентичност, която хората запомнят. Лого, цветове, шрифтове и пълна бранд система.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Идентичност</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-odd reveal" data-service="content" onclick="toggleService('content')" style="transition-delay:.14s">
+      <div class="svc-num">05</div>
+      <div class="svc-name">Съдържание</div>
+      <p class="svc-desc">Публикации, видеа и текстове, които ангажират аудиторията ти и я превръщат в реални клиенти.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Content</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-even reveal" data-service="strategy" onclick="toggleService('strategy')" style="transition-delay:.21s">
+      <div class="svc-num">06</div>
+      <div class="svc-name">Маркетинг стратегия</div>
+      <p class="svc-desc">Ясен план за растеж: кои канали да използваш, как да достигнеш повече клиенти и как да продаваш повече.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Стратегия</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-odd reveal" data-service="web" onclick="toggleService('web')" style="transition-delay:.07s">
+      <div class="svc-num">07</div>
+      <div class="svc-name">Уеб Дизайн</div>
+      <p class="svc-desc">Сайтове, които изглеждат добре и продават. Бързи, лесни за ползване и оптимизирани за Google.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Design &amp; Dev</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-even reveal" data-service="leadgen" onclick="toggleService('leadgen')" style="transition-delay:.14s">
+      <div class="svc-num">08</div>
+      <div class="svc-name">Lead Generation</div>
+      <p class="svc-desc">Реални потенциални клиенти, готови да купят. По-малко харчене, повече разговори с правилните хора.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Lead Gen</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+    <div class="svc svc-odd reveal" data-service="fullstack" onclick="toggleService('fullstack')" style="transition-delay:.21s">
+      <div class="svc-num">09</div>
+      <div class="svc-name">Full Stack</div>
+      <p class="svc-desc">Целият ти маркетинг на едно място: стратегия, реклами, съдържание и сайт. Ти се фокусираш върху бизнеса.</p>
+      <div class="svc-footer">
+        <span class="svc-tag">Комплексна</span>
+        <span class="svc-badge">Избрано ✓</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ЗА НАС -->
+<section class="sec-green" id="za-nas">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="lbl">За нас</p>
+      <h2 class="h2">Маркетинг,<br>основан на<br><em class="accent-light">резултати.</em></h2>
+      <p class="about-p">The Marketing Clinic е агенция, която говори на езика на твоя бизнес. Работим прозрачно и измерваме всичко.</p>
+      <p class="about-p">Преди да препоръчаме каквото и да е, поставяме диагноза. Разбираме твоя бизнес, твоите клиенти и твоите цели.</p>
+      <div class="about-vals">
+        <div class="about-val"><span class="val-n">01</span><span class="val-t">Казваме истината, дори когато е неудобна</span></div>
+        <div class="about-val"><span class="val-n">02</span><span class="val-t">Измерваме всичко, без гадаене, само данни</span></div>
+        <div class="about-val"><span class="val-n">03</span><span class="val-t">Ставаме твой партньор, не просто доставчик</span></div>
+      </div>
+      <div style="margin-top:36px"><a href="#kontakt" class="btn-light">Свържете се с нас</a></div>
+    </div>
+    <div class="about-vis reveal" style="transition-delay:.12s">
+      <div class="avc avc-big">
+        <div><div class="avc-title">Клиентско задоволство</div><div class="avc-num">98<span>%</span></div></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><div class="avc-lbl"><span>Месечен ръст</span><span>+24%</span></div><div class="avc-track"><div class="avc-fill" style="width:72%"></div></div></div>
+          <div><div class="avc-lbl"><span>Задържане на клиенти</span><span>94%</span></div><div class="avc-track"><div class="avc-fill" style="width:94%"></div></div></div>
+        </div>
+      </div>
+      <div class="avc avc-sm">
+        <div class="avc-title">Проекта тази година</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:#F5F0E8;line-height:1.1">47<span style="font-size:22px;opacity:.42">+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОДИТ -->
+<section class="sec" id="audit">
+  <div class="audit-grid">
+    <div class="reveal">
+      <p class="lbl">Диагнозата</p>
+      <h2 class="h2">Всичко започва<br>с <em class="accent">Одит.</em></h2>
+      <p class="audit-p">Преди да харчим парите ти за реклама, искаме да знаем точно какво работи и какво не. Одитът ти дава ясна картина и конкретен план.</p>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-lbl"><span>Социално присъствие</span><span>92</span></div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="bar-row"><div class="bar-lbl"><span>Meta Ads</span><span>74</span></div><div class="bar-track"><div class="bar-fill" style="width:74%;animation-delay:.15s"></div></div></div>
+        <div class="bar-row"><div class="bar-lbl"><span>Google Ads</span><span>68</span></div><div class="bar-track"><div class="bar-fill" style="width:68%;animation-delay:.3s"></div></div></div>
+        <div class="bar-row"><div class="bar-lbl"><span>Бранд идентичност</span><span>88</span></div><div class="bar-track"><div class="bar-fill" style="width:88%;animation-delay:.45s"></div></div></div>
+        <div class="bar-row"><div class="bar-lbl"><span>Съдържание</span><span>70</span></div><div class="bar-track"><div class="bar-fill" style="width:70%;animation-delay:.6s"></div></div></div>
+        <div class="bar-row"><div class="bar-lbl"><span>Lead Generation</span><span>65</span></div><div class="bar-track"><div class="bar-fill" style="width:65%;animation-delay:.75s"></div></div></div>
+      </div>
+      <div style="margin-top:36px"><a href="#kontakt" class="btn">Поискайте одит</a></div>
+    </div>
+    <div class="reveal" style="transition-delay:.12s">
+      <p class="lbl">Как работим</p>
+      <h2 class="h2">Четири стъпки до<br><em class="accent">по-добри резултати.</em></h2>
+      <div class="steps-grid">
+        <div class="step"><div class="step-n">01</div><div class="step-name">Диагноза</div><p class="step-desc">Анализираме бизнеса, пазара и конкуренцията. Само факти и данни.</p></div>
+        <div class="step"><div class="step-n">02</div><div class="step-name">Рецепта</div><p class="step-desc">Персонален план с конкретни стъпки за най-бърз резултат.</p></div>
+        <div class="step"><div class="step-n">03</div><div class="step-name">Изпълнение</div><p class="step-desc">Прилагаме стратегията. Ти се занимаваш с бизнеса, ние с маркетинга.</p></div>
+        <div class="step"><div class="step-n">04</div><div class="step-name">Оптимизация</div><p class="step-desc">Следим резултатите и правим подобрения всеки месец.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗИВИ -->
+<section class="sec-green" id="otzyvi">
+  <div class="reveal"><p class="lbl">Отзиви</p><h2 class="h2">Какво казват<br><em class="accent-light">нашите клиенти.</em></h2></div>
+  <div class="testi-grid">
+    <div class="testi reveal" style="transition-delay:.05s">
+      <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+      <p class="testi-q">"The Marketing Clinic промени начина, по който подхождаме към рекламата. ROAS-ът ни се утрои за три месеца."</p>
+      <div class="testi-div"><div class="testi-name">Георги Стоянов</div><div class="testi-role">Управител, Фитнес студио Pulse</div></div>
+    </div>
+    <div class="testi reveal" style="transition-delay:.1s">
+      <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+      <p class="testi-q">"Одитът ни отвори очите. Разбрахме точно защо губим пари и как да го спрем. Препоръчвам го на всеки."</p>
+      <div class="testi-div"><div class="testi-name">Мария Иванова</div><div class="testi-role">CEO, Козметична верига Bloom</div></div>
+    </div>
+    <div class="testi reveal" style="transition-delay:.15s">
+      <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+      <p class="testi-q">"Работят прозрачно, обясняват всичко ясно и доставят резултати. Агенция, на която мога да се доверя."</p>
+      <div class="testi-div"><div class="testi-name">Александър Петров</div><div class="testi-role">Основател, E-commerce платформа</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТ -->
+<section class="sec" id="kontakt">
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="lbl">Свържи се с нас</p>
+      <h2 class="contact-h2">Направи<br><em class="accent">запитване.</em></h2>
+      <p class="contact-p">Разкажи ни за бизнеса си и ще се свържем с теб до 24 часа. Без задължения, само честен разговор.</p>
+      <div class="email-box">
+        <span class="email-lbl">Имейл</span>
+        <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+      </div>
+      <div class="soc-row">
+        <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" class="soc-btn">Facebook</a>
+        <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" class="soc-btn">Instagram</a>
+      </div>
+    </div>
+
+    <div class="form reveal" style="transition-delay:.12s">
+
+      <!-- Base fields -->
+      <div class="field-row">
+        <div class="field"><label>Вашето Иmе</label><input type="text" placeholder="Иван Иванов"></div>
+        <div class="field"><label>Имейл адрес</label><input type="email" placeholder="ivan@firma.bg"></div>
+      </div>
+      <div class="field"><label>Телефон за връзка</label><input type="tel" placeholder="+359 88 ..."></div>
+
+      <!-- Multi-select services -->
+      <div class="field">
+        <label>Интересувам се от</label>
+        <div class="chips-wrap" id="chips-wrap">
+          <div id="chips-container" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1"></div>
+          <span class="chips-placeholder" id="chips-placeholder">Избери от услугите по-горе или тук долу</span>
+        </div>
+        <div class="svc-picker" id="form-picker">
+          <button type="button" class="pick-btn" data-pick="audit" onclick="toggleService('audit')">Бизнес Одит</button>
+          <button type="button" class="pick-btn" data-pick="meta" onclick="toggleService('meta')">Meta Ads</button>
+          <button type="button" class="pick-btn" data-pick="google" onclick="toggleService('google')">Google Ads</button>
+          <button type="button" class="pick-btn" data-pick="branding" onclick="toggleService('branding')">Брандинг</button>
+          <button type="button" class="pick-btn" data-pick="content" onclick="toggleService('content')">Съдържание</button>
+          <button type="button" class="pick-btn" data-pick="strategy" onclick="toggleService('strategy')">Маркетинг стратегия</button>
+          <button type="button" class="pick-btn" data-pick="web" onclick="toggleService('web')">Уеб Дизайн</button>
+          <button type="button" class="pick-btn" data-pick="leadgen" onclick="toggleService('leadgen')">Lead Generation</button>
+          <button type="button" class="pick-btn" data-pick="fullstack" onclick="toggleService('fullstack')">Full Stack</button>
+        </div>
+        <p class="limit-hint" id="limit-hint">Можеш да избереш до 5 услуги.</p>
+      </div>
+
+      <!-- No selection hint -->
+      <div id="fields-none" class="svc-fields show">
+        <p class="no-selection-hint">Избери услуга по-горе и ще се появят допълнителни въпроси, за да разберем по-добре твоите нужди.</p>
+      </div>
+
+      <!-- Audit fields -->
+      <div id="fields-audit" class="svc-fields">
+        <p class="svc-fields-label">Бизнес Одит</p>
+        <div class="field">
+          <label>Кои маркетинг канали използвате в момента?</label>
+          <div class="checkbox-group">
+            <label class="cb-item"><input type="checkbox"> Facebook и Instagram реклами</label>
+            <label class="cb-item"><input type="checkbox"> Google Ads</label>
+            <label class="cb-item"><input type="checkbox"> Органично съдържание</label>
+            <label class="cb-item"><input type="checkbox"> SEO</label>
+            <label class="cb-item"><input type="checkbox"> Нямаме активни канали</label>
+          </div>
+        </div>
+        <div class="field"><label>Какво в момента не работи?</label><textarea rows="3" placeholder="Опишете основния проблем или bottleneck..."></textarea></div>
+      </div>
+
+      <!-- Meta Ads fields -->
+      <div id="fields-meta" class="svc-fields">
+        <p class="svc-fields-label">Meta Ads</p>
+        <div class="field"><label>Месечен рекламен бюджет</label>
+          <select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 1500 лв.</option><option>1500 до 5000 лв.</option><option>Над 5000 лв.</option></select></div>
+        <div class="field"><label>Имате ли активни кампании?</label>
+          <select><option value="">Избери...</option><option>Да, работят добре</option><option>Да, но резултатите не са добри</option><option>Не, стартираме от нулата</option></select></div>
+        <div class="field"><label>Основна цел</label>
+          <select><option value="">Избери...</option><option>Онлайн продажби</option><option>Генериране на лийдове</option><option>Запознаване с бранда</option><option>Посетители към обект</option></select></div>
+        <div class="field"><label>Проблем с CPL, ROAS или tracking?</label><textarea rows="2" placeholder="Опишете накратко..."></textarea></div>
+      </div>
+
+      <!-- Google Ads fields -->
+      <div id="fields-google" class="svc-fields">
+        <p class="svc-fields-label">Google Ads</p>
+        <div class="field"><label>Какъв тип реклами ви интересуват?</label>
+          <div class="checkbox-group">
+            <label class="cb-item"><input type="checkbox"> Search (текстови)</label>
+            <label class="cb-item"><input type="checkbox"> Shopping (продуктови)</label>
+            <label class="cb-item"><input type="checkbox"> Display (банери)</label>
+            <label class="cb-item"><input type="checkbox"> YouTube</label>
+          </div></div>
+        <div class="field"><label>Месечен бюджет за Google</label>
+          <select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 2000 лв.</option><option>2000 до 8000 лв.</option><option>Над 8000 лв.</option></select></div>
+        <div class="field"><label>Имате ли настроен conversion tracking?</label>
+          <select><option value="">Избери...</option><option>Да, настроен и работи</option><option>Не съм сигурен</option><option>Не, нямаме</option></select></div>
+      </div>
+
+      <!-- Branding fields -->
+      <div id="fields-branding" class="svc-fields">
+        <p class="svc-fields-label">Брандинг</p>
+        <div class="field"><label>Имате ли съществуващо лого?</label>
+          <select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Да, искаме нов облик</option><option>Не, стартираме от нулата</option></select></div>
+        <div class="field"><label>Имате ли утвърдени цветове и шрифтове?</label>
+          <select><option value="">Избери...</option><option>Да, имаме brand guidelines</option><option>Частично</option><option>Не, нямаме нищо</option></select></div>
+        <div class="field"><label>Желан тон и усещане</label>
+          <select><option value="">Избери...</option><option>Луксозен и premium</option><option>Приятелски и достъпен</option><option>Модерен и минималистичен</option><option>Традиционен и надежден</option></select></div>
+      </div>
+
+      <!-- Content fields -->
+      <div id="fields-content" class="svc-fields">
+        <p class="svc-fields-label">Съдържание</p>
+        <div class="field"><label>За кои платформи?</label>
+          <div class="checkbox-group">
+            <label class="cb-item"><input type="checkbox"> Instagram</label>
+            <label class="cb-item"><input type="checkbox"> Facebook</label>
+            <label class="cb-item"><input type="checkbox"> TikTok</label>
+            <label class="cb-item"><input type="checkbox"> LinkedIn</label>
+            <label class="cb-item"><input type="checkbox"> YouTube</label>
+          </div></div>
+        <div class="field"><label>Колко публикации на месец?</label>
+          <select><option value="">Избери...</option><option>До 8</option><option>8 до 16</option><option>16 до 30</option><option>Над 30</option></select></div>
+        <div class="field"><label>Имате ли заснети материали или assets?</label>
+          <select><option value="">Избери...</option><option>Да, имаме снимки и видеа</option><option>Частично</option><option>Не, нужна ни е помощ</option></select></div>
+      </div>
+
+      <!-- Strategy fields -->
+      <div id="fields-strategy" class="svc-fields">
+        <p class="svc-fields-label">Маркетинг стратегия</p>
+        <div class="field"><label>Основна бизнес цел за следващите 12 месеца</label><textarea rows="2" placeholder="Напр. увеличаване на продажбите с 30%..."></textarea></div>
+        <div class="field"><label>Кой е основният ви канал в момента?</label>
+          <select><option value="">Избери...</option><option>Социални мрежи</option><option>Google</option><option>Препоръки</option><option>Нямаме ясен канал</option></select></div>
+        <div class="field"><label>Какво вече сте тествали?</label><textarea rows="2" placeholder="Споменете канали, кампании или тактики..."></textarea></div>
+      </div>
+
+      <!-- Web design fields -->
+      <div id="fields-web" class="svc-fields">
+        <p class="svc-fields-label">Уеб Дизайн</p>
+        <div class="field"><label>Имате ли вече сайт?</label>
+          <select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Да, на стара платформа</option><option>Не, правим нов</option></select></div>
+        <div class="field"><label>Платформа</label>
+          <select><option value="">Без предпочитание</option><option>WordPress</option><option>Shopify</option><option>Wix или Squarespace</option><option>Custom разработка</option></select></div>
+        <div class="field"><label>Основна цел на сайта</label>
+          <select><option value="">Избери...</option><option>Онлайн магазин</option><option>Генериране на запитвания</option><option>Представяне на бизнеса</option><option>Резервации</option></select></div>
+      </div>
+
+      <!-- Lead Gen fields -->
+      <div id="fields-leadgen" class="svc-fields">
+        <p class="svc-fields-label">Lead Generation</p>
+        <div class="field"><label>Какъв тип клиент търсите?</label><textarea rows="2" placeholder="Опишете вашия идеален клиент..."></textarea></div>
+        <div class="field"><label>Каква е текущата ви цена на лийд?</label><input type="text" placeholder="Напр. 15 лв. на лийд или нямаме данни"></div>
+        <div class="field"><label>Какъв е follow-up процесът ви след лийд?</label>
+          <select><option value="">Избери...</option><option>Имаме CRM и структуриран процес</option><option>Обаждаме се ръчно</option><option>Нямаме ясен процес</option></select></div>
+      </div>
+
+      <!-- Full Stack fields -->
+      <div id="fields-fullstack" class="svc-fields">
+        <p class="svc-fields-label">Full Stack</p>
+        <div class="field"><label>Кои услуги искате в пакета?</label>
+          <div class="checkbox-group">
+            <label class="cb-item"><input type="checkbox"> Стратегия</label>
+            <label class="cb-item"><input type="checkbox"> Meta и Google Ads</label>
+            <label class="cb-item"><input type="checkbox"> Съдържание и соц. мрежи</label>
+            <label class="cb-item"><input type="checkbox"> Уеб дизайн</label>
+            <label class="cb-item"><input type="checkbox"> Брандинг</label>
+          </div></div>
+        <div class="field"><label>Приоритет</label>
+          <select><option value="">Избери...</option><option>Повече продажби веднага</option><option>Изграждане на бранд</option><option>Намаляване на разходите</option><option>Навлизане на нов пазар</option></select></div>
+        <div class="field"><label>Желан срок за старт</label>
+          <select><option value="">Избери...</option><option>Веднага</option><option>Следващия месец</option><option>В рамките на 3 месеца</option><option>Все още проучвам</option></select></div>
+      </div>
+
+      <!-- General message -->
+      <div class="field"><label>Разкажи ни повече</label><textarea rows="4" placeholder="Какво продаваш, какви са целите ти, с какво можем да помогнем..."></textarea></div>
+
+      <button class="btn" type="button">Изпрати запитване</button>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="f-copy">© 2026 The Marketing Clinic. Всички права запазени.</p>
+  <div class="f-links">
+    <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank">Instagram</a>
+    <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════
+// CURSOR
+// ═══════════════════════════════════
+const c1 = document.getElementById('c1');
+const c2 = document.getElementById('c2');
+let mx = 0, my = 0, fx = 0, fy = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  c1.style.transform = `translate(${mx-5}px,${my-5}px)`;
+});
+(function tick(){
+  fx += (mx-fx-18)*.1; fy += (my-fy-18)*.1;
+  c2.style.transform = `translate(${fx}px,${fy}px)`;
+  requestAnimationFrame(tick);
+})();
+
+// ═══════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ═══════════════════════════════════
+// ACTIVE NAV
+// ═══════════════════════════════════
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+
+// ═══════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburger');
+  const isOpen = menu.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════
+// SERVICE SELECTION STATE
+// ═══════════════════════════════════
+const MAX = 5;
+const SERVICES = [
+  { id: 'audit',     name: 'Бизнес Одит' },
+  { id: 'meta',      name: 'Meta Ads' },
+  { id: 'google',    name: 'Google Ads' },
+  { id: 'branding',  name: 'Брандинг' },
+  { id: 'content',   name: 'Съдържание' },
+  { id: 'strategy',  name: 'Маркетинг стратегия' },
+  { id: 'web',       name: 'Уеб Дизайн' },
+  { id: 'leadgen',   name: 'Lead Generation' },
+  { id: 'fullstack', name: 'Full Stack' },
+];
+
+let selected = [];
+
+function toggleService(id) {
+  const idx = selected.indexOf(id);
+  if (idx > -1) {
+    // Deselect
+    selected.splice(idx, 1);
+    renderAll();
+  } else {
+    // Select
+    if (selected.length >= MAX) {
+      flashLimit();
+      return;
+    }
+    selected.push(id);
+    renderAll();
+    // Scroll to form only when adding
+    setTimeout(() => {
+      const formEl = document.getElementById('kontakt');
+      if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 180);
+  }
+}
+
+function removeService(id) {
+  const idx = selected.indexOf(id);
+  if (idx > -1) {
+    selected.splice(idx, 1);
+    renderAll();
+  }
+}
+
+function renderAll() {
+  renderCards();
+  renderChips();
+  renderPickers();
+  renderFields();
+}
+
+function renderCards() {
+  SERVICES.forEach(s => {
+    const card = document.querySelector(`[data-service="${s.id}"]`);
+    if (card) card.classList.toggle('svc-selected', selected.includes(s.id));
+  });
+}
+
+function renderChips() {
+  const container = document.getElementById('chips-container');
+  const placeholder = document.getElementById('chips-placeholder');
+  if (!container) return;
+
+  container.innerHTML = '';
+  selected.forEach(id => {
+    const s = SERVICES.find(x => x.id === id);
+    if (!s) return;
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.innerHTML = `<span>${s.name}</span><button class="chip-remove" type="button" onclick="removeService('${id}')" aria-label="Премахни">&times;</button>`;
+    container.appendChild(chip);
+  });
+
+  if (placeholder) placeholder.style.display = selected.length === 0 ? 'block' : 'none';
+
+  const hint = document.getElementById('limit-hint');
+  if (hint) hint.classList.toggle('show', selected.length >= MAX);
+}
+
+function renderPickers() {
+  document.querySelectorAll('.pick-btn').forEach(btn => {
+    const id = btn.getAttribute('data-pick');
+    if (id) btn.classList.toggle('active', selected.includes(id));
+  });
+}
+
+function renderFields() {
+  // Hide all service field groups
+  SERVICES.forEach(s => {
+    const el = document.getElementById('fields-' + s.id);
+    if (el) {
+      el.classList.toggle('show', selected.includes(s.id));
+    }
+  });
+  // Show/hide no-selection hint
+  const noSel = document.getElementById('fields-none');
+  if (noSel) noSel.classList.toggle('show', selected.length === 0);
+}
+
+function flashLimit() {
+  const hint = document.getElementById('limit-hint');
+  if (!hint) return;
+  hint.classList.add('show');
+  hint.classList.remove('pulse');
+  void hint.offsetWidth; // reflow
+  hint.classList.add('pulse');
+  setTimeout(() => hint.classList.remove('pulse'), 1100);
+}
+</script>
+</body>
+</html>
