@@ -7,8 +7,19 @@
 <meta name="description" content="The Marketing Clinic. Маркетинг агенция за реални резултати. Meta Ads, Google Ads, Брандинг, Уеб Дизайн, Lead Generation.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='11' stroke='%231E3A2F' stroke-width='2.4' fill='none'/%3E%3Cline x1='23' y1='23' x2='33' y2='33' stroke='%231E3A2F' stroke-width='2.4' stroke-linecap='round'/%3E%3Crect x='7' y='19' width='3' height='3' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='11' y='15' width='3' height='7' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='15' y='12' width='3' height='10' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='19' y='9' width='3' height='13' fill='%231E3A2F' rx='0.5'/%3E%3C/svg%3E">
 </head>
 <body>
+
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar" id="announce-bar">
+  <span class="announce-text">Безплатен маркетинг анализ за твоя бизнес</span>
+  <button class="announce-btn" onclick="activateFreeAnalysis()">
+    ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ
+    <span class="announce-timer" id="top-timer">15:46</span>
+  </button>
+</div>
 
 <div class="cur" id="c1"></div>
 <div class="cur2" id="c2"></div>
@@ -32,9 +43,10 @@
     <svg viewBox="0 0 36 36" fill="none">
       <circle cx="15" cy="15" r="11" stroke="#1E3A2F" stroke-width="2.4" fill="none"/>
       <line x1="23" y1="23" x2="33" y2="33" stroke="#1E3A2F" stroke-width="2.4" stroke-linecap="round"/>
-      <rect x="9" y="18" width="3" height="4" fill="#1E3A2F" rx="0.5"/>
-      <rect x="13" y="14" width="3" height="8" fill="#1E3A2F" rx="0.5"/>
-      <rect x="17" y="11" width="3" height="11" fill="#1E3A2F" rx="0.5"/>
+      <rect x="7" y="19" width="3" height="3" fill="#1E3A2F" rx="0.5"/>
+      <rect x="11" y="15" width="3" height="7" fill="#1E3A2F" rx="0.5"/>
+      <rect x="15" y="12" width="3" height="10" fill="#1E3A2F" rx="0.5"/>
+      <rect x="19" y="9" width="3" height="13" fill="#1E3A2F" rx="0.5"/>
     </svg>
     <div class="logo-text">Marketing<br>Clinic</div>
   </a>
@@ -105,9 +117,10 @@
       <svg width="52" height="52" viewBox="0 0 36 36" fill="none">
         <circle cx="15" cy="15" r="11" stroke="#1E3A2F" stroke-width="2.2" fill="none"/>
         <line x1="23" y1="23" x2="33" y2="33" stroke="#1E3A2F" stroke-width="2.2" stroke-linecap="round"/>
-        <rect x="9" y="18" width="3" height="4" fill="#1E3A2F" rx="0.5"/>
-        <rect x="13" y="14" width="3" height="8" fill="#1E3A2F" rx="0.5"/>
-        <rect x="17" y="11" width="3" height="11" fill="#1E3A2F" rx="0.5"/>
+        <rect x="7" y="19" width="3" height="3" fill="#1E3A2F" rx="0.5"/>
+        <rect x="11" y="15" width="3" height="7" fill="#1E3A2F" rx="0.5"/>
+        <rect x="15" y="12" width="3" height="10" fill="#1E3A2F" rx="0.5"/>
+        <rect x="19" y="9" width="3" height="13" fill="#1E3A2F" rx="0.5"/>
       </svg>
       <span class="svc-logo-text">Marketing<br>Clinic</span>
     </div>
@@ -321,12 +334,22 @@
           <button type="button" class="pick-btn" data-pick="web"       onclick="toggleService('web')">Уеб Дизайн</button>
           <button type="button" class="pick-btn" data-pick="leadgen"   onclick="toggleService('leadgen')">Lead Generation</button>
           <button type="button" class="pick-btn" data-pick="fullstack" onclick="toggleService('fullstack')">Full Stack</button>
+          <button type="button" class="pick-btn pick-btn-free" data-pick="bezplaten" onclick="toggleService('bezplaten')">Безплатен анализ</button>
         </div>
         <p class="limit-hint" id="limit-hint">Можеш да избереш до 5 услуги.</p>
       </div>
 
       <div id="fields-none" class="svc-fields show">
         <p class="no-selection-hint">Избери услуга по-горе и ще се появят допълнителни въпроси, за да разберем по-добре твоите нужди.</p>
+      </div>
+
+      <!-- БЕЗПЛАТЕН АНАЛИЗ fields -->
+      <div id="fields-bezplaten" class="svc-fields">
+        <p class="svc-fields-label">Безплатен анализ</p>
+        <div class="field"><label>Какъв е вашият бизнес?</label><input type="text" placeholder="Напр. онлайн магазин, фитнес, ресторант..."></div>
+        <div class="field"><label>Какви резултати искате да постигнете?</label><textarea rows="3" placeholder="Напр. повече клиенти, по-висок ROAS, по-добро онлайн присъствие..."></textarea></div>
+        <div class="field"><label>Кой е основният ви маркетинг проблем?</label>
+          <select><option value="">Избери...</option><option>Нямаме достатъчно клиенти</option><option>Харчим за реклама без резултат</option><option>Не знаем от къде да започнем</option><option>Искаме да растем по-бързо</option><option>Друго</option></select></div>
       </div>
 
       <div id="fields-audit" class="svc-fields">
@@ -418,6 +441,18 @@
       <div class="field">
         <label for="f-message">Разкажи ни повече</label>
         <textarea id="f-message" rows="4" placeholder="Какво продаваш, какви са целите ти, с какво можем да помогнем..."></textarea>
+      </div>
+
+      <!-- BOTTOM FREE ANALYSIS CTA -->
+      <div class="bottom-cta-free">
+        <div class="bottom-cta-text">
+          <span class="bottom-cta-label">Безплатна оферта</span>
+          <span class="bottom-cta-title">Вземи безплатен анализ</span>
+        </div>
+        <button type="button" class="btn-free-cta" onclick="activateFreeAnalysis()">
+          ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ
+          <span class="bottom-timer" id="bottom-timer">15:46</span>
+        </button>
       </div>
 
       <div id="form-success" class="form-feedback form-success" style="display:none">
