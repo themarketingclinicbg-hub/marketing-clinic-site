@@ -217,6 +217,76 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── DESKTOP ONLY ── */
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  padding:10px 24px;
+  min-height:48px;
+}
+.announce-text{
+  font-size:13px;color:rgba(245,240,232,0.82);
+  letter-spacing:.04em;
+}
+.announce-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--bg);color:var(--green);
+  border:none;cursor:pointer;
+  padding:8px 20px;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s;
+  white-space:nowrap;flex-shrink:0;
+}
+.announce-btn:hover{background:var(--bg2)}
+.announce-timer{
+  font-size:13px;font-weight:700;
+  background:var(--green);color:var(--bg);
+  padding:2px 8px;letter-spacing:.06em;
+  border:1px solid rgba(245,240,232,0.3);
+}
+
+/* ── NAV offset for announce bar ── */
+nav{top:48px !important}
+
+/* ── HERO offset for announce bar ── */
+.hero{padding-top:calc(80px + 48px) !important}
+
+/* ── FREE ANALYSIS CTA (bottom) ── */
+.bottom-cta-free{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 24px;
+  background:var(--green);
+  margin-bottom:4px;
+}
+.bottom-cta-text{display:flex;flex-direction:column;gap:4px}
+.bottom-cta-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,0.55)}
+.bottom-cta-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--bg);line-height:1.1}
+.btn-free-cta{
+  display:inline-flex;align-items:center;gap:12px;flex-shrink:0;
+  background:var(--bg);color:var(--green);
+  border:none;cursor:pointer;
+  padding:12px 22px;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s;
+  white-space:nowrap;
+}
+.btn-free-cta:hover{background:var(--bg2)}
+.bottom-timer{
+  font-size:13px;font-weight:700;
+  background:var(--green);color:var(--bg);
+  padding:3px 8px;letter-spacing:.06em;
+  border:1px solid rgba(30,58,47,0.2);
+}
+
+/* ── FREE picker button highlight ── */
+.pick-btn-free{border-color:var(--green) !important;color:var(--green) !important;font-weight:500}
+.pick-btn-free.active{background:var(--green) !important;color:var(--bg) !important}
+
+
 @media(min-width:901px){
   .hamburger{display:none !important}
   .mobile-menu{display:none !important}
@@ -226,7 +296,14 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 @media(max-width:900px){
   body{cursor:auto}
   .cur,.cur2{display:none}
-  nav{padding:0 22px;height:72px}
+  nav{padding:0 22px;height:60px;top:42px !important}
+  .announce-bar{padding:8px 16px;min-height:42px;gap:10px;flex-wrap:wrap;justify-content:center}
+  .announce-text{font-size:11px;text-align:center}
+  .announce-btn{padding:6px 14px;font-size:10px}
+  .announce-timer{font-size:11px}
+  .hero{padding-top:calc(60px + 42px + 16px) !important}
+  .bottom-cta-free{flex-direction:column;align-items:flex-start;gap:14px}
+  .btn-free-cta{width:100%;justify-content:center}
   .logo svg{width:30px;height:30px}
   .logo-text{font-size:16px}
   .nav-links,.nav-cta{display:none}
@@ -234,7 +311,7 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
   .hero{min-height:100svh;padding:0 24px 56px}
   .hero-wm{font-size:clamp(68px,20vw,120px)}
   .hero-tag{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
-  .hero-h1{font-size:clamp(42px,10.5vw,58px);line-height:.96;max-width:100%}
+  .hero-h1{font-size:clamp(32px,7.8vw,48px);line-height:1.06;max-width:100%;letter-spacing:-.01em}
   .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px;margin-top:36px}
   .hero-desc{font-size:14px;line-height:1.76;max-width:100%}
   .hero-cta-row{flex-direction:column;align-items:stretch;width:100%;gap:12px}
