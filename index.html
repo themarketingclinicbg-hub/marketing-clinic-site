@@ -13,11 +13,11 @@
 
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="announce-bar" id="announce-bar">
-  <span class="announce-text">Безплатен маркетинг анализ за твоя бизнес</span>
-  <button class="announce-btn" onclick="activateFreeAnalysis()">
+<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:20px;padding:10px 24px;min-height:50px;flex-wrap:wrap;">
+  <span style="font-size:13px;color:rgba(245,240,232,0.85);letter-spacing:.04em;font-family:'DM Sans',sans-serif;">Безплатен маркетинг анализ за твоя бизнес</span>
+  <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
     ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ
-    <span class="announce-timer" id="top-timer">15:46</span>
+    <span id="top-timer" style="background:#1E3A2F;color:#F5F0E8;padding:2px 8px;font-size:13px;font-weight:800;letter-spacing:.06em;border:1px solid rgba(245,240,232,0.3);">15:46</span>
   </button>
 </div>
 
@@ -444,14 +444,14 @@
       </div>
 
       <!-- BOTTOM FREE ANALYSIS CTA -->
-      <div class="bottom-cta-free">
-        <div class="bottom-cta-text">
-          <span class="bottom-cta-label">Безплатна оферта</span>
-          <span class="bottom-cta-title">Вземи безплатен анализ</span>
+      <div style="background:#1E3A2F;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,0.55);font-family:'DM Sans',sans-serif;">Безплатна оферта</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#F5F0E8;line-height:1.1;">Вземи безплатен анализ</span>
         </div>
-        <button type="button" class="btn-free-cta" onclick="activateFreeAnalysis()">
+        <button type="button" onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:14px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:14px 26px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;">
           ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ
-          <span class="bottom-timer" id="bottom-timer">15:46</span>
+          <span id="bottom-timer" style="background:#1E3A2F;color:#F5F0E8;padding:4px 10px;font-size:14px;font-weight:800;letter-spacing:.06em;border:1px solid rgba(245,240,232,0.3);">15:46</span>
         </button>
       </div>
 
