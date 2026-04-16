@@ -4,6 +4,30 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 
 // ═══════════════════════════════════════
+// COUNTDOWN TIMER (15:46 → 0, then loops)
+// ═══════════════════════════════════════
+const TIMER_START = 15 * 60 + 46; // 946 seconds
+let timerSeconds = TIMER_START;
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return (m < 10 ? '0' + m : m) + ':' + (sec < 10 ? '0' + sec : sec);
+}
+
+function tickTimer() {
+  timerSeconds--;
+  if (timerSeconds < 0) timerSeconds = TIMER_START;
+  const display = formatTime(timerSeconds);
+  const t1 = document.getElementById('top-timer');
+  const t2 = document.getElementById('bottom-timer');
+  if (t1) t1.textContent = display;
+  if (t2) t2.textContent = display;
+}
+
+setInterval(tickTimer, 1000);
+
+// ═══════════════════════════════════════
 // CURSOR
 // ═══════════════════════════════════════
 const c1 = document.getElementById('c1');
@@ -36,7 +60,7 @@ const navLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
   navLinks.forEach(a => {
     a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + cur);
   });
@@ -67,15 +91,16 @@ function closeMenu() {
 // ═══════════════════════════════════════
 const MAX_SERVICES = 5;
 const SERVICES = [
-  { id: 'audit',     name: 'Бизнес Одит' },
-  { id: 'meta',      name: 'Meta Ads' },
-  { id: 'google',    name: 'Google Ads' },
-  { id: 'branding',  name: 'Брандинг' },
-  { id: 'content',   name: 'Съдържание' },
-  { id: 'strategy',  name: 'Маркетинг стратегия' },
-  { id: 'web',       name: 'Уеб Дизайн' },
-  { id: 'leadgen',   name: 'Lead Generation' },
-  { id: 'fullstack', name: 'Full Stack' },
+  { id: 'audit',      name: 'Бизнес Одит' },
+  { id: 'meta',       name: 'Meta Ads' },
+  { id: 'google',     name: 'Google Ads' },
+  { id: 'branding',   name: 'Брандинг' },
+  { id: 'content',    name: 'Съдържание' },
+  { id: 'strategy',   name: 'Маркетинг стратегия' },
+  { id: 'web',        name: 'Уеб Дизайн' },
+  { id: 'leadgen',    name: 'Lead Generation' },
+  { id: 'fullstack',  name: 'Full Stack' },
+  { id: 'bezplaten',  name: 'Безплатен анализ' },
 ];
 let selected = [];
 
@@ -93,6 +118,24 @@ function toggleService(id) {
       if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 200);
   }
+}
+
+// ─── Called when clicking top bar or bottom CTA button ───
+function activateFreeAnalysis() {
+  // Add "bezplaten" if not already selected
+  if (!selected.includes('bezplaten')) {
+    if (selected.length >= MAX_SERVICES) {
+      // Replace last selected with bezplaten
+      selected.pop();
+    }
+    selected.push('bezplaten');
+    renderAll();
+  }
+  // Scroll to contact form
+  setTimeout(() => {
+    const f = document.getElementById('kontakt');
+    if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
 function removeService(id) {
@@ -159,12 +202,76 @@ function flashLimitHint() {
 }
 
 // ═══════════════════════════════════════
+// COLLECT ALL SERVICE-SPECIFIC ANSWERS
+// Събира всички попълнени полета от
+// динамичните секции на избраните услуги
+// ═══════════════════════════════════════
+function collectServiceFields() {
+  const result = {};
+
+  SERVICES.forEach(svc => {
+    if (!selected.includes(svc.id)) return;
+
+    const section = document.getElementById('fields-' + svc.id);
+    if (!section) return;
+
+    const lines = [];
+
+    // Select dropdowns
+    section.querySelectorAll('select').forEach(sel => {
+      if (!sel.value) return;
+      const fieldEl = sel.closest('.field');
+      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      lines.push((label ? label.textContent.trim() : '') + ': ' + sel.value);
+    });
+
+    // Text inputs
+    section.querySelectorAll('input[type="text"], input[type="number"]').forEach(inp => {
+      if (!inp.value.trim()) return;
+      const fieldEl = inp.closest('.field');
+      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      lines.push((label ? label.textContent.trim() : '') + ': ' + inp.value.trim());
+    });
+
+    // Textareas
+    section.querySelectorAll('textarea').forEach(ta => {
+      if (!ta.value.trim()) return;
+      const fieldEl = ta.closest('.field');
+      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      lines.push((label ? label.textContent.trim() : '') + ': ' + ta.value.trim());
+    });
+
+    // Checkboxes — group by field label
+    const cbGroups = {};
+    section.querySelectorAll('.cb-item').forEach(item => {
+      const cb = item.querySelector('input[type="checkbox"]');
+      if (!cb || !cb.checked) return;
+      const fieldEl  = item.closest('.field');
+      const groupKey = fieldEl && fieldEl.querySelector('label')
+        ? fieldEl.querySelector('label').textContent.trim()
+        : 'Избрано';
+      if (!cbGroups[groupKey]) cbGroups[groupKey] = [];
+      cbGroups[groupKey].push(item.textContent.trim());
+    });
+    Object.entries(cbGroups).forEach(([grp, vals]) => {
+      lines.push(grp + ': ' + vals.join(', '));
+    });
+
+    if (lines.length > 0) {
+      result[svc.name] = lines.join(' | ');
+    }
+  });
+
+  return result;
+}
+
+// ═══════════════════════════════════════
 // FORM SUBMIT → GOOGLE SHEETS
 // ═══════════════════════════════════════
 function resetFormState() {
   const form = document.getElementById('contact-form');
   if (form) {
-    form.querySelectorAll('input, textarea').forEach(el => { el.value = ''; });
+    form.querySelectorAll('input:not([type="checkbox"]), textarea').forEach(el => { el.value = ''; });
     form.querySelectorAll('select').forEach(el => { el.selectedIndex = 0; });
     form.querySelectorAll('input[type="checkbox"]').forEach(el => { el.checked = false; });
   }
@@ -222,25 +329,44 @@ function submitForm() {
   const phone   = (document.getElementById('f-phone')   || {}).value || '';
   const message = (document.getElementById('f-message') || {}).value || '';
 
+  // Chosen services
   const serviceNames = selected.map(id => {
     const svc = SERVICES.find(x => x.id === id);
     return svc ? svc.name : id;
   });
   const service = serviceNames.join(', ') || 'Не е избрана услуга';
 
-  if (!name.trim())  { showValidationError('f-name',  'Моля, въведете вашето иmе.');   return; }
+  // Validation
+  if (!name.trim())  { showValidationError('f-name',  'Моля, въведете вашето иmе.'); return; }
   if (!email.trim()) { showValidationError('f-email', 'Моля, въведете имейл адрес.'); return; }
   clearValidationErrors();
 
+  // Collect all service-specific answers
+  const svcFields = collectServiceFields();
+
+  // "Детайли" column — всички отговори обединени
+  const detailParts = Object.entries(svcFields).map(
+    ([svcName, answers]) => '[' + svcName + '] ' + answers
+  );
+  const details = detailParts.join(' || ');
+
+  // Build payload
   const payload = {
     name:        name.trim(),
     email:       email.trim(),
     phone:       phone.trim(),
     service:     service,
     message:     message.trim(),
+    details:     details,
     submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
     source:      'themarketingclinic.bg'
   };
+
+  // Add each service as its own flat column
+  Object.entries(svcFields).forEach(([svcName, answers]) => {
+    const key = svcName.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+    payload[key] = answers;
+  });
 
   setSubmitState('loading');
 
