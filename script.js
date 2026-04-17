@@ -387,6 +387,32 @@ function submitForm() {
   });
 }
 
+
+// ═══════════════════════════════════════
+// DYNAMIC ANNOUNCEMENT BAR OFFSET
+// Adjusts nav and hero based on actual bar height
+// ═══════════════════════════════════════
+function adjustForAnnounceBar() {
+  const bar = document.getElementById('announce-bar');
+  const nav = document.querySelector('nav');
+  const hero = document.querySelector('.hero');
+  if (!bar || !nav) return;
+
+  const barH = bar.offsetHeight;
+  nav.style.top = barH + 'px';
+
+  if (hero) {
+    const navH = nav.offsetHeight;
+    hero.style.paddingTop = (barH + navH + 16) + 'px';
+  }
+}
+
+// Run on load and on resize
+window.addEventListener('load', adjustForAnnounceBar);
+window.addEventListener('resize', adjustForAnnounceBar);
+// Also run after fonts load (can change bar height)
+document.fonts && document.fonts.ready.then(adjustForAnnounceBar);
+
 // ═══════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════
