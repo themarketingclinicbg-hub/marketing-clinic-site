@@ -8,14 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='11' stroke='%231E3A2F' stroke-width='2.4' fill='none'/%3E%3Cline x1='23' y1='23' x2='33' y2='33' stroke='%231E3A2F' stroke-width='2.4' stroke-linecap='round'/%3E%3Crect x='7' y='19' width='3' height='3' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='11' y='15' width='3' height='7' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='15' y='12' width='3' height='10' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='19' y='9' width='3' height='13' fill='%231E3A2F' rx='0.5'/%3E%3C/svg%3E">
+<style>
+@media(max-width:600px){
+  #announce-text-label{display:none !important}
+  #announce-bar{padding:8px 16px !important;gap:0 !important}
+  #announce-bar button{width:100%;justify-content:center;padding:10px 16px !important}
+}
+@media(min-width:601px) and (max-width:900px){
+  #announce-text-label{font-size:11px !important;max-width:140px}
+}
+</style>
 </head>
 <body>
 
 
 <!-- ANNOUNCEMENT BAR -->
-<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:20px;padding:10px 24px;min-height:50px;flex-wrap:wrap;">
-  <span style="font-size:13px;color:rgba(245,240,232,0.85);letter-spacing:.04em;font-family:'DM Sans',sans-serif;">Безплатен маркетинг анализ за твоя бизнес</span>
-  <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">
+<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:16px;padding:9px 20px;flex-wrap:nowrap;overflow:hidden;">
+  <span id="announce-text-label" style="font-size:12px;color:rgba(245,240,232,0.82);letter-spacing:.03em;font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0;">Безплатен маркетинг анализ за твоя бизнес</span>
+  <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;">
     ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ
     <span id="top-timer" style="background:#1E3A2F;color:#F5F0E8;padding:2px 8px;font-size:13px;font-weight:800;letter-spacing:.06em;border:1px solid rgba(245,240,232,0.3);">15:46</span>
   </button>
