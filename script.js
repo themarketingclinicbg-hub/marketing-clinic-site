@@ -389,29 +389,42 @@ function submitForm() {
 
 
 // ═══════════════════════════════════════
-// DYNAMIC ANNOUNCEMENT BAR OFFSET
-// Adjusts nav and hero based on actual bar height
+// DYNAMIC LAYOUT: announce bar + hero fill
+// Fixes Android Chrome 100vh bug + offset
 // ═══════════════════════════════════════
-function adjustForAnnounceBar() {
-  const bar = document.getElementById('announce-bar');
-  const nav = document.querySelector('nav');
+function adjustLayout() {
+  // Fix 1: Real viewport height for Android Chrome
+  // Android Chrome shrinks/grows vh when toolbar appears/hides
+  const realVH = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--real-vh', realVH + 'px');
+
+  const bar  = document.getElementById('announce-bar');
+  const nav  = document.querySelector('nav');
   const hero = document.querySelector('.hero');
   if (!bar || !nav) return;
 
-  const barH = bar.offsetHeight;
+  const barH = bar.getBoundingClientRect().height;
+  const navH = nav.getBoundingClientRect().height;
+
+  // Fix 2: Position nav just below announce bar
   nav.style.top = barH + 'px';
 
+  // Fix 3: Hero fills exactly the visible screen
   if (hero) {
-    const navH = nav.offsetHeight;
-    hero.style.paddingTop = (barH + navH + 16) + 'px';
+    const totalFixed = barH + navH;
+    hero.style.minHeight = (window.innerHeight) + 'px';
+    hero.style.paddingTop = (totalFixed + 20) + 'px';
   }
 }
 
-// Run on load and on resize
-window.addEventListener('load', adjustForAnnounceBar);
-window.addEventListener('resize', adjustForAnnounceBar);
-// Also run after fonts load (can change bar height)
-document.fonts && document.fonts.ready.then(adjustForAnnounceBar);
+// Run immediately, on load, on resize, and on scroll (Android toolbar changes)
+adjustLayout();
+window.addEventListener('load', adjustLayout);
+window.addEventListener('resize', adjustLayout);
+window.addEventListener('orientationchange', function(){ setTimeout(adjustLayout, 300); });
+// Android Chrome fires this when toolbar shows/hides
+window.visualViewport && window.visualViewport.addEventListener('resize', adjustLayout);
+document.fonts && document.fonts.ready.then(adjustLayout);
 
 // ═══════════════════════════════════════
 // INIT
