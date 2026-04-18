@@ -4,13 +4,79 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 
 // ═══════════════════════════════════════
-// COUNTDOWN TIMER (15:46 → 0, then loops)
+// CROSS-PLATFORM LAYOUT FIX
+// Fixes iOS Safari + Android Chrome viewport issues
 // ═══════════════════════════════════════
-const TIMER_START = 15 * 60 + 46; // 946 seconds
-let timerSeconds = TIMER_START;
+
+// Announce bar is always 1 line = fixed height
+const BAR_H = 46;
+
+function adjustLayout() {
+  const root = document.documentElement;
+  const nav  = document.querySelector('nav');
+  const hero = document.querySelector('.hero');
+
+  // ── 1. Real viewport height (Android Chrome 100vh bug fix) ──
+  // window.innerHeight = actual visible pixels, not CSS vh
+  const realVH = window.innerHeight / 100;
+  root.style.setProperty('--real-vh', realVH + 'px');
+
+  // ── 2. Get actual nav height (may differ on different phones) ──
+  const navH = nav ? nav.offsetHeight : 60;
+
+  // ── 3. Position nav flush below announce bar (no gap, no overlap) ──
+  if (nav) {
+    nav.style.top = BAR_H + 'px';
+  }
+
+  // ── 4. Update CSS variables ──
+  root.style.setProperty('--bar-h',  BAR_H + 'px');
+  root.style.setProperty('--nav-h',  navH  + 'px');
+  root.style.setProperty('--offset', (BAR_H + navH) + 'px');
+
+  // ── 5. Hero: fill screen exactly, content close to nav ──
+  if (hero && window.innerWidth <= 900) {
+    const totalOffset = BAR_H + navH;
+    hero.style.minHeight = window.innerHeight + 'px';
+    hero.style.paddingTop = (totalOffset + 12) + 'px';
+  }
+}
+
+// Run after DOM is painted — NOT immediately (fonts/layout need to settle)
+document.addEventListener('DOMContentLoaded', adjustLayout);
+
+// Run again after everything loads (images, fonts)
+window.addEventListener('load', function() {
+  adjustLayout();
+  // Second call after short delay — catches iOS Safari late reflow
+  setTimeout(adjustLayout, 300);
+});
+
+// Resize (orientation change on mobile)
+window.addEventListener('resize', function() {
+  requestAnimationFrame(adjustLayout);
+});
+
+// Orientation change — iOS fires this, Android fires resize
+window.addEventListener('orientationchange', function() {
+  setTimeout(adjustLayout, 350);
+});
+
+// Android Chrome: fires when browser toolbar shows/hides
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', function() {
+    requestAnimationFrame(adjustLayout);
+  });
+}
+
+// ═══════════════════════════════════════
+// COUNTDOWN TIMER (15:46)
+// ═══════════════════════════════════════
+const TIMER_START = 15 * 60 + 46;
+let timerSeconds  = TIMER_START;
 
 function formatTime(s) {
-  const m = Math.floor(s / 60);
+  const m   = Math.floor(s / 60);
   const sec = s % 60;
   return (m < 10 ? '0' + m : m) + ':' + (sec < 10 ? '0' + sec : sec);
 }
@@ -28,7 +94,7 @@ function tickTimer() {
 setInterval(tickTimer, 1000);
 
 // ═══════════════════════════════════════
-// CURSOR
+// CURSOR (desktop only)
 // ═══════════════════════════════════════
 const c1 = document.getElementById('c1');
 const c2 = document.getElementById('c2');
@@ -54,7 +120,7 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // ═══════════════════════════════════════
-// ACTIVE NAV
+// ACTIVE NAV HIGHLIGHT
 // ═══════════════════════════════════════
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('section[id]');
@@ -91,16 +157,16 @@ function closeMenu() {
 // ═══════════════════════════════════════
 const MAX_SERVICES = 5;
 const SERVICES = [
-  { id: 'audit',      name: 'Бизнес Одит' },
-  { id: 'meta',       name: 'Meta Ads' },
-  { id: 'google',     name: 'Google Ads' },
-  { id: 'branding',   name: 'Брандинг' },
-  { id: 'content',    name: 'Съдържание' },
-  { id: 'strategy',   name: 'Маркетинг стратегия' },
-  { id: 'web',        name: 'Уеб Дизайн' },
-  { id: 'leadgen',    name: 'Lead Generation' },
-  { id: 'fullstack',  name: 'Full Stack' },
-  { id: 'bezplaten',  name: 'Безплатен анализ' },
+  { id: 'audit',     name: 'Бизнес Одит' },
+  { id: 'meta',      name: 'Meta Ads' },
+  { id: 'google',    name: 'Google Ads' },
+  { id: 'branding',  name: 'Брандинг' },
+  { id: 'content',   name: 'Съдържание' },
+  { id: 'strategy',  name: 'Маркетинг стратегия' },
+  { id: 'web',       name: 'Уеб Дизайн' },
+  { id: 'leadgen',   name: 'Lead Generation' },
+  { id: 'fullstack', name: 'Full Stack' },
+  { id: 'bezplaten', name: 'Безплатен анализ' },
 ];
 let selected = [];
 
@@ -120,18 +186,12 @@ function toggleService(id) {
   }
 }
 
-// ─── Called when clicking top bar or bottom CTA button ───
 function activateFreeAnalysis() {
-  // Add "bezplaten" if not already selected
   if (!selected.includes('bezplaten')) {
-    if (selected.length >= MAX_SERVICES) {
-      // Replace last selected with bezplaten
-      selected.pop();
-    }
+    if (selected.length >= MAX_SERVICES) selected.pop();
     selected.push('bezplaten');
     renderAll();
   }
-  // Scroll to contact form
   setTimeout(() => {
     const f = document.getElementById('kontakt');
     if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -144,10 +204,7 @@ function removeService(id) {
 }
 
 function renderAll() {
-  renderCards();
-  renderChips();
-  renderPickerButtons();
-  renderServiceFields();
+  renderCards(); renderChips(); renderPickerButtons(); renderServiceFields();
 }
 
 function renderCards() {
@@ -202,66 +259,42 @@ function flashLimitHint() {
 }
 
 // ═══════════════════════════════════════
-// COLLECT ALL SERVICE-SPECIFIC ANSWERS
-// Събира всички попълнени полета от
-// динамичните секции на избраните услуги
+// COLLECT ALL SERVICE FIELD ANSWERS
 // ═══════════════════════════════════════
 function collectServiceFields() {
   const result = {};
-
   SERVICES.forEach(svc => {
     if (!selected.includes(svc.id)) return;
-
     const section = document.getElementById('fields-' + svc.id);
     if (!section) return;
-
     const lines = [];
-
-    // Select dropdowns
     section.querySelectorAll('select').forEach(sel => {
       if (!sel.value) return;
-      const fieldEl = sel.closest('.field');
-      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      const label = sel.closest('.field') && sel.closest('.field').querySelector('label');
       lines.push((label ? label.textContent.trim() : '') + ': ' + sel.value);
     });
-
-    // Text inputs
-    section.querySelectorAll('input[type="text"], input[type="number"]').forEach(inp => {
+    section.querySelectorAll('input[type="text"],input[type="number"]').forEach(inp => {
       if (!inp.value.trim()) return;
-      const fieldEl = inp.closest('.field');
-      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      const label = inp.closest('.field') && inp.closest('.field').querySelector('label');
       lines.push((label ? label.textContent.trim() : '') + ': ' + inp.value.trim());
     });
-
-    // Textareas
     section.querySelectorAll('textarea').forEach(ta => {
       if (!ta.value.trim()) return;
-      const fieldEl = ta.closest('.field');
-      const label   = fieldEl ? fieldEl.querySelector('label') : null;
+      const label = ta.closest('.field') && ta.closest('.field').querySelector('label');
       lines.push((label ? label.textContent.trim() : '') + ': ' + ta.value.trim());
     });
-
-    // Checkboxes — group by field label
     const cbGroups = {};
     section.querySelectorAll('.cb-item').forEach(item => {
       const cb = item.querySelector('input[type="checkbox"]');
       if (!cb || !cb.checked) return;
       const fieldEl  = item.closest('.field');
-      const groupKey = fieldEl && fieldEl.querySelector('label')
-        ? fieldEl.querySelector('label').textContent.trim()
-        : 'Избрано';
+      const groupKey = fieldEl && fieldEl.querySelector('label') ? fieldEl.querySelector('label').textContent.trim() : 'Избрано';
       if (!cbGroups[groupKey]) cbGroups[groupKey] = [];
       cbGroups[groupKey].push(item.textContent.trim());
     });
-    Object.entries(cbGroups).forEach(([grp, vals]) => {
-      lines.push(grp + ': ' + vals.join(', '));
-    });
-
-    if (lines.length > 0) {
-      result[svc.name] = lines.join(' | ');
-    }
+    Object.entries(cbGroups).forEach(([grp, vals]) => lines.push(grp + ': ' + vals.join(', ')));
+    if (lines.length > 0) result[svc.name] = lines.join(' | ');
   });
-
   return result;
 }
 
@@ -323,109 +356,37 @@ function clearValidationErrors() {
 
 function submitForm() {
   showFeedback('none');
-
   const name    = (document.getElementById('f-name')    || {}).value || '';
   const email   = (document.getElementById('f-email')   || {}).value || '';
   const phone   = (document.getElementById('f-phone')   || {}).value || '';
   const message = (document.getElementById('f-message') || {}).value || '';
-
-  // Chosen services
-  const serviceNames = selected.map(id => {
-    const svc = SERVICES.find(x => x.id === id);
-    return svc ? svc.name : id;
-  });
+  const serviceNames = selected.map(id => { const s = SERVICES.find(x => x.id === id); return s ? s.name : id; });
   const service = serviceNames.join(', ') || 'Не е избрана услуга';
 
-  // Validation
   if (!name.trim())  { showValidationError('f-name',  'Моля, въведете вашето иmе.'); return; }
   if (!email.trim()) { showValidationError('f-email', 'Моля, въведете имейл адрес.'); return; }
   clearValidationErrors();
 
-  // Collect all service-specific answers
   const svcFields = collectServiceFields();
+  const details   = Object.entries(svcFields).map(([n, a]) => '[' + n + '] ' + a).join(' || ');
 
-  // "Детайли" column — всички отговори обединени
-  const detailParts = Object.entries(svcFields).map(
-    ([svcName, answers]) => '[' + svcName + '] ' + answers
-  );
-  const details = detailParts.join(' || ');
-
-  // Build payload
   const payload = {
-    name:        name.trim(),
-    email:       email.trim(),
-    phone:       phone.trim(),
-    service:     service,
-    message:     message.trim(),
-    details:     details,
+    name: name.trim(), email: email.trim(), phone: phone.trim(),
+    service, message: message.trim(), details,
     submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
-    source:      'themarketingclinic.bg'
+    source: 'themarketingclinic.bg'
   };
-
-  // Add each service as its own flat column
-  Object.entries(svcFields).forEach(([svcName, answers]) => {
-    const key = svcName.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
-    payload[key] = answers;
+  Object.entries(svcFields).forEach(([n, a]) => {
+    payload[n.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'')] = a;
   });
 
   setSubmitState('loading');
-
   fetch(GOOGLE_SCRIPT_URL, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify(payload),
-    mode:    'no-cors'
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload), mode:'no-cors'
   })
-  .then(() => {
-    setSubmitState('idle');
-    showFeedback('success');
-    resetFormState();
-  })
-  .catch(() => {
-    setSubmitState('idle');
-    showFeedback('error');
-  });
-}
-
-
-// ═══════════════════════════════════════
-// ANDROID LAYOUT FIX
-// ═══════════════════════════════════════
-const BAR_H  = 46;  // announce bar height px (fixed, 1 line)
-const NAV_H  = 60;  // nav height px (mobile)
-const OFFSET = BAR_H + NAV_H; // 106px total fixed
-
-function adjustLayout() {
-  const root = document.documentElement;
-  const hero = document.querySelector('.hero');
-
-  // 1. Real viewport height — fixes Android Chrome 100vh bug
-  const vh = window.innerHeight * 0.01;
-  root.style.setProperty('--real-vh', vh + 'px');
-
-  // 2. Position nav below announce bar
-  const nav = document.querySelector('nav');
-  if (nav) nav.style.top = BAR_H + 'px';
-
-  // 3. On mobile: hero fills screen, content close to nav
-  if (hero && window.innerWidth <= 900) {
-    hero.style.minHeight = window.innerHeight + 'px';
-    hero.style.paddingTop = (OFFSET + 16) + 'px';
-  }
-
-  // 4. Update CSS vars for reference
-  root.style.setProperty('--bar-h',  BAR_H  + 'px');
-  root.style.setProperty('--nav-h',  NAV_H  + 'px');
-  root.style.setProperty('--offset', OFFSET + 'px');
-}
-
-// Run ONLY after DOM is ready — never immediately (Android needs DOM rendered)
-document.addEventListener('DOMContentLoaded', adjustLayout);
-window.addEventListener('load', adjustLayout);
-window.addEventListener('resize', function(){ requestAnimationFrame(adjustLayout); });
-window.addEventListener('orientationchange', function(){ setTimeout(adjustLayout, 350); });
-if (window.visualViewport) {
-  window.visualViewport.addEventListener('resize', function(){ requestAnimationFrame(adjustLayout); });
+  .then(() => { setSubmitState('idle'); showFeedback('success'); resetFormState(); })
+  .catch(() => { setSubmitState('idle'); showFeedback('error'); });
 }
 
 // ═══════════════════════════════════════
