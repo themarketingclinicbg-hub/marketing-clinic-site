@@ -11,11 +11,12 @@
 <style>
 @media(max-width:600px){
   #announce-text-label{display:none !important}
-  #announce-bar{padding:8px 16px !important;gap:0 !important}
-  #announce-bar button{width:100%;justify-content:center;padding:10px 16px !important}
+  #announce-bar{padding:8px 16px !important;gap:0 !important;justify-content:center !important}
+  #announce-bar button{width:auto !important;justify-content:center !important;padding:9px 20px !important;margin:0 auto !important}
 }
 @media(min-width:601px) and (max-width:900px){
-  #announce-text-label{font-size:11px !important;max-width:140px}
+  #announce-text-label{font-size:11px !important;max-width:180px}
+  #announce-bar{justify-content:center !important}
 }
 </style>
 </head>
@@ -23,7 +24,7 @@
 
 
 <!-- ANNOUNCEMENT BAR -->
-<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:16px;padding:9px 20px;flex-wrap:nowrap;overflow:hidden;">
+<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:16px;padding:9px 16px;flex-wrap:nowrap;overflow:hidden;">
   <span id="announce-text-label" style="font-size:12px;color:rgba(245,240,232,0.82);letter-spacing:.03em;font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0;">Безплатен маркетинг анализ за твоя бизнес</span>
   <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;">
     ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ
