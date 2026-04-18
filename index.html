@@ -2,34 +2,29 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#1E3A2F">
 <title>The Marketing Clinic</title>
 <meta name="description" content="The Marketing Clinic. Маркетинг агенция за реални резултати. Meta Ads, Google Ads, Брандинг, Уеб Дизайн, Lead Generation.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='11' stroke='%231E3A2F' stroke-width='2.4' fill='none'/%3E%3Cline x1='23' y1='23' x2='33' y2='33' stroke='%231E3A2F' stroke-width='2.4' stroke-linecap='round'/%3E%3Crect x='7' y='19' width='3' height='3' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='11' y='15' width='3' height='7' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='15' y='12' width='3' height='10' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='19' y='9' width='3' height='13' fill='%231E3A2F' rx='0.5'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' fill='%23F5F0E8'/%3E%3Ccircle cx='15' cy='15' r='11' stroke='%231E3A2F' stroke-width='2.4' fill='none'/%3E%3Cline x1='23' y1='23' x2='33' y2='33' stroke='%231E3A2F' stroke-width='2.4' stroke-linecap='round'/%3E%3Crect x='7' y='19' width='3' height='3' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='11' y='15' width='3' height='7' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='15' y='12' width='3' height='10' fill='%231E3A2F' rx='0.5'/%3E%3Crect x='19' y='9' width='3' height='13' fill='%231E3A2F' rx='0.5'/%3E%3C/svg%3E">
 <style>
+/* Announce bar: hide text on very small screens, keep button centered */
 @media(max-width:600px){
   #announce-text-label{display:none !important}
-  #announce-bar{padding:8px 16px !important;gap:0 !important;justify-content:center !important}
-  #announce-bar button{width:auto !important;justify-content:center !important;padding:9px 20px !important;margin:0 auto !important}
-}
-@media(min-width:601px) and (max-width:900px){
-  #announce-text-label{font-size:11px !important;max-width:180px}
-  #announce-bar{justify-content:center !important}
+  #announce-bar{gap:0 !important;padding:8px 16px !important}
 }
 </style>
 </head>
 <body>
 
-
 <!-- ANNOUNCEMENT BAR -->
-<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:16px;padding:9px 16px;flex-wrap:nowrap;overflow:hidden;box-shadow:0 1px 0 #1E3A2F;">
-  <span id="announce-text-label" style="font-size:12px;color:rgba(245,240,232,0.82);letter-spacing:.03em;font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0;">Безплатен маркетинг анализ за твоя бизнес</span>
-  <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;">
-    ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ
-    <span id="top-timer" style="background:#1E3A2F;color:#F5F0E8;padding:2px 8px;font-size:13px;font-weight:800;letter-spacing:.06em;border:1px solid rgba(245,240,232,0.3);">15:46</span>
-  </button>
+<div id="announce-bar" style="position:fixed;top:0;left:0;right:0;z-index:300;background:#1E3A2F;display:flex;align-items:center;justify-content:center;gap:14px;padding:9px 20px;">
+  <span id="announce-text-label" style="font-size:12px;color:rgba(245,240,232,0.85);letter-spacing:.03em;font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Безплатен маркетинг анализ за твоя бизнес</span>
+  <button onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;gap:10px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;border-radius:0;">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ <span id="top-timer" style="background:#1E3A2F;color:#F5F0E8;padding:2px 8px;font-size:13px;font-weight:800;border:1px solid rgba(245,240,232,0.3);">15:46</span></button>
 </div>
 
 <div class="cur" id="c1"></div>
@@ -354,12 +349,11 @@
         <p class="no-selection-hint">Избери услуга по-горе и ще се появят допълнителни въпроси, за да разберем по-добре твоите нужди.</p>
       </div>
 
-      <!-- БЕЗПЛАТЕН АНАЛИЗ fields -->
       <div id="fields-bezplaten" class="svc-fields">
         <p class="svc-fields-label">Безплатен анализ</p>
         <div class="field"><label>Какъв е вашият бизнес?</label><input type="text" placeholder="Напр. онлайн магазин, фитнес, ресторант..."></div>
-        <div class="field"><label>Какви резултати искате да постигнете?</label><textarea rows="3" placeholder="Напр. повече клиенти, по-висок ROAS, по-добро онлайн присъствие..."></textarea></div>
-        <div class="field"><label>Кой е основният ви маркетинг проблем?</label>
+        <div class="field"><label>Какви резултати искате да постигнете?</label><textarea rows="3" placeholder="Напр. повече клиенти, по-висок ROAS..."></textarea></div>
+        <div class="field"><label>Основен маркетинг проблем</label>
           <select><option value="">Избери...</option><option>Нямаме достатъчно клиенти</option><option>Харчим за реклама без резултат</option><option>Не знаем от къде да започнем</option><option>Искаме да растем по-бързо</option><option>Друго</option></select></div>
       </div>
 
@@ -454,18 +448,6 @@
         <textarea id="f-message" rows="4" placeholder="Какво продаваш, какви са целите ти, с какво можем да помогнем..."></textarea>
       </div>
 
-      <!-- BOTTOM FREE ANALYSIS CTA -->
-      <div style="background:#1E3A2F;padding:24px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:8px;text-align:center;">
-        <div style="display:flex;flex-direction:column;gap:4px;align-items:center;">
-          <span style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,0.55);font-family:'DM Sans',sans-serif;">Безплатна оферта</span>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#F5F0E8;line-height:1.1;">Вземи безплатен анализ</span>
-        </div>
-        <button type="button" onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:14px 26px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;width:100%;max-width:420px;">
-          ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ
-          <span id="bottom-timer" style="background:#1E3A2F;color:#F5F0E8;padding:4px 10px;font-size:14px;font-weight:800;letter-spacing:.06em;border:1px solid rgba(245,240,232,0.3);">15:46</span>
-        </button>
-      </div>
-
       <div id="form-success" class="form-feedback form-success" style="display:none">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#1E3A2F"/><path d="M5.5 10.5l3 3 6-6" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <p>Благодарим, че оставихте запитването си. Ще се свържем с вас до 24 часа.</p>
@@ -473,6 +455,13 @@
       <div id="form-error" class="form-feedback form-error" style="display:none">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#8B2020"/><path d="M10 6v4M10 13.5h.01" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round"/></svg>
         <p>Възникна проблем при изпращането. Моля, опитайте отново.</p>
+      </div>
+
+      <!-- BOTTOM CTA -->
+      <div style="background:#1E3A2F;padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+        <div><span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,0.5);font-family:'DM Sans',sans-serif;display:block;margin-bottom:6px;">Безплатна оферта</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#F5F0E8;line-height:1.1;display:block;">Вземи безплатен анализ</span></div>
+        <button type="button" onclick="activateFreeAnalysis()" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:14px 24px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;width:100%;max-width:380px;border-radius:0;">ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ <span id="bottom-timer" style="background:#1E3A2F;color:#F5F0E8;padding:3px 9px;font-size:13px;font-weight:800;border:1px solid rgba(245,240,232,0.25);">15:46</span></button>
       </div>
 
       <button class="btn" id="submit-btn" type="button" onclick="submitForm()">Изпрати запитване</button>
