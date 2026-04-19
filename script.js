@@ -72,7 +72,7 @@ if (window.visualViewport) {
 // ═══════════════════════════════════════
 // COUNTDOWN TIMER (15:46)
 // ═══════════════════════════════════════
-const TIMER_START = 15 * 60 + 46;
+const TIMER_START = 4 * 60 + 0;
 let timerSeconds  = TIMER_START;
 
 function formatTime(s) {
