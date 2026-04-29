@@ -275,7 +275,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
         <span>Диагностицираме. Предписваме. Растем.</span>
       </div>
     </div>
-    <a href="#audit-form" class="header-cta">Поискай одит</a>
+    <a href="#audit" class="header-cta">Поискай одит</a>
   </div>
 </header>
 
@@ -287,7 +287,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <p class="hero-sub">
       Преглеждаме сайта, рекламите и социалните ти мрежи. До 24 часа получаваш PDF с оценка по 8 направления и приоритетен план какво да оправиш първо.
     </p>
-    <a href="#audit-form" class="btn-primary">Поискай одита си →</a>
+    <a href="#audit" class="btn-primary">Поискай одита си →</a>
     <p class="hero-meta">⏱ 3 минути за попълване  ·  PDF до 24 часа  ·  Без обвързване</p>
   </div>
 </section>
@@ -352,7 +352,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
 </section>
 
 <!-- ===== FORM ===== -->
-<section class="form-section" id="audit-form">
+<section class="form-section" id="audit">
   <div class="container">
     <div style="text-align:center;">
       <span class="section-label">Поискай одита си</span>
@@ -478,17 +478,18 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     };
 
     try {
+      // Meta Pixel Lead event — гърми ВЕДНАГА при submit
+      // (преди fetch-а, за да гарантираме че се отчита, дори ако Google Sheets се забави)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+
       await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-
-      // Meta Pixel Lead event
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead');
-      }
 
       // Покажи success съобщението, скрий формата
       document.getElementById('audit-form').style.display = 'none';
