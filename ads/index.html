@@ -80,6 +80,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
+    white-space: nowrap;
     transition: transform .15s ease;
   }
   .header-cta:hover { transform: translateY(-1px); }
@@ -275,7 +276,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
         <span>Диагностицираме. Предписваме. Растем.</span>
       </div>
     </div>
-    <a href="#audit" class="header-cta">Поискай одит</a>
+    <a href="#audit" class="header-cta">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ</a>
   </div>
 </header>
 
@@ -287,7 +288,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <p class="hero-sub">
       Преглеждаме сайта, рекламите и социалните ти мрежи. До 24 часа получаваш PDF с оценка по 8 направления и приоритетен план какво да оправиш първо.
     </p>
-    <a href="#audit" class="btn-primary">Поискай одита си →</a>
+    <a href="#audit" class="btn-primary">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ →</a>
     <p class="hero-meta">⏱ 3 минути за попълване  ·  PDF до 24 часа  ·  Без обвързване</p>
   </div>
 </section>
@@ -390,24 +391,11 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
       </div>
 
       <div class="form-row">
-        <label for="goal">Какво искаш да подобриш?</label>
-        <select id="goal" name="goal" required>
-          <option value="">избери</option>
-          <option value="more-sales">Повече продажби</option>
-          <option value="lower-cac">По-ниска цена за клиент</option>
-          <option value="brand">Изграждане на марка / разпознаваемост</option>
-          <option value="content">Съдържание и социални мрежи</option>
-          <option value="ads">Реклами (Meta / Google)</option>
-          <option value="all">Нямам ясна стратегия</option>
-        </select>
+        <label for="notes">Нещо конкретно което да прегледаме? / Какво искаш да подобриш? <span style="color:var(--gray); font-weight:400;">(по избор)</span></label>
+        <textarea id="notes" name="notes" placeholder="Пример: рекламите на Meta вече 2 месеца не работят, не знам защо. / Искам повече продажби и по-ниска цена за клиент."></textarea>
       </div>
 
-      <div class="form-row">
-        <label for="notes">Нещо конкретно което да гледаме? (по избор)</label>
-        <textarea id="notes" name="notes" placeholder="Пример: рекламите на Meta вече 2 месеца не работят, не знам защо."></textarea>
-      </div>
-
-      <button type="submit" class="btn-submit" id="submit-btn">Поискай одита си →</button>
+      <button type="submit" class="btn-submit" id="submit-btn">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ →</button>
       <p class="form-note">
         С изпращането се съгласяваш да те потърсим относно одита.<br>
         Не споделяме данните ти. Никога.
@@ -450,18 +438,6 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     submitBtn.textContent = 'Изпращане...';
     submitBtn.disabled = true;
 
-    // Goal labels (превръщаме value в нормален текст за sheet-а)
-    const goalLabels = {
-      'more-sales': 'Повече продажби',
-      'lower-cac': 'По-ниска цена за клиент',
-      'brand': 'Изграждане на марка',
-      'content': 'Съдържание и социални мрежи',
-      'ads': 'Реклами (Meta / Google)',
-      'all': 'Нямам ясна стратегия'
-    };
-
-    const goalValue = document.getElementById('goal').value;
-
     // Combine extra fields into structured message
     const business = document.getElementById('business').value;
     const link = document.getElementById('link').value;
@@ -472,7 +448,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
       name: document.getElementById('name').value,
       phone: document.getElementById('phone').value,
       email: document.getElementById('email').value,
-      service: goalLabels[goalValue] || goalValue,
+      service: 'Безплатен анализ',
       message: fullMessage,
       source: 'Landing /ads'
     };
