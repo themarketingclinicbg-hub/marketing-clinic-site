@@ -7,27 +7,19 @@
 <meta name="description" content="Безплатен маркетинг одит за български бизнеси. До 24 часа получаваш PDF с оценка по 8 направления и приоритетен план за действие.">
 <meta name="robots" content="noindex, nofollow">
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1351953120302144');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
+<!-- ===== FONT LOADING (non-blocking) ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet">
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&subset=cyrillic,latin">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&subset=cyrillic,latin"
+  media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&subset=cyrillic,latin">
+</noscript>
+
 <style>
   :root {
     --green: #1E3A2E;
@@ -424,6 +416,26 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     </div>
   </div>
 </footer>
+
+<!-- ===== META PIXEL (deferred — fires after page is interactive) ===== -->
+<script>
+  window.addEventListener('load', function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1351953120302144');
+    fbq('track', 'PageView');
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none" decoding="async"
+src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <!-- Form submission handler: sends to Google Sheets + fires Meta Pixel Lead event -->
 <script>
