@@ -31,6 +31,8 @@
     --gray-lt: #888888;
     --white: #FFFFFF;
     --red: #B85450;
+    --amber: #E8A33D;
+    --amber-lt: #FFF4DC;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -175,18 +177,106 @@
     color: var(--red); font-weight: 700;
   }
 
+  /* ===== FOUNDER SECTION ===== */
+  .founder-section { background: var(--white); }
+  .founder-wrap {
+    display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: center;
+    margin-top: 12px;
+  }
+  .founder-photo {
+    width: 220px; height: 220px; border-radius: 12px;
+    background: var(--cream-lt);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green); font-size: 13px; font-weight: 600;
+    text-align: center; padding: 12px;
+    border: 2px dashed var(--gray-lt);
+    overflow: hidden;
+  }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+  .founder-name {
+    font-size: 22px; font-weight: 800; color: var(--green); margin-bottom: 6px;
+  }
+  .founder-role {
+    font-size: 13px; color: var(--gray); letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 18px;
+  }
+  .founder-bio {
+    font-size: 16px; color: var(--black); line-height: 1.65; margin-bottom: 20px;
+  }
+  .founder-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--green); text-decoration: none; font-weight: 600; font-size: 14px;
+    border-bottom: 1.5px solid var(--green); padding-bottom: 2px;
+  }
+  .founder-link:hover { opacity: 0.75; }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-section { background: var(--cream-lt); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px;
+  }
+  .testimonial {
+    background: var(--white); padding: 28px; border-radius: 8px;
+    border-top: 4px solid var(--green);
+    display: flex; flex-direction: column;
+  }
+  .testimonial-quote {
+    font-size: 16px; color: var(--black); line-height: 1.6;
+    margin-bottom: 22px; flex-grow: 1; font-style: italic;
+  }
+  .testimonial-quote::before { content: '"'; color: var(--green); font-weight: 800; font-size: 28px; line-height: 0.5; margin-right: 4px; vertical-align: -8px; }
+  .testimonial-result {
+    background: var(--cream-lt); color: var(--green);
+    padding: 8px 12px; border-radius: 4px; font-size: 13px;
+    font-weight: 700; margin-bottom: 16px; display: inline-block;
+    align-self: flex-start;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 12px; margin-top: auto;
+  }
+  .testimonial-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--green); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 17px; flex-shrink: 0;
+  }
+  .testimonial-name { font-weight: 700; font-size: 15px; color: var(--black); }
+  .testimonial-meta { font-size: 12.5px; color: var(--gray); margin-top: 2px; }
+
   /* ===== FORM SECTION ===== */
   .form-section {
     background: var(--green); color: var(--cream); padding: 80px 0;
   }
   .form-section .section-label { color: var(--cream); opacity: 0.7; }
   .form-section h2 { color: var(--white); }
-  .form-section .lead { color: var(--cream); opacity: 0.85; margin-bottom: 0; }
+  .form-section .lead { color: var(--cream); opacity: 0.92; margin-bottom: 6px; }
+  .form-section .trust-line {
+    font-size: 13.5px; color: var(--cream); opacity: 0.65;
+    max-width: 580px; margin: 0 auto;
+    line-height: 1.5;
+  }
   .form-wrap {
-    max-width: 580px; margin: 36px auto 0;
+    max-width: 580px; margin: 30px auto 0;
     background: var(--white); padding: 36px; border-radius: 8px;
     color: var(--black);
   }
+
+  /* ===== SCARCITY BOX ===== */
+  .scarcity {
+    max-width: 580px; margin: 28px auto 0;
+    background: var(--amber-lt);
+    border: 1.5px solid var(--amber);
+    border-radius: 8px;
+    padding: 16px 22px;
+    text-align: center;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .scarcity-line1 { font-weight: 600; }
+  .scarcity-line2 { margin-top: 4px; color: var(--gray); }
+  .scarcity-num { font-weight: 800; font-size: 19px; color: var(--red); }
+
   .form-row { margin-bottom: 16px; }
   .form-row label {
     display: block; font-size: 13px; font-weight: 600;
@@ -201,7 +291,6 @@
   .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
     outline: none; border-color: var(--green);
   }
-  .form-row textarea { resize: vertical; min-height: 80px; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .btn-submit {
     width: 100%; background: var(--green); color: var(--cream);
@@ -243,6 +332,17 @@
     .header-cta { display: none; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links a { margin: 0 11px; }
+
+    /* Founder — stack vertical, photo on top */
+    .founder-wrap { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+    .founder-photo { margin: 0 auto; width: 180px; height: 180px; }
+    .founder-link { margin: 0 auto; }
+
+    /* Testimonials — stack vertical */
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    /* Scarcity */
+    .scarcity { font-size: 14px; padding: 14px 18px; }
   }
 </style>
 </head>
@@ -253,11 +353,8 @@
   <div class="container header-inner">
     <div class="logo">
       <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Lens -->
         <circle cx="38" cy="38" r="28" fill="none" stroke="#EDE3CD" stroke-width="8"/>
-        <!-- Handle (clearly outside lens) -->
         <line x1="58" y1="58" x2="88" y2="88" stroke="#EDE3CD" stroke-width="10" stroke-linecap="round"/>
-        <!-- 4 ascending bars, rounded tops, baseline y=51 -->
         <rect x="24" y="43" width="4" height="8"  fill="#EDE3CD" rx="1"/>
         <rect x="31" y="39" width="4" height="12" fill="#EDE3CD" rx="1"/>
         <rect x="38" y="34" width="4" height="17" fill="#EDE3CD" rx="1"/>
@@ -268,20 +365,19 @@
         <span>Диагностицираме. Предписваме. Растем.</span>
       </div>
     </div>
-    <a href="#audit" class="header-cta">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ</a>
+    <a href="#audit" class="header-cta">ПОКАЖИ МИ ГРЕШКИТЕ →</a>
   </div>
 </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container hero-content">
-    <span class="eyebrow">Безплатен маркетинг одит</span>
-    <h1>Разбери къде <em>точно</em> губиш пари в маркетинга си за 24 часа.</h1>
+    <h1>8 от 10 малки бизнеса в България имат поне <em>3 грешки</em> в маркетинга, които им коства клиенти всеки ден.</h1>
     <p class="hero-sub">
-      Преглеждаме сайта, рекламите и социалните ти мрежи. До 24 часа получаваш PDF с оценка по 8 направления и приоритетен план какво да оправиш първо.
+      Разбери дали си един от тях и разбери какво точно да промениш.
     </p>
-    <a href="#audit" class="btn-primary">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ →</a>
-    <p class="hero-meta">⏱ 3 минути за попълване  ·  PDF до 24 часа  ·  Без обвързване</p>
+    <a href="#audit" class="btn-primary">ПОКАЖИ МИ ГРЕШКИТЕ →</a>
+    <p class="hero-meta">⏱ 1 минута за попълване  ·  PDF до 24 часа</p>
   </div>
 </section>
 
@@ -296,8 +392,8 @@
     <div class="cards">
       <div class="card">
         <div class="card-num">01</div>
-        <h3>Оценка по 8 направления</h3>
-        <p>Социални мрежи, послание, брандинг, сайт UX, реклами, цветова палитра, бранд консистентност и контент стратегия. Всяко с точкуване от 0 до 5.</p>
+        <h3>3-те най-критични дупки в маркетинга ти</h3>
+        <p>От 8 направления (социални мрежи, послание, брандинг, сайт UX, реклами, цветова палитра, бранд консистентност, контент) изкарвам 3-те, които ти крадат най-много пари. Точно сега. Конкретно за твоя бизнес.</p>
       </div>
       <div class="card">
         <div class="card-num">02</div>
@@ -348,46 +444,46 @@
 <section class="form-section" id="audit">
   <div class="container">
     <div style="text-align:center;">
-      <span class="section-label">Поискай одита си</span>
-      <h2>3 минути сега. PDF-ът до 24 часа.</h2>
-      <p class="lead" style="margin: 0 auto;">Никакви маркетингови мейлове после. Само твоя одит.</p>
+      <h2>ПОИСКАЙ БЕЗПЛАТНИЯ СИ АНАЛИЗ</h2>
+      <p class="lead" style="margin: 0 auto;">Персонализиран маркетингов анализ. PDF до 24 часа на стойност €500, <strong>НАПЪЛНО БЕЗПЛАТНО</strong>.</p>
+    </div>
+
+    <!-- ⚡ Scarcity counter — UPDATE WEEKLY -->
+    <div class="scarcity">
+      <div class="scarcity-line1">⚡ Приемам 5 одита на седмица.</div>
+      <div class="scarcity-line2">Тази седмица: <span class="scarcity-num">2</span> свободни.</div>
     </div>
 
     <!-- Form is handled by JavaScript at the bottom of the page (sends to Google Sheets + fires Meta Pixel Lead event) -->
     <form class="form-wrap" id="audit-form">
-      <div class="form-grid">
-        <div class="form-row">
-          <label for="name">Име</label>
-          <input type="text" id="name" name="name" required placeholder="Иван Петров">
-        </div>
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="ivan@firma.bg">
-        </div>
-      </div>
 
       <div class="form-grid">
         <div class="form-row">
-          <label for="phone">Телефон (по избор)</label>
-          <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
+          <label for="name">Име <span style="color:var(--gray-lt); font-weight:400;">(по избор)</span></label>
+          <input type="text" id="name" name="name" placeholder="Иван Петров">
         </div>
         <div class="form-row">
-          <label for="business">Бизнес / индустрия</label>
-          <input type="text" id="business" name="business" required placeholder="напр. e-commerce, ресторант, услуги">
+          <label for="phone">Телефонен номер <span style="color:var(--gray-lt); font-weight:400;">(по избор)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
         </div>
       </div>
 
       <div class="form-row">
-        <label for="link">Сайт или Instagram (за прегледа)</label>
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="ivan@firma.bg">
+      </div>
+
+      <div class="form-row">
+        <label for="business">Бизнес / индустрия <span style="color:var(--gray-lt); font-weight:400;">(по избор)</span></label>
+        <input type="text" id="business" name="business" placeholder="напр. e-commerce, ресторант, услуги">
+      </div>
+
+      <div class="form-row">
+        <label for="link">Сайт или Instagram (за прегледа) *</label>
         <input type="text" id="link" name="link" required placeholder="firma.bg или @firma">
       </div>
 
-      <div class="form-row">
-        <label for="notes">Нещо конкретно което да прегледаме? / Какво искаш да подобриш? <span style="color:var(--gray); font-weight:400;">(по избор)</span></label>
-        <textarea id="notes" name="notes" placeholder="Пример: рекламите на Meta вече 2 месеца не работят, не знам защо. / Искам повече продажби и по-ниска цена за клиент."></textarea>
-      </div>
-
-      <button type="submit" class="btn-submit" id="submit-btn">ВЗЕМИ БЕЗПЛАТНИЯ АНАЛИЗ →</button>
+      <button type="submit" class="btn-submit" id="submit-btn">ПОКАЖИ МИ ГРЕШКИТЕ →</button>
       <p class="form-note">
         С изпращането се съгласяваш да те потърсим относно одита.<br>
         Не споделяме данните ти. Никога.
@@ -410,7 +506,7 @@
       <div class="footer-tag">Диагностицираме. Предписваме. Растем.</div>
     </div>
     <div class="footer-links">
-      <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+      <a href="mailto:hello@marketing-clinic.com">hello@marketing-clinic.com</a>
       <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" rel="noopener">Instagram</a>
     </div>
@@ -450,16 +546,20 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     submitBtn.textContent = 'Изпращане...';
     submitBtn.disabled = true;
 
-    // Combine extra fields into structured message
-    const business = document.getElementById('business').value;
+    // Collect fields (some are optional now)
+    const name = document.getElementById('name').value || '-';
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value || '-';
+    const business = document.getElementById('business').value || '-';
     const link = document.getElementById('link').value;
-    const notes = document.getElementById('notes').value;
-    const fullMessage = `Бизнес: ${business}\nСайт/IG: ${link}\nБележки: ${notes || '-'}`;
+
+    // Combine extra fields into structured message
+    const fullMessage = `Бизнес: ${business}\nСайт/IG: ${link}`;
 
     const formData = {
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      email: document.getElementById('email').value,
+      name: name,
+      phone: phone,
+      email: email,
       service: 'Безплатен анализ',
       message: fullMessage,
       source: 'Landing /ads'
@@ -467,7 +567,6 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
 
     try {
       // Meta Pixel Lead event — гърми ВЕДНАГА при submit
-      // (преди fetch-а, за да гарантираме че се отчита, дори ако Google Sheets се забави)
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
       }
@@ -479,17 +578,14 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
         body: JSON.stringify(formData)
       });
 
-      // Покажи success съобщението, скрий формата
       document.getElementById('audit-form').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
-
-      // Scroll до success съобщението
       document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     } catch (error) {
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
-      alert('Възникна грешка. Моля, опитай отново или ни пиши на themarketingclinicbg@gmail.com');
+      alert('Възникна грешка. Моля, опитай отново или ни пиши на hello@marketing-clinic.com');
     }
   });
 </script>
