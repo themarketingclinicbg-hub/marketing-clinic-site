@@ -8,8 +8,8 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0t
 // Fixes iOS Safari + Android Chrome viewport issues
 // ═══════════════════════════════════════
 
-// Announce bar is always 1 line = fixed height
-const BAR_H = 46;
+// Announce bar премахнат — височина 0
+const BAR_H = 0;
 
 function adjustLayout() {
   const root = document.documentElement;
