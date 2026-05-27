@@ -7,27 +7,249 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#1E3A2F">
 
-  <title>Marketing Clinic | Маркетинг Агенция България</title>
+  <!-- FIX 1: Keyword-first title tag -->
+  <title>Маркетинг Агенция България | Marketing Clinic</title>
   <meta name="description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия — всичко на едно място. Свържи се с нас →">
 
   <link rel="canonical" href="https://marketing-clinic.com/">
 
-  <meta property="og:title" content="Marketing Clinic | Маркетинг Агенция България">
+  <!-- OG Tags (og:title updated to match new title order) -->
+  <meta property="og:title" content="Маркетинг Агенция България | Marketing Clinic">
   <meta property="og:description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия.">
   <meta property="og:url" content="https://marketing-clinic.com/">
   <meta property="og:type" content="website">
+  <!-- FIX 2: og:image tags -->
+  <meta property="og:image" content="https://marketing-clinic.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Marketing Clinic — Маркетинг Агенция България" />
 
+  <!-- FIX 3: Twitter/X Card tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Маркетинг Агенция България | Marketing Clinic" />
+  <meta name="twitter:description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия — всичко на едно място." />
+  <meta name="twitter:image" content="https://marketing-clinic.com/og-image.jpg" />
+
+  <!-- FIX 7: MarketingAgency JSON-LD (expanded) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MarketingAgency",
-    "name": "Marketing Clinic",
+    "name": "The Marketing Clinic",
+    "alternateName": "Marketing Clinic",
     "url": "https://marketing-clinic.com",
-    "description": "Маркетинг агенция за реални резултати.",
+    "logo": "https://marketing-clinic.com/logo.png",
+    "image": "https://marketing-clinic.com/og-image.jpg",
+    "description": "Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия — всичко на едно място.",
+    "email": "hello@marketing-clinic.com",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "BG"
-    }
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61579207195363",
+      "https://www.instagram.com/marketingclinic.bg/"
+    ],
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": 4
+    },
+    "foundingDate": "2022",
+    "areaServed": "Bulgaria",
+    "inLanguage": "bg"
+  }
+  </script>
+
+  <!-- FIX 8: Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Marketing Clinic",
+    "url": "https://marketing-clinic.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://marketing-clinic.com/logo.png",
+      "width": 200,
+      "height": 60
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "hello@marketing-clinic.com",
+      "availableLanguage": ["Bulgarian", "English"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61579207195363",
+      "https://www.instagram.com/marketingclinic.bg/"
+    ]
+  }
+  </script>
+
+  <!-- FIX 9: AggregateRating + Reviews JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "The Marketing Clinic",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "8",
+      "bestRating": "5",
+      "worstRating": "5"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Stefan Vardarev" },
+        "reviewBody": "Отлични анализи! Правят момчета!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Denis Arnaudov" },
+        "reviewBody": "Уникални!! Много добре си вършат работата.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Borislav Ahchiev" },
+        "reviewBody": "Момчетата свършиха много добра работа!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Boyan Radkov" },
+        "reviewBody": "Изключително точни и вършат перфектна работа.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Dimitrina Mitseva" },
+        "reviewBody": "Най-добрите, браво момчета, изключително коректни!!!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Daniel Nedyalkov" },
+        "reviewBody": "Чудесно свършена работа. Браво момчета!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "CrazyCloth1ng" },
+        "reviewBody": "Много добри, справиха се чудесно! Препоръчваме много и ни издигнаха в онлайн средите чрез анализа, който ни дадоха! Адмирации.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Pawlio" },
+        "reviewBody": "Успяхме да вдигнем продажбите с 40%, като приложихме нещата от анализа. Благодарим Ви!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- FIX 10: Service ItemList JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Маркетинг Услуги",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Бизнес Одит",
+          "description": "Анализираме целия ти маркетинг и намираме точно кое работи, кое не и как да подобрим резултатите бързо.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Meta Ads",
+          "description": "Рекламни кампании във Facebook и Instagram, насочени към точните хора в точния момент.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Google Ads",
+          "description": "Search, Display и Shopping реклами в Google. Твоят бизнес се появява точно когато хората търсят теб.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Брандинг",
+          "description": "Визуална идентичност, която хората запомнят. Лого, цветове, шрифтове и пълна бранд система.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "name": "Съдържание",
+          "description": "Публикации, видеа и текстове, които ангажират аудиторията ти и я превръщат в реални клиенти.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Service",
+          "name": "Маркетинг Стратегия",
+          "description": "Ясен план за растеж: кои канали да използваш, как да достигнеш повече клиенти и как да продаваш повече.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Service",
+          "name": "Уеб Дизайн",
+          "description": "Сайтове, които изглеждат добре и продават. Бързи, лесни за ползване и оптимизирани за Google.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Service",
+          "name": "Lead Generation",
+          "description": "Реални потенциални клиенти, готови да купят. По-малко харчене, повече разговори с правилните хора.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Service",
+          "name": "Full Stack Marketing",
+          "description": "Целият ти маркетинг на едно място: стратегия, реклами, съдържание и сайт.",
+          "provider": { "@type": "Organization", "name": "The Marketing Clinic" }
+        }
+      }
+    ]
   }
   </script>
 
@@ -107,6 +329,8 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <em class="accent">Лекуваме.</em><br>
     Растем заедно.
   </h1>
+  <!-- FIX 6: Keyword-optimised subtitle for SEO, visually matches existing hero-desc style -->
+  <p class="hero-subtitle">Маркетинг агенция в България за реални резултати — Meta реклами, Google реклами, SEO и уеб дизайн.</p>
   <div class="hero-bottom">
     <p class="hero-desc">Маркетинг агенция за реални резултати. От анализ и стратегия до реклами и сайтове, всичко на едно място.</p>
     <div class="hero-cta-row">
@@ -335,9 +559,10 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
       <p class="lbl">Свържи се с нас</p>
       <h2 class="contact-h2">Направи<br><em>запитване.</em></h2>
       <p class="contact-p">Разкажи ни за бизнеса си и ще се свържем с теб до 24 часа. Без задължения, само честен разговор.</p>
+      <!-- FIX 11: Branded email address -->
       <div class="email-box">
         <span class="email-lbl">Имейл</span>
-        <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+        <a href="mailto:hello@marketing-clinic.com">hello@marketing-clinic.com</a>
       </div>
       <div class="soc-row">
         <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" class="soc-btn">Facebook</a>
@@ -501,7 +726,8 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
   <div class="f-links">
     <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank">Facebook</a>
     <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank">Instagram</a>
-    <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+    <!-- FIX 11: Branded email in footer -->
+    <a href="mailto:hello@marketing-clinic.com">hello@marketing-clinic.com</a>
   </div>
 </footer>
 
