@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marketing-clinic.com/sitemap.xml
