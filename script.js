@@ -69,29 +69,7 @@ if (window.visualViewport) {
   });
 }
 
-// ═══════════════════════════════════════
-// COUNTDOWN TIMER (15:46)
-// ═══════════════════════════════════════
-const TIMER_START = 4 * 60 + 0;
-let timerSeconds  = TIMER_START;
 
-function formatTime(s) {
-  const m   = Math.floor(s / 60);
-  const sec = s % 60;
-  return (m < 10 ? '0' + m : m) + ':' + (sec < 10 ? '0' + sec : sec);
-}
-
-function tickTimer() {
-  timerSeconds--;
-  if (timerSeconds < 0) timerSeconds = TIMER_START;
-  const display = formatTime(timerSeconds);
-  const t1 = document.getElementById('top-timer');
-  const t2 = document.getElementById('bottom-timer');
-  if (t1) t1.textContent = display;
-  if (t2) t2.textContent = display;
-}
-
-setInterval(tickTimer, 1000);
 
 // ═══════════════════════════════════════
 // CURSOR (desktop only)
