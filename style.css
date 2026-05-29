@@ -419,3 +419,63 @@ footer{
   .fb-reviews-grid{grid-template-columns:1fr}
   .hero-h1{font-size:clamp(30px,8vw,44px)}
 }
+
+
+/* ══════════════════════════════════════
+   FAQ SECTION (Fix 14)
+══════════════════════════════════════ */
+.faq-wrap { max-width: 780px; margin: 0 auto; }
+.faq-header { margin-bottom: 48px; }
+.faq-intro { margin-top: 16px; font-size: 15px; line-height: 1.8; color: var(--muted); max-width: 520px; }
+.faq-list { border-top: 1px solid var(--border); }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--green);
+  font-family: 'DM Sans', sans-serif;
+  user-select: none;
+  transition: color .2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--green);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform .28s ease, color .2s;
+  opacity: .55;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+  opacity: 1;
+}
+.faq-item summary:hover { color: var(--green2); }
+.faq-item summary:hover::after { opacity: 1; }
+.faq-ans {
+  padding: 2px 48px 22px 0;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 640px;
+}
+.faq-cta { margin-top: 52px; }
+
+@media(max-width:700px) {
+  .faq-item summary { font-size: 14px; padding: 18px 0; }
+  .faq-ans { font-size: 13px; padding-right: 0; }
+  .faq-intro { font-size: 14px; }
+  .faq-cta { margin-top: 36px; }
+}
