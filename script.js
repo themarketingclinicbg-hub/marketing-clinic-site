@@ -363,7 +363,7 @@ function submitForm() {
     method:'POST', headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload), mode:'no-cors'
   })
-  .then(() => { setSubmitState('idle'); showFeedback('success'); resetFormState(); })
+  .then(() => { window.location.href = '/blagodarim'; })
   .catch(() => { setSubmitState('idle'); showFeedback('error'); });
 }
 
