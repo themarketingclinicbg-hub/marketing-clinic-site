@@ -299,7 +299,7 @@ function setSubmitState(state) {
     btn.style.opacity = '0.7';
   } else {
     btn.disabled = false;
-    btn.textContent = 'Изпрати запитване';
+    btn.textContent = 'ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ';
     btn.style.opacity = '';
   }
 }
