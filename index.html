@@ -7,15 +7,20 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#1E3A2F">
 
-  <title>Marketing Clinic | Маркетинг Агенция България</title>
+  <title>Маркетинг Агенция България | Marketing Clinic</title>
   <meta name="description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия — всичко на едно място. Свържи се с нас →">
 
   <link rel="canonical" href="https://marketing-clinic.com/">
 
-  <meta property="og:title" content="Marketing Clinic | Маркетинг Агенция България">
+  <meta property="og:title" content="Маркетинг Агенция България | Marketing Clinic">
   <meta property="og:description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия.">
   <meta property="og:url" content="https://marketing-clinic.com/">
   <meta property="og:type" content="website">
+
+  <!-- FIX 3: Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Маркетинг Агенция България | Marketing Clinic" />
+  <meta name="twitter:description" content="Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия — всичко на едно място." />
 
   <!-- FIX 13: WebSite schema — Google entity recognition -->
   <script type="application/ld+json">
@@ -79,6 +84,78 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+  <!-- FIX 8: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Marketing Clinic",
+    "url": "https://marketing-clinic.com",
+    "logo": { "@type": "ImageObject", "url": "https://marketing-clinic.com/logo.png", "width": 200, "height": 60 },
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+359XXXXXXXXX", "contactType": "customer support", "email": "themarketingclinicbg@gmail.com", "availableLanguage": ["Bulgarian", "English"] },
+    "sameAs": ["https://www.facebook.com/profile.php?id=61579207195363", "https://www.instagram.com/marketingclinic.bg/"]
+  }
+  </script>
+
+  <!-- FIX 9: AggregateRating + Reviews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "The Marketing Clinic",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "8", "bestRating": "5", "worstRating": "5" },
+    "review": [
+      {"@type":"Review","author":{"@type":"Person","name":"Stefan Vardarev"},"reviewBody":"Отлични анализи! Правят момчета!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Denis Arnaudov"},"reviewBody":"Уникални!! Много добре си вършат работата.","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Borislav Ahchiev"},"reviewBody":"Момчетата свършиха много добра работа!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Boyan Radkov"},"reviewBody":"Изключително точни и вършат перфектна работа.","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Dimitrina Mitseva"},"reviewBody":"Най-добрите, браво момчета, изключително коректни!!!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Daniel Nedyalkov"},"reviewBody":"Чудесно свършена работа. Браво момчета!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"CrazyCloth1ng"},"reviewBody":"Много добри, справиха се чудесно! Препоръчваме много!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}},
+      {"@type":"Review","author":{"@type":"Person","name":"Pawlio"},"reviewBody":"Успяхме да вдигнем продажбите с 40%. Благодарим Ви!","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}}
+    ]
+  }
+  </script>
+
+  <!-- FIX 10: Service ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Маркетинг Услуги",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"item":{"@type":"Service","name":"Бизнес Одит","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":2,"item":{"@type":"Service","name":"Meta Ads","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":3,"item":{"@type":"Service","name":"Google Ads","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":4,"item":{"@type":"Service","name":"Брандинг","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":5,"item":{"@type":"Service","name":"Съдържание","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":6,"item":{"@type":"Service","name":"Маркетинг Стратегия","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":7,"item":{"@type":"Service","name":"Уеб Дизайн","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":8,"item":{"@type":"Service","name":"Lead Generation","provider":{"@type":"Organization","name":"The Marketing Clinic"}}},
+      {"@type":"ListItem","position":9,"item":{"@type":"Service","name":"Full Stack Marketing","provider":{"@type":"Organization","name":"The Marketing Clinic"}}}
+    ]
+  }
+  </script>
+
+  <!-- FIX 14: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Колко струват услугите на Marketing Clinic?","acceptedAnswer":{"@type":"Answer","text":"Управлението на Meta или Google Ads започва от 350–500 лв./месец. Уеб дизайн и брандинг се ценообразуват на проект. Препоръчваме безплатен одит — след него даваме конкретна оферта без задължения."}},
+      {"@type":"Question","name":"Работите ли с малки бизнеси?","acceptedAnswer":{"@type":"Answer","text":"Работим с бизнеси от всякакъв размер — от стартиращи онлайн магазини до утвърдени компании. Нямаме минимален оборот за работа."}},
+      {"@type":"Question","name":"Има ли минимален рекламен бюджет?","acceptedAnswer":{"@type":"Answer","text":"За Meta Ads препоръчваме минимум 400–500 лв./месец. За Google Ads — поне 500–600 лв./месец. Под тези прагове алгоритмите нямат достатъчно данни."}},
+      {"@type":"Question","name":"Колко бързо ще видя резултати?","acceptedAnswer":{"@type":"Answer","text":"При платена реклама — 7–14 дни за първи резултати, 45–90 дни за оптимални. При SEO — 3–6 месеца."}},
+      {"@type":"Question","name":"Какво включва безплатният маркетинг одит?","acceptedAnswer":{"@type":"Answer","text":"Анализираме Meta реклами, Google Ads, SEO, уебсайт и социални мрежи. Получаваш конкретен доклад без задължения."}},
+      {"@type":"Question","name":"Каква е разликата между Meta Ads и Google Ads?","acceptedAnswer":{"@type":"Answer","text":"Meta Ads показват реклами на хора докато скролват. Google Ads улавят хора в момента на търсене. При повечето бизнеси работят и двете заедно."}},
+      {"@type":"Question","name":"Нужен ли ми е сайт за реклами?","acceptedAnswer":{"@type":"Answer","text":"За Meta — не е задължително. За Google Ads — да. Ако нямаш сайт, може да го направим в рамките на 2–4 седмици."}},
+      {"@type":"Question","name":"Ще имам ли достъп до рекламните акаунти?","acceptedAnswer":{"@type":"Answer","text":"Да. Работим в твоите акаунти. Ти си собственик на всичко — акаунти, данни, кампании."}},
+      {"@type":"Question","name":"Каква е разликата между SEO и платена реклама?","acceptedAnswer":{"@type":"Answer","text":"Платената реклама дава резултати веднага, но спира щом спреш да плащаш. SEO гради органичен трафик, който расте с времето."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -93,6 +170,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <li><a href="#za-nas" onclick="closeMenu()">За нас</a></li>
     <li><a href="#audit" onclick="closeMenu()">Одит</a></li>
     <li><a href="#otzyvi" onclick="closeMenu()">Отзиви</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
     <li><a href="#kontakt" onclick="closeMenu()">Контакт</a></li>
   </ul>
   <a href="#kontakt" class="menu-cta" onclick="closeMenu()">Направи запитване</a>
@@ -117,6 +195,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <li><a href="#za-nas">За нас</a></li>
     <li><a href="#audit">Одит</a></li>
     <li><a href="#otzyvi">Отзиви</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Контакт</a></li>
   </ul>
   <a href="#kontakt" class="nav-cta">Направи запитване</a>
@@ -355,6 +434,120 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
   </div>
 </section>
 
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="faq-wrap">
+    <div class="faq-header reveal">
+      <p class="lbl">Въпроси</p>
+      <h2 class="h2">Честo задавани<br><em class="accent">въпроси.</em></h2>
+      <p class="faq-intro">Всичко което искаш да знаеш преди да решиш да работиш с нас.</p>
+    </div>
+    <div class="faq-list reveal" style="transition-delay:.1s">
+
+      <details class="faq-item">
+        <summary>Колко струват услугите на The Marketing Clinic?</summary>
+        <p class="faq-ans">Съставяме първо безплатен анализ, искаме да предложим най-доброто качество на услугите и да направим първо анализа, след това го коментираме по телефона или по видео чат. Цената определяме след като разберем обхвата и целите на твоя бизнес.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Работите ли с малки бизнеси или само с големи компании?</summary>
+        <p class="faq-ans">Работим с бизнеси от всякакъв размер, от стартиращи онлайн магазини до утвърдени компании. Нямаме минимален оборот за работа. Важното е ясна цел и готовност да инвестираш в растеж.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Има ли минимален рекламен бюджет за Meta или Google Ads?</summary>
+        <p class="faq-ans">Минимумът, който бихме препоръчали, зависи от индустрията. Бихме направили първо видео чат или обаждане с вас преди да даваме празни приказки, за да видим какви са вашите цели.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Колко бързо ще видя резултати от рекламите?</summary>
+        <p class="faq-ans">При платена реклама (Meta и Google Ads) първите резултати се появяват в рамките на 7–14 дни. Оптималните резултати обикновено идват след 45–90 дни на оптимизация. При SEO и органично съдържание — 3–6 месеца за стабилен трафик.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Какво включва безплатният маркетинг одит?</summary>
+        <p class="faq-ans">Провеждаме 8-степенен анализ: Meta реклами, Google Ads, SEO, уебсайт, социални мрежи, брандинг, съдържание и конкурентна среда. Получаваш конкретен доклад с точно кое работи и кое не. Без задължения.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Каква е разликата между Meta Ads и Google Ads — кое ми трябва?</summary>
+        <p class="faq-ans">Meta Ads (Facebook/Instagram) прекъсват хората докато скролват и работят отлично за brand awareness и e-commerce. Google Ads улавят хора в момента на търсене — те вече искат нещо. При повечето бизнеси работят и двете заедно. В одита ти казваме кое е по-подходящо.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Нужен ли ми е сайт за да стартирам реклами?</summary>
+        <p class="faq-ans">За Meta реклами може да рекламираш с Lead Generation форма — без сайт. За Google Ads обаче сайтът е задължителен. Ако нямаш сайт, нашата услуга Уеб Дизайн може да го реши в рамките на 2–4 седмици.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Как измервате и отчитате резултатите от кампаниите?</summary>
+        <p class="faq-ans">Всеки клиент получава достъп до live dashboard с ключовите метрики: ROAS, CPL, CTR, reach и конверсии. Даваме месечен отчет с анализ на резултатите, какво тествахме и какво правим следващия месец. Само данни — без гадаене.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Ще имам ли достъп до рекламните акаунти и данните?</summary>
+        <p class="faq-ans">Абсолютно. Работим в твоите акаунти (Business Manager, Google Ads) или създаваме нови на твое име. Ти си собственик на всичко — акаунти, данни, кампании. Ако спрем работа, всичко остава при теб.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Колко трае типичен договор с The Marketing Clinic?</summary>
+        <p class="faq-ans">Зависи от услугата и целите ти. Говорим за това на консултацията когато разберем какво точно ти трябва.</p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Работите ли само в България или и с международни клиенти?</summary>
+        <p class="faq-ans">Основно работим с клиенти в България, но имаме опит с кампании, таргетиращи Европа и международни пазари. Нямаме ограничение по локация — работим дистанционно с всички.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Как изглежда процесът на работа — от старт до резултати?</summary>
+        <p class="faq-ans">Стартираме с безплатен одит и консултация. После изготвяме персонален маркетинг план. При одобрение — кампаниите са активни в рамките на 5–10 работни дни. Всеки месец получаваш отчет и план за следващия период.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Какъв е средният ROAS, който постигате при клиентите?</summary>
+        <p class="faq-ans">Средният ROAS при нашите активни клиенти е 3.8x. Но ROAS варира според продукта, цената и пазара. При одита ти даваме реалистична прогноза базирана на твоята ниша и конкуренцията.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Вие ли правите рекламните creatives (снимки, видеа, текстове)?</summary>
+        <p class="faq-ans">Да — включваме copywriting и graphic design в нашите пакети. За видео съдържание работим с партньори или ти даваме creative brief ако предпочиташ да заснемеш сам. Нашата Full Stack услуга покрива всичко.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Имате ли опит в моята индустрия или ниша?</summary>
+        <p class="faq-ans">Работили сме с e-commerce, beauty, fitness, B2B услуги, образование, ресторанти и строителство. Ако не сме работили точно в твоята ниша, провеждаме задълбочено competitor research преди старт.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Какво се случва след като поискам безплатния одит?</summary>
+        <p class="faq-ans">Представяме ти одита в рамките на 48–72 часа. Обясняваме находките и препоръките. Ако имаш интерес — изготвяме конкретна оферта. Ако не — одитът е твой и можеш да го приложиш сам. Без натиск.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Колко бързо можете да стартирате кампаниите?</summary>
+        <p class="faq-ans">След подписан договор и получени необходими достъпи — кампаниите са активни в рамките на 5–10 работни дни. Уеб дизайн проекти — 3–6 седмици в зависимост от обхвата.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Каква е разликата между SEO и платена реклама?</summary>
+        <p class="faq-ans">Платената реклама (Meta/Google Ads) дава резултати веднага, но спира щом спреш да плащаш. SEO гради органичен трафик, който расте с времето и не изисква постоянни разходи за клик. Идеалната стратегия използва и двете.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Как да разбера дали инвестицията в маркетинг агенция е правилна за мен?</summary>
+        <p class="faq-ans">Ако вече харчиш за реклама без ясен ROAS, или нямаш времето и знанията да управляваш маркетинга сам — работата с агенция обикновено си струва. Безплатният одит ти дава точна картина и можем да пресметнем заедно дали числата работят.</p>
+      </details>
+
+    </div>
+    <div class="faq-cta reveal" style="transition-delay:.15s">
+      <a href="#kontakt" class="btn">Имаш друг въпрос? Питай ни</a>
+    </div>
+  </div>
+</section>
+
 <!-- КОНТАКТ -->
 <section class="sec" id="kontakt">
   <div class="contact-grid">
@@ -534,6 +727,7 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank">Facebook</a>
     <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank">Instagram</a>
     <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+    <a href="/privacy-policy">Политика за поверителност</a>
   </div>
 </footer>
 
