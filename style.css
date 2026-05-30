@@ -181,8 +181,9 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes grow{from{width:0}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease;animation:revealFallback .6s ease forwards 1.4s}
+.reveal.visible{opacity:1;transform:translateY(0);animation:none}
+@keyframes revealFallback{to{opacity:1;transform:translateY(0)}}
 @media(min-width:901px){
   .hamburger{display:none !important}
   .mobile-menu{display:none !important}
