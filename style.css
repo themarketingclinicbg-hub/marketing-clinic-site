@@ -1,12 +1,12 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html, body{overflow-x:hidden;-webkit-overflow-scrolling:touch}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#F5F0E8;--bg2:#ede7db;--green:#1E3A2F;--green2:#2a5040;--border:rgba(30,58,47,0.14);--border-light:rgba(245,240,232,0.14);--muted:rgba(30,58,47,0.6);--bar-h:46px;--nav-h:60px;--offset:106px;--real-vh:1vh}
+:root{--bg:#F5F0E8;--bg2:#ede7db;--green:#1E3A2F;--green2:#2a5040;--border:rgba(30,58,47,0.14);--border-light:rgba(245,240,232,0.14);--muted:rgba(30,58,47,0.6);--bar-h:0px;--nav-h:60px;--offset:60px;--real-vh:1vh}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--green);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
-.cur{width:10px;height:10px;background:var(--green);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:multiply}
-.cur2{width:36px;height:36px;border:1px solid rgba(30,58,47,0.28);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,240,232,0.96);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.cur{display:none !important}
+.cur2{display:none !important}
+nav{position:fixed !important;top:0 !important;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,240,232,0.96);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green)}
 .logo svg{width:32px;height:32px;flex-shrink:0}
 .logo-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;line-height:1.1}
@@ -187,8 +187,8 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 @media(min-width:901px){
   .hamburger{display:none !important}
   .mobile-menu{display:none !important}
-  nav{top:var(--bar-h)}
-  .hero{padding-top:calc(var(--bar-h) + 120px);padding-bottom:80px;justify-content:flex-start;min-height:auto}
+  nav{top:0 !important}
+  .hero{padding-top:140px;padding-bottom:80px;justify-content:flex-start;min-height:auto}
 }
 @media(max-width:900px){
   body{cursor:auto}
