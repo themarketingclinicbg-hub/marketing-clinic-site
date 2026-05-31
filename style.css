@@ -63,10 +63,23 @@ nav{position:fixed !important;top:0 !important;left:0;right:0;z-index:200;displa
 .svc-right{padding-left:0}
 .svc-intro{font-size:14px;line-height:1.8;color:var(--muted);margin-top:14px;max-width:420px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.svc{padding:36px 30px;position:relative;cursor:pointer;transition:opacity .2s;border:1px solid var(--border)}
-.svc:hover{opacity:.84}
+.svc{position:relative;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;border:1px solid var(--border);perspective:1200px;display:flex}
+.svc:hover{transform:scale(1.04);z-index:5;box-shadow:0 18px 40px rgba(30,58,47,0.18)}
+.svc:focus{outline:none}
 .svc-odd{background:var(--bg);color:var(--green)}
 .svc-even{background:var(--green);color:var(--bg)}
+.svc-inner{position:relative;width:100%;flex:1;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.svc:focus-within .svc-inner,.svc.flipped .svc-inner{transform:rotateY(180deg)}
+.svc-front,.svc-back{padding:36px 30px;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.svc-front{position:relative;min-height:248px}
+.svc-back{position:absolute;inset:0;transform:rotateY(180deg);justify-content:center;align-items:flex-start;gap:20px}
+.svc-odd .svc-front,.svc-odd .svc-back{background:var(--bg);color:var(--green)}
+.svc-even .svc-front,.svc-even .svc-back{background:var(--green);color:var(--bg)}
+.svc-benefit{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;line-height:1.32}
+.svc-cta-btn{display:inline-block;padding:13px 26px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;transition:opacity .2s}
+.svc-cta-btn:hover{opacity:.85}
+.svc-odd .svc-cta-btn{background:var(--green);color:var(--bg)}
+.svc-even .svc-cta-btn{background:var(--bg);color:var(--green)}
 .svc-num{font-family:'Cormorant Garamond',serif;font-size:12px;opacity:.28;margin-bottom:16px;letter-spacing:.1em}
 .svc-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.1;margin-bottom:12px}
 .svc-desc{font-size:13px;line-height:1.8}
@@ -225,7 +238,9 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
   .svc-right{padding-left:0}
   .svc-intro{font-size:14px;margin-top:10px}
   .svc-grid{grid-template-columns:1fr}
-  .svc{padding:30px 20px;border-bottom:none}
+  .svc{border-bottom:none}
+  .svc-front,.svc-back{padding:30px 20px}
+  .svc-front{min-height:210px}
   .svc-name{font-size:22px}
   .svc-desc{font-size:14px;line-height:1.76}
   .svc-tag{padding:6px 12px;font-size:10px}
