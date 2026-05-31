@@ -206,7 +206,7 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 @media(max-width:900px){
   body{cursor:auto}
   .cur,.cur2{display:none}
-  .hero{min-height:calc(var(--real-vh, 1vh) * 100);padding-top:calc(var(--offset) + 16px);padding-left:24px;padding-right:24px;padding-bottom:max(56px, env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;justify-content:flex-end}
+  .hero{min-height:auto !important;padding-top:96px !important;padding-left:24px;padding-right:24px;padding-bottom:44px !important;display:flex;flex-direction:column;justify-content:flex-start !important}
   nav{padding:0 22px;height:60px;border-top:2px solid var(--green)}
   .logo svg{width:30px;height:30px}
   .logo-text{font-size:16px}
