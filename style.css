@@ -63,13 +63,13 @@ nav{position:fixed !important;top:0 !important;left:0;right:0;z-index:200;displa
 .svc-right{padding-left:0}
 .svc-intro{font-size:14px;line-height:1.8;color:var(--muted);margin-top:14px;max-width:420px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.svc{position:relative;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;border:1px solid var(--border);perspective:1200px;display:flex}
+.svc{position:relative;cursor:default;transition:transform .3s ease,box-shadow .3s ease;border:1px solid var(--border);perspective:1200px;display:flex}
 .svc:hover{transform:scale(1.04);z-index:5;box-shadow:0 18px 40px rgba(30,58,47,0.18)}
 .svc:focus{outline:none}
 .svc-odd{background:var(--bg);color:var(--green)}
 .svc-even{background:var(--green);color:var(--bg)}
 .svc-inner{position:relative;width:100%;flex:1;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
-.svc:focus-within .svc-inner,.svc.flipped .svc-inner{transform:rotateY(180deg)}
+.svc.flipped .svc-inner{transform:rotateY(180deg)}
 .svc-front,.svc-back{padding:36px 30px;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .svc-front{position:relative;min-height:248px}
 .svc-back{position:absolute;inset:0;transform:rotateY(180deg);justify-content:center;align-items:flex-start;gap:20px}
@@ -90,6 +90,10 @@ nav{position:fixed !important;top:0 !important;left:0;right:0;z-index:200;displa
 .svc-odd .svc-learn-front:hover{background:var(--green2)}
 .svc-even .svc-learn-front{background:var(--bg);color:var(--green)}
 .svc-even .svc-learn-front:hover{background:var(--bg2)}
+.svc-cta-front{margin-top:12px;align-self:flex-start;font-size:11px;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;opacity:.65;transition:opacity .2s}
+.svc-cta-front:hover{opacity:1;text-decoration:underline}
+.svc-odd .svc-cta-front{color:var(--green)}
+.svc-even .svc-cta-front{color:var(--bg)}
 .svc-num{font-family:'Cormorant Garamond',serif;font-size:12px;opacity:.28;margin-bottom:16px;letter-spacing:.1em}
 .svc-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.1;margin-bottom:12px}
 .svc-desc{font-size:13px;line-height:1.8}
