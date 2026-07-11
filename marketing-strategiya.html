@@ -505,35 +505,114 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 <section class="sec-green" id="matrix">
   <div class="reveal"><p class="lbl">Приоритизиране</p><h2 class="h2">Не всичко е еднакво важно.<br><em style="font-style:italic;color:rgba(245,240,232,0.55)">Матрицата показва откъде да започнеш.</em></h2><p style="font-size:15px;line-height:1.8;color:rgba(245,240,232,0.75);margin-top:14px;max-width:580px">Стратегията приоритизира маркетинг действията по два критерия: очакван ефект и необходим ресурс.</p></div>
   <div class="matrix-wrap reveal" style="transition-delay:.12s">
-    <svg class="matrix-svg" viewBox="0 0 580 400" xmlns="http://www.w3.org/2000/svg">
-      <line x1="60" y1="20" x2="60" y2="340" stroke="rgba(245,240,232,0.3)" stroke-width="1.5"/>
-      <line x1="60" y1="340" x2="560" y2="340" stroke="rgba(245,240,232,0.3)" stroke-width="1.5"/>
-      <line x1="310" y1="20" x2="310" y2="340" stroke="rgba(245,240,232,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-      <line x1="60" y1="180" x2="560" y2="180" stroke="rgba(245,240,232,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-      <text x="22" y="185" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.45)" letter-spacing=".1em" transform="rotate(-90,22,185)">ЕФЕКТ</text>
-      <text x="48" y="32" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Висок</text>
-      <text x="48" y="334" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Нисък</text>
-      <text x="310" y="368" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.45)" letter-spacing=".1em">УСИЛИЕ</text>
-      <text x="80" y="358" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Ниско</text>
-      <text x="520" y="358" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Високо</text>
-      <rect x="62" y="22" width="246" height="156" fill="rgba(245,240,232,0.06)" rx="2"/>
-      <text x="185" y="46" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" font-weight="600" fill="rgba(245,240,232,0.75)" letter-spacing=".06em">БЪРЗИ ПОБЕДИ</text>
-      <circle cx="120" cy="80" r="5" fill="rgba(245,240,232,0.9)"/><text x="130" y="77" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.75)">Ремаркетинг</text>
-      <circle cx="150" cy="110" r="5" fill="rgba(245,240,232,0.9)"/><text x="160" y="107" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.75)">Email автоматизация</text>
-      <circle cx="110" cy="142" r="5" fill="rgba(245,240,232,0.9)"/><text x="120" y="139" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.75)">Google Search</text>
-      <rect x="312" y="22" width="246" height="156" fill="rgba(245,240,232,0.04)" rx="2"/>
-      <text x="435" y="46" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" font-weight="600" fill="rgba(245,240,232,0.55)" letter-spacing=".06em">СТРАТЕГИЧЕСКИ</text>
-      <circle cx="360" cy="80" r="5" fill="rgba(245,240,232,0.55)"/><text x="370" y="77" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.55)">SEO органично</text>
-      <circle cx="380" cy="115" r="5" fill="rgba(245,240,232,0.55)"/><text x="390" y="112" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.55)">Контент стратегия</text>
-      <circle cx="355" cy="150" r="5" fill="rgba(245,240,232,0.55)"/><text x="365" y="147" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.55)">Ребрандинг</text>
-      <rect x="62" y="182" width="246" height="156" fill="rgba(245,240,232,0.02)" rx="2"/>
-      <text x="185" y="204" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" font-weight="600" fill="rgba(245,240,232,0.35)" letter-spacing=".06em">ЗАПЪЛВАНЕ</text>
-      <circle cx="130" cy="240" r="4" fill="rgba(245,240,232,0.3)"/><text x="140" y="237" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.35)">Случайни постове</text>
-      <rect x="312" y="182" width="246" height="156" fill="rgba(245,240,232,0.01)" rx="2"/>
-      <text x="435" y="204" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" font-weight="600" fill="rgba(245,240,232,0.25)" letter-spacing=".06em">ИЗБЯГВАЙ</text>
-      <circle cx="380" cy="245" r="4" fill="rgba(245,240,232,0.2)"/><text x="390" y="242" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(245,240,232,0.25)">Грешен канал</text>
-      <polygon points="60,18 55,30 65,30" fill="rgba(245,240,232,0.3)"/>
-      <polygon points="562,340 550,335 550,345" fill="rgba(245,240,232,0.3)"/>
+    <svg class="matrix-svg" viewBox="0 0 700 510" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          .mx-q{opacity:0;animation:mxFade .7s ease forwards}
+          .mx-axis{stroke-dasharray:640;stroke-dashoffset:640;animation:mxDraw .9s ease forwards}
+          .mx-div{stroke-dasharray:430;stroke-dashoffset:430;animation:mxDraw .7s .5s ease forwards}
+          .mx-dot{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0);animation:mxDotIn .5s cubic-bezier(.34,1.56,.64,1) forwards}
+          .mx-lbl{opacity:0;animation:mxFade .5s ease forwards}
+          @keyframes mxFade{to{opacity:1}}
+          @keyframes mxDraw{to{stroke-dashoffset:0}}
+          @keyframes mxDotIn{to{opacity:1;transform:scale(1)}}
+          @media(prefers-reduced-motion:reduce){.mx-q,.mx-axis,.mx-div,.mx-dot,.mx-lbl{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;transform:none!important}}
+        </style>
+        <radialGradient id="qg1" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="rgba(245,240,232,0.12)"/><stop offset="100%" stop-color="rgba(245,240,232,0.03)"/></radialGradient>
+        <radialGradient id="qg2" cx="70%" cy="30%" r="70%"><stop offset="0%" stop-color="rgba(245,240,232,0.05)"/><stop offset="100%" stop-color="rgba(245,240,232,0.01)"/></radialGradient>
+        <filter id="dg" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- quadrant backgrounds -->
+      <rect x="92" y="46" width="286" height="196" fill="url(#qg1)" rx="2" class="mx-q" style="animation-delay:.10s"/>
+      <rect x="380" y="46" width="288" height="196" fill="url(#qg2)" rx="2" class="mx-q" style="animation-delay:.20s"/>
+      <rect x="92"  y="244" width="286" height="198" fill="rgba(245,240,232,0.012)" rx="2" class="mx-q" style="animation-delay:.30s"/>
+      <rect x="380" y="244" width="288" height="198" fill="rgba(245,240,232,0.004)" rx="2" class="mx-q" style="animation-delay:.40s"/>
+
+      <!-- axes -->
+      <line x1="90" y1="444" x2="90"  y2="38"  stroke="rgba(245,240,232,0.36)" stroke-width="1.5" class="mx-axis" style="animation-delay:.05s"/>
+      <line x1="90" y1="444" x2="670" y2="444" stroke="rgba(245,240,232,0.36)" stroke-width="1.5" class="mx-axis" style="animation-delay:.08s"/>
+      <polygon points="90,36 85,48 95,48"         fill="rgba(245,240,232,0.36)" class="mx-q" style="animation-delay:.96s"/>
+      <polygon points="672,444 660,439 660,449"   fill="rgba(245,240,232,0.36)" class="mx-q" style="animation-delay:.96s"/>
+
+      <!-- quadrant dividers -->
+      <line x1="90"  y1="244" x2="668" y2="244" stroke="rgba(245,240,232,0.13)" stroke-width="1" stroke-dasharray="6 5" class="mx-div"/>
+      <line x1="380" y1="44"  x2="380" y2="442" stroke="rgba(245,240,232,0.13)" stroke-width="1" stroke-dasharray="6 5" class="mx-div" style="animation-delay:.62s"/>
+
+      <!-- intersection glow -->
+      <circle cx="380" cy="244" r="4"   fill="rgba(245,240,232,0.18)" filter="url(#dg)" class="mx-q" style="animation-delay:.92s"/>
+      <circle cx="380" cy="244" r="1.5" fill="rgba(245,240,232,0.55)"                   class="mx-q" style="animation-delay:.94s"/>
+
+      <!-- axis labels -->
+      <text x="52"  y="248" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.36)" letter-spacing=".14em" transform="rotate(-90,52,248)"  class="mx-lbl" style="animation-delay:1.0s">ЕФЕКТ</text>
+      <text x="380" y="483" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.36)" letter-spacing=".14em" class="mx-lbl" style="animation-delay:1.0s">УСИЛИЕ</text>
+      <text x="74"  y="56"  text-anchor="end"    font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.26)" class="mx-lbl" style="animation-delay:1.05s">Висок</text>
+      <text x="74"  y="444" text-anchor="end"    font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.26)" class="mx-lbl" style="animation-delay:1.05s">Нисък</text>
+      <text x="100" y="460"                      font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.26)" class="mx-lbl" style="animation-delay:1.05s">Ниско</text>
+      <text x="660" y="460" text-anchor="end"    font-family="DM Sans,sans-serif" font-size="9" fill="rgba(245,240,232,0.26)" class="mx-lbl" style="animation-delay:1.05s">Високо</text>
+
+      <!-- quadrant title badges -->
+      <rect x="100" y="54" width="132" height="22" rx="2" fill="rgba(245,240,232,0.08)" class="mx-lbl" style="animation-delay:.70s"/>
+      <text x="166" y="70" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="500" fill="rgba(245,240,232,0.80)" letter-spacing=".12em" class="mx-lbl" style="animation-delay:.72s">БЪРЗИ ПОБЕДИ</text>
+      <rect x="472" y="54" width="124" height="22" rx="2" fill="rgba(245,240,232,0.04)" class="mx-lbl" style="animation-delay:.78s"/>
+      <text x="534" y="70" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="500" fill="rgba(245,240,232,0.50)" letter-spacing=".12em" class="mx-lbl" style="animation-delay:.80s">СТРАТЕГИЧЕСКИ</text>
+      <text x="166" y="392" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="500" fill="rgba(245,240,232,0.19)" letter-spacing=".12em" class="mx-lbl" style="animation-delay:.86s">ЗАПЪЛВАНЕ</text>
+      <text x="530" y="392" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="500" fill="rgba(245,240,232,0.11)" letter-spacing=".12em" class="mx-lbl" style="animation-delay:.90s">ИЗБЯГВАЙ</text>
+
+      <!-- Q1 dots — БЪРЗИ ПОБЕДИ (bright, priority) -->
+      <g class="mx-dot" style="animation-delay:1.10s">
+        <circle cx="185" cy="106" r="7"   fill="rgba(245,240,232,0.94)" filter="url(#dg)"/>
+        <circle cx="185" cy="106" r="7"   fill="none" stroke="rgba(245,240,232,0.55)" stroke-width="1.3"><animate attributeName="r" values="7;30;7" dur="2.6s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0;0.55" dur="2.6s" begin="1.6s" repeatCount="indefinite"/></circle>
+        <text x="202" y="102" font-family="DM Sans,sans-serif" font-size="12" font-weight="400" fill="rgba(245,240,232,0.88)">Ремаркетинг</text>
+        <text x="202" y="118" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.42)">Висок ефект · Бързо</text>
+      </g>
+
+      <g class="mx-dot" style="animation-delay:1.22s">
+        <circle cx="225" cy="158" r="7"   fill="rgba(245,240,232,0.88)" filter="url(#dg)"/>
+        <circle cx="225" cy="158" r="7"   fill="none" stroke="rgba(245,240,232,0.48)" stroke-width="1.3"><animate attributeName="r" values="7;28;7" dur="2.9s" begin="2.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.48;0;0.48" dur="2.9s" begin="2.0s" repeatCount="indefinite"/></circle>
+        <text x="242" y="154" font-family="DM Sans,sans-serif" font-size="12" font-weight="400" fill="rgba(245,240,232,0.82)">Email автоматизация</text>
+        <text x="242" y="170" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.38)">Нисък CAC · Дългосрочен</text>
+      </g>
+
+      <g class="mx-dot" style="animation-delay:1.34s">
+        <circle cx="150" cy="202" r="6.5" fill="rgba(245,240,232,0.82)"/>
+        <circle cx="150" cy="202" r="6.5" fill="none" stroke="rgba(245,240,232,0.38)" stroke-width="1.2"><animate attributeName="r" values="6.5;24;6.5" dur="3.1s" begin="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.38;0;0.38" dur="3.1s" begin="2.4s" repeatCount="indefinite"/></circle>
+        <text x="166" y="198" font-family="DM Sans,sans-serif" font-size="12" font-weight="400" fill="rgba(245,240,232,0.76)">Google Search</text>
+        <text x="166" y="214" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.34)">Директно намерение</text>
+      </g>
+
+      <!-- Q2 dots — СТРАТЕГИЧЕСКИ (medium) -->
+      <g class="mx-dot" style="animation-delay:1.46s">
+        <circle cx="432" cy="98"  r="6"   fill="rgba(245,240,232,0.52)"/>
+        <circle cx="432" cy="98"  r="6"   fill="none" stroke="rgba(245,240,232,0.28)" stroke-width="1"><animate attributeName="r" values="6;22;6" dur="2.8s" begin="1.9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.28;0;0.28" dur="2.8s" begin="1.9s" repeatCount="indefinite"/></circle>
+        <text x="448" y="94"  font-family="DM Sans,sans-serif" font-size="12" fill="rgba(245,240,232,0.58)">SEO органично</text>
+        <text x="448" y="110" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.27)">Дългосрочна стойност</text>
+      </g>
+
+      <g class="mx-dot" style="animation-delay:1.58s">
+        <circle cx="468" cy="152" r="5.5" fill="rgba(245,240,232,0.44)"/>
+        <text x="484" y="148" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(245,240,232,0.50)">Контент стратегия</text>
+        <text x="484" y="164" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.22)">Авторитет и трафик</text>
+      </g>
+
+      <g class="mx-dot" style="animation-delay:1.70s">
+        <circle cx="418" cy="204" r="5"   fill="rgba(245,240,232,0.36)"/>
+        <text x="433" y="200" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(245,240,232,0.42)">Ребрандинг</text>
+        <text x="433" y="216" font-family="DM Sans,sans-serif" font-size="9"  fill="rgba(245,240,232,0.18)">Позициониране</text>
+      </g>
+
+      <!-- Q3 dot — ЗАПЪЛВАНЕ (dim) -->
+      <g class="mx-dot" style="animation-delay:1.82s">
+        <circle cx="170" cy="342" r="4.5" fill="rgba(245,240,232,0.17)"/>
+        <text x="184" y="338" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(245,240,232,0.22)">Случайни постове</text>
+      </g>
+
+      <!-- Q4 dot — ИЗБЯГВАЙ (very dim) -->
+      <g class="mx-dot" style="animation-delay:1.90s">
+        <circle cx="515" cy="356" r="4.5" fill="rgba(245,240,232,0.10)"/>
+        <text x="529" y="352" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(245,240,232,0.15)">Грешен канал</text>
+      </g>
+
     </svg>
     <p class="matrix-note">Стратегията фокусира върху "Бързи победи" краткосрочно, "Стратегически" за дългосрочен растеж.</p>
   </div>
