@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Marketing Clinic | Безплатен Екшън План за твоя бизнес</title>
+<meta name="description" content="Знаеш, че нещо в маркетинга ти не работи? Получи безплатен екшън план, направен от експерти маркетолози изцяло за твоя бизнес, представен в персонализирана презентация до 24 часа.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#1E3A2E">
+
+<!-- ===== FONTS (non-blocking) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap&subset=cyrillic,latin">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap&subset=cyrillic,latin"
+  media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap&subset=cyrillic,latin">
+</noscript>
+
+<style>
+  :root {
+    color-scheme: light;
+    --green:    #1E3A2E;
+    --green-dk: #13241C;
+    --green-soft:#2C5141;
+    --cream:    #F5F1E8;
+    --cream-2:  #FBF9F3;
+    --cream-3:  #EFE8D9;
+    --ink:      #1C1C1A;
+    --muted:    #6F6B62;
+    --line:     #E4DECF;
+    --gold:     #B08D57;
+    --white:    #FFFFFF;
+    --red:      #A8534F;
+    --logo-bg:  #F5F1E8;
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.6;
+    background: var(--cream-2);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* заключваме скрола докато интрото свири (иначе на телефон подскача) */
+  body.anim.lock { overflow: hidden; height: 100vh; }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .narrow { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .centered { text-align: center; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 600; color: var(--gold); margin-bottom: 20px;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--green); }
+  h1 { font-size: clamp(33px, 4.8vw, 52px); line-height: 1.12; letter-spacing: -0.5px; }
+  h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.16; letter-spacing: -0.3px; }
+  .lead { font-size: 18px; color: var(--muted); line-height: 1.65; }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-block; font-family: var(--sans);
+    font-weight: 700; font-size: 14px; letter-spacing: 1.2px;
+    text-transform: uppercase; text-decoration: none; cursor: pointer;
+    padding: 17px 34px; border-radius: 6px; border: none; min-height: 44px;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-light { background: var(--cream); color: var(--green); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+  .btn-light:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.24); background: var(--white); }
+
+  /* ===== HEADER ===== */
+  header { background: var(--green); color: var(--cream); padding: 20px 0; border-bottom: 1px solid rgba(245,241,232,.10); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand-mark { width: 40px; height: 40px; flex-shrink: 0; }
+  .brand-text { line-height: 1.1; }
+  .brand-name { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--cream); letter-spacing: .3px; }
+  .brand-tag { font-size: 10.5px; letter-spacing: .6px; opacity: .65; margin-top: 3px; }
+  .header-cta {
+    background: transparent; color: var(--cream); border: 1px solid rgba(245,241,232,.4);
+    padding: 12px 22px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 13px; letter-spacing: .6px;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .header-cta:hover { background: rgba(245,241,232,.10); border-color: var(--cream); }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 104px 0; }
+  .sec-cream { background: var(--cream); }
+  .sec-white { background: var(--white); }
+
+  /* ===== TOP: FORM ===== */
+  .top { background: var(--green); color: var(--cream); padding: 64px 0 96px; }
+  .top .eyebrow { color: var(--gold); }
+  .top h1 { color: var(--white); }
+  .top h1 em { color: var(--cream); font-style: italic; }
+  .top .lead { color: var(--cream); opacity: .9; margin: 16px auto 0; max-width: 580px; font-size: 15px; line-height: 1.6; }
+  .top .lead .hl { color: var(--gold); font-weight: 700; letter-spacing: .3px; }
+
+  .scarcity {
+    display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+    margin: 26px auto 0; padding: 14px 30px;
+    background: rgba(245,241,232,.06); border: 1px solid rgba(245,241,232,.18); border-radius: 999px;
+    color: var(--cream); font-size: 14.5px; line-height: 1.4;
+  }
+  .scarcity .s1 { font-weight: 600; }
+  .scarcity .s2 { opacity: .82; font-size: 13.5px; }
+  .scarcity .num { color: var(--gold); font-weight: 800; }
+
+  .form-card {
+    max-width: 600px; margin: 30px auto 0;
+    background: var(--white); color: var(--ink); padding: 40px; border-radius: 16px;
+    border: 1px solid var(--line); box-shadow: 0 30px 70px rgba(15,30,22,.22);
+  }
+  .form-row { margin-bottom: 18px; text-align: left; }
+  .form-row label {
+    display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .8px;
+    text-transform: uppercase; color: var(--green); margin-bottom: 8px;
+  }
+  .form-row label .opt { color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+  .form-row input {
+    width: 100%; padding: 14px 16px; font-size: 16px; font-family: inherit;
+    color: var(--ink); background: var(--cream-2);
+    border: 1px solid var(--line); border-radius: 8px;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .form-row input::placeholder { color: #ABA79D; }
+  .form-row input:focus { outline: none; border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(30,58,46,.10); }
+  .btn-submit {
+    width: 100%; margin-top: 6px; background: var(--green); color: var(--cream);
+    border: none; border-radius: 8px; padding: 17px; min-height: 48px;
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .btn-submit:hover { background: var(--green-dk); transform: translateY(-1px); }
+  .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 16px; line-height: 1.55; }
+
+  /* ===== PRESENTATION PREVIEW (карусел) ===== */
+  .pv-wrap { margin-top: 48px; position: relative; }
+  .pv-track {
+    display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 8px 4px 22px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .pv-track::-webkit-scrollbar { display: none; }
+  .pv-slide {
+    flex: 0 0 min(560px, 86%); scroll-snap-align: center;
+    background: var(--green); color: var(--cream); border-radius: 14px;
+    padding: 34px 32px; text-align: left; min-height: 320px;
+    display: flex; flex-direction: column; gap: 14px;
+    box-shadow: 0 18px 44px rgba(15,30,22,.16);
+  }
+  .pv-slide .pv-kicker { font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .pv-slide h3 { color: var(--white); font-size: 22px; line-height: 1.25; }
+  .pv-slide p { font-size: 14.5px; line-height: 1.6; opacity: .88; }
+  .pv-box { background: rgba(245,241,232,.07); border: 1px solid rgba(245,241,232,.16); border-radius: 10px; padding: 14px 16px; font-size: 14px; line-height: 1.55; }
+  .pv-box strong { color: var(--gold); }
+  .pv-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pv-chip {
+    background: rgba(245,241,232,.09); border: 1px solid rgba(245,241,232,.2);
+    border-radius: 999px; padding: 7px 14px; font-size: 12.5px; font-weight: 600;
+  }
+  .pv-chip.gold { color: var(--gold); border-color: rgba(176,141,87,.55); }
+  .pv-stat { display: flex; align-items: baseline; gap: 8px; }
+  .pv-stat .n { font-family: var(--serif); font-size: 30px; color: var(--gold); font-weight: 700; }
+  .pv-stat .l { font-size: 12.5px; opacity: .8; }
+  .pv-foot { margin-top: auto; font-size: 11px; letter-spacing: .5px; opacity: .55; }
+  .pv-dots { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+  .pv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); border: none; padding: 0; cursor: pointer; transition: background .2s, transform .2s; }
+  .pv-dot.on { background: var(--gold); transform: scale(1.25); }
+  .pv-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+    background: var(--white); color: var(--green); font-size: 20px; cursor: pointer;
+    box-shadow: 0 8px 20px rgba(15,30,22,.12); z-index: 2;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .pv-nav:hover { transform: translateY(-50%) scale(1.06); }
+  .pv-prev { left: -12px; }
+  .pv-next { right: -12px; }
+  .pv-hint { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+
+  /* ===== SPLIT ===== */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .split-col { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 36px; text-align: left; box-shadow: 0 14px 40px rgba(15,30,22,.05); }
+  .split-col h3 { font-size: 19px; margin-bottom: 20px; }
+  .split-col.no h3 { color: var(--red); }
+  .split-col ul { list-style: none; }
+  .split-col li { position: relative; padding: 9px 0 9px 32px; font-size: 15.5px; color: var(--ink); line-height: 1.55; }
+  .split-col.yes li::before { content: ''; position: absolute; left: 4px; top: 12px; width: 6px; height: 11px; border: solid var(--green); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .split-col.no li::before { content: ''; position: absolute; left: 3px; top: 17px; width: 13px; height: 1.5px; background: var(--red); }
+
+  /* ===== CARDS ===== */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .card { background: var(--cream-2); border: 1px solid var(--line); border-radius: 14px; padding: 34px; transition: transform .2s ease, box-shadow .2s ease; text-align: left; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(15,30,22,.10); }
+  .card-num { font-family: var(--serif); font-size: 30px; color: var(--gold); margin-bottom: 14px; line-height: 1; }
+  .card h3 { font-size: 19px; margin-bottom: 12px; line-height: 1.3; }
+  .card p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+  .card p strong { color: var(--green); font-weight: 600; }
+
+  /* ===== FAQ ===== */
+  .faq { max-width: 760px; margin: 44px auto 0; text-align: left; }
+  .faq-item { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; background: var(--white); overflow: hidden; transition: box-shadow .2s ease; }
+  .faq-item[open] { box-shadow: 0 14px 36px rgba(15,30,22,.07); }
+  .faq-item summary {
+    cursor: pointer; padding: 22px 26px; list-style: none;
+    font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--green);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: var(--sans); font-size: 26px; font-weight: 300; color: var(--gold); line-height: 1; flex-shrink: 0; transition: transform .2s ease; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-a { padding: 0 26px 24px; color: var(--muted); font-size: 15.5px; line-height: 1.7; }
+
+  /* ===== BOTTOM CTA ===== */
+  .cta-bottom { background: var(--green); color: var(--cream); text-align: center; padding: 96px 0; }
+  .cta-bottom .eyebrow { color: var(--gold); }
+  .cta-bottom h2 { color: var(--white); }
+  .cta-bottom .lead { color: var(--cream); opacity: .9; margin: 16px auto 32px; max-width: 540px; }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+    display: none; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(19,36,28,.97); backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(245,241,232,.14);
+    transform: translateY(110%); transition: transform .25s ease;
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta a {
+    display: block; text-align: center; background: var(--gold); color: var(--green-dk);
+    font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; border-radius: 8px; padding: 15px; min-height: 48px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--green-dk); color: var(--cream); padding: 40px 0; font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .footer-brand { font-family: var(--serif); font-weight: 700; font-size: 17px; }
+  .footer-tag { opacity: .7; margin-top: 3px; font-size: 12.5px; }
+  .footer-links a { color: var(--cream); text-decoration: none; margin-left: 24px; opacity: .8; transition: opacity .15s ease; }
+  .footer-links a:hover { opacity: 1; }
+
+  /* ===== INTRO LOGO-ZOOM ANIMATION (DO NOT CHANGE) ===== */
+  .page { position: relative; z-index: 1; }
+  .intro { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; pointer-events: none; overflow: hidden; }
+  .intro__bg { position: absolute; inset: 0; background: var(--logo-bg); }
+  .intro__logo { position: relative; width: min(360px, 82vw); text-align: center; transform-origin: 50% 46%; will-change: transform, opacity, filter; }
+  .intro__mark { width: 82px; height: 82px; margin: 0 auto 16px; display: block; }
+  .intro__name { font-family: var(--serif); font-weight: 700; font-size: clamp(24px, 6.5vw, 32px); color: var(--green); letter-spacing: .3px; line-height: 1.1; }
+  .intro__tag { font-size: 11.5px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
+  .done .intro { display: none; }
+  .anim .intro__logo { animation: logoFocus 0.6s cubic-bezier(.2,.7,.3,1) both, logoDive 1.05s cubic-bezier(.62,.03,.8,.15) 0.95s forwards; }
+  .anim .intro__bg { animation: bgOut 0.5s ease 1.6s forwards; }
+  .anim .page      { animation: pageReveal 0.95s cubic-bezier(.16,.84,.3,1) 1.05s both; }
+  @keyframes logoFocus {
+    0%   { opacity: 0; transform: scale(.86); filter: blur(10px); }
+    55%  { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: scale(1);  filter: blur(0); }
+  }
+  @keyframes logoDive {
+    0%   { opacity: 1; transform: scale(1); }
+    45%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(6); }
+  }
+  @keyframes bgOut { to { opacity: 0; } }
+  @keyframes pageReveal {
+    0%   { opacity: 0; transform: translateY(-38px); -webkit-clip-path: circle(0% at 50% 47%); clip-path: circle(0% at 50% 47%); }
+    55%  { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0); -webkit-clip-path: circle(150% at 50% 47%); clip-path: circle(150% at 50% 47%); }
+  }
+  /* по-лека интро анимация за телефон: без тежкия zoom-dive и clip-path */
+  @keyframes logoFadeOut { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12); } }
+  @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 700px) {
+    .intro__logo { width: 260px; }
+    .anim .intro__logo { animation: logoFocus 0.5s cubic-bezier(.2,.7,.3,1) both, logoFadeOut 0.45s ease 0.95s forwards; }
+    .anim .intro__bg  { animation: bgOut 0.45s ease 1.05s forwards; }
+    .anim .page       { animation: pageFade 0.55s ease 1.0s both; }
+  }
+  @media (prefers-reduced-motion: reduce) { .intro { display: none !important; } .anim .page { animation: none; } }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 820px) {
+    section { padding: 72px 0; }
+    .top { padding: 44px 0 72px; }
+    .cards { grid-template-columns: 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .form-card { padding: 28px 22px; }
+    .header-cta { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links a { margin: 0 12px; }
+    .pv-nav { display: none; }
+    .sticky-cta { display: block; }
+    .page { padding-bottom: 76px; } /* място за sticky CTA бара */
+  }
+
+  /* ===== ТЕЛЕФОН ===== */
+  @media (max-width: 520px) {
+    section { padding: 60px 0; }
+    .container { padding: 0 20px; }
+    .top { padding: 34px 0 60px; }
+    h1 { font-size: clamp(26px, 8vw, 34px); }
+    h2 { font-size: clamp(24px, 7vw, 30px); }
+    .eyebrow { margin-bottom: 14px; }
+    .form-card { padding: 22px 18px; margin-top: 24px; }
+    .scarcity { width: 100%; padding: 12px 18px; }
+    .pv-slide { flex-basis: 90%; padding: 26px 22px; min-height: 300px; }
+    .pv-slide h3 { font-size: 20px; }
+    .card { padding: 26px 24px; }
+    .split-col { padding: 28px 24px; }
+    .faq-item summary { font-size: 16.5px; padding: 20px 20px; }
+    .mission-quote { font-size: 21px; }
+  }
+</style>
+</head>
+<body class="anim">
+
+<!-- ===== INTRO OVERLAY ===== -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__bg"></div>
+  <div class="intro__logo" id="introLogo">
+    <svg class="intro__mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="38" cy="38" r="28" fill="none" stroke="#1E3A2E" stroke-width="8"/>
+      <line x1="58" y1="58" x2="88" y2="88" stroke="#1E3A2E" stroke-width="10" stroke-linecap="round"/>
+      <rect x="24" y="43" width="4" height="8"  fill="#1E3A2E" rx="1"/>
+      <rect x="31" y="39" width="4" height="12" fill="#1E3A2E" rx="1"/>
+      <rect x="38" y="34" width="4" height="17" fill="#1E3A2E" rx="1"/>
+      <rect x="45" y="29" width="4" height="22" fill="#1E3A2E" rx="1"/>
+    </svg>
+    <div class="intro__name">The Marketing Clinic</div>
+    <div class="intro__tag">Диагностицираме. Предписваме. Растем.</div>
+  </div>
+</div>
+
+<!-- ===== PAGE ===== -->
+<div class="page" id="page">
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#F5F1E8" stroke-width="8"/>
+        <line x1="58" y1="58" x2="88" y2="88" stroke="#F5F1E8" stroke-width="10" stroke-linecap="round"/>
+        <rect x="24" y="43" width="4" height="8"  fill="#F5F1E8" rx="1"/>
+        <rect x="31" y="39" width="4" height="12" fill="#F5F1E8" rx="1"/>
+        <rect x="38" y="34" width="4" height="17" fill="#F5F1E8" rx="1"/>
+        <rect x="45" y="29" width="4" height="22" fill="#F5F1E8" rx="1"/>
+      </svg>
+      <div class="brand-text">
+        <div class="brand-name">The Marketing Clinic</div>
+        <div class="brand-tag">Диагностицираме. Предписваме. Растем.</div>
+      </div>
+    </div>
+    <a href="#plan" class="header-cta">Вземи екшън плана си</a>
+  </div>
+</header>
+
+<!-- ===== TOP: HEADLINE + SUB-HEADER + FORM ===== -->
+<section class="top" id="plan">
+  <div class="container centered">
+    <span class="eyebrow">Безплатен Екшън План</span>
+    <h1>Знаеш, че нещо в маркетинга ти не работи. <em>Ето как да го решиш.</em></h1>
+    <p class="lead"><span class="hl">БЕЗПЛАТЕН ЕКШЪН ПЛАН</span>, направен от <span class="hl">ЕКСПЕРТИ МАРКЕТОЛОЗИ</span> изцяло за твоя бизнес: получаваш го като <span class="hl">ПЕРСОНАЛИЗИРАНА ПРЕЗЕНТАЦИЯ</span> до 24 часа и я разглеждаме заедно. <span class="hl">НАПЪЛНО БЕЗПЛАТНО</span>, без ангажимент.</p>
+
+    <div class="scarcity">
+      <span class="s1">Приемаме 5 бизнеса на седмица.</span>
+      <span class="s2">Тази седмица: <span class="num">2</span> свободни.</span>
+    </div>
+
+    <form class="form-card" id="lead-form">
+      <div class="form-row">
+        <label for="name">Име</label>
+        <input type="text" id="name" name="name" placeholder="Иван Петров">
+      </div>
+      <div class="form-row">
+        <label for="phone">Телефонен номер</label>
+        <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="ivan@firma.bg">
+      </div>
+      <div class="form-row">
+        <label for="business">Бизнес / индустрия <span class="opt">(по избор)</span></label>
+        <input type="text" id="business" name="business" placeholder="напр. e-commerce, ресторант, услуги">
+      </div>
+      <div class="form-row">
+        <label for="link">Сайт или социална мрежа (за прегледа)</label>
+        <input type="text" id="link" name="link" required placeholder="firma.bg или линк към профил">
+      </div>
+      <button type="submit" class="btn-submit" id="submit-btn">Искам екшън плана си</button>
+      <p class="form-note">
+        С изпращането се съгласяваш да те потърсим относно екшън плана.<br>
+        Не споделяме данните ти. Никога.
+      </p>
+    </form>
+
+    <div id="form-success" style="display:none; max-width:600px; margin:24px auto 0; text-align:center; padding:40px; background:var(--white); border:1px solid var(--line); border-radius:16px; color:var(--ink);">
+      <h3 style="font-size:24px; margin-bottom:10px;">Благодарим!</h3>
+      <p style="color:var(--muted);">Получихме заявката ти. До 24 часа ще получиш екшън плана си като персонализирана презентация на имейла.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRESENTATION PREVIEW ===== -->
+<section class="sec-white">
+  <div class="container centered">
+    <span class="eyebrow">Виж какво получаваш</span>
+    <h2>Така изглежда твоят екшън план отвътре</h2>
+    <p class="lead narrow">Не е документ за четене, а презентация за действие. Разлисти слайдовете и виж логиката: симптом, рецепта, приоритет.</p>
+
+    <div class="pv-wrap">
+      <button class="pv-nav pv-prev" id="pvPrev" type="button" aria-label="Предишен слайд">&#8249;</button>
+      <button class="pv-nav pv-next" id="pvNext" type="button" aria-label="Следващ слайд">&#8250;</button>
+      <div class="pv-track" id="pvTrack">
+
+        <article class="pv-slide">
+          <span class="pv-kicker">01 · Рецептата</span>
+          <h3>Целият план на един екран</h3>
+          <div class="pv-row">
+            <div class="pv-stat"><span class="n">8</span><span class="l">прегледани направления</span></div>
+            <div class="pv-stat"><span class="n">3</span><span class="l">най-скъпи грешки</span></div>
+            <div class="pv-stat"><span class="n">12</span><span class="l">конкретни стъпки</span></div>
+          </div>
+          <p>Обзор с ключовите числа на бизнеса ти и стъпките, подредени така, че да знаеш откъде се почва още от първия слайд.</p>
+          <span class="pv-foot">Примерен изглед. Данните в твоята презентация са за твоя бизнес.</span>
+        </article>
+
+        <article class="pv-slide">
+          <span class="pv-kicker">02 · Канал по канал</span>
+          <h3>Симптом и рецепта за всеки канал</h3>
+          <div class="pv-box"><strong>Симптом:</strong> Реклами без ясна оферта, хората скролват покрай тях.</div>
+          <div class="pv-box"><strong>Рецепта:</strong> Една оферта, три силни креатива, нова кампания за 7 дни.</div>
+          <p>Facebook, Instagram, TikTok, Google, Pixel и сайтът: всеки канал с диагноза и конкретно решение.</p>
+          <span class="pv-foot">Примерен изглед. Данните в твоята презентация са за твоя бизнес.</span>
+        </article>
+
+        <article class="pv-slide">
+          <span class="pv-kicker">03 · Приоритети</span>
+          <h3>Кое кога се прави</h3>
+          <div class="pv-row">
+            <span class="pv-chip gold">Веднага</span>
+            <span class="pv-chip">Тази седмица</span>
+            <span class="pv-chip">Този месец</span>
+            <span class="pv-chip">След това</span>
+          </div>
+          <p>Всяко действие е сложено в график. Не получаваш списък с 40 идеи, а последователност, която се изпълнява.</p>
+          <span class="pv-foot">Примерен изглед. Данните в твоята презентация са за твоя бизнес.</span>
+        </article>
+
+        <article class="pv-slide">
+          <span class="pv-kicker">04 · Три нива на действие</span>
+          <h3>Знаеш кое е сигурно и кое е тест</h3>
+          <div class="pv-box"><strong>&#8594; РЕЦЕПТА:</strong> доказано работи, прави се веднага.</div>
+          <div class="pv-box"><strong>&#8599; ЕКСПЕРИМЕНТ:</strong> струва си да се тества с малък бюджет.</div>
+          <div class="pv-box"><strong>&#9888; ВНИМАВАЙ:</strong> тук течат пари, спира се или се поправя.</div>
+          <span class="pv-foot">Примерен изглед. Данните в твоята презентация са за твоя бизнес.</span>
+        </article>
+
+        <article class="pv-slide">
+          <span class="pv-kicker">05 · Изпълнение</span>
+          <h3>Време, цена и отговорник до всяко действие</h3>
+          <div class="pv-row">
+            <span class="pv-chip">Време: 2 часа</span>
+            <span class="pv-chip gold">Цена: 0 €</span>
+            <span class="pv-chip">Кой: ти или ние</span>
+          </div>
+          <p>Повечето стъпки струват 0 € и можеш да ги направиш сам. Виждаш точно какво поемаме ние, ако решиш да продължим заедно.</p>
+          <span class="pv-foot">Примерен изглед. Данните в твоята презентация са за твоя бизнес.</span>
+        </article>
+
+      </div>
+      <div class="pv-dots" id="pvDots"></div>
+      <p class="pv-hint">Плъзни или използвай стрелките, за да разгледаш слайдовете.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOR / NOT FOR ===== -->
+<section class="sec-cream">
+  <div class="container centered">
+    <span class="eyebrow">Честно</span>
+    <h2>Този екшън план не е за всички.</h2>
+    <p class="lead narrow">Предпочитаме да ти кажем не предварително, отколкото да си загубим взаимно времето.</p>
+    <div class="split">
+      <div class="split-col yes">
+        <h3>За теб е, ако...</h3>
+        <ul>
+          <li>Ти си собственик на бизнес с реални продажби.</li>
+          <li>Харчиш за маркетинг, но не знаеш кое работи.</li>
+          <li>Готов си да чуеш истината и да действаш.</li>
+        </ul>
+      </div>
+      <div class="split-col no">
+        <h3>Не е за теб, ако...</h3>
+        <ul>
+          <li>Още нямаш продукт или клиенти.</li>
+          <li>Търсиш безплатна идея да копираш.</li>
+          <li>Няма да направиш нищо след плана.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT'S INSIDE ===== -->
+<section class="sec-white">
+  <div class="container centered">
+    <span class="eyebrow">Какво получаваш</span>
+    <h2>Какво включва безплатният екшън план</h2>
+    <p class="lead narrow">Пълна диагностика на маркетинга ти, сравнена с данни от над 50 прегледани бизнеса, представена в персонализирана презентация.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Пълна диагностика по 8 направления</h3>
+        <p>Преглеждаме реклами, фуния, оферта, цени, задържане на клиенти, бранд, сайт и съдържание. Виждаш цялата картина, не само едно парче.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>3-те най-скъпи грешки, подредени по приоритет</h3>
+        <p>От всичко открито изваждаме трите, които ти крадат най-много пари, и ти казваме точно кое да поправиш първо.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Рецепта за всяка грешка</h3>
+        <p>За всеки проблем получаваш симптом, решение и очакван резултат. Без общи приказки от типа „оптимизирай SEO-то".</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <h3>Приоритетен график: веднага, тази седмица, този месец</h3>
+        <p>Ясни стъпки с разделение какво правиш ти и какво поемаме ние. Знаеш точно откъде да започнеш още утре.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">05</div>
+        <h3>ROI прогноза в евро</h3>
+        <p>Консервативен и оптимистичен сценарий, за да видиш какво реално може да донесе всяка промяна за бизнеса ти.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">06</div>
+        <h3>Разглеждаме я заедно, на живо</h3>
+        <p>Презентацията не пристига като файл в пощата и толкова. Минаваме през нея заедно и отговаряме на всеки твой въпрос.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec-cream">
+  <div class="container centered">
+    <span class="eyebrow">Въпроси</span>
+    <h2>Често задавани въпроси</h2>
+    <p class="lead narrow">Кратки отговори на това, което повечето хора питат преди да заявят екшън плана си.</p>
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>Наистина ли е безплатно?</summary>
+        <div class="faq-a">Да, екшън планът е напълно безплатен. Правим го, защото когато видиш конкретна стойност, е по-вероятно да продължим заедно. Приемаме ограничен брой бизнеси на седмица, за да дадем истинско внимание на всеки.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Колко време отнема да го получа?</summary>
+        <div class="faq-a">Получаваш персонализираната презентация с екшън плана до 24 часа след като изпратиш заявката.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Какво точно включва екшън планът?</summary>
+        <div class="faq-a">Пълна диагностика по 8 направления, 3-те най-скъпи грешки по приоритет, рецепта за всяка от тях, график кое кога се прави и прогноза за резултата в евро. Всичко сравнено с данни от над 50 прегледани бизнеса.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Какво следва след презентацията?</summary>
+        <div class="faq-a">Планът е твой и можеш да го изпълниш сам: повечето стъпки струват 0 € Ако искаш ние да поемем изпълнението, ти казваме как работим. Без задължение и без натиск.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="cta-bottom">
+  <div class="container centered">
+    <span class="eyebrow">Последна стъпка</span>
+    <h2>Готов да получиш плана, който решава проблемите ти?</h2>
+    <p class="lead">Безплатен екшън план в персонализирана презентация, до 24 часа.</p>
+    <a href="#plan" class="btn btn-light">Вземи екшън плана си</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">The Marketing Clinic</div>
+      <div class="footer-tag">Диагностицираме. Предписваме. Растем.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:hello@marketing-clinic.com">hello@marketing-clinic.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#plan">Вземи безплатния екшън план</a>
+</div>
+
+<!-- ===== INTRO CONTROLLER ===== -->
+<script>
+  (function () {
+    var body = document.body;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { body.classList.remove('anim'); body.classList.add('done'); return; }
+
+    var INTRO_MS = (window.innerWidth < 700) ? 1650 : 2150;
+    var ended = false;
+    function endIntro() {
+      if (ended) return;
+      ended = true;
+      body.classList.add('done');
+      body.classList.remove('lock');
+    }
+    /* заключваме скрола докато свири анимацията */
+    body.classList.add('lock');
+    setTimeout(endIntro, INTRO_MS);
+    /* защитни падове: ако табът е бил на заден план или нещо забие, пак се отключва */
+    window.addEventListener('load', function () { setTimeout(endIntro, INTRO_MS + 500); });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) endIntro(); });
+    window.addEventListener('pageshow', function (e) { if (e.persisted) endIntro(); });
+  })();
+</script>
+
+<!-- ===== PREVIEW CAROUSEL ===== -->
+<script>
+  (function () {
+    var track = document.getElementById('pvTrack');
+    var dotsWrap = document.getElementById('pvDots');
+    var slides = track.querySelectorAll('.pv-slide');
+    var i;
+    for (i = 0; i < slides.length; i++) {
+      var d = document.createElement('button');
+      d.className = 'pv-dot' + (i === 0 ? ' on' : '');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Слайд ' + (i + 1));
+      d.dataset.i = i;
+      dotsWrap.appendChild(d);
+    }
+    var dots = dotsWrap.querySelectorAll('.pv-dot');
+    function goTo(n) {
+      var s = slides[Math.max(0, Math.min(slides.length - 1, n))];
+      track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.clientWidth) / 2, behavior: 'smooth' });
+    }
+    function current() {
+      var c = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9, j;
+      for (j = 0; j < slides.length; j++) {
+        var mid = slides[j].offsetLeft + slides[j].clientWidth / 2;
+        if (Math.abs(mid - c) < bd) { bd = Math.abs(mid - c); best = j; }
+      }
+      return best;
+    }
+    var t;
+    track.addEventListener('scroll', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var cur = current(), k;
+        for (k = 0; k < dots.length; k++) dots[k].classList.toggle('on', k === cur);
+      }, 80);
+    });
+    dotsWrap.addEventListener('click', function (e) {
+      if (e.target.dataset && e.target.dataset.i) goTo(+e.target.dataset.i);
+      else if (e.target.classList.contains('pv-dot')) goTo(+e.target.dataset.i);
+    });
+    document.getElementById('pvPrev').addEventListener('click', function () { goTo(current() - 1); });
+    document.getElementById('pvNext').addEventListener('click', function () { goTo(current() + 1); });
+  })();
+</script>
+
+<!-- ===== STICKY CTA CONTROLLER ===== -->
+<script>
+  (function () {
+    var bar = document.getElementById('stickyCta');
+    var form = document.getElementById('lead-form');
+    var submitted = false;
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        var vis = entries[0].isIntersecting;
+        bar.classList.toggle('show', !vis && !submitted);
+      }, { threshold: 0.05 });
+      io.observe(form);
+    }
+    window.hideStickyCta = function () { submitted = true; bar.classList.remove('show'); };
+  })();
+</script>
+
+<!-- ===== META PIXEL (deferred) ===== -->
+<script>
+  window.addEventListener('load', function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1351953120302144');
+    fbq('track', 'PageView');
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none" decoding="async"
+src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- ===== FORM SUBMISSION HANDLER (същият метод като главния сайт) ===== -->
+<script>
+  /* Google Sheets Web App URL (същият като на marketing-clinic.com) */
+  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
+
+  document.getElementById('lead-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var submitBtn = document.getElementById('submit-btn');
+    var originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Изпращане...';
+    submitBtn.disabled = true;
+
+    var name = (document.getElementById('name').value || '').trim();
+    var email = (document.getElementById('email').value || '').trim();
+    var phone = (document.getElementById('phone').value || '').trim();
+    var business = (document.getElementById('business').value || '').trim();
+    var link = (document.getElementById('link').value || '').trim();
+
+    /* Ключовете съвпадат 1:1 с таблицата на главния сайт */
+    var payload = {
+      name: name, email: email, phone: phone,
+      service: 'Безплатен екшън план',
+      message: 'Бизнес: ' + (business || '-') + ' | Сайт/IG: ' + (link || '-'),
+      details: 'Бизнес: ' + (business || '-') + ' | Сайт/IG: ' + (link || '-'),
+      business: business, website: link,
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads ekshan-plan'
+    };
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), mode: 'no-cors'
+    })
+    .then(function() {
+      /* Meta Lead + Advanced Matching + eventID за CAPI дедупликация (както на сайта) */
+      try {
+        if (typeof fbq !== 'undefined') {
+          fbq('init', '1351953120302144', {
+            em: email.toLowerCase(),
+            ph: phone.replace(/\D/g, ''),
+            fn: name.toLowerCase()
+          });
+          fbq('track', 'Lead', {}, { eventID: 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10) });
+        }
+      } catch (err) {}
+
+      document.getElementById('lead-form').style.display = 'none';
+      var ok = document.getElementById('form-success');
+      ok.style.display = 'block';
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (window.hideStickyCta) window.hideStickyCta();
+    })
+    .catch(function() {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      alert('Възникна грешка. Моля, опитай отново или ни пиши на hello@marketing-clinic.com');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Безплатен анализ · Виж къде губиш клиенти онлайн | The Marketing Clinic</title>
+<meta name="description" content="Губиш клиенти онлайн, а не знаеш къде е проблемът? Отговори на няколко бързи въпроса и получи безплатен анализ като персонализирана презентация: всеки проблем канал по канал плюс конкретен план. Без ангажимент.">
+<meta name="theme-color" content="#1E3A2F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="The Marketing Clinic">
+
+<!-- Google tag (gtag.js) · GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GY5QBP207K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GY5QBP207K');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="https://marketing-clinic.com/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="https://marketing-clinic.com/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://marketing-clinic.com/favicon-192.png">
+<link rel="apple-touch-icon" href="https://marketing-clinic.com/apple-touch-icon.png">
+<style>
+:root{
+  --bg:#F5F0E8; --bg2:#EDE7DB; --card:#FBF8F2; --secondary:#F0EADD;
+  --green:#1E3A2F; --green2:#2A5040; --border:rgba(30,58,47,.14);
+  --fg:#1E3A2F; --muted:rgba(30,58,47,.6); --cream:#F5F0E8;
+  --shadow:0 14px 44px rgba(30,58,47,.14);
+  --shadow-sm:0 4px 18px rgba(30,58,47,.08);
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:300;
+  color:var(--fg); background:var(--bg);
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+  min-height:100vh; min-height:100dvh; overflow-x:hidden;
+}
+button,a,input,label,.opt{touch-action:manipulation}
+@media(hover:none){
+  .opt:hover{transform:none;border-color:var(--border)}
+  .btn-primary:hover,.hero .startbtn:hover{transform:none}
+}
+.opt:active{transform:scale(.985)}
+.btn-primary:active:not(:disabled){transform:translateY(1px)}
+.hero .startbtn:active{transform:scale(.99)}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.06;letter-spacing:-.01em}
+.wrap{max-width:600px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left)) 0 max(20px,env(safe-area-inset-right))}
+em.accent{font-style:italic;color:var(--green2)}
+
+/* ===== TOP BAR ===== */
+.topbar{background:rgba(245,240,232,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);position:relative;z-index:50;border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--green)}
+.logo svg{width:30px;height:30px;flex-shrink:0}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.05}
+.callbtn{display:flex;align-items:center;gap:7px;color:var(--green);text-decoration:none;font-weight:500;font-size:12.5px;letter-spacing:.02em;border:1px solid var(--border);border-radius:999px;padding:8px 15px;white-space:nowrap}
+.callbtn:active{background:var(--secondary)}
+
+/* ===== PROGRESS ===== */
+.progress-shell{padding:0 0 14px}
+.progress-meta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.pbar-track{height:5px;background:rgba(30,58,47,.1);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;width:12%;background:linear-gradient(90deg,var(--green2),var(--green));border-radius:99px;transition:width .35s ease}
+
+/* ===== STEPS ===== */
+.step{display:none;animation:fadeUp .35s ease}
+.step.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== HERO ===== */
+.hero{
+  background:
+    radial-gradient(ellipse 760px 460px at 108% -12%, rgba(42,80,64,.10), transparent 60%),
+    radial-gradient(ellipse 640px 460px at -12% 112%, rgba(30,58,47,.08), transparent 60%),
+    var(--bg);
+  color:var(--fg);padding:40px 0 36px;
+}
+.badge{display:inline-block;background:var(--green);color:var(--cream);font-size:10.5px;font-weight:500;letter-spacing:.18em;padding:8px 15px;border-radius:999px;margin-bottom:20px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,9vw,52px);margin-bottom:16px;color:var(--green);letter-spacing:-.02em}
+.hero h1 .hl{font-style:italic;color:var(--green2)}
+.hero .sub{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:26px}
+.hero .sub b{color:var(--green);font-weight:500}
+.startbtn{display:block;width:100%;border:none;cursor:pointer;background:var(--green);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:18px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(30,58,47,.22);transition:transform .15s ease,background .2s}
+.startbtn:hover{transform:translateY(-1px);background:var(--green2)}
+.micro{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:12.5px;margin-top:14px}
+.micro svg{flex:0 0 auto}
+.herostats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.hstat{background:var(--card);padding:16px 10px;text-align:center}
+.hstat b{display:block;font-size:26px;color:var(--green);font-weight:600;font-family:'Cormorant Garamond',serif;line-height:1}
+.hstat small{color:var(--muted);font-size:11px;line-height:1.35;display:block;margin-top:5px}
+.trustrow{display:flex;flex-wrap:wrap;gap:9px 18px;justify-content:center;margin-top:24px}
+.trustrow span{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px}
+.trustrow svg{flex:0 0 auto}
+
+/* ===== QUESTION CARD ===== */
+.qcard{padding:28px 0 128px}
+.kicker{color:var(--green2);font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.qcard h2{font-size:29px;color:var(--green);margin-bottom:10px;letter-spacing:-.01em}
+.qcard .qsub{color:var(--muted);font-size:14.5px;margin-bottom:22px;line-height:1.6}
+.opts{display:grid;gap:10px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{
+  background:var(--card);border:1.5px solid var(--border);border-radius:12px;
+  padding:16px 17px;text-align:left;cursor:pointer;font-family:inherit;
+  font-size:15px;font-weight:400;color:var(--fg);
+  transition:border-color .15s,transform .12s,background .15s;box-shadow:var(--shadow-sm);
+}
+.opt small{display:block;font-weight:300;font-size:12.5px;color:var(--muted);margin-top:3px}
+.opt:hover{border-color:var(--green2)}
+.opt.sel{border-color:var(--green);background:rgba(30,58,47,.06)}
+.opt.sel::after{content:" ✓";color:var(--green);font-weight:700}
+.qnote{background:var(--secondary);border:1px solid var(--border);border-radius:12px;padding:13px 16px;font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.55}
+
+/* ===== TEXT-INPUT FORM ===== */
+.field{margin-bottom:15px}
+.field label{display:block;font-size:12.5px;font-weight:500;color:var(--green);margin-bottom:7px}
+.field label em{font-style:normal;font-weight:300;color:var(--muted)}
+.field input{width:100%;border:1.5px solid var(--border);border-radius:11px;background:var(--card);font-family:inherit;font-size:16px;font-weight:400;padding:15px 16px;color:var(--fg);outline:none}
+.field input::placeholder{color:var(--muted)}
+.field input:focus{border-color:var(--green)}
+.consent{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:18px 0 4px;line-height:1.5}
+.consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--green);flex-shrink:0}
+.consent a{color:var(--green2);font-weight:500}
+
+/* ===== NAV ===== */
+.navrow{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(245,240,232,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:12px max(20px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left))}
+.navrow .inner{max-width:600px;margin:0 auto;display:flex;gap:10px}
+.btn-back{flex:0 0 auto;background:var(--card);border:1.5px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;font-weight:400;color:var(--muted);padding:15px 19px;cursor:pointer}
+.btn-primary{flex:1;border:none;cursor:pointer;border-radius:12px;background:var(--green);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:16px 18px;box-shadow:0 6px 20px rgba(30,58,47,.2);transition:opacity .15s,transform .12s,background .2s}
+.btn-primary:hover:not(:disabled){background:var(--green2)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+
+/* ===== THANK YOU ===== */
+.thanks{padding:44px 0 64px}
+.thanks h2{font-size:34px;color:var(--green);margin-bottom:12px;letter-spacing:-.01em}
+.thanks .tsub{color:var(--muted);font-size:15.5px;margin-bottom:28px;line-height:1.65}
+.nextsteps{display:grid;gap:14px;margin-bottom:28px}
+.ns{display:flex;gap:15px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:17px 18px;box-shadow:var(--shadow-sm)}
+.ns .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:var(--cream);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+.ns p{font-size:13.5px;color:var(--muted);line-height:1.55} .ns b{color:var(--green);display:block;font-size:15px;font-weight:500;margin-bottom:3px;font-family:'DM Sans',sans-serif}
+.dmbox{background:var(--green);border-radius:14px;padding:22px;text-align:center;color:rgba(245,240,232,.82);font-size:14px;line-height:1.6}
+.dmbox b{color:var(--cream);font-weight:500}
+.dmbox a{display:inline-block;margin-top:12px;color:var(--green);background:var(--cream);text-decoration:none;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 24px;border-radius:999px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--green);color:rgba(245,240,232,.72);padding:30px 0 calc(30px + env(safe-area-inset-bottom));margin-top:44px;font-size:12px;line-height:1.7;border-top:1px solid var(--border)}
+footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--cream);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="https://marketing-clinic.com">
+        <svg viewBox="0 0 36 36" fill="none">
+          <circle cx="15" cy="15" r="11" stroke="#1E3A2F" stroke-width="2.4" fill="none"/>
+          <line x1="23" y1="23" x2="33" y2="33" stroke="#1E3A2F" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="7" y="19" width="3" height="3" fill="#1E3A2F" rx="0.5"/>
+          <rect x="11" y="15" width="3" height="7" fill="#1E3A2F" rx="0.5"/>
+          <rect x="15" y="12" width="3" height="10" fill="#1E3A2F" rx="0.5"/>
+          <rect x="19" y="9" width="3" height="13" fill="#1E3A2F" rx="0.5"/>
+        </svg>
+        <div class="logo-text">Marketing<br>Clinic</div>
+      </a>
+      <a class="callbtn" href="tel:+359889378000">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        Обади се
+      </a>
+    </div>
+  </div>
+  <div class="progress-shell wrap" id="progressShell" style="display:none">
+    <div class="progress-meta"><span>Стъпка <b id="pNow">1</b> от <b id="pTotal">8</b></span><span id="pPct">12%</span></div>
+    <div class="pbar-track"><div class="pbar-fill" id="pBar"></div></div>
+  </div>
+</div>
+
+<!-- ===== STEP 0 · HERO ===== -->
+<section class="step active" data-step="0">
+  <div class="hero">
+    <div class="wrap">
+      <div class="badge">Безплатно · Без ангажимент · 60 секунди</div>
+      <h1>Губиш клиенти онлайн, а не знаеш <span class="hl">къде е проблемът?</span></h1>
+      <p class="sub">Отговори на няколко бързи въпроса и получаваш <b>безплатен анализ</b> като персонализирана презентация: всеки проблем, който спъва бизнеса ти канал по канал (Facebook, Instagram, Google, сайт, проследяване) плюс конкретен план. Без ангажимент, без обвързване.</p>
+      <button class="startbtn" onclick="funnel.start()">Искам безплатния анализ →</button>
+      <div class="micro">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
+        Не ти продаваме нищо. Показваме ти къде течат парите ти.
+      </div>
+      <div class="herostats">
+        <div class="hstat"><b>8</b><small>направления в анализа</small></div>
+        <div class="hstat"><b>0 €</b><small>цена за теб, без уловки</small></div>
+        <div class="hstat"><b>48ч</b><small>анализът при теб</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 1 · БИЗНЕС ===== -->
+<section class="step" data-step="1">
+  <div class="wrap qcard">
+    <div class="kicker">Твоят бизнес</div>
+    <h2>С какъв бизнес се занимаваш?</h2>
+    <p class="qsub">Това определя как гледаме на числата ти и с кои канали започваме.</p>
+    <div class="opts" data-name="business" data-mode="single">
+      <button class="opt" data-val="Онлайн магазин / e-commerce">Онлайн магазин<small>e-commerce, продажби онлайн</small></button>
+      <button class="opt" data-val="Локален бизнес / услуга">Локален бизнес или услуга<small>салон, клиника, сервиз, ресторант</small></button>
+      <button class="opt" data-val="Услуги B2B">Услуги към бизнеси (B2B)</button>
+      <button class="opt" data-val="Личен бранд / експерт">Личен бранд или експерт<small>консултант, коуч, инфопродукти</small></button>
+      <button class="opt" data-val="Друго">Друго</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 2 · САЙТ ===== -->
+<section class="step" data-step="2">
+  <div class="wrap qcard">
+    <div class="kicker">Онлайн присъствие</div>
+    <h2>Имаш ли сайт в момента?</h2>
+    <div class="opts two" data-name="hasWebsite" data-mode="single">
+      <button class="opt" data-val="Да" data-web="yes">Да, имам</button>
+      <button class="opt" data-val="Не" data-web="no">Още нямам</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 3 · URL НА САЙТА (само ако „Да") ===== -->
+<section class="step" data-step="3">
+  <div class="wrap qcard">
+    <div class="kicker">Твоят сайт</div>
+    <h2>Кой е адресът на сайта ти?</h2>
+    <p class="qsub">Разглеждаме го преди презентацията, за да видим скоростта, проследяването и пътя до покупка.</p>
+    <div class="field">
+      <label for="fSite">Адрес на сайта</label>
+      <input id="fSite" type="text" inputmode="url" placeholder="напр. tvoiat-sait.com">
+    </div>
+    <div class="qnote">Няма проблем ако е недовършен. Пак ще подготвим презентацията и ще отбележим какво липсва.</div>
+  </div>
+</section>
+
+<!-- ===== STEP 4 · КАНАЛИ (multi) ===== -->
+<section class="step" data-step="4">
+  <div class="wrap qcard">
+    <div class="kicker">Реклама сега</div>
+    <h2>Къде рекламираш в момента?</h2>
+    <p class="qsub">Избери всичко, което важи. Ако още не рекламираш, избери последното.</p>
+    <div class="opts" data-name="channels" data-mode="multi">
+      <button class="opt" data-val="Facebook / Instagram">Facebook и Instagram</button>
+      <button class="opt" data-val="Google">Google (Търсене, YouTube)</button>
+      <button class="opt" data-val="TikTok">TikTok</button>
+      <button class="opt" data-val="Инфлуенсъри / органика">Инфлуенсъри или само органика</button>
+      <button class="opt" data-val="Още не рекламирам">Още не рекламирам</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 5 · БЮДЖЕТ ===== -->
+<section class="step" data-step="5">
+  <div class="wrap qcard">
+    <div class="kicker">Мащаб</div>
+    <h2>Какъв е месечният ти рекламен бюджет?</h2>
+    <p class="qsub">Само за реклама, без възнаграждение за агенция. Приблизително е достатъчно.</p>
+    <div class="opts" data-name="budget" data-mode="single">
+      <button class="opt" data-val="До 250 €">До 250 €</button>
+      <button class="opt" data-val="250 до 750 €">250 до 750 €</button>
+      <button class="opt" data-val="750 до 2500 €">750 до 2500 €</button>
+      <button class="opt" data-val="Над 2500 €">Над 2500 €</button>
+      <button class="opt" data-val="Още не заделям бюджет">Още не заделям бюджет</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 6 · ГЛАВНА СПЪНКА ===== -->
+<section class="step" data-step="6">
+  <div class="wrap qcard">
+    <div class="kicker">Симптомът</div>
+    <h2>Кое те спъва най-много точно сега?</h2>
+    <p class="qsub">Няма грешен отговор. Това насочва презентацията точно към твоя случай.</p>
+    <div class="opts" data-name="problem" data-mode="single">
+      <button class="opt" data-val="Малко запитвания и продажби">Малко запитвания и продажби</button>
+      <button class="opt" data-val="Висока цена на резултат">Висока цена на резултат (скъпи клиенти)</button>
+      <button class="opt" data-val="Не знам дали рекламите работят">Не знам дали рекламите ми работят</button>
+      <button class="opt" data-val="Нямам ясна стратегия">Нямам ясна стратегия и посока</button>
+      <button class="opt" data-val="Нямам време да се занимавам">Нямам време да се занимавам с това</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 7 · ОБОРОТ ===== -->
+<section class="step" data-step="7">
+  <div class="wrap qcard">
+    <div class="kicker">Контекст</div>
+    <h2>Какъв е приблизителният ти месечен оборот?</h2>
+    <p class="qsub">Помага да сметнем реалната възвръщаемост, а не само разход за реклама.</p>
+    <div class="opts" data-name="revenue" data-mode="single">
+      <button class="opt" data-val="До 2500 €">До 2500 €</button>
+      <button class="opt" data-val="2500 до 10000 €">2500 до 10000 €</button>
+      <button class="opt" data-val="10000 до 25000 €">10000 до 25000 €</button>
+      <button class="opt" data-val="Над 25000 €">Над 25000 €</button>
+      <button class="opt" data-val="Предпочитам да не казвам">Предпочитам да не казвам</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 8 · РОЛЯ ===== -->
+<section class="step" data-step="8">
+  <div class="wrap qcard">
+    <div class="kicker">Още нещо</div>
+    <h2>А ти си...</h2>
+    <div class="opts" data-name="role" data-mode="single">
+      <button class="opt" data-val="Собственик">Собственик на бизнеса</button>
+      <button class="opt" data-val="Управител">Управител</button>
+      <button class="opt" data-val="Маркетинг мениджър">Маркетинг мениджър</button>
+      <button class="opt" data-val="Друго">Друго</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 9 · КОНТАКТ ===== -->
+<section class="step" data-step="9">
+  <div class="wrap qcard">
+    <div class="kicker">Последна стъпка</div>
+    <h2>Готово! Къде да изпратим анализа?</h2>
+    <p class="qsub" id="contactSub">Безплатният ти анализ пристига до 48 часа като персонализирана презентация: симптом и рецепта канал по канал, плюс приоритети в график. Безплатно и без ангажимент.</p>
+    <div class="field">
+      <label for="fName">Име</label>
+      <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
+    </div>
+    <div class="field">
+      <label for="fEmail">Имейл <em>(тук отива анализа)</em></label>
+      <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="ti@primer.com">
+    </div>
+    <div class="field">
+      <label for="fPhone">Телефон <em>(по желание, само ако искаш кратък разговор)</em></label>
+      <input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+359 88 000 0000">
+    </div>
+    <label class="consent">
+      <input type="checkbox" id="fConsent">
+      <span>Съгласявам се The Marketing Clinic да ми изпрати анализа по имейл и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Анализът е безплатен и без ангажимент.</span>
+    </label>
+    <div class="qnote">Без спам и без досадни обаждания. Получаваш анализа, а се чуваме само ако ти поискаш.</div>
+  </div>
+</section>
+
+<!-- ===== STEP 10 · БЛАГОДАРИМ ===== -->
+<section class="step" data-step="10">
+  <div class="wrap thanks">
+    <h2>Анализът ти се подготвя.</h2>
+    <p class="tsub">Благодарим, <b id="cName">приятел</b>. Ето какво следва оттук нататък:</p>
+    <div class="nextsteps">
+      <div class="ns"><div class="n">1</div><p><b>Анализираме маркетинга ти канал по канал</b>Преглеждаме Facebook, Instagram, Google, сайта и проследяването ти, за да намерим къде течат парите.</p></div>
+      <div class="ns"><div class="n">2</div><p><b>Анализът пристига в имейла ти до 48 часа</b>Симптом, рецепта и приоритет за всеки канал, плюс график за действие, като персонализирана презентация. Повечето стъпки са за 0 €</p></div>
+      <div class="ns"><div class="n">3</div><p><b>Ако числата ти харесат, говорим</b>Кратък разговор, в който минаваме през плана и следващите стъпки. Само ако ти поискаш.</p></div>
+    </div>
+    <div class="dmbox">
+      Не ти се чака? Обади ни се или ни пиши на <b>+359 889 378 000</b> и започваме веднага.
+      <br><a href="tel:+359889378000">Обади се сега →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NAV (fixed) ===== -->
+<div class="navrow" id="navRow" style="display:none">
+  <div class="inner">
+    <button class="btn-back" id="btnBack" onclick="funnel.back()">←</button>
+    <button class="btn-primary" id="btnNext" onclick="funnel.next()" disabled><span id="btnNextTxt">Напред</span></button>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fl">The Marketing Clinic</div>
+    marketing-clinic.com · +359 889 378 000 · themarketingclinicbg@gmail.com · ул. Христо Ботев 8, Сандански 2800<br><br>
+    Прогнозите се базират на данни от активните ни клиенти и текущия пазар в България. Реалният резултат зависи от офертата, маржовете и изпълнението. Анализът е безплатен и без ангажимент. Това не е финансов съвет.
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   THE MARKETING CLINIC · БЕЗПЛАТЕН АНАЛИЗ (квалификационна фуния)
+   hook → въпроси канал по канал → контакт.
+   Стъпка 3 (URL на сайта) се показва само ако има сайт.
+   Записът и пикселът са същите като на главния сайт.
+   ============================================================ */
+/* Google Sheets Web App URL (същият като на marketing-clinic.com) */
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
+const funnel = (function(){
+  const ALL_STEPS = [1,2,3,4,5,6,7,8,9]; // 10 = благодарим, отделно
+  const SITE_STEP = 3;
+  const answers = {};
+  let cur = 0;
+
+  const $ = s => document.querySelector(s);
+  const steps = [...document.querySelectorAll('.step')];
+  const progressShell = $('#progressShell');
+  const navRow = $('#navRow');
+  const btnNext = $('#btnNext');
+  const btnNextTxt = $('#btnNextTxt');
+  const btnBack = $('#btnBack');
+
+  function hasSite(){ return answers.hasWebsite === 'Да'; }
+  function visibleSteps(){
+    return hasSite() ? ALL_STEPS : ALL_STEPS.filter(n => n !== SITE_STEP);
+  }
+
+  function show(n){
+    steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+    cur = n;
+    window.scrollTo({top:0, behavior:'smooth'});
+
+    const vis = visibleSteps();
+    const isQuestion = vis.includes(n);
+    progressShell.style.display = isQuestion ? '' : 'none';
+    navRow.style.display = isQuestion ? '' : 'none';
+
+    if(isQuestion){
+      const idx = vis.indexOf(n) + 1;
+      $('#pNow').textContent = idx;
+      $('#pTotal').textContent = vis.length;
+      const pct = Math.round(idx / vis.length * 100);
+      $('#pBar').style.width = pct + '%';
+      $('#pPct').textContent = pct + '%';
+      btnBack.style.visibility = (idx === 1) ? 'hidden' : 'visible';
+      btnNextTxt.textContent = (n === vis[vis.length - 1]) ? 'Изпрати ми анализа' : 'Напред';
+      refreshNext();
+    }
+  }
+
+  function refreshNext(){
+    let ok = false;
+    if(cur === 9){ // контакт
+      ok = $('#fName').value.trim().length > 1 &&
+           /.+@.+\..+/.test($('#fEmail').value.trim()) &&
+           $('#fConsent').checked;
+    } else if(cur === SITE_STEP){
+      ok = $('#fSite').value.trim().length > 2;
+    } else {
+      const grp = document.querySelector(`.step.active .opts`);
+      if(grp){
+        const name = grp.dataset.name;
+        ok = grp.dataset.mode === 'multi'
+          ? (answers[name] && answers[name].length > 0)
+          : !!answers[name];
+      }
+    }
+    btnNext.disabled = !ok;
+  }
+
+  // избор на опция
+  document.querySelectorAll('.opts').forEach(grp => {
+    const name = grp.dataset.name, mode = grp.dataset.mode;
+    grp.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.val;
+        if(mode === 'multi'){
+          answers[name] = answers[name] || [];
+          const i = answers[name].indexOf(val);
+          if(i > -1){ answers[name].splice(i,1); btn.classList.remove('sel'); }
+          else { answers[name].push(val); btn.classList.add('sel'); }
+          refreshNext();
+        } else {
+          answers[name] = val;
+          grp.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
+          btn.classList.add('sel');
+          refreshNext();
+          // авто-напред при единичен избор
+          setTimeout(() => { if(cur !== visibleSteps()[visibleSteps().length - 1]) next(); }, 260);
+        }
+      });
+    });
+  });
+
+  // текстови полета: валидация на живо
+  ['#fSite','#fName','#fEmail','#fPhone'].forEach(s => $(s).addEventListener('input', refreshNext));
+  $('#fConsent').addEventListener('change', refreshNext);
+
+  function start(){ show(visibleSteps()[0]); }
+
+  function next(){
+    const vis = visibleSteps();
+    const idx = vis.indexOf(cur);
+    if(idx < vis.length - 1){ show(vis[idx + 1]); return; }
+    if(idx === vis.length - 1){ submit(); }
+  }
+  function back(){
+    const vis = visibleSteps();
+    const idx = vis.indexOf(cur);
+    if(idx > 0) show(vis[idx - 1]);
+  }
+
+  function submit(){
+    answers.name    = $('#fName').value.trim();
+    answers.email   = $('#fEmail').value.trim();
+    answers.phone   = $('#fPhone').value.trim();
+    answers.website = $('#fSite').value.trim();
+
+    // всички отговори от куиза → четим текст (влиза в колона message)
+    const det =
+      'Бизнес: ' + (answers.business || '-') +
+      ' | Сайт: ' + (answers.website || '-') +
+      ' | Канали: ' + ((answers.channels || []).join(', ') || '-') +
+      ' | Бюджет: ' + (answers.budget || '-') +
+      ' | Спънка: ' + (answers.problem || '-') +
+      ' | Оборот: ' + (answers.revenue || '-') +
+      ' | Роля: ' + (answers.role || '-');
+
+    // message = пълното резюме (гарантирано има колона); плюс всеки отговор като отделно поле
+    const payload = {
+      name: answers.name, email: answers.email, phone: answers.phone,
+      service: 'Безплатен анализ (квалификация)',
+      message: det,
+      details: det,
+      business: answers.business || '',
+      website: answers.website || '',
+      channels: (answers.channels || []).join(', '),
+      budget: answers.budget || '',
+      problem: answers.problem || '',
+      revenue: answers.revenue || '',
+      role: answers.role || '',
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads kvalifikacia-analiz'
+    };
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload), mode:'no-cors'
+    }).catch(function(){});
+
+    // GA4 + Meta Lead с Advanced Matching + eventID за CAPI дедупликация (както на сайта)
+    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:'kvalifikacia_analiz'}); } catch(e){}
+    try {
+      if(typeof fbq === 'function'){
+        fbq('init','1351953120302144',{
+          em: answers.email.toLowerCase(),
+          ph: answers.phone.replace(/\D/g,''),
+          fn: answers.name.toLowerCase()
+        });
+        fbq('track','Lead',{},{eventID:'lead.'+Date.now()+'.'+Math.random().toString(36).slice(2,10)});
+      }
+    } catch(e){}
+
+    $('#cName').textContent = answers.name || 'приятел';
+    show(10);
+  }
+
+  return { start, next, back };
+})();
+</script>
+
+<!-- ===== META PIXEL (deferred) ===== -->
+<script>
+  window.addEventListener('load', function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1351953120302144');
+    fbq('track', 'PageView');
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none" decoding="async"
+src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</body>
+</html>
