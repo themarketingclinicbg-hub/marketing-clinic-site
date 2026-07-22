@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#1E3A2F">
 
   <!-- ═══ SEO ══════════════════════════════════════════════════════ -->
-  <title>Marketing Clinic BG | Маркетинг Агенция България | Marketing Clinic — Meta Ads, Google Ads, SEO</title>
-  <meta name="description" content="Marketing Clinic BG — маркетинг агенция за реални резултати. Meta Ads, Google Ads и SEO стратегия за малки и средни бизнеси в България. Безплатен одит без задължения. ✆ +359 889 378 000">
+  <title>Marketing Clinic | Маркетинг Агенция България — Meta Ads, Google Ads, SEO</title>
+  <meta name="description" content="Маркетинг агенция за реални резултати. Meta Ads, Google Ads и SEO стратегия за малки и средни бизнеси в България. Безплатен одит без задължения. ✆ +359 889 378 000">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="marketing clinic bg, marketing clinic, маркетинг клиник, marketing, маркетинг, маркетинг агенция България, Meta Ads, Google Ads, SEO оптимизация, маркетинг стратегия, уеб дизайн, lead generation">
+  <meta name="keywords" content="маркетинг агенция България, Meta Ads, Facebook реклами, Google Ads, SEO оптимизация, маркетинг стратегия, уеб дизайн, lead generation">
 
   <link rel="canonical" href="https://marketing-clinic.com/">
   <link rel="alternate" hreflang="bg" href="https://marketing-clinic.com/">
@@ -24,7 +24,7 @@
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Marketing Clinic">
-  <meta property="og:title" content="Marketing Clinic BG | Маркетинг Агенция | Marketing Clinic България">
+  <meta property="og:title" content="Marketing Clinic | Маркетинг Агенция България">
   <meta property="og:description" content="Meta Ads, Google Ads, SEO и стратегия за реален ръст. Безплатен маркетинг одит за вашия бизнес.">
   <meta property="og:url" content="https://marketing-clinic.com/">
   <meta property="og:type" content="website">
@@ -63,7 +63,7 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org","@type":"MarketingAgency",
-    "name":"The Marketing Clinic","alternateName":["Marketing Clinic","Marketing Clinic BG","Маркетинг Клиник БГ"],
+    "name":"The Marketing Clinic","alternateName":"Marketing Clinic",
     "url":"https://marketing-clinic.com",
     "description":"Маркетинг агенция за реални резултати. Meta реклами, Google реклами и стратегия.",
     "telephone":"+359889378000","email":"themarketingclinicbg@gmail.com",
@@ -475,25 +475,357 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
   .fb-reviews-grid{grid-template-columns:1fr}
   .hero-h1{font-size:clamp(30px,8vw,44px)}
 }
-.faq-wrap{max-width:780px;margin:0 auto}
-.faq-header{margin-bottom:48px}
-.faq-intro{margin-top:16px;font-size:15px;line-height:1.8;color:var(--muted);max-width:520px}
-.faq-list{border-top:1px solid var(--border)}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-item summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:15px;font-weight:500;color:var(--green);font-family:'DM Sans',sans-serif;user-select:none;transition:color .2s}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:'+';font-size:24px;font-weight:300;color:var(--green);flex-shrink:0;line-height:1;transition:transform .28s ease, color .2s;opacity:.55}
-.faq-item[open] summary::after{transform:rotate(45deg);opacity:1}
-.faq-item summary:hover{color:var(--green2)}
-.faq-item summary:hover::after{opacity:1}
-.faq-ans{padding:2px 48px 22px 0;font-size:14px;line-height:1.85;color:var(--muted);max-width:640px}
-.faq-cta{margin-top:52px}
-@media(max-width:700px){
-  .faq-item summary{font-size:14px;padding:18px 0}
-  .faq-ans{font-size:13px;padding-right:0}
-  .faq-intro{font-size:14px}
-  .faq-cta{margin-top:36px}
-  .faq-cta .btn{width:100%;text-align:center;display:block}
+
+
+/* ═══════════════════════════════════════════════════════
+   FAQ V3 — CREAM LUXURY EDITORIAL  (alternating white section)
+═══════════════════════════════════════════════════════ */
+
+#faq {
+  background:#FAF8F4;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Subtle dot grid */
+#faq::before {
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle, rgba(30,58,47,.07) 1px, transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;
+}
+
+/* Gold corner accent top-right */
+#faq::after {
+  content:'';
+  position:absolute;top:0;right:0;
+  width:260px;height:260px;
+  background:conic-gradient(from 225deg at 100% 0%,
+    rgba(200,169,110,.18),
+    rgba(200,169,110,.04) 40%,
+    transparent 60%
+  );
+  pointer-events:none;
+}
+
+/* ── Two-column layout ── */
+.faq-layout {
+  display:grid;
+  grid-template-columns:360px 1fr;
+  position:relative;z-index:1;
+}
+
+/* ── LEFT STICKY PANEL ── */
+.faq-sticky {
+  position:sticky;
+  top:0;height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 52px 80px 60px;
+  border-right:1px solid rgba(30,58,47,.1);
+  overflow:hidden;
+  background:#FAF8F4;
+}
+
+/* Gold corner ornament inside sticky */
+.faq-sticky-corner {
+  position:absolute;top:0;left:0;
+  width:3px;height:80px;
+  background:linear-gradient(to bottom,#C8A96E,transparent);
+}
+.faq-sticky-corner::after {
+  content:'';
+  position:absolute;top:0;left:0;
+  width:80px;height:3px;
+  background:linear-gradient(to right,#C8A96E,transparent);
+}
+
+.faq-eyebrow {
+  font-size:9px;letter-spacing:.38em;text-transform:uppercase;
+  color:rgba(200,169,110,.7);font-family:'DM Sans',sans-serif;
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+  animation:fade-up .7s ease forwards;opacity:0;animation-delay:.2s;
+}
+.faq-eyebrow::before {
+  content:'';width:28px;height:1px;background:#C8A96E;flex-shrink:0;
+}
+
+.faq-h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(46px,3.8vw,68px);
+  font-weight:600;
+  line-height:.9;
+  letter-spacing:-.03em;
+  color:#1E3A2F;
+  margin-bottom:0;
+}
+.faq-h2 em {
+  font-style:italic;
+  background:linear-gradient(90deg,#C8A96E 0%,#E8C87A 35%,#C8A96E 65%,#D4A85A 100%);
+  background-size:250% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gold-shimmer 5s linear infinite;
+  display:block;margin-top:6px;
+}
+
+.faq-divider {
+  display:flex;align-items:center;gap:12px;
+  margin:28px 0;
+  opacity:0;animation:fade-up .6s ease .5s forwards;
+}
+.faq-divider::before {
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,#C8A96E,rgba(200,169,110,.2));
+}
+.faq-divider-diamond {
+  width:6px;height:6px;
+  background:#C8A96E;
+  transform:rotate(45deg);flex-shrink:0;
+}
+
+.faq-sub {
+  font-size:14px;line-height:1.8;
+  color:rgba(30,58,47,.5);
+  margin-bottom:40px;
+  max-width:260px;
+  opacity:0;animation:fade-up .7s ease .4s forwards;
+}
+
+/* Count badge — cream with gold border */
+.faq-count-badge {
+  display:inline-flex;flex-direction:column;
+  border:1px solid rgba(200,169,110,.4);
+  padding:16px 22px;width:fit-content;
+  position:relative;overflow:hidden;
+  background:rgba(200,169,110,.04);
+}
+.faq-count-badge::before {
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(to right,#C8A96E,rgba(200,169,110,.3));
+}
+.faq-count-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:600;line-height:1;
+  color:#1E3A2F;
+}
+.faq-count-num .accent-gold {color:#C8A96E}
+.faq-count-lbl {
+  font-size:8px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(200,169,110,.65);margin-top:6px;
+}
+
+/* Spinning decorative compass */
+.faq-deco {
+  position:absolute;bottom:60px;right:24px;
+  width:80px;height:80px;opacity:.14;
+}
+.faq-deco svg {animation:spin-slow 25s linear infinite}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+
+/* Vertical scroll progress line */
+.faq-progress {
+  position:absolute;right:0;top:0;bottom:0;
+  width:2px;background:rgba(200,169,110,.12);
+}
+.faq-progress-bar {
+  width:100%;height:0%;
+  background:linear-gradient(to bottom,#C8A96E,rgba(200,169,110,.3));
+  transition:height .1s linear;
+}
+
+/* ── RIGHT ACCORDION ── */
+.faq-accordion {
+  padding:80px 72px 80px 64px;
+  display:flex;flex-direction:column;
+}
+
+/* EACH ITEM */
+.faq-item-v2 {
+  position:relative;
+  border-bottom:1px solid rgba(30,58,47,.1);
+  cursor:pointer;
+  overflow:hidden;
+}
+.faq-item-v2:first-child {border-top:1px solid rgba(30,58,47,.1)}
+
+/* Big ghosted gold number — behind the row */
+.faq-item-v2::before {
+  content:attr(data-num);
+  position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:130px;font-weight:700;line-height:1;
+  color:rgba(200,169,110,.06);
+  pointer-events:none;user-select:none;
+  transition:color .4s,transform .4s;
+  z-index:0;
+}
+.faq-item-v2:hover::before {
+  color:rgba(200,169,110,.1);
+  transform:translateY(-50%) scale(1.04);
+}
+.faq-item-v2.open::before {color:rgba(200,169,110,.09)}
+
+/* Dark-green hover fill — slides from left */
+.faq-hover-fill {
+  position:absolute;inset:0;
+  background:#1E3A2F;
+  transform:translateX(-101%);
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;z-index:1;
+}
+.faq-item-v2:hover .faq-hover-fill {transform:translateX(0)}
+.faq-item-v2.open .faq-hover-fill {transform:translateX(0)}
+
+/* Gold left border — animates scaleY */
+.faq-item-v2::after {
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(to bottom,#C8A96E,rgba(200,169,110,.3));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .5s cubic-bezier(.16,1,.3,1);
+  z-index:3;
+}
+.faq-item-v2.open::after,.faq-item-v2:hover::after {transform:scaleY(1)}
+
+/* TRIGGER */
+.faq-trigger {
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:20px;
+  padding:24px 16px 24px 20px;
+  user-select:none;
+  position:relative;z-index:2;
+}
+
+.faq-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;font-weight:400;letter-spacing:.08em;
+  color:rgba(200,169,110,.55);
+  width:26px;flex-shrink:0;
+  transition:color .3s;
+}
+.faq-item-v2:hover .faq-num {color:#C8A96E}
+.faq-item-v2.open .faq-num {color:#C8A96E}
+
+.faq-q-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:500;line-height:1.25;
+  color:#1E3A2F;
+  padding-right:12px;
+  transition:color .35s;
+}
+.faq-item-v2:hover .faq-q-text {color:#F5F0E8}
+.faq-item-v2.open .faq-q-text {color:#F5F0E8}
+
+/* Icon */
+.faq-icon {
+  width:34px;height:34px;flex-shrink:0;
+  border:1px solid rgba(30,58,47,.2);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  transition:background .3s,border-color .3s,transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.faq-item-v2:hover .faq-icon {border-color:rgba(200,169,110,.5)}
+.faq-item-v2.open .faq-icon {
+  background:#C8A96E;border-color:#C8A96E;
+  transform:rotate(45deg);
+}
+.faq-icon::before,.faq-icon::after {
+  content:'';position:absolute;
+  background:#1E3A2F;
+  transition:background .3s;
+}
+.faq-icon::before{width:12px;height:1px}
+.faq-icon::after{width:1px;height:12px;transition:height .3s,background .3s}
+.faq-item-v2:hover .faq-icon::before,
+.faq-item-v2:hover .faq-icon::after {background:rgba(200,169,110,.8)}
+.faq-item-v2.open .faq-icon::before,
+.faq-item-v2.open .faq-icon::after {background:#1E3A2F}
+
+/* ANSWER */
+.faq-body {
+  overflow:hidden;max-height:0;
+  transition:max-height .55s cubic-bezier(.16,1,.3,1);
+  position:relative;z-index:2;
+}
+.faq-body.open {max-height:300px}
+.faq-body-inner {
+  padding:2px 20px 26px 46px;
+  font-size:15px;line-height:1.85;
+  color:rgba(245,240,232,.55);
+  max-width:580px;
+  transform:translateY(10px);opacity:0;
+  transition:transform .45s ease .08s,opacity .45s ease .08s;
+}
+.faq-body.open .faq-body-inner {transform:translateY(0);opacity:1}
+
+/* Bottom CTA */
+.faq-bottom-cta {margin-top:56px}
+.faq-cta-btn {
+  display:inline-flex;align-items:center;gap:16px;
+  padding:17px 36px;
+  background:#1E3A2F;
+  border:1px solid #1E3A2F;
+  color:#F5F0E8;
+  text-decoration:none;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+  position:relative;overflow:hidden;
+  transition:color .3s,box-shadow .3s,transform .2s;
+}
+.faq-cta-btn::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,#C8A96E,#B8945E);
+  transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.faq-cta-btn:hover {
+  box-shadow:0 12px 40px rgba(30,58,47,.25);
+  transform:translateY(-2px);
+}
+.faq-cta-btn:hover::before{transform:translateX(0)}
+.faq-cta-btn span,.faq-cta-arrow{position:relative;z-index:1}
+.faq-cta-arrow {font-size:18px;transition:transform .3s}
+.faq-cta-btn:hover .faq-cta-arrow{transform:translateX(5px)}
+
+/* Gold floating particles */
+.faq-particle {
+  position:absolute;pointer-events:none;
+  border-radius:50%;
+  background:rgba(200,169,110,.35);
+  animation:faq-float linear infinite;
+}
+@keyframes faq-float {
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  15%{opacity:.7}
+  85%{opacity:.4}
+  100%{opacity:0;transform:translateY(-100px) scale(.5)}
+}
+
+/* Responsive */
+@media(max-width:960px){
+  .faq-layout{grid-template-columns:1fr}
+  .faq-sticky{
+    position:relative;height:auto;
+    padding:72px 36px 48px 36px;
+    border-right:none;
+    border-bottom:1px solid rgba(30,58,47,.1);
+  }
+  .faq-progress{display:none}
+  .faq-deco{display:none}
+  .faq-accordion{padding:48px 24px 64px}
+}
+@media(max-width:600px){
+  .faq-q-text{font-size:16px}
+  .faq-item-v2::before{font-size:90px}
+}
+
 }
 @media(min-width:901px) and (max-width:1180px){
   nav{padding:18px 28px}
@@ -630,12 +962,821 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 }
 
 /* Hidden by default; flex on wide screens */
-.svc-ecg-wrap{display:none}
-/* ── CARD FIX: whole card = link, no flip ── */
-.svc-inner{transform:none!important;transform-style:flat!important}
-.svc:focus-within .svc-inner,.svc.flipped .svc-inner,.svc:focus .svc-inner{transform:none!important}
-.svc{cursor:pointer}
 
+/* ═══════════════════════════════════════════════
+   CONTACT SECTION — REDESIGN
+═══════════════════════════════════════════════ */
+/* Reset old contact styles */
+.email-box,.soc-btn,.soc-row{all:unset}
+
+/* Section background — subtle warm paper */
+#kontakt{
+  background:linear-gradient(160deg,#F5F0E8 0%,#EDE8DE 100%);
+  padding:120px 48px 0;
+  position:relative;
+  overflow:hidden;
+}
+#kontakt::before{
+  content:'';
+  position:absolute;
+  top:-120px;right:-80px;
+  width:480px;height:480px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(30,58,47,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:88px;
+  align-items:start;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ── LEFT COLUMN ── */
+.contact-left{ position:sticky;top:110px }
+
+.contact-lbl{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(30,58,47,.45);font-family:'DM Sans',sans-serif;
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.contact-lbl::before{
+  content:'';width:28px;height:1px;
+  background:rgba(30,58,47,.3);display:inline-block;flex-shrink:0;
+}
+
+.contact-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(46px,5vw,72px);
+  font-weight:600;line-height:.94;
+  letter-spacing:-.025em;
+  color:#1E3A2F;
+  margin-bottom:24px;
+}
+.contact-h2 em{font-style:italic;color:#C8A96E}
+
+.contact-sub{
+  font-size:15px;line-height:1.8;
+  color:rgba(30,58,47,.6);
+  max-width:340px;
+  margin-bottom:48px;
+}
+
+/* Trust badges */
+.trust-row{
+  display:flex;gap:0;
+  margin-bottom:44px;
+  border:1px solid rgba(30,58,47,.12);
+}
+.trust-badge{
+  flex:1;padding:16px 12px;text-align:center;
+  border-right:1px solid rgba(30,58,47,.12);
+  position:relative;overflow:hidden;
+}
+.trust-badge:last-child{border-right:none}
+.trust-badge::after{
+  content:'';
+  position:absolute;inset:0;
+  background:rgba(30,58,47,0);
+  transition:background .3s;
+}
+.trust-badge:hover::after{background:rgba(30,58,47,.04)}
+.trust-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:600;color:#1E3A2F;
+  line-height:1;display:block;margin-bottom:4px;
+}
+.trust-num span{font-size:14px;color:#C8A96E}
+.trust-lbl{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(30,58,47,.5)}
+
+/* Contact items */
+.contact-items{display:flex;flex-direction:column;gap:0;margin-bottom:36px}
+.contact-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 0;
+  border-bottom:1px solid rgba(30,58,47,.1);
+  text-decoration:none;
+  transition:all .25s;
+  group:true;
+}
+.contact-item:first-child{border-top:1px solid rgba(30,58,47,.1)}
+.contact-item:hover .ci-icon{background:#1E3A2F;border-color:#1E3A2F}
+.contact-item:hover .ci-icon svg{stroke:#F5F0E8}
+.contact-item:hover .ci-val{color:#1E3A2F}
+.ci-icon{
+  width:42px;height:42px;flex-shrink:0;
+  border:1.5px solid rgba(30,58,47,.2);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+}
+.ci-group{display:flex;flex-direction:column;gap:2px}
+.ci-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(30,58,47,.42)}
+.ci-val{font-size:14px;color:rgba(30,58,47,.75);transition:color .25s}
+
+/* Social links */
+.soc-links{display:flex;gap:10px}
+.soc-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;font-weight:500;
+  color:#1E3A2F;text-decoration:none;
+  border:1.5px solid rgba(30,58,47,.22);
+  transition:all .28s;
+  position:relative;overflow:hidden;
+}
+.soc-link::before{
+  content:'';position:absolute;inset:0;
+  background:#1E3A2F;transform:translateX(-101%);
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.soc-link:hover::before{transform:translateX(0)}
+.soc-link:hover{color:#F5F0E8;border-color:#1E3A2F}
+.soc-link span{position:relative;z-index:1}
+.soc-arr{transition:transform .25s;position:relative;z-index:1;opacity:.6}
+.soc-link:hover .soc-arr{transform:translateX(4px);opacity:1}
+
+/* ── RIGHT COLUMN (FORM) ── */
+.form{
+  background:#fff;
+  box-shadow:0 4px 40px rgba(30,58,47,.08);
+  padding:52px 48px;
+  display:flex;flex-direction:column;gap:28px;
+  margin-bottom:0;
+  position:relative;
+}
+.form::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#1E3A2F,#C8A96E,#1E3A2F);
+  background-size:200%;
+  animation:shimmerLine 3s linear infinite;
+}
+@keyframes shimmerLine{
+  0%{background-position:0%}100%{background-position:200%}
+}
+
+/* Floating label fields */
+.fl-wrap{position:relative;padding-top:20px}
+.fl-wrap label{
+  position:absolute;top:22px;left:0;
+  font-size:13px;color:rgba(30,58,47,.4);
+  transition:all .22s;pointer-events:none;
+  font-family:'DM Sans',sans-serif;
+}
+.fl-wrap.active label,.fl-wrap input:focus ~ label,.fl-wrap textarea:focus ~ label{
+  top:2px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(30,58,47,.55);
+}
+.fl-wrap input,.fl-wrap textarea{
+  width:100%;background:transparent;border:none;border-bottom:1.5px solid rgba(30,58,47,.15);
+  padding:8px 0;font-size:15px;color:#1E3A2F;outline:none;
+  font-family:'DM Sans',sans-serif;resize:none;
+  transition:border-color .25s;
+}
+.fl-wrap input:focus,.fl-wrap textarea:focus{border-bottom-color:#1E3A2F}
+.fl-wrap input::placeholder,.fl-wrap textarea::placeholder{color:transparent}
+
+/* Service picker — redesigned */
+.svc-picker-label{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(30,58,47,.45);margin-bottom:12px;
+}
+.svc-picker{display:flex;flex-wrap:wrap;gap:8px}
+.pick-btn{
+  padding:8px 15px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  border:1.5px solid rgba(30,58,47,.15);background:transparent;
+  color:rgba(30,58,47,.65);cursor:pointer;
+  transition:all .2s;font-family:'DM Sans',sans-serif;border-radius:0;
+  -webkit-appearance:none;
+}
+.pick-btn:hover{border-color:#1E3A2F;color:#1E3A2F}
+.pick-btn.active{background:#1E3A2F;color:#F5F0E8;border-color:#1E3A2F}
+.pick-btn-free{
+  border-color:#C8A96E !important;color:#C8A96E !important;font-weight:600;
+}
+.pick-btn-free.active{background:#C8A96E !important;color:#fff !important;border-color:#C8A96E !important}
+
+/* Chips */
+.chips-wrap{
+  border:1.5px solid rgba(30,58,47,.15);
+  padding:10px 12px;min-height:48px;
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  transition:border-color .25s;background:#fafaf8;
+}
+.chips-wrap:focus-within{border-color:#1E3A2F}
+.chips-placeholder{font-size:13px;color:rgba(30,58,47,.3);font-family:'DM Sans',sans-serif}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#1E3A2F;color:#F5F0E8;
+  padding:4px 10px;font-size:11px;
+  letter-spacing:.06em;font-family:'DM Sans',sans-serif;
+}
+.chip-remove{
+  background:none;border:none;color:rgba(245,240,232,.7);
+  cursor:pointer;font-size:14px;padding:0 0 1px;line-height:1;
+}
+.chip-remove:hover{color:#F5F0E8}
+
+/* Submit CTA block */
+.submit-cta{
+  background:#1E3A2F;
+  padding:32px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;margin:0 -48px -28px;
+  position:relative;overflow:hidden;
+}
+.submit-cta::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(200,169,110,.18),transparent);
+  transform:translateX(-100%);
+  animation:cta-shimmer 4s ease-in-out infinite 2s;
+}
+@keyframes cta-shimmer{
+  0%{transform:translateX(-100%)}
+  50%{transform:translateX(100%)}
+  100%{transform:translateX(100%)}
+}
+.cta-text-block{color:#F5F0E8}
+.cta-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.45);display:block;margin-bottom:6px}
+.cta-head{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.15}
+#submit-btn{
+  all:unset;
+  cursor:pointer;
+  background:#F5F0E8;color:#1E3A2F;
+  padding:16px 36px;
+  font-family:'DM Sans',sans-serif;font-size:12px;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  white-space:nowrap;flex-shrink:0;
+  position:relative;overflow:hidden;z-index:1;
+  transition:background .28s,color .28s,transform .18s;
+}
+#submit-btn::before{
+  content:'';position:absolute;inset:0;
+  background:#1E3A2F;border:2px solid #F5F0E8;
+  transform:translateY(101%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+  z-index:-1;
+}
+#submit-btn:hover{color:#F5F0E8;transform:translateY(-1px)}
+#submit-btn:hover::before{transform:translateY(0)}
+#submit-btn:active{transform:translateY(0)}
+
+/* Form feedback */
+.form-feedback{display:flex;align-items:flex-start;gap:12px;padding:14px 18px}
+.form-success{background:rgba(30,58,47,.06);border-left:3px solid #1E3A2F}
+.form-error{background:rgba(139,32,32,.06);border-left:3px solid #8B2020}
+
+/* ── FOOTER — redesign ── */
+footer{
+  background:#1E3A2F;
+  padding:40px 48px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:24px;
+}
+.f-copy{font-size:12px;color:rgba(245,240,232,.45);letter-spacing:.04em}
+.f-logo-mark{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:600;color:rgba(245,240,232,.7);letter-spacing:.04em;
+  text-decoration:none;
+}
+.f-links{
+  display:flex;gap:20px;justify-content:flex-end;
+}
+.f-links a{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(245,240,232,.35);text-decoration:none;
+  transition:color .2s;
+}
+.f-links a:hover{color:rgba(245,240,232,.75)}
+
+/* responsive */
+@media(max-width:900px){
+  #kontakt{padding:80px 24px 0}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .contact-left{position:static}
+  .form{padding:36px 28px;margin-bottom:0}
+  .submit-cta{margin:0 -28px -28px;flex-direction:column;text-align:center;padding:28px 24px}
+  footer{grid-template-columns:1fr;text-align:center;padding:32px 24px;gap:12px}
+  .f-links{justify-content:center}
+}
+@media(max-width:600px){
+  .trust-row{flex-wrap:wrap}
+  .trust-badge{min-width:33%;border-bottom:1px solid rgba(30,58,47,.12)}
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT V2 — LUXURY DARK REDESIGN
+═══════════════════════════════════════════════════════ */
+
+/* SECTION WRAPPER */
+#kontakt{
+  background:#0F2218;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Animated background orbs */
+.k-orb{
+  position:absolute;pointer-events:none;border-radius:50%;
+  filter:blur(90px);opacity:.35;
+}
+.k-orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(200,169,110,.22),transparent 70%);
+  top:-120px;left:-100px;
+  animation:orb1 12s ease-in-out infinite alternate;
+}
+.k-orb-2{
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(30,58,47,.6),transparent 70%);
+  bottom:-80px;right:30%;
+  animation:orb2 16s ease-in-out infinite alternate;
+}
+.k-orb-3{
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(200,169,110,.15),transparent 70%);
+  top:40%;right:-60px;
+  animation:orb3 10s ease-in-out infinite alternate;
+}
+@keyframes orb1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.15)}}
+@keyframes orb2{0%{transform:translate(0,0)}100%{transform:translate(-40px,-50px) scale(1.1)}}
+@keyframes orb3{0%{transform:translate(0,0)}100%{transform:translate(-30px,40px) scale(1.2)}}
+
+/* Floating particles */
+.k-particle{
+  position:absolute;pointer-events:none;border-radius:50%;
+  background:rgba(200,169,110,.5);
+  animation:particle-rise linear infinite;
+}
+@keyframes particle-rise{
+  0%{transform:translateY(0) scale(1);opacity:.6}
+  100%{transform:translateY(-120vh) scale(.4);opacity:0}
+}
+
+/* Inner grid */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:100vh;
+  align-items:stretch;
+  position:relative;z-index:1;
+}
+
+/* ── LEFT COLUMN ── */
+.contact-left{
+  padding:100px 64px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid rgba(200,169,110,.15);
+  position:relative;
+}
+
+.k-eyebrow{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:#C8A96E;font-family:'DM Sans',sans-serif;font-weight:400;
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:14px;
+  animation:fade-up .8s ease forwards;opacity:0;animation-delay:.2s;
+}
+.k-eyebrow::before{
+  content:'';width:36px;height:1px;background:#C8A96E;flex-shrink:0;
+}
+
+.contact-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(54px,5.5vw,88px);
+  font-weight:600;line-height:.9;
+  letter-spacing:-.03em;
+  color:#F5F0E8;
+  margin-bottom:0;
+  overflow:hidden;
+}
+.contact-h2 .word{
+  display:block;overflow:visible;
+  padding-bottom:.12em;
+}
+.contact-h2 .word:nth-child(2){
+  padding-left:.08em;overflow:hidden;
+}
+.contact-h2 .word span{
+  display:block;
+  animation:word-slide .9s cubic-bezier(.16,1,.3,1) forwards;
+  transform:translateY(110%);opacity:0;
+}
+.contact-h2 .word:nth-child(1) span{animation-delay:.3s}
+.contact-h2 .word:nth-child(2) span{animation-delay:.46s}
+
+/* Gold shimmer italic */
+.k-gold{
+  font-style:italic;
+  background:linear-gradient(90deg,#C8A96E 0%,#F0D99A 30%,#C8A96E 60%,#E8C87A 80%,#C8A96E 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gold-shimmer 4s linear infinite;
+}
+@keyframes gold-shimmer{
+  0%{background-position:0% center}
+  100%{background-position:300% center}
+}
+@keyframes word-slide{
+  0%{transform:translateY(110%);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+
+.k-divider{
+  width:60px;height:1px;background:#C8A96E;
+  margin:36px 0;opacity:.5;
+  animation:line-grow .8s ease forwards;transform-origin:left;
+  transform:scaleX(0);animation-delay:.8s;
+}
+@keyframes line-grow{to{transform:scaleX(1)}}
+
+.contact-sub{
+  font-size:16px;line-height:1.85;
+  color:rgba(245,240,232,.5);
+  max-width:380px;margin-bottom:56px;
+  animation:fade-up .8s ease forwards;opacity:0;animation-delay:.6s;
+}
+@keyframes fade-up{
+  0%{opacity:0;transform:translateY(20px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
+/* COUNT-UP STATS */
+.k-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid rgba(200,169,110,.2);
+  margin-bottom:52px;
+  animation:fade-up .8s ease forwards;opacity:0;animation-delay:.7s;
+}
+.k-stat{
+  padding:22px 14px;text-align:center;
+  border-right:1px solid rgba(200,169,110,.2);
+  position:relative;overflow:hidden;
+}
+.k-stat:last-child{border-right:none}
+.k-stat::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#C8A96E,transparent);
+  transform:scaleX(0);transition:transform .4s ease;
+}
+.k-stat:hover::after{transform:scaleX(1)}
+.k-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;font-weight:600;color:#F5F0E8;
+  line-height:1;display:block;margin-bottom:4px;
+}
+.k-stat-num .suffix{font-size:18px;color:#C8A96E}
+.k-stat-lbl{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(200,169,110,.55);
+}
+
+/* CONTACT LINKS */
+.k-contact-items{display:flex;flex-direction:column;gap:0;margin-bottom:40px}
+.k-ci{
+  display:flex;align-items:center;gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid rgba(200,169,110,.1);
+  text-decoration:none;
+  position:relative;overflow:hidden;
+  transition:all .3s;
+}
+.k-ci:first-child{border-top:1px solid rgba(200,169,110,.1)}
+.k-ci::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:rgba(200,169,110,.06);
+  transition:width .35s ease;
+}
+.k-ci:hover::before{width:100%}
+.k-ci-icon{
+  width:44px;height:44px;flex-shrink:0;
+  border:1px solid rgba(200,169,110,.25);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(245,240,232,.6);
+  transition:all .3s;position:relative;z-index:1;
+}
+.k-ci:hover .k-ci-icon{
+  border-color:#C8A96E;color:#C8A96E;
+  box-shadow:0 0 18px rgba(200,169,110,.3);
+}
+.k-ci-text{position:relative;z-index:1}
+.k-ci-lbl{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(200,169,110,.5);display:block;margin-bottom:3px;
+}
+.k-ci-val{
+  font-size:14px;color:rgba(245,240,232,.7);
+  transition:color .3s;
+}
+.k-ci:hover .k-ci-val{color:#F5F0E8}
+
+/* SOCIAL BUTTONS */
+.k-socials{display:flex;gap:12px}
+.k-soc{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+  color:rgba(245,240,232,.6);
+  border:1px solid rgba(200,169,110,.25);
+  text-decoration:none;
+  position:relative;overflow:hidden;
+  transition:color .3s,border-color .3s,box-shadow .3s;
+}
+.k-soc::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,169,110,.15),rgba(200,169,110,.05));
+  transform:translateX(-101%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.k-soc:hover{
+  color:#F5F0E8;border-color:#C8A96E;
+  box-shadow:0 0 24px rgba(200,169,110,.2);
+}
+.k-soc:hover::before{transform:translateX(0)}
+.k-soc span{position:relative;z-index:1}
+.k-soc-icon{position:relative;z-index:1;opacity:.6;transition:opacity .3s,transform .3s}
+.k-soc:hover .k-soc-icon{opacity:1;transform:rotate(10deg)}
+
+/* ── RIGHT COLUMN (FORM) ── */
+.contact-right{
+  padding:100px 64px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:rgba(255,255,255,.03);
+}
+
+/* Form card with animated gradient border */
+.form-card{
+  position:relative;
+  padding:3px;
+  border-radius:0;
+}
+.form-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:conic-gradient(from var(--angle,0deg),
+    #C8A96E 0%,
+    rgba(30,58,47,.4) 25%,
+    rgba(200,169,110,.2) 50%,
+    rgba(30,58,47,.4) 75%,
+    #C8A96E 100%
+  );
+  animation:border-rotate 6s linear infinite;
+  border-radius:0;
+}
+@property --angle{
+  syntax:'<angle>';initial-value:0deg;inherits:false;
+}
+@keyframes border-rotate{
+  to{--angle:360deg}
+}
+/* Fallback for browsers without @property */
+@supports not (background:conic-gradient(from 0deg, red, blue)){
+  .form-card::before{
+    background:linear-gradient(90deg,#C8A96E,rgba(200,169,110,.3),#C8A96E);
+    background-size:200%;
+    animation:shimmer-border 3s linear infinite;
+  }
+  @keyframes shimmer-border{0%{background-position:0%}100%{background-position:200%}}
+}
+
+.form-inner{
+  background:#0F2218;
+  padding:48px 44px 40px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;
+}
+
+/* Floating input fields — dark style */
+.kf-group{
+  position:relative;margin-bottom:28px;
+}
+.kf-group label{
+  position:absolute;top:14px;left:0;
+  font-size:13px;color:rgba(245,240,232,.35);
+  font-family:'DM Sans',sans-serif;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;cursor:text;
+}
+.kf-group.active label,.kf-group input:focus~label,.kf-group textarea:focus~label{
+  top:-2px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;
+}
+.kf-group input,.kf-group textarea,.kf-group select{
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid rgba(245,240,232,.12);
+  padding:14px 0 8px;
+  font-size:15px;color:#F5F0E8;
+  font-family:'DM Sans',sans-serif;outline:none;resize:none;
+  -webkit-appearance:none;transition:border-color .3s;
+}
+.kf-group input:focus,.kf-group textarea:focus,.kf-group select:focus{
+  border-bottom-color:#C8A96E;
+}
+.kf-group::after{
+  content:'';position:absolute;bottom:0;left:50%;right:50%;
+  height:1px;background:#C8A96E;
+  transition:left .3s ease,right .3s ease;
+}
+.kf-group:focus-within::after{left:0;right:0}
+.kf-group input::placeholder,.kf-group textarea::placeholder{color:transparent}
+.kf-group select option{background:#1E3A2F;color:#F5F0E8}
+
+.kf-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+/* Service picker — dark style */
+.kf-label{
+  font-size:9px;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(200,169,110,.6);display:block;margin-bottom:12px;
+  font-family:'DM Sans',sans-serif;
+}
+.svc-picker{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px}
+.pick-btn{
+  padding:7px 14px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(245,240,232,.12);background:transparent;
+  color:rgba(245,240,232,.45);cursor:pointer;
+  transition:all .22s;font-family:'DM Sans',sans-serif;border-radius:0;
+  -webkit-appearance:none;
+}
+.pick-btn:hover{border-color:rgba(200,169,110,.5);color:rgba(200,169,110,.8)}
+.pick-btn.active{background:rgba(200,169,110,.15);color:#C8A96E;border-color:#C8A96E}
+.pick-btn-free{border-color:rgba(200,169,110,.4)!important;color:#C8A96E!important}
+.pick-btn-free.active{background:#C8A96E!important;color:#0F2218!important}
+
+/* Chips */
+.chips-wrap{
+  border:1px solid rgba(245,240,232,.12);
+  padding:10px 12px;min-height:46px;
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  transition:border-color .3s;margin-bottom:12px;
+  background:rgba(255,255,255,.02);
+}
+.chips-wrap:focus-within{border-color:#C8A96E}
+.chips-placeholder{font-size:12px;color:rgba(245,240,232,.25);font-family:'DM Sans',sans-serif}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(200,169,110,.2);color:#C8A96E;
+  padding:4px 10px;font-size:10px;letter-spacing:.06em;
+  font-family:'DM Sans',sans-serif;border:1px solid rgba(200,169,110,.3);
+}
+.chip-remove{
+  background:none;border:none;color:rgba(200,169,110,.6);
+  cursor:pointer;font-size:14px;padding:0 0 1px;line-height:1;
+}
+.chip-remove:hover{color:#C8A96E}
+.limit-hint{font-size:11px;color:rgba(200,169,110,.5);margin-top:6px;display:none}
+.limit-hint.show{display:block}
+
+/* Svc fields dark */
+.svc-fields{display:none;border-top:1px solid rgba(245,240,232,.08);padding-top:20px;margin-top:8px}
+.svc-fields.show{display:flex;flex-direction:column;gap:20px}
+.svc-fields-label{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(200,169,110,.5);margin-bottom:6px;
+  display:flex;align-items:center;gap:10px;
+}
+.svc-fields-label::before{content:'';width:18px;height:1px;background:rgba(200,169,110,.3)}
+.svc-fields .field{display:flex;flex-direction:column;gap:6px}
+.svc-fields .field label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.4)}
+.svc-fields .field input,.svc-fields .field textarea,.svc-fields .field select{
+  background:transparent;border:none;border-bottom:1px solid rgba(245,240,232,.1);
+  padding:10px 0;font-size:14px;color:rgba(245,240,232,.8);
+  font-family:'DM Sans',sans-serif;outline:none;resize:none;-webkit-appearance:none;
+  transition:border-color .25s;
+}
+.svc-fields .field input:focus,.svc-fields .field textarea:focus,.svc-fields .field select:focus{
+  border-bottom-color:#C8A96E;
+}
+.svc-fields .field select option{background:#1E3A2F}
+.svc-fields .field input::placeholder,.svc-fields .field textarea::placeholder{
+  color:rgba(245,240,232,.2);
+}
+.checkbox-group{display:flex;flex-direction:column;gap:10px}
+.cb-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(245,240,232,.6);cursor:pointer;
+}
+.cb-item input{
+  width:14px;height:14px;accent-color:#C8A96E;
+  border:1px solid rgba(200,169,110,.3);
+}
+.no-selection-hint{font-size:13px;color:rgba(245,240,232,.25);font-style:italic}
+
+/* Form feedback */
+.form-feedback{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;margin-top:4px}
+.form-success{background:rgba(200,169,110,.08);border-left:2px solid #C8A96E}
+.form-success p{color:rgba(245,240,232,.8);font-size:14px}
+.form-error{background:rgba(139,32,32,.1);border-left:2px solid #8B2020}
+.form-error p{color:rgba(245,100,100,.8);font-size:14px}
+
+/* SUBMIT CTA */
+.k-submit-wrap{
+  margin-top:36px;position:relative;overflow:hidden;
+}
+#submit-btn{
+  all:unset;cursor:pointer;
+  display:flex;width:100%;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#C8A96E 0%,#D4B06A 40%,#B8945E 100%);
+  color:#0F2218;
+  padding:22px 32px;
+  font-family:'DM Sans',sans-serif;font-size:12px;
+  font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  position:relative;z-index:1;overflow:hidden;
+  transition:transform .2s,box-shadow .3s;
+  box-shadow:0 8px 32px rgba(200,169,110,.3);
+}
+/* Sheen sweep on hover */
+#submit-btn::before{
+  content:'';
+  position:absolute;top:-20%;left:-60%;
+  width:40%;height:140%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-20deg);
+  transition:left .55s ease;
+  pointer-events:none;
+}
+#submit-btn:hover::before{left:130%}
+#submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 50px rgba(200,169,110,.5),0 0 70px rgba(200,169,110,.18);
+}
+#submit-btn:active{transform:translateY(0)}
+.submit-arrow{
+  font-size:20px;position:relative;z-index:2;
+  animation:arrow-bounce 2s ease-in-out infinite;
+}
+@keyframes arrow-bounce{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
+}
+/* Sparkle particles */
+.btn-sparkle{
+  position:absolute;pointer-events:none;z-index:2;
+  width:4px;height:4px;border-radius:50%;
+  background:#fff;
+  animation:sparkle-pop var(--dur,2.4s) var(--delay,0s) ease-in-out infinite;
+  opacity:0;
+}
+.btn-sparkle::before,.btn-sparkle::after{
+  content:'';position:absolute;top:50%;left:50%;
+  width:1px;height:7px;background:#fffbe0;
+  transform:translate(-50%,-50%);border-radius:2px;
+}
+.btn-sparkle::after{transform:translate(-50%,-50%) rotate(90deg)}
+@keyframes sparkle-pop{
+  0%{opacity:0;transform:scale(0) rotate(0deg)}
+  20%{opacity:.9;transform:scale(1) rotate(45deg)}
+  50%{opacity:.6;transform:scale(1.2) rotate(90deg)}
+  80%{opacity:.1;transform:scale(.7) rotate(135deg)}
+  100%{opacity:0;transform:scale(0) rotate(180deg)}
+}
+
+/* FOOTER */
+footer{
+  background:#0A1A10;
+  padding:32px 64px;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:24px;
+  border-top:1px solid rgba(200,169,110,.12);
+}
+.f-copy{font-size:11px;color:rgba(245,240,232,.3);letter-spacing:.06em}
+.f-logo-mark{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:600;color:rgba(245,240,232,.5);letter-spacing:.06em;
+  text-decoration:none;transition:color .3s;
+}
+.f-logo-mark:hover{color:rgba(200,169,110,.8)}
+.f-links{display:flex;gap:24px;justify-content:flex-end}
+.f-links a{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,240,232,.25);text-decoration:none;transition:color .25s;
+}
+.f-links a:hover{color:rgba(200,169,110,.7)}
+
+/* Responsive */
+@media(max-width:1000px){
+  .contact-grid{grid-template-columns:1fr;min-height:auto}
+  .contact-left,.contact-right{padding:72px 36px 56px}
+  .contact-left{border-right:none;border-bottom:1px solid rgba(200,169,110,.15)}
+  .k-stats{grid-template-columns:repeat(2,1fr)}
+  footer{grid-template-columns:1fr;text-align:center;padding:28px 24px;gap:12px}
+  .f-links{justify-content:center}
+  .kf-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .contact-left,.contact-right{padding:56px 24px 48px}
+  .form-inner{padding:36px 24px 32px}
+}
+
+.svc-ecg-wrap{display:none}
 @media(min-width:1080px){.svc-ecg-wrap{display:flex}}
 
 /* ── Monitor panel ── */
@@ -1762,296 +2903,448 @@ footer{background:var(--green);padding:26px 48px;display:flex;justify-content:sp
 
 
 <!-- FAQ -->
-<section class="sec" id="faq">
-  <div class="faq-wrap">
-    <div class="faq-header reveal">
-      <p class="lbl">Въпроси</p>
-      <h2 class="h2">Честo задавани<br><em class="accent">въпроси.</em></h2>
-      <p class="faq-intro">Всичко което искаш да знаеш преди да решиш да работиш с нас.</p>
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="faq-layout">
+
+    <!-- ── STICKY LEFT ── -->
+    <div class="faq-sticky">
+      <div class="faq-sticky-corner" aria-hidden="true"></div>
+
+      <p class="faq-eyebrow" aria-hidden="true">Въпроси</p>
+
+      <h2 class="faq-h2" id="faq-heading">
+        Честo<br>задавани
+        <em>въпроси.</em>
+      </h2>
+
+      <div class="faq-divider" aria-hidden="true">
+        <div class="faq-divider-diamond"></div>
+      </div>
+
+      <p class="faq-sub">Всичко което искаш да знаеш преди да решиш да работиш с нас.</p>
+
+      <div class="faq-count-badge" aria-label="19 въпроса">
+        <span class="faq-count-num">
+          <span class="count-up" data-target="19">0</span><span class="accent-gold">+</span>
+        </span>
+        <span class="faq-count-lbl">Отговора на въпросите ти</span>
+      </div>
+
+      <div class="faq-progress" aria-hidden="true">
+        <div class="faq-progress-bar" id="faq-prog"></div>
+      </div>
+
+      <div class="faq-deco" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="36" stroke="#C8A96E" stroke-width="1"/>
+  <circle cx="40" cy="40" r="24" stroke="#C8A96E" stroke-width=".6" stroke-dasharray="3 5"/>
+  <circle cx="40" cy="40" r="10" stroke="#C8A96E" stroke-width=".6"/>
+  <line x1="4" y1="40" x2="76" y2="40" stroke="#C8A96E" stroke-width=".6"/>
+  <line x1="40" y1="4" x2="40" y2="76" stroke="#C8A96E" stroke-width=".6"/>
+  <line x1="14" y1="14" x2="66" y2="66" stroke="#C8A96E" stroke-width=".5"/>
+  <line x1="66" y1="14" x2="14" y2="66" stroke="#C8A96E" stroke-width=".5"/>
+  <circle cx="40" cy="40" r="2.5" fill="#C8A96E"/>
+</svg></div>
     </div>
-    <div class="faq-list reveal" style="transition-delay:.1s">
 
-      <details class="faq-item">
-        <summary>Колко струват услугите на The Marketing Clinic?</summary>
-        <p class="faq-ans">Съставяме първо безплатен анализ, искаме да предложим най-доброто качество на услугите и да направим първо анализа, след това го коментираме по телефона или по видео чат. Цената определяме след като разберем обхвата и целите на твоя бизнес.</p>
-      </details>
+    <!-- ── RIGHT ACCORDION ── -->
+    <div class="faq-accordion" id="faq-accordion" role="list">
+      
+      <div class="faq-item-v2 reveal" data-num="01" style="transition-delay:0.00s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-1">
+          <span class="faq-num" aria-hidden="true">01</span>
+          <span class="faq-q-text">Колко струват услугите на The Marketing Clinic?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-1" role="region">
+          <div class="faq-body-inner">Съставяме първо безплатен анализ — искаме да предложим най-доброто качество и да разберем обхвата на твоя бизнес. Цената определяме след консултация, когато имаме ясна картина за целите ти.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="02" style="transition-delay:0.04s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-2">
+          <span class="faq-num" aria-hidden="true">02</span>
+          <span class="faq-q-text">Работите ли с малки бизнеси или само с големи компании?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-2" role="region">
+          <div class="faq-body-inner">Работим с бизнеси от всякакъв размер — от стартиращи онлайн магазини до утвърдени компании. Нямаме минимален оборот. Важното е ясна цел и готовност да инвестираш в растеж.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="03" style="transition-delay:0.07s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-3">
+          <span class="faq-num" aria-hidden="true">03</span>
+          <span class="faq-q-text">Има ли минимален рекламен бюджет за Meta или Google Ads?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-3" role="region">
+          <div class="faq-body-inner">Минимумът зависи от индустрията. Правим видео чат или обаждане с теб преди да даваме числа — за да разберем реалните ти цели и конкуренция.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="04" style="transition-delay:0.11s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-4">
+          <span class="faq-num" aria-hidden="true">04</span>
+          <span class="faq-q-text">Колко бързо ще видя резултати от рекламите?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-4" role="region">
+          <div class="faq-body-inner">При платена реклама (Meta и Google Ads) първите резултати идват в рамките на 7–14 дни. Оптималните резултати — след 45–90 дни оптимизация. При SEO — 3–6 месеца за стабилен органичен трафик.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="05" style="transition-delay:0.14s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-5">
+          <span class="faq-num" aria-hidden="true">05</span>
+          <span class="faq-q-text">Какво включва безплатният маркетинг одит?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-5" role="region">
+          <div class="faq-body-inner">8-степенен анализ: Meta реклами, Google Ads, SEO, уебсайт, социални мрежи, брандинг, съдържание и конкурентна среда. Конкретен доклад с точно кое работи и кое не. Без задължения.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="06" style="transition-delay:0.18s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-6">
+          <span class="faq-num" aria-hidden="true">06</span>
+          <span class="faq-q-text">Каква е разликата между Meta Ads и Google Ads — кое ми трябва?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-6" role="region">
+          <div class="faq-body-inner">Meta Ads прекъсват хората докато скролват — работят отлично за brand awareness и e-commerce. Google Ads улавят хора в момента на търсене. При повечето бизнеси работят и двете. В одита ти казваме кое е по-подходящо.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="07" style="transition-delay:0.21s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-7">
+          <span class="faq-num" aria-hidden="true">07</span>
+          <span class="faq-q-text">Нужен ли ми е сайт за да стартирам реклами?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-7" role="region">
+          <div class="faq-body-inner">За Meta реклами — може с Lead Generation форма, без сайт. За Google Ads сайтът е задължителен. Нашата услуга Уеб Дизайн може да реши това в рамките на 2–4 седмици.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="08" style="transition-delay:0.25s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-8">
+          <span class="faq-num" aria-hidden="true">08</span>
+          <span class="faq-q-text">Как измервате и отчитате резултатите от кампаниите?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-8" role="region">
+          <div class="faq-body-inner">Всеки клиент получава достъп до live dashboard с ключовите метрики: ROAS, CPL, CTR, reach и конверсии. Месечен отчет с анализ — какво тествахме и какво правим следващия месец.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="09" style="transition-delay:0.28s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-9">
+          <span class="faq-num" aria-hidden="true">09</span>
+          <span class="faq-q-text">Ще имам ли достъп до рекламните акаунти и данните?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-9" role="region">
+          <div class="faq-body-inner">Абсолютно. Работим в твоите акаунти или създаваме нови на твое име. Ти си собственик на всичко — акаунти, данни, кампании. Ако спрем работа, всичко остава при теб.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="10" style="transition-delay:0.32s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-10">
+          <span class="faq-num" aria-hidden="true">10</span>
+          <span class="faq-q-text">Колко трае типичен договор с The Marketing Clinic?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-10" role="region">
+          <div class="faq-body-inner">Зависи от услугата и целите ти. Говорим за това на консултацията — нямаме смисъл да поставяме срокове преди да знаем обхвата на проекта.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="11" style="transition-delay:0.35s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-11">
+          <span class="faq-num" aria-hidden="true">11</span>
+          <span class="faq-q-text">Работите ли само в България или и с международни клиенти?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-11" role="region">
+          <div class="faq-body-inner">Основно работим с клиенти в България, но имаме опит с кампании таргетиращи Европа и международни пазари. Работим дистанционно — без ограничение по локация.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="12" style="transition-delay:0.39s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-12">
+          <span class="faq-num" aria-hidden="true">12</span>
+          <span class="faq-q-text">Как изглежда процесът на работа — от старт до резултати?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-12" role="region">
+          <div class="faq-body-inner">Безплатен одит и консултация → персонален маркетинг план → кампаниите са активни в 5–10 работни дни → месечен отчет и план за следващия период.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="13" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-13">
+          <span class="faq-num" aria-hidden="true">13</span>
+          <span class="faq-q-text">Какъв е средният ROAS, който постигате при клиентите?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-13" role="region">
+          <div class="faq-body-inner">Средният ROAS при нашите активни клиенти е 3.8x. Варира според продукта, цената и пазара. При одита ти даваме реалистична прогноза базирана на твоята ниша и конкуренция.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="14" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-14">
+          <span class="faq-num" aria-hidden="true">14</span>
+          <span class="faq-q-text">Вие ли правите рекламните creatives (снимки, видеа, текстове)?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-14" role="region">
+          <div class="faq-body-inner">Да — copywriting и graphic design са включени в пакетите. Full Stack покрива всичко: стратегия, реклами, съдържание, дизайн и уебсайт.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="15" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-15">
+          <span class="faq-num" aria-hidden="true">15</span>
+          <span class="faq-q-text">Имате ли опит в моята индустрия или ниша?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-15" role="region">
+          <div class="faq-body-inner">Работили сме с e-commerce, beauty, fitness, B2B услуги, образование, ресторанти и строителство. Ако нишата е нова за нас — правим задълбочено competitor research преди старт.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="16" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-16">
+          <span class="faq-num" aria-hidden="true">16</span>
+          <span class="faq-q-text">Какво се случва след като поискам безплатния одит?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-16" role="region">
+          <div class="faq-body-inner">Представяме ти одита в 48–72 часа. Обясняваме находките. Ако имаш интерес — изготвяме конкретна оферта. Ако не — одитът е твой. Без натиск.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="17" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-17">
+          <span class="faq-num" aria-hidden="true">17</span>
+          <span class="faq-q-text">Колко бързо можете да стартирате кампаниите?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-17" role="region">
+          <div class="faq-body-inner">След подписан договор и получени достъпи — кампаниите са активни в 5–10 работни дни. Уеб дизайн проекти — 3–6 седмици в зависимост от обхвата.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="18" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-18">
+          <span class="faq-num" aria-hidden="true">18</span>
+          <span class="faq-q-text">Каква е разликата между SEO и платена реклама?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-18" role="region">
+          <div class="faq-body-inner">Платената реклама дава резултати веднага, но спира щом спреш да плащаш. SEO гради органичен трафик, който расте с времето. Идеалната стратегия използва и двете.</div>
+        </div>
+      </div>
+      <div class="faq-item-v2 reveal" data-num="19" style="transition-delay:0.40s">
+        <div class="faq-hover-fill" aria-hidden="true"></div>
+        <div class="faq-trigger" role="button" aria-expanded="false" tabindex="0" aria-controls="faq-body-19">
+          <span class="faq-num" aria-hidden="true">19</span>
+          <span class="faq-q-text">Как да разбера дали инвестицията в маркетинг агенция е правилна за мен?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </div>
+        <div class="faq-body" id="faq-body-19" role="region">
+          <div class="faq-body-inner">Ако харчиш за реклама без ясен ROAS, или нямаш времето да управляваш маркетинга сам — работата с агенция обикновено си струва. Безплатният одит ти дава точна картина.</div>
+        </div>
+      </div>
 
-      <details class="faq-item">
-        <summary>Работите ли с малки бизнеси или само с големи компании?</summary>
-        <p class="faq-ans">Работим с бизнеси от всякакъв размер, от стартиращи онлайн магазини до утвърдени компании. Нямаме минимален оборот за работа. Важното е ясна цел и готовност да инвестираш в растеж.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Има ли минимален рекламен бюджет за Meta или Google Ads?</summary>
-        <p class="faq-ans">Минимумът, който бихме препоръчали, зависи от индустрията. Бихме направили първо видео чат или обаждане с вас преди да даваме празни приказки, за да видим какви са вашите цели.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Колко бързо ще видя резултати от рекламите?</summary>
-        <p class="faq-ans">При платена реклама (Meta и Google Ads) първите резултати се появяват в рамките на 7–14 дни. Оптималните резултати обикновено идват след 45–90 дни на оптимизация. При SEO и органично съдържание — 3–6 месеца за стабилен трафик.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Какво включва безплатният маркетинг одит?</summary>
-        <p class="faq-ans">Провеждаме 8-степенен анализ: Meta реклами, Google Ads, SEO, уебсайт, социални мрежи, брандинг, съдържание и конкурентна среда. Получаваш конкретен доклад с точно кое работи и кое не. Без задължения.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Каква е разликата между Meta Ads и Google Ads — кое ми трябва?</summary>
-        <p class="faq-ans">Meta Ads (Facebook/Instagram) прекъсват хората докато скролват и работят отлично за brand awareness и e-commerce. Google Ads улавят хора в момента на търсене — те вече искат нещо. При повечето бизнеси работят и двете заедно. В одита ти казваме кое е по-подходящо.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Нужен ли ми е сайт за да стартирам реклами?</summary>
-        <p class="faq-ans">За Meta реклами може да рекламираш с Lead Generation форма — без сайт. За Google Ads обаче сайтът е задължителен. Ако нямаш сайт, нашата услуга Уеб Дизайн може да го реши в рамките на 2–4 седмици.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Как измервате и отчитате резултатите от кампаниите?</summary>
-        <p class="faq-ans">Всеки клиент получава достъп до live dashboard с ключовите метрики: ROAS, CPL, CTR, reach и конверсии. Даваме месечен отчет с анализ на резултатите, какво тествахме и какво правим следващия месец. Само данни — без гадаене.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Ще имам ли достъп до рекламните акаунти и данните?</summary>
-        <p class="faq-ans">Абсолютно. Работим в твоите акаунти (Business Manager, Google Ads) или създаваме нови на твое име. Ти си собственик на всичко — акаунти, данни, кампании. Ако спрем работа, всичко остава при теб.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Колко трае типичен договор с The Marketing Clinic?</summary>
-        <p class="faq-ans">Зависи от услугата и целите ти. Говорим за това на консултацията когато разберем какво точно ти трябва.</p>
-      </details>
-
-
-      <details class="faq-item">
-        <summary>Работите ли само в България или и с международни клиенти?</summary>
-        <p class="faq-ans">Основно работим с клиенти в България, но имаме опит с кампании, таргетиращи Европа и международни пазари. Нямаме ограничение по локация — работим дистанционно с всички.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Как изглежда процесът на работа — от старт до резултати?</summary>
-        <p class="faq-ans">Стартираме с безплатен одит и консултация. После изготвяме персонален маркетинг план. При одобрение — кампаниите са активни в рамките на 5–10 работни дни. Всеки месец получаваш отчет и план за следващия период.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Какъв е средният ROAS, който постигате при клиентите?</summary>
-        <p class="faq-ans">Средният ROAS при нашите активни клиенти е 3.8x. Но ROAS варира според продукта, цената и пазара. При одита ти даваме реалистична прогноза базирана на твоята ниша и конкуренцията.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Вие ли правите рекламните creatives (снимки, видеа, текстове)?</summary>
-        <p class="faq-ans">Да — включваме copywriting и graphic design в нашите пакети. За видео съдържание работим с партньори или ти даваме creative brief ако предпочиташ да заснемеш сам. Нашата Full Stack услуга покрива всичко.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Имате ли опит в моята индустрия или ниша?</summary>
-        <p class="faq-ans">Работили сме с e-commerce, beauty, fitness, B2B услуги, образование, ресторанти и строителство. Ако не сме работили точно в твоята ниша, провеждаме задълбочено competitor research преди старт.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Какво се случва след като поискам безплатния одит?</summary>
-        <p class="faq-ans">Представяме ти одита в рамките на 48–72 часа. Обясняваме находките и препоръките. Ако имаш интерес — изготвяме конкретна оферта. Ако не — одитът е твой и можеш да го приложиш сам. Без натиск.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Колко бързо можете да стартирате кампаниите?</summary>
-        <p class="faq-ans">След подписан договор и получени необходими достъпи — кампаниите са активни в рамките на 5–10 работни дни. Уеб дизайн проекти — 3–6 седмици в зависимост от обхвата.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Каква е разликата между SEO и платена реклама?</summary>
-        <p class="faq-ans">Платената реклама (Meta/Google Ads) дава резултати веднага, но спира щом спреш да плащаш. SEO гради органичен трафик, който расте с времето и не изисква постоянни разходи за клик. Идеалната стратегия използва и двете.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Как да разбера дали инвестицията в маркетинг агенция е правилна за мен?</summary>
-        <p class="faq-ans">Ако вече харчиш за реклама без ясен ROAS, или нямаш времето и знанията да управляваш маркетинга сам — работата с агенция обикновено си струва. Безплатният одит ти дава точна картина и можем да пресметнем заедно дали числата работят.</p>
-      </details>
-
+      <div class="faq-bottom-cta reveal" style="transition-delay:.25s">
+        <a href="#kontakt" class="faq-cta-btn" aria-label="Задай въпрос на Marketing Clinic BG маркетинг агенция">
+          <span>Имаш друг въпрос? Питай ни</span>
+          <span class="faq-cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
-    <div class="faq-cta reveal" style="transition-delay:.15s">
-      <a href="#kontakt" class="btn">Имаш друг въпрос? Питай ни</a>
-    </div>
+
   </div>
 </section>
 
 <!-- КОНТАКТ -->
-<section class="sec" id="kontakt">
+<section id="kontakt" aria-label="Контактна форма — Marketing Clinic BG">
+
+  <!-- Background orbs -->
+  <div class="k-orb k-orb-1" aria-hidden="true"></div>
+  <div class="k-orb k-orb-2" aria-hidden="true"></div>
+  <div class="k-orb k-orb-3" aria-hidden="true"></div>
+
+  <!-- Floating particles (JS injected) -->
+  <div id="k-particles" aria-hidden="true"></div>
+
   <div class="contact-grid">
-    <div class="reveal">
-      <p class="lbl">Свържи се с нас</p>
-      <h2 class="contact-h2">Направи<br><em>запитване.</em></h2>
-      <p class="contact-p">Разкажи ни за бизнеса си и ще се свържем с теб до 24 часа. Без задължения, само честен разговор.</p>
-      <div class="email-box">
-        <span class="email-lbl">Имейл</span>
-        <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a>
+
+    <!-- ── LEFT ── -->
+    <div class="contact-left">
+
+      <p class="k-eyebrow">Свържи се с нас</p>
+
+      <h2 class="contact-h2">
+        <span class="word"><span>Направи</span></span>
+        <span class="word"><span class="k-gold">запитване.</span></span>
+      </h2>
+
+      <div class="k-divider" aria-hidden="true"></div>
+
+      <p class="contact-sub">Разкажи ни за бизнеса си и ще се свържем с теб до 24 часа. Без задължения, само честен разговор.</p>
+
+      <!-- Animated count-up stats -->
+      <div class="k-stats" role="list" aria-label="Статистики">
+        <div class="k-stat" role="listitem">
+          <span class="k-stat-num"><span class="count-up" data-target="87">0</span><span class="suffix">+</span></span>
+          <span class="k-stat-lbl">Клиенти</span>
+        </div>
+        <div class="k-stat" role="listitem">
+          <span class="k-stat-num"><span class="count-up" data-target="5" data-suffix="">5</span><span class="suffix">★</span></span>
+          <span class="k-stat-lbl">Google</span>
+        </div>
+        <div class="k-stat" role="listitem">
+          <span class="k-stat-num"><span class="count-up" data-target="24">0</span><span class="suffix">ч</span></span>
+          <span class="k-stat-lbl">Отговор</span>
+        </div>
+        <div class="k-stat" role="listitem">
+          <span class="k-stat-num"><span class="count-up" data-target="4">0</span><span class="suffix">г.</span></span>
+          <span class="k-stat-lbl">Опит</span>
+        </div>
       </div>
-      <!-- FIX 16: Телефон — замени +359889378000 с реалния номер -->
-      <div class="email-box" style="margin-top:6px">
-        <span class="email-lbl">Телефон</span>
-        <a href="tel:+359889378000">+359 889 378 000</a>
+
+      <!-- Contact items -->
+      <div class="k-contact-items">
+        <a href="mailto:themarketingclinicbg@gmail.com" class="k-ci" aria-label="Изпрати имейл">
+          <div class="k-ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="k-ci-text">
+            <span class="k-ci-lbl">Имейл</span>
+            <span class="k-ci-val">themarketingclinicbg@gmail.com</span>
+          </div>
+        </a>
+        <a href="tel:+359889378000" class="k-ci" aria-label="Обади се">
+          <div class="k-ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg></div>
+          <div class="k-ci-text">
+            <span class="k-ci-lbl">Телефон</span>
+            <span class="k-ci-val">+359 889 378 000</span>
+          </div>
+        </a>
       </div>
-      <div class="soc-row">
-        <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" class="soc-btn">Facebook</a>
-        <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" class="soc-btn">Instagram</a>
+
+      <!-- Social links -->
+      <div class="k-socials">
+        <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" rel="noopener noreferrer" class="k-soc" aria-label="Marketing Clinic Facebook">
+          <span class="k-soc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" rel="noopener noreferrer" class="k-soc" aria-label="Marketing Clinic Instagram">
+          <span class="k-soc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></span>
+          <span>Instagram</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT: FORM ── -->
+    <div class="contact-right">
+      <div class="form-card">
+        <div class="form-inner" id="contact-form">
+
+          <div class="kf-row">
+            <div class="kf-group" id="kfg-name">
+              <input id="f-name" type="text" name="name" autocomplete="name" placeholder=" " aria-label="Вашето име">
+              <label for="f-name">Вашето ime</label>
+            </div>
+            <div class="kf-group" id="kfg-email">
+              <input id="f-email" type="email" name="email" autocomplete="email" placeholder=" " aria-label="Имейл адрес">
+              <label for="f-email">Имейл адрес</label>
+            </div>
+          </div>
+
+          <div class="kf-group" id="kfg-phone">
+            <input id="f-phone" type="tel" name="phone" autocomplete="tel" placeholder=" " aria-label="Телефон за връзка">
+            <label for="f-phone">Телефон за връзка</label>
+          </div>
+
+          <div style="margin-bottom:28px">
+            <span class="kf-label">Интересувам се от</span>
+            <div class="chips-wrap" id="chips-wrap">
+              <div id="chips-container" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1"></div>
+              <span class="chips-placeholder" id="chips-placeholder">Избери услуга</span>
+            </div>
+            <div class="svc-picker" id="form-picker">
+              <button type="button" class="pick-btn" data-pick="audit"     onclick="toggleService('audit')">Бизнес Одит</button>
+              <button type="button" class="pick-btn" data-pick="meta"      onclick="toggleService('meta')">Meta Ads</button>
+              <button type="button" class="pick-btn" data-pick="google"    onclick="toggleService('google')">Google Ads</button>
+              <button type="button" class="pick-btn" data-pick="branding"  onclick="toggleService('branding')">Брандинг</button>
+              <button type="button" class="pick-btn" data-pick="content"   onclick="toggleService('content')">Съдържание</button>
+              <button type="button" class="pick-btn" data-pick="strategy"  onclick="toggleService('strategy')">Маркетинг стратегия</button>
+              <button type="button" class="pick-btn" data-pick="web"       onclick="toggleService('web')">Уеб Дизайн</button>
+              <button type="button" class="pick-btn" data-pick="leadgen"   onclick="toggleService('leadgen')">Lead Generation</button>
+              <button type="button" class="pick-btn" data-pick="fullstack" onclick="toggleService('fullstack')">Full Stack</button>
+              <button type="button" class="pick-btn pick-btn-free" data-pick="bezplaten" onclick="toggleService('bezplaten')">★ Безплатен анализ</button>
+            </div>
+            <p class="limit-hint" id="limit-hint">Можеш да избереш до 5 услуги.</p>
+          </div>
+
+          <div id="fields-none" class="svc-fields show">
+            <p class="no-selection-hint">Избери услуга по-горе и ще се появят допълнителни въпроси.</p>
+          </div>
+          <div id="fields-bezplaten" class="svc-fields"><p class="svc-fields-label">Безплатен анализ</p><div class="field"><label>Какъв е вашият бизнес?</label><input type="text" placeholder="Напр. онлайн магазин, фитнес..."></div><div class="field"><label>Основен маркетинг проблем</label><select><option value="">Избери...</option><option>Нямаме достатъчно клиенти</option><option>Харчим за реклама без резултат</option><option>Не знаем от къде да започнем</option><option>Искаме да растем по-бързо</option><option>Друго</option></select></div></div>
+          <div id="fields-audit" class="svc-fields"><p class="svc-fields-label">Бизнес Одит</p><div class="field"><label>Кои канали използвате?</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Facebook и Instagram реклами</label><label class="cb-item"><input type="checkbox"> Google Ads</label><label class="cb-item"><input type="checkbox"> SEO</label><label class="cb-item"><input type="checkbox"> Нямаме активни канали</label></div></div><div class="field"><label>Какво в момента не работи?</label><textarea rows="2" placeholder="Опишете основния проблем..."></textarea></div></div>
+          <div id="fields-meta" class="svc-fields"><p class="svc-fields-label">Meta Ads</p><div class="field"><label>Месечен рекламен бюджет</label><select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 1500 лв.</option><option>1500 до 5000 лв.</option><option>Над 5000 лв.</option></select></div><div class="field"><label>Имате ли активни кампании?</label><select><option value="">Избери...</option><option>Да, работят добре</option><option>Да, но без резултат</option><option>Не, стартираме</option></select></div><div class="field"><label>Основна цел</label><select><option value="">Избери...</option><option>Онлайн продажби</option><option>Генериране на лийдове</option><option>Запознаване с бранда</option></select></div></div>
+          <div id="fields-google" class="svc-fields"><p class="svc-fields-label">Google Ads</p><div class="field"><label>Тип реклами</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Search</label><label class="cb-item"><input type="checkbox"> Shopping</label><label class="cb-item"><input type="checkbox"> Display</label><label class="cb-item"><input type="checkbox"> YouTube</label></div></div><div class="field"><label>Месечен бюджет</label><select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 2000 лв.</option><option>2000 до 8000 лв.</option><option>Над 8000 лв.</option></select></div></div>
+          <div id="fields-branding" class="svc-fields"><p class="svc-fields-label">Брандинг</p><div class="field"><label>Имате ли съществуващо лого?</label><select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Не, стартираме от нулата</option></select></div><div class="field"><label>Желан тон</label><select><option value="">Избери...</option><option>Луксозен и premium</option><option>Приятелски и достъпен</option><option>Модерен и минималистичен</option></select></div></div>
+          <div id="fields-content" class="svc-fields"><p class="svc-fields-label">Съдържание</p><div class="field"><label>За кои платформи?</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Instagram</label><label class="cb-item"><input type="checkbox"> Facebook</label><label class="cb-item"><input type="checkbox"> TikTok</label><label class="cb-item"><input type="checkbox"> LinkedIn</label></div></div></div>
+          <div id="fields-strategy" class="svc-fields"><p class="svc-fields-label">Маркетинг стратегия</p><div class="field"><label>Основна бизнес цел</label><textarea rows="2" placeholder="Напр. увеличаване на продажбите с 30%..."></textarea></div><div class="field"><label>Основен канал в момента</label><select><option value="">Избери...</option><option>Социални мрежи</option><option>Google</option><option>Препоръки</option><option>Нямаме ясен канал</option></select></div></div>
+          <div id="fields-web" class="svc-fields"><p class="svc-fields-label">Уеб Дизайн</p><div class="field"><label>Имате ли вече сайт?</label><select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Не, правим нов</option></select></div><div class="field"><label>Платформа</label><select><option value="">Без предпочитание</option><option>WordPress</option><option>Shopify</option><option>Custom разработка</option></select></div></div>
+          <div id="fields-leadgen" class="svc-fields"><p class="svc-fields-label">Lead Generation</p><div class="field"><label>Какъв тип клиент търсите?</label><textarea rows="2" placeholder="Опишете вашия идеален клиент..."></textarea></div><div class="field"><label>Follow-up процес</label><select><option value="">Избери...</option><option>Имаме CRM</option><option>Обаждаме се ръчно</option><option>Нямаме ясен процес</option></select></div></div>
+          <div id="fields-fullstack" class="svc-fields"><p class="svc-fields-label">Full Stack</p><div class="field"><label>Кои услуги искате в пакета?</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Стратегия</label><label class="cb-item"><input type="checkbox"> Meta и Google Ads</label><label class="cb-item"><input type="checkbox"> Съдържание</label><label class="cb-item"><input type="checkbox"> Уеб дизайн</label><label class="cb-item"><input type="checkbox"> Брандинг</label></div></div><div class="field"><label>Желан срок за старт</label><select><option value="">Избери...</option><option>Веднага</option><option>Следващия месец</option><option>В рамките на 3 месеца</option></select></div></div>
+
+          <div class="kf-group" id="kfg-msg" style="margin-bottom:12px">
+            <textarea id="f-message" name="message" rows="3" placeholder=" " aria-label="Разкажи ни повече"></textarea>
+            <label for="f-message">Разкажи ни повече</label>
+          </div>
+
+          <div id="form-success" class="form-feedback form-success" style="display:none">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#C8A96E"/><path d="M5.5 10.5l3 3 6-6" stroke="#0F2218" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p>Благодарим! Ще се свържем с вас до 24 часа.</p>
+          </div>
+          <div id="form-error" class="form-feedback form-error" style="display:none">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#8B2020"/><path d="M10 6v4M10 13.5h.01" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p>Възникна проблем. Опитайте отново.</p>
+          </div>
+
+          <!-- Gold CTA -->
+          <div class="k-submit-wrap" id="k-submit-wrap">
+            <button id="submit-btn" type="button" onclick="submitForm()" aria-label="Изпрати запитване за Marketing Clinic BG">
+              <span>ИЗПРАТИ ЗАПИТВАНЕ</span>
+              <span class="submit-arrow">→</span>
+            </button>
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <div class="form reveal" id="contact-form" style="transition-delay:.12s">
-      <div class="field-row">
-        <div class="field"><label for="f-name">Вашето име</label><input id="f-name" type="text" placeholder="Иван Иванов" autocomplete="name"></div>
-        <div class="field"><label for="f-email">Имейл адрес</label><input id="f-email" type="email" placeholder="ivan@firma.bg" autocomplete="email"></div>
-      </div>
-      <div class="field"><label for="f-phone">Телефон за връзка</label><input id="f-phone" type="tel" placeholder="+359 88 ..." autocomplete="tel"></div>
-
-      <div class="field">
-        <label>Интересувам се от</label>
-        <div class="chips-wrap" id="chips-wrap">
-          <div id="chips-container" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1"></div>
-          <span class="chips-placeholder" id="chips-placeholder">Избери от услугите по-горе или тук долу</span>
-        </div>
-        <div class="svc-picker" id="form-picker">
-          <button type="button" class="pick-btn" data-pick="audit"     onclick="toggleService('audit')">Бизнес Одит</button>
-          <button type="button" class="pick-btn" data-pick="meta"      onclick="toggleService('meta')">Meta Ads</button>
-          <button type="button" class="pick-btn" data-pick="google"    onclick="toggleService('google')">Google Ads</button>
-          <button type="button" class="pick-btn" data-pick="branding"  onclick="toggleService('branding')">Брандинг</button>
-          <button type="button" class="pick-btn" data-pick="content"   onclick="toggleService('content')">Съдържание</button>
-          <button type="button" class="pick-btn" data-pick="strategy"  onclick="toggleService('strategy')">Маркетинг стратегия</button>
-          <button type="button" class="pick-btn" data-pick="web"       onclick="toggleService('web')">Уеб Дизайн</button>
-          <button type="button" class="pick-btn" data-pick="leadgen"   onclick="toggleService('leadgen')">Lead Generation</button>
-          <button type="button" class="pick-btn" data-pick="fullstack" onclick="toggleService('fullstack')">Full Stack</button>
-          <button type="button" class="pick-btn pick-btn-free" data-pick="bezplaten" onclick="toggleService('bezplaten')">Безплатен анализ</button>
-        </div>
-        <p class="limit-hint" id="limit-hint">Можеш да избереш до 5 услуги.</p>
-      </div>
-
-      <div id="fields-none" class="svc-fields show">
-        <p class="no-selection-hint">Избери услуга по-горе и ще се появят допълнителни въпроси, за да разберем по-добре твоите нужди.</p>
-      </div>
-
-      <div id="fields-bezplaten" class="svc-fields">
-        <p class="svc-fields-label">Безплатен анализ</p>
-        <div class="field"><label>Какъв е вашият бизнес?</label><input type="text" placeholder="Напр. онлайн магазин, фитнес, ресторант..."></div>
-        <div class="field"><label>Какви резултати искате да постигнете?</label><textarea rows="3" placeholder="Напр. повече клиенти, по-висок ROAS..."></textarea></div>
-        <div class="field"><label>Основен маркетинг проблем</label>
-          <select><option value="">Избери...</option><option>Нямаме достатъчно клиенти</option><option>Харчим за реклама без резултат</option><option>Не знаем от къде да започнем</option><option>Искаме да растем по-бързо</option><option>Друго</option></select></div>
-      </div>
-
-      <div id="fields-audit" class="svc-fields">
-        <p class="svc-fields-label">Бизнес Одит</p>
-        <div class="field"><label>Кои канали използвате?</label>
-          <div class="checkbox-group">
-            <label class="cb-item"><input type="checkbox"> Facebook и Instagram реклами</label>
-            <label class="cb-item"><input type="checkbox"> Google Ads</label>
-            <label class="cb-item"><input type="checkbox"> Органично съдържание</label>
-            <label class="cb-item"><input type="checkbox"> SEO</label>
-            <label class="cb-item"><input type="checkbox"> Нямаме активни канали</label>
-          </div>
-        </div>
-        <div class="field"><label>Какво в момента не работи?</label><textarea rows="3" placeholder="Опишете основния проблем..."></textarea></div>
-      </div>
-      <div id="fields-meta" class="svc-fields">
-        <p class="svc-fields-label">Meta Ads</p>
-        <div class="field"><label>Месечен рекламен бюджет</label><select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 1500 лв.</option><option>1500 до 5000 лв.</option><option>Над 5000 лв.</option></select></div>
-        <div class="field"><label>Имате ли активни кампании?</label><select><option value="">Избери...</option><option>Да, работят добре</option><option>Да, но резултатите не са добри</option><option>Не, стартираме от нулата</option></select></div>
-        <div class="field"><label>Основна цел</label><select><option value="">Избери...</option><option>Онлайн продажби</option><option>Генериране на лийдове</option><option>Запознаване с бранда</option></select></div>
-        <div class="field"><label>Проблем с CPL, ROAS или tracking?</label><textarea rows="2" placeholder="Опишете накратко..."></textarea></div>
-      </div>
-      <div id="fields-google" class="svc-fields">
-        <p class="svc-fields-label">Google Ads</p>
-        <div class="field"><label>Тип реклами</label>
-          <div class="checkbox-group">
-            <label class="cb-item"><input type="checkbox"> Search</label>
-            <label class="cb-item"><input type="checkbox"> Shopping</label>
-            <label class="cb-item"><input type="checkbox"> Display</label>
-            <label class="cb-item"><input type="checkbox"> YouTube</label>
-          </div>
-        </div>
-        <div class="field"><label>Месечен бюджет</label><select><option value="">Избери...</option><option>До 500 лв.</option><option>500 до 2000 лв.</option><option>2000 до 8000 лв.</option><option>Над 8000 лв.</option></select></div>
-        <div class="field"><label>Имате ли conversion tracking?</label><select><option value="">Избери...</option><option>Да, работи</option><option>Не съм сигурен</option><option>Не, нямаме</option></select></div>
-      </div>
-      <div id="fields-branding" class="svc-fields">
-        <p class="svc-fields-label">Брандинг</p>
-        <div class="field"><label>Имате ли съществуващо лого?</label><select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Да, искаме нов облик</option><option>Не, стартираме от нулата</option></select></div>
-        <div class="field"><label>Имате ли brand guidelines?</label><select><option value="">Избери...</option><option>Да</option><option>Частично</option><option>Не</option></select></div>
-        <div class="field"><label>Желан тон</label><select><option value="">Избери...</option><option>Луксозен и premium</option><option>Приятелски и достъпен</option><option>Модерен и минималистичен</option><option>Традиционен и надежден</option></select></div>
-      </div>
-      <div id="fields-content" class="svc-fields">
-        <p class="svc-fields-label">Съдържание</p>
-        <div class="field"><label>За кои платформи?</label>
-          <div class="checkbox-group">
-            <label class="cb-item"><input type="checkbox"> Instagram</label>
-            <label class="cb-item"><input type="checkbox"> Facebook</label>
-            <label class="cb-item"><input type="checkbox"> TikTok</label>
-            <label class="cb-item"><input type="checkbox"> LinkedIn</label>
-            <label class="cb-item"><input type="checkbox"> YouTube</label>
-          </div>
-        </div>
-        <div class="field"><label>Публикации на месец</label><select><option value="">Избери...</option><option>До 8</option><option>8 до 16</option><option>16 до 30</option><option>Над 30</option></select></div>
-        <div class="field"><label>Имате ли заснети материали?</label><select><option value="">Избери...</option><option>Да</option><option>Частично</option><option>Не, нужна ни е помощ</option></select></div>
-      </div>
-      <div id="fields-strategy" class="svc-fields">
-        <p class="svc-fields-label">Маркетинг стратегия</p>
-        <div class="field"><label>Основна бизнес цел</label><textarea rows="2" placeholder="Напр. увеличаване на продажбите с 30%..."></textarea></div>
-        <div class="field"><label>Основен канал в момента</label><select><option value="">Избери...</option><option>Социални мрежи</option><option>Google</option><option>Препоръки</option><option>Нямаме ясен канал</option></select></div>
-        <div class="field"><label>Какво вече сте тествали?</label><textarea rows="2" placeholder="Канали, кампании или тактики..."></textarea></div>
-      </div>
-      <div id="fields-web" class="svc-fields">
-        <p class="svc-fields-label">Уеб Дизайн</p>
-        <div class="field"><label>Имате ли вече сайт?</label><select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Да, на стара платформа</option><option>Не, правим нов</option></select></div>
-        <div class="field"><label>Платформа</label><select><option value="">Без предпочитание</option><option>WordPress</option><option>Shopify</option><option>Wix или Squarespace</option><option>Custom разработка</option></select></div>
-        <div class="field"><label>Основна цел на сайта</label><select><option value="">Избери...</option><option>Онлайн магазин</option><option>Генериране на запитвания</option><option>Представяне на бизнеса</option><option>Резервации</option></select></div>
-      </div>
-      <div id="fields-leadgen" class="svc-fields">
-        <p class="svc-fields-label">Lead Generation</p>
-        <div class="field"><label>Какъв тип клиент търсите?</label><textarea rows="2" placeholder="Опишете вашия идеален клиент..."></textarea></div>
-        <div class="field"><label>Текуща цена на лийд</label><input type="text" placeholder="Напр. 15 лв. или нямаме данни"></div>
-        <div class="field"><label>Follow-up процес</label><select><option value="">Избери...</option><option>Имаме CRM и структуриран процес</option><option>Обаждаме се ръчно</option><option>Нямаме ясен процес</option></select></div>
-      </div>
-      <div id="fields-fullstack" class="svc-fields">
-        <p class="svc-fields-label">Full Stack</p>
-        <div class="field"><label>Кои услуги искате в пакета?</label>
-          <div class="checkbox-group">
-            <label class="cb-item"><input type="checkbox"> Стратегия</label>
-            <label class="cb-item"><input type="checkbox"> Meta и Google Ads</label>
-            <label class="cb-item"><input type="checkbox"> Съдържание и соц. мрежи</label>
-            <label class="cb-item"><input type="checkbox"> Уеб дизайн</label>
-            <label class="cb-item"><input type="checkbox"> Брандинг</label>
-          </div>
-        </div>
-        <div class="field"><label>Приоритет</label><select><option value="">Избери...</option><option>Повече продажби веднага</option><option>Изграждане на бранд</option><option>Намаляване на разходите</option><option>Навлизане на нов пазар</option></select></div>
-        <div class="field"><label>Желан срок за старт</label><select><option value="">Избери...</option><option>Веднага</option><option>Следващия месец</option><option>В рамките на 3 месеца</option><option>Все още проучвам</option></select></div>
-      </div>
-
-      <div class="field">
-        <label for="f-message">Разкажи ни повече</label>
-        <textarea id="f-message" rows="4" placeholder="Какво продаваш, какви са целите ти, с какво можем да помогнем..."></textarea>
-      </div>
-
-      <div id="form-success" class="form-feedback form-success" style="display:none">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#1E3A2F"/><path d="M5.5 10.5l3 3 6-6" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <p>Благодарим, че оставихте запитването си. Ще се свържем с вас до 24 часа.</p>
-      </div>
-      <div id="form-error" class="form-feedback form-error" style="display:none">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#8B2020"/><path d="M10 6v4M10 13.5h.01" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <p>Възникна проблем при изпращането. Моля, опитайте отново.</p>
-      </div>
-
-      <!-- BOTTOM CTA -->
-      <div style="background:#1E3A2F;padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
-        <div><span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,0.5);font-family:'DM Sans',sans-serif;display:block;margin-bottom:6px;">Безплатна оферта</span>
-        <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#F5F0E8;line-height:1.1;display:block;">Вземи безплатен анализ</span></div>
-        <button id="submit-btn" type="button" onclick="submitForm()" style="display:inline-flex;align-items:center;justify-content:center;background:#F5F0E8;color:#1E3A2F;border:none;cursor:pointer;padding:16px 28px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;width:100%;max-width:420px;border-radius:0;">ВЗЕМИ БЕЗПЛАТЕН АНАЛИЗ</button>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p class="f-copy">© 2025 The Marketing Clinic. Всички права запазени.</p>
+  <a href="#nacalo" class="f-logo-mark" aria-label="Marketing Clinic BG — начало">
+    <svg viewBox="0 0 36 36" fill="none" width="20" height="20"><circle cx="15" cy="15" r="11" stroke="rgba(200,169,110,0.6)" stroke-width="2" fill="none"/><line x1="23" y1="23" x2="33" y2="33" stroke="rgba(200,169,110,0.6)" stroke-width="2" stroke-linecap="round"/></svg>
+    Marketing Clinic
+  </a>
   <div class="f-links">
-    <a href="#">Политика за поверителност</a>
-    <a href="#">Условия за ползване</a>
+    <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+    <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+    <a href="mailto:themarketingclinicbg@gmail.com" aria-label="Имейл контакт">Контакт</a>
   </div>
 </footer>
 <script>
@@ -2172,14 +3465,99 @@ function flashLimitHint() {
   setTimeout(() => hint.classList.remove('pulse'), 1100);
 }
 function submitForm() { window.location.href='/blagodarim'; }
-/* ── Card click: navigate to service page — no flip ── */
+/* ── Floating particles in #kontakt ── */
+(function(){
+  var container = document.getElementById('k-particles');
+  if(!container) return;
+  for(var i=0;i<18;i++){
+    var p=document.createElement('div');
+    p.className='k-particle';
+    var size=(Math.random()*3+1.5).toFixed(1);
+    var left=(Math.random()*100).toFixed(1);
+    var delay=(Math.random()*18).toFixed(1);
+    var dur=(Math.random()*14+10).toFixed(1);
+    var bottom=-(Math.random()*20+5);
+    p.style.cssText='width:'+size+'px;height:'+size+'px;left:'+left+'%;bottom:'+bottom+'px;animation-duration:'+dur+'s;animation-delay:'+delay+'s;opacity:'+(Math.random()*.4+.15).toFixed(2);
+    container.appendChild(p);
+  }
+})();
+
+/* ── Count-up animation ── */
+(function(){
+  var done=false;
+  var io=new IntersectionObserver(function(entries){
+    if(done) return;
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      done=true;
+      document.querySelectorAll('.count-up').forEach(function(el){
+        var target=parseInt(el.getAttribute('data-target'),10);
+        var dur=1800,start=performance.now();
+        (function tick(now){
+          var p=Math.min((now-start)/dur,1);
+          var ease=1-Math.pow(1-p,3);
+          el.textContent=Math.round(ease*target);
+          if(p<1) requestAnimationFrame(tick);
+        })(start);
+      });
+      io.disconnect();
+    });
+  },{threshold:0.3});
+  var sec=document.getElementById('kontakt');
+  if(sec) io.observe(sec);
+})();
+
+/* ── Button sparkles ── */
+(function(){
+  var wrap=document.getElementById('k-submit-wrap');
+  if(!wrap) return;
+  var positions=[
+    {left:'8%',top:'20%'},{left:'18%',top:'70%'},{left:'32%',top:'15%'},
+    {left:'45%',top:'60%'},{left:'55%',top:'25%'},{left:'68%',top:'75%'},
+    {left:'75%',top:'35%'},{left:'85%',top:'55%'},{left:'92%',top:'18%'},
+    {left:'22%',top:'48%'},{left:'60%',top:'80%'},{left:'38%',top:'85%'}
+  ];
+  positions.forEach(function(pos,i){
+    var s=document.createElement('div');
+    s.className='btn-sparkle';
+    s.style.left=pos.left;s.style.top=pos.top;
+    s.style.setProperty('--dur',(1.8+Math.random()*2).toFixed(1)+'s');
+    s.style.setProperty('--delay',(i*0.22).toFixed(2)+'s');
+    // randomize size slightly
+    var sz=(3+Math.random()*3).toFixed(1);
+    s.style.width=sz+'px';s.style.height=sz+'px';
+    wrap.appendChild(s);
+  });
+})();
+
+/* ── Floating label for kf-group ── */
+document.querySelectorAll('.kf-group input,.kf-group textarea').forEach(function(el){
+  function check(){ var w=el.closest('.kf-group'); if(w) w.classList.toggle('active',el.value.length>0||document.activeElement===el); }
+  el.addEventListener('input',check);
+  el.addEventListener('focus',check);
+  el.addEventListener('blur',check);
+});
+
+/* floating label helper */
+function flActive(el){
+  var wrap = el.closest('.fl-wrap');
+  if(wrap) wrap.classList.toggle('active', el.value.length > 0);
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.fl-wrap input, .fl-wrap textarea').forEach(function(el){
+    el.addEventListener('blur', function(){ flActive(el); });
+    el.addEventListener('focus', function(){ var w=el.closest('.fl-wrap'); if(w) w.classList.add('active'); });
+  });
+});
+
+/* Card click fix */
 (function(){
   document.querySelectorAll('.svc').forEach(function(card){
     card.removeAttribute('tabindex');
     card.addEventListener('click', function(e){
-      if (e.target.closest('a')) return;
+      if(e.target.closest('a')) return;
       var link = card.querySelector('.nx-link') || card.querySelector('a[href]');
-      if (link) window.location.href = link.getAttribute('href');
+      if(link) window.location.href = link.getAttribute('href');
     });
   });
 })();
@@ -2222,6 +3600,69 @@ document.addEventListener('DOMContentLoaded', () => { renderAll(); });
   }, { threshold: 0.22 });
   var sec = document.getElementById('za-nas');
   if(sec) io.observe(sec);
+})();
+
+
+
+
+
+/* ── FAQ accordion v3 ── */
+(function(){
+  // Accordion toggle
+  document.querySelectorAll('.faq-item-v2').forEach(function(item){
+    var trigger = item.querySelector('.faq-trigger');
+    var body    = item.querySelector('.faq-body');
+    if(!trigger || !body) return;
+
+    function toggle(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item-v2.open').forEach(function(o){
+        o.classList.remove('open');
+        var b = o.querySelector('.faq-body'); if(b) b.classList.remove('open');
+        var t = o.querySelector('.faq-trigger'); if(t) t.setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        body.classList.add('open');
+        trigger.setAttribute('aria-expanded','true');
+      }
+    }
+
+    trigger.addEventListener('click', toggle);
+    trigger.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}
+    });
+  });
+
+  // Scroll progress bar
+  var acc  = document.getElementById('faq-accordion');
+  var prog = document.getElementById('faq-prog');
+  if(acc && prog){
+    window.addEventListener('scroll', function(){
+      var r = acc.getBoundingClientRect();
+      var h = acc.offsetHeight;
+      var vh = window.innerHeight;
+      var pct = Math.max(0, Math.min(1, (-r.top + vh*.5) / (h - vh*.5)));
+      prog.style.height = (pct * 100) + '%';
+    }, {passive:true});
+  }
+
+  // Floating gold particles in FAQ section
+  (function(){
+    var sec = document.getElementById('faq');
+    if(!sec) return;
+    for(var i=0;i<12;i++){
+      var p = document.createElement('div');
+      p.className = 'faq-particle';
+      var sz = (2 + Math.random()*3).toFixed(1);
+      p.style.cssText = 'width:'+sz+'px;height:'+sz+'px;'
+        +'left:'+(Math.random()*100).toFixed(1)+'%;'
+        +'bottom:'+(Math.random()*30).toFixed(0)+'px;'
+        +'animation-duration:'+(10+Math.random()*18).toFixed(1)+'s;'
+        +'animation-delay:'+(Math.random()*14).toFixed(1)+'s;';
+      sec.appendChild(p);
+    }
+  })();
 })();
 
 </script>
