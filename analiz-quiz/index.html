@@ -181,7 +181,7 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     </div>
   </div>
   <div class="progress-shell wrap" id="progressShell" style="display:none">
-    <div class="progress-meta"><span>Стъпка <b id="pNow">1</b> от <b id="pTotal">8</b></span><span id="pPct">12%</span></div>
+    <div class="progress-meta"><span>Стъпка <b id="pNow">1</b> от <b id="pTotal">6</b></span><span id="pPct">12%</span></div>
     <div class="pbar-track"><div class="pbar-fill" id="pBar"></div></div>
   </div>
 </div>
@@ -223,34 +223,30 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   </div>
 </section>
 
-<!-- ===== STEP 2 · САЙТ ===== -->
+<!-- ===== STEP 2 · КОНТАКТ (име + телефон) · частичен запис ===== -->
 <section class="step" data-step="2">
   <div class="wrap qcard">
-    <div class="kicker">Онлайн присъствие</div>
-    <h2>Имаш ли сайт в момента?</h2>
-    <div class="opts two" data-name="hasWebsite" data-mode="single">
-      <button class="opt" data-val="Да" data-web="yes">Да, имам</button>
-      <button class="opt" data-val="Не" data-web="no">Още нямам</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 3 · URL НА САЙТА (само ако „Да") ===== -->
-<section class="step" data-step="3">
-  <div class="wrap qcard">
-    <div class="kicker">Твоят сайт</div>
-    <h2>Кой е адресът на сайта ти?</h2>
-    <p class="qsub">Разглеждаме го преди презентацията, за да видим скоростта, проследяването и пътя до покупка.</p>
+    <div class="kicker">За кого е анализът</div>
+    <h2>На чие име да подготвим анализа?</h2>
+    <p class="qsub">Запазваме мястото ти веднага. Остават само 3 бързи въпроса и имейл накрая.</p>
     <div class="field">
-      <label for="fSite">Адрес на сайта</label>
-      <input id="fSite" type="text" inputmode="url" placeholder="напр. tvoiat-sait.com">
+      <label for="fName">Име</label>
+      <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
     </div>
-    <div class="qnote">Няма проблем ако е недовършен. Пак ще подготвим презентацията и ще отбележим какво липсва.</div>
+    <div class="field">
+      <label for="fPhone">Телефон</label>
+      <input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+359 88 000 0000">
+    </div>
+    <label class="consent">
+      <input type="checkbox" id="fConsent">
+      <span>Съгласявам се The Marketing Clinic да се свърже с мен за безплатния анализ и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Анализът е безплатен и без ангажимент.</span>
+    </label>
+    <div class="qnote">Без спам и без досадни обаждания. Телефонът е за да те намерим, ако имейлът се загуби в спам папката.</div>
   </div>
 </section>
 
-<!-- ===== STEP 4 · КАНАЛИ (multi) ===== -->
-<section class="step" data-step="4">
+<!-- ===== STEP 3 · КАНАЛИ (multi) ===== -->
+<section class="step" data-step="3">
   <div class="wrap qcard">
     <div class="kicker">Реклама сега</div>
     <h2>Къде рекламираш в момента?</h2>
@@ -265,8 +261,8 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   </div>
 </section>
 
-<!-- ===== STEP 5 · БЮДЖЕТ ===== -->
-<section class="step" data-step="5">
+<!-- ===== STEP 4 · БЮДЖЕТ ===== -->
+<section class="step" data-step="4">
   <div class="wrap qcard">
     <div class="kicker">Мащаб</div>
     <h2>Какъв е месечният ти рекламен бюджет?</h2>
@@ -281,12 +277,12 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   </div>
 </section>
 
-<!-- ===== STEP 6 · ГЛАВНА СПЪНКА ===== -->
-<section class="step" data-step="6">
+<!-- ===== STEP 5 · ГЛАВНА СПЪНКА ===== -->
+<section class="step" data-step="5">
   <div class="wrap qcard">
     <div class="kicker">Симптомът</div>
     <h2>Кое те спъва най-много точно сега?</h2>
-    <p class="qsub">Няма грешен отговор. Това насочва презентацията точно към твоя случай.</p>
+    <p class="qsub">Няма грешен отговор. Това насочва анализа точно към твоя случай.</p>
     <div class="opts" data-name="problem" data-mode="single">
       <button class="opt" data-val="Малко запитвания и продажби">Малко запитвания и продажби</button>
       <button class="opt" data-val="Висока цена на резултат">Висока цена на резултат (скъпи клиенти)</button>
@@ -297,59 +293,21 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   </div>
 </section>
 
-<!-- ===== STEP 7 · ОБОРОТ ===== -->
-<section class="step" data-step="7">
-  <div class="wrap qcard">
-    <div class="kicker">Контекст</div>
-    <h2>Какъв е приблизителният ти месечен оборот?</h2>
-    <p class="qsub">Помага да сметнем реалната възвръщаемост, а не само разход за реклама.</p>
-    <div class="opts" data-name="revenue" data-mode="single">
-      <button class="opt" data-val="До 2500 €">До 2500 €</button>
-      <button class="opt" data-val="2500 до 10000 €">2500 до 10000 €</button>
-      <button class="opt" data-val="10000 до 25000 €">10000 до 25000 €</button>
-      <button class="opt" data-val="Над 25000 €">Над 25000 €</button>
-      <button class="opt" data-val="Предпочитам да не казвам">Предпочитам да не казвам</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 8 · РОЛЯ ===== -->
-<section class="step" data-step="8">
-  <div class="wrap qcard">
-    <div class="kicker">Още нещо</div>
-    <h2>А ти си...</h2>
-    <div class="opts" data-name="role" data-mode="single">
-      <button class="opt" data-val="Собственик">Собственик на бизнеса</button>
-      <button class="opt" data-val="Управител">Управител</button>
-      <button class="opt" data-val="Маркетинг мениджър">Маркетинг мениджър</button>
-      <button class="opt" data-val="Друго">Друго</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 9 · КОНТАКТ ===== -->
-<section class="step" data-step="9">
+<!-- ===== STEP 6 · ИМЕЙЛ + САЙТ · пълен запис ===== -->
+<section class="step" data-step="6">
   <div class="wrap qcard">
     <div class="kicker">Последна стъпка</div>
     <h2>Готово! Къде да изпратим анализа?</h2>
     <p class="qsub" id="contactSub">Безплатният ти анализ пристига до 48 часа като персонализирана презентация: симптом и рецепта канал по канал, плюс приоритети в график. Безплатно и без ангажимент.</p>
     <div class="field">
-      <label for="fName">Име</label>
-      <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
-    </div>
-    <div class="field">
       <label for="fEmail">Имейл <em>(тук отива анализа)</em></label>
       <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="ti@primer.com">
     </div>
     <div class="field">
-      <label for="fPhone">Телефон <em>(по желание, само ако искаш кратък разговор)</em></label>
-      <input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+359 88 000 0000">
+      <label for="fSite">Адрес на сайта <em>(по желание)</em></label>
+      <input id="fSite" type="text" inputmode="url" placeholder="напр. tvoiat-sait.com">
     </div>
-    <label class="consent">
-      <input type="checkbox" id="fConsent">
-      <span>Съгласявам се The Marketing Clinic да ми изпрати анализа по имейл и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Анализът е безплатен и без ангажимент.</span>
-    </label>
-    <div class="qnote">Без спам и без досадни обаждания. Получаваш анализа, а се чуваме само ако ти поискаш.</div>
+    <div class="qnote">Ако имаш сайт, го разглеждаме преди анализа: скорост, проследяване и път до покупка. Ако нямаш, просто прескочи полето.</div>
   </div>
 </section>
 
@@ -391,15 +349,19 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
 /* ============================================================
    THE MARKETING CLINIC · БЕЗПЛАТЕН АНАЛИЗ (квалификационна фуния)
    hook → въпроси канал по канал → контакт.
-   Стъпка 3 (URL на сайта) се показва само ако има сайт.
+   Контактът се хваща на стъпка 2, а не накрая. Частичен запис при отпадане.
    Записът и пикселът са същите като на главния сайт.
    ============================================================ */
 /* Google Sheets Web App URL (същият като на marketing-clinic.com) */
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 const funnel = (function(){
-  const ALL_STEPS = [1,2,3,4,5,6,7,8,9]; // 10 = благодарим, отделно
-  const SITE_STEP = 3;
+  const ALL_STEPS    = [1,2,3,4,5,6]; // 10 = благодарим, отделно
+  const CONTACT_STEP = 2;             // име + телефон → частичен запис
+  const FINAL_STEP   = 6;             // имейл + сайт → пълен запис
+  const STEP_NAMES   = {1:'biznes',2:'kontakt',3:'kanali',4:'byudzhet',5:'spanka',6:'imeyl'};
   const answers = {};
+  const leadId  = 'L' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+  let partialSent = false;
   let cur = 0;
 
   const $ = s => document.querySelector(s);
@@ -410,10 +372,7 @@ const funnel = (function(){
   const btnNextTxt = $('#btnNextTxt');
   const btnBack = $('#btnBack');
 
-  function hasSite(){ return answers.hasWebsite === 'Да'; }
-  function visibleSteps(){
-    return hasSite() ? ALL_STEPS : ALL_STEPS.filter(n => n !== SITE_STEP);
-  }
+  function visibleSteps(){ return ALL_STEPS; }
 
   function show(n){
     steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
@@ -433,21 +392,27 @@ const funnel = (function(){
       $('#pBar').style.width = pct + '%';
       $('#pPct').textContent = pct + '%';
       btnBack.style.visibility = (idx === 1) ? 'hidden' : 'visible';
-      btnNextTxt.textContent = (n === vis[vis.length - 1]) ? 'Изпрати ми анализа' : 'Напред';
+      btnNextTxt.textContent = (n === FINAL_STEP) ? 'Изпрати ми анализа' : 'Напред';
       refreshNext();
+      /* GA4 · виждаемост на всяка стъпка (за да се вижда къде отпадат) */
+      try { if(typeof gtag === 'function') gtag('event','funnel_step',{
+        step_number: idx, step_name: STEP_NAMES[n] || ('step_'+n), source:'kvalifikacia_analiz'
+      }); } catch(e){}
     }
   }
 
+  function validPhone(v){ return v.replace(/\D/g,'').length >= 8; }
+
   function refreshNext(){
     let ok = false;
-    if(cur === 9){ // контакт
+    if(cur === CONTACT_STEP){
       ok = $('#fName').value.trim().length > 1 &&
-           /.+@.+\..+/.test($('#fEmail').value.trim()) &&
+           validPhone($('#fPhone').value) &&
            $('#fConsent').checked;
-    } else if(cur === SITE_STEP){
-      ok = $('#fSite').value.trim().length > 2;
+    } else if(cur === FINAL_STEP){
+      ok = /.+@.+\..+/.test($('#fEmail').value.trim());
     } else {
-      const grp = document.querySelector(`.step.active .opts`);
+      const grp = document.querySelector('.step.active .opts');
       if(grp){
         const name = grp.dataset.name;
         ok = grp.dataset.mode === 'multi'
@@ -475,22 +440,77 @@ const funnel = (function(){
           grp.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
           btn.classList.add('sel');
           refreshNext();
-          // авто-напред при единичен избор
-          setTimeout(() => { if(cur !== visibleSteps()[visibleSteps().length - 1]) next(); }, 260);
+          setTimeout(() => { if(cur !== FINAL_STEP) next(); }, 260);
         }
       });
     });
   });
 
   // текстови полета: валидация на живо
-  ['#fSite','#fName','#fEmail','#fPhone'].forEach(s => $(s).addEventListener('input', refreshNext));
+  ['#fSite','#fName','#fEmail','#fPhone'].forEach(s => { const el = $(s); if(el) el.addEventListener('input', refreshNext); });
   $('#fConsent').addEventListener('change', refreshNext);
 
-  function start(){ show(visibleSteps()[0]); }
+  /* ---------- ЗАПИС КЪМ GOOGLE SHEETS (същият payload както преди) ---------- */
+  function detailsText(){
+    return 'Бизнес: ' + (answers.business || '-') +
+      ' | Сайт: ' + (answers.website || '-') +
+      ' | Канали: ' + ((answers.channels || []).join(', ') || '-') +
+      ' | Бюджет: ' + (answers.budget || '-') +
+      ' | Спънка: ' + (answers.problem || '-') +
+      ' | Оборот: ' + (answers.revenue || '-') +
+      ' | Роля: ' + (answers.role || '-');
+  }
+
+  function buildPayload(service, status){
+    const det = detailsText();
+    return {
+      name: answers.name || '', email: answers.email || '', phone: answers.phone || '',
+      service: service,
+      message: det,
+      details: det,
+      business: answers.business || '',
+      website: answers.website || '',
+      channels: (answers.channels || []).join(', '),
+      budget: answers.budget || '',
+      problem: answers.problem || '',
+      revenue: answers.revenue || '',
+      role: answers.role || '',
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads kvalifikacia-analiz',
+      leadId: leadId,
+      status: status
+    };
+  }
+
+  function sendToSheet(payload){
+    try {
+      fetch(GOOGLE_SCRIPT_URL, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload), mode:'no-cors', keepalive:true
+      }).catch(function(){});
+    } catch(e){}
+  }
+
+  /* Частичен лийд: изпраща се веднага щом има име + телефон + съгласие */
+  function sendPartial(){
+    if(partialSent) return;
+    answers.name  = $('#fName').value.trim();
+    answers.phone = $('#fPhone').value.trim();
+    if(!answers.name || !validPhone(answers.phone)) return;
+    partialSent = true;
+
+    sendToSheet(buildPayload('Безплатен анализ (частичен, име и телефон)','Непълен'));
+
+    try { if(typeof gtag === 'function') gtag('event','generate_lead_partial',{source:'kvalifikacia_analiz'}); } catch(e){}
+    try { if(typeof fbq === 'function') fbq('trackCustom','PartialLead',{content_name:'kvalifikacia_analiz'}); } catch(e){}
+  }
+
+  function start(){ show(ALL_STEPS[0]); }
 
   function next(){
     const vis = visibleSteps();
     const idx = vis.indexOf(cur);
+    if(cur === CONTACT_STEP) sendPartial();
     if(idx < vis.length - 1){ show(vis[idx + 1]); return; }
     if(idx === vis.length - 1){ submit(); }
   }
@@ -506,37 +526,7 @@ const funnel = (function(){
     answers.phone   = $('#fPhone').value.trim();
     answers.website = $('#fSite').value.trim();
 
-    // всички отговори от куиза → четим текст (влиза в колона message)
-    const det =
-      'Бизнес: ' + (answers.business || '-') +
-      ' | Сайт: ' + (answers.website || '-') +
-      ' | Канали: ' + ((answers.channels || []).join(', ') || '-') +
-      ' | Бюджет: ' + (answers.budget || '-') +
-      ' | Спънка: ' + (answers.problem || '-') +
-      ' | Оборот: ' + (answers.revenue || '-') +
-      ' | Роля: ' + (answers.role || '-');
-
-    // message = пълното резюме (гарантирано има колона); плюс всеки отговор като отделно поле
-    const payload = {
-      name: answers.name, email: answers.email, phone: answers.phone,
-      service: 'Безплатен анализ (квалификация)',
-      message: det,
-      details: det,
-      business: answers.business || '',
-      website: answers.website || '',
-      channels: (answers.channels || []).join(', '),
-      budget: answers.budget || '',
-      problem: answers.problem || '',
-      revenue: answers.revenue || '',
-      role: answers.role || '',
-      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
-      source: 'Landing /ads kvalifikacia-analiz'
-    };
-
-    fetch(GOOGLE_SCRIPT_URL, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload), mode:'no-cors'
-    }).catch(function(){});
+    sendToSheet(buildPayload('Безплатен анализ (квалификация)','Пълен'));
 
     // GA4 + Meta Lead с Advanced Matching + eventID за CAPI дедупликация (както на сайта)
     try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:'kvalifikacia_analiz'}); } catch(e){}
