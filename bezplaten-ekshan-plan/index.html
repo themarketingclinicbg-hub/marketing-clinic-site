@@ -152,6 +152,9 @@
   }
   .form-row input::placeholder { color: #B3AEA3; font-weight: 400; }
   .form-row input:focus { outline: none; border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(30,58,46,.08); }
+  .form-row .err { display: none; margin-top: 7px; font-size: 12.5px; line-height: 1.45; color: var(--red); }
+  .form-row.has-err input { border-color: var(--red); }
+  .form-row.has-err .err { display: block; }
   .btn-submit {
     width: 100%; margin-top: 10px; background: var(--green); color: var(--cream);
     border: none; border-radius: var(--r); padding: 19px; min-height: 48px;
@@ -355,9 +358,10 @@
         <label for="business">Бизнес / индустрия <span class="opt">(по избор)</span></label>
         <input type="text" id="business" name="business" placeholder="напр. e-commerce, ресторант, услуги">
       </div>
-      <div class="form-row">
-        <label for="link">Сайт или социална мрежа (за прегледа)</label>
-        <input type="text" id="link" name="link" required placeholder="firma.bg или линк към профил">
+      <div class="form-row" id="link-row">
+        <label for="link">Сайт или социален профил (за прегледа)</label>
+        <input type="text" id="link" name="link" required inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="firma.bg, instagram.com/firma или @firma">
+        <div class="err" id="link-err"></div>
       </div>
       <button type="submit" class="btn-submit" id="submit-btn">Искам екшън плана си</button>
       <p class="form-note">
@@ -659,18 +663,64 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
   /* Google Sheets Web App URL (същият като на marketing-clinic.com) */
   var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 
+
+/* ===== ВАЛИДАЦИЯ: полето приема САМО сайт или социален профил ===== */
+function tmcSiteError(raw){
+  var v = (raw || '').trim();
+  if(!v) return 'Моля, попълни сайт или линк към социален профил.';
+  if(/^mailto:/i.test(v) || /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v))
+    return 'Тук се въвежда сайт или социален профил, не имейл.';
+  if(/^\+?[\d\s().\-]{6,}$/.test(v))
+    return 'Тук се въвежда сайт или социален профил, не телефон.';
+  if(/^@[A-Za-z0-9._]{2,30}$/.test(v)) return '';
+  var s = v.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  if(/\s/.test(s)) return 'Въведи адреса без интервали. Пример: firma.bg';
+  var host = s.split(/[\/?#]/)[0];
+  if(host.indexOf('@') > -1) return 'Тук се въвежда сайт или социален профил, не имейл.';
+  if(!/^[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/.test(host))
+    return 'Не изглежда като адрес. Пример: firma.bg, instagram.com/firma или @firma';
+  return '';
+}
+function tmcSiteClean(raw){
+  var v = (raw || '').trim();
+  if(!v) return '';
+  if(/^@[A-Za-z0-9._]+$/.test(v)) return v;
+  if(!/^https?:\/\//i.test(v)) v = 'https://' + v;
+  return v;
+}
+
+  /* показване на грешката под полето */
+  (function(){
+    var el = document.getElementById('link');
+    var row = document.getElementById('link-row');
+    var box = document.getElementById('link-err');
+    window.tmcPaintSite = function(force){
+      var msg = tmcSiteError(el.value);
+      if(msg && (force || el.value.trim())){ box.textContent = msg; row.classList.add('has-err'); return false; }
+      row.classList.remove('has-err');
+      return !msg;
+    };
+    el.addEventListener('input', function(){ tmcPaintSite(false); });
+    el.addEventListener('blur',  function(){ tmcPaintSite(true); });
+  })();
+
   document.getElementById('lead-form').addEventListener('submit', function(e) {
     e.preventDefault();
     var submitBtn = document.getElementById('submit-btn');
     var originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Изпращане...';
-    submitBtn.disabled = true;
 
     var name = (document.getElementById('name').value || '').trim();
     var email = (document.getElementById('email').value || '').trim();
     var phone = (document.getElementById('phone').value || '').trim();
     var business = (document.getElementById('business').value || '').trim();
     var link = (document.getElementById('link').value || '').trim();
+
+    /* полето приема само сайт или социален профил, не имейл или телефон */
+    if (!window.tmcPaintSite(true)) { document.getElementById('link').focus(); return; }
+    link = tmcSiteClean(link);
+
+    submitBtn.textContent = 'Изпращане...';
+    submitBtn.disabled = true;
 
     /* Ключовете съвпадат 1:1 с таблицата на главния сайт */
     var payload = {
