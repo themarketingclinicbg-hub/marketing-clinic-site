@@ -2940,10 +2940,11 @@ function flashLimitHint() {
   hint.classList.add('show'); hint.classList.remove('pulse'); void hint.offsetWidth; hint.classList.add('pulse');
   setTimeout(() => hint.classList.remove('pulse'), 1100);
 }
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    ФОРМА → GOOGLE SHEETS (Apps Script)
-   Същата логика като script.js на главния сайт
-   ═══════════════════════════════════════ */
+   Същият метод като фуниите /ads analiz и /ads ekshan-plan.
+   Плосък payload, ключовете съвпадат 1:1 с колоните в таблицата.
+   ═══════════════════════════════════════════════════════════ */
 
 /* Събира отговорите от допълнителните полета на всяка избрана услуга */
 function collectServiceFields() {
@@ -3028,69 +3029,94 @@ function clearValidationErrors() {
   document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
 }
 
-/* Контекст за Meta: същият eventID отива и към сървъра, и към пиксела,
-   за да не се брои лийдът два пъти при CAPI дедупликация. */
-function tmcCtx(prefix) {
-  const ck = n => { const m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; };
-  let fbc = ck('_fbc');
-  if (!fbc) { const m = location.search.match(/[?&]fbclid=([^&]+)/); if (m) fbc = 'fb.1.' + Date.now() + '.' + m[1]; }
-  return {
-    eventID: (prefix || 'ev') + '.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10),
-    fbp: ck('_fbp'), fbc: fbc,
-    eventSourceUrl: location.href, userAgent: navigator.userAgent
-  };
-}
-
 function submitForm() {
   showFeedback('none');
-  const name    = (document.getElementById('f-name')    || {}).value || '';
-  const email   = (document.getElementById('f-email')   || {}).value || '';
-  const phone   = (document.getElementById('f-phone')   || {}).value || '';
-  const message = (document.getElementById('f-message') || {}).value || '';
-  const serviceNames = selected.map(id => { const s = SERVICES.find(x => x.id === id); return s ? s.name : id; });
-  const service = serviceNames.join(', ') || 'Не е избрана услуга';
 
-  if (!name.trim())  { showValidationError('f-name',  'Моля, въведете вашето име.'); return; }
-  if (!email.trim()) { showValidationError('f-email', 'Моля, въведете имейл адрес.'); return; }
+  var name    = (document.getElementById('f-name')    || {}).value || '';
+  var email   = (document.getElementById('f-email')   || {}).value || '';
+  var phone   = (document.getElementById('f-phone')   || {}).value || '';
+  var message = (document.getElementById('f-message') || {}).value || '';
+
+  name = name.trim(); email = email.trim(); phone = phone.trim(); message = message.trim();
+
+  if (!name)  { showValidationError('f-name',  'Моля, въведете вашето име.'); return; }
+  if (!email) { showValidationError('f-email', 'Моля, въведете имейл адрес.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(email)) {
+    showValidationError('f-email', 'Имейлът не изглежда правилен. Пример: ivan@firma.bg');
+    return;
+  }
   clearValidationErrors();
 
-  const svcFields = collectServiceFields();
-  const details   = Object.entries(svcFields).map(([n, a]) => '[' + n + '] ' + a).join(' || ');
+  var serviceNames = selected.map(function(id){
+    var s = SERVICES.find(function(x){ return x.id === id; });
+    return s ? s.name : id;
+  });
+  var service   = serviceNames.join(', ') || 'Не е избрана услуга';
+  var svcFields = collectServiceFields();
+  var details   = Object.entries(svcFields).map(function(e){ return '[' + e[0] + '] ' + e[1]; }).join(' || ');
+  var msgFull   = (message || '-') + (details ? ' || ' + details : '');
 
-  const t = tmcCtx('lead');
+  /* Meta контекст: същият eventID отива и към таблицата, и към пиксела,
+     за да не се брои лийдът два пъти при CAPI дедупликация. */
+  var _eid = 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+  var _ck  = function(n){ var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; };
+  var _fbc = _ck('_fbc');
+  if (!_fbc) { var _m = location.search.match(/[?&]fbclid=([^&]+)/); if (_m) _fbc = 'fb.1.' + Date.now() + '.' + _m[1]; }
 
-  const payload = {
-    name: name.trim(), email: email.trim(), phone: phone.trim(),
-    service, message: message.trim(), details,
+  /* Ключовете съвпадат 1:1 с таблицата (същите като на фуниите) */
+  var payload = {
+    name: name, email: email, phone: phone,
+    service: service,
+    message: msgFull,
+    details: details || msgFull,
+    business: '', website: '',
     submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
     source: 'marketing-clinic.com',
-    eventID: t.eventID, fbp: t.fbp, fbc: t.fbc,
-    eventSourceUrl: t.eventSourceUrl, userAgent: t.userAgent
+    eventID: _eid, fbp: _ck('_fbp'), fbc: _fbc,
+    eventSourceUrl: location.href, userAgent: navigator.userAgent
   };
-  Object.entries(svcFields).forEach(([n, a]) => {
-    payload[n.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')] = a;
-  });
 
   setSubmitState('loading');
+
+  var done = false;
+  function finish() {
+    if (done) return;
+    done = true;
+
+    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'website_form' }); } catch (e) {}
+
+    /* Meta Lead + Advanced Matching + eventID (както на фуниите) */
+    try {
+      if (typeof fbq === 'function') {
+        fbq('init', '1351953120302144', {
+          em: email.toLowerCase(),
+          ph: phone.replace(/\D/g, ''),
+          fn: name.toLowerCase()
+        });
+        fbq('track', 'Lead', {}, { eventID: _eid });
+      }
+    } catch (e) {}
+
+    /* Кратка пауза, за да успее пикселът да излети преди пренасочването.
+       Без нея браузърът реже заявката и Meta не отчита лийда. */
+    setTimeout(function(){ window.location.href = '/blagodarim'; }, 500);
+  }
+
+  /* Ако мрежата се бави, човекът не остава заключен на „Изпращане..." */
+  var watchdog = setTimeout(finish, 8000);
+
   fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload), mode: 'no-cors', keepalive: true
   })
-  .then(() => {
-    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'website_form' }); } catch (e) {}
-    try {
-      if (typeof fbq === 'function') {
-        fbq('init', '1351953120302144', {
-          em: email.trim().toLowerCase(),
-          ph: phone.replace(/\D/g, ''),
-          fn: name.trim().toLowerCase()
-        });
-        fbq('track', 'Lead', {}, { eventID: t.eventID });
-      }
-    } catch (e) {}
-    window.location.href = '/blagodarim';
-  })
-  .catch(() => { setSubmitState('idle'); showFeedback('error'); });
+  .then(function(){ clearTimeout(watchdog); finish(); })
+  .catch(function(){
+    clearTimeout(watchdog);
+    if (done) return;
+    done = true;
+    setSubmitState('idle');
+    showFeedback('error');
+  });
 }
 /* ── Floating particles in #kontakt ── */
 (function(){
