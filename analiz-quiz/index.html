@@ -128,6 +128,9 @@ em.accent{font-style:italic;color:var(--green2)}
 .field input{width:100%;border:1.5px solid var(--border);border-radius:11px;background:var(--card);font-family:inherit;font-size:16px;font-weight:400;padding:15px 16px;color:var(--fg);outline:none}
 .field input::placeholder{color:var(--muted)}
 .field input:focus{border-color:var(--green)}
+.field .err{display:none;margin-top:7px;font-size:12.5px;line-height:1.45;color:#9E4E4A}
+.field.has-err input{border-color:#9E4E4A}
+.field.has-err .err{display:block}
 .consent{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:18px 0 4px;line-height:1.5}
 .consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--green);flex-shrink:0}
 .consent a{color:var(--green2);font-weight:500}
@@ -303,11 +306,12 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
       <label for="fEmail">Имейл <em>(тук отива анализа)</em></label>
       <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="ti@primer.com">
     </div>
-    <div class="field">
-      <label for="fSite">Адрес на сайта <em>(по желание)</em></label>
-      <input id="fSite" type="text" inputmode="url" placeholder="напр. tvoiat-sait.com">
+    <div class="field" id="fSiteRow">
+      <label for="fSite">Сайт или социален профил</label>
+      <input id="fSite" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="firma.bg, instagram.com/firma или @firma">
+      <div class="err" id="fSiteErr"></div>
     </div>
-    <div class="qnote">Ако имаш сайт, го разглеждаме преди анализа: скорост, проследяване и път до покупка. Ако нямаш, просто прескочи полето.</div>
+    <div class="qnote">Разглеждаме го преди анализа: скорост, проследяване и път до покупка. Ако нямаш сайт, сложи линк към Instagram или Facebook профила си.</div>
   </div>
 </section>
 
@@ -403,6 +407,32 @@ const funnel = (function(){
 
   function validPhone(v){ return v.replace(/\D/g,'').length >= 8; }
 
+/* ===== ВАЛИДАЦИЯ: полето приема САМО сайт или социален профил ===== */
+function tmcSiteError(raw){
+  var v = (raw || '').trim();
+  if(!v) return 'Моля, попълни сайт или линк към социален профил.';
+  if(/^mailto:/i.test(v) || /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v))
+    return 'Тук се въвежда сайт или социален профил, не имейл.';
+  if(/^\+?[\d\s().\-]{6,}$/.test(v))
+    return 'Тук се въвежда сайт или социален профил, не телефон.';
+  if(/^@[A-Za-z0-9._]{2,30}$/.test(v)) return '';
+  var s = v.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  if(/\s/.test(s)) return 'Въведи адреса без интервали. Пример: firma.bg';
+  var host = s.split(/[\/?#]/)[0];
+  if(host.indexOf('@') > -1) return 'Тук се въвежда сайт или социален профил, не имейл.';
+  if(!/^[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/.test(host))
+    return 'Не изглежда като адрес. Пример: firma.bg, instagram.com/firma или @firma';
+  return '';
+}
+function tmcSiteClean(raw){
+  var v = (raw || '').trim();
+  if(!v) return '';
+  if(/^@[A-Za-z0-9._]+$/.test(v)) return v;
+  if(!/^https?:\/\//i.test(v)) v = 'https://' + v;
+  return v;
+}
+
+
   function refreshNext(){
     let ok = false;
     if(cur === CONTACT_STEP){
@@ -410,7 +440,7 @@ const funnel = (function(){
            validPhone($('#fPhone').value) &&
            $('#fConsent').checked;
     } else if(cur === FINAL_STEP){
-      ok = /.+@.+\..+/.test($('#fEmail').value.trim());
+      ok = /.+@.+\..+/.test($('#fEmail').value.trim()) && tmcSiteError($('#fSite').value) === '';
     } else {
       const grp = document.querySelector('.step.active .opts');
       if(grp){
@@ -448,6 +478,19 @@ const funnel = (function(){
 
   // текстови полета: валидация на живо
   ['#fSite','#fName','#fEmail','#fPhone'].forEach(s => { const el = $(s); if(el) el.addEventListener('input', refreshNext); });
+
+  /* съобщение под полето за сайт/профил */
+  (function(){
+    const el = $('#fSite'), row = $('#fSiteRow'), box = $('#fSiteErr');
+    if(!el) return;
+    function paint(force){
+      const msg = tmcSiteError(el.value);
+      if(msg && (force || el.value.trim())){ box.textContent = msg; row.classList.add('has-err'); }
+      else { row.classList.remove('has-err'); }
+    }
+    el.addEventListener('input', () => paint(false));
+    el.addEventListener('blur',  () => paint(true));
+  })();
   $('#fConsent').addEventListener('change', refreshNext);
 
   /* ---------- ЗАПИС КЪМ GOOGLE SHEETS (същият payload както преди) ---------- */
@@ -524,7 +567,7 @@ const funnel = (function(){
     answers.name    = $('#fName').value.trim();
     answers.email   = $('#fEmail').value.trim();
     answers.phone   = $('#fPhone').value.trim();
-    answers.website = $('#fSite').value.trim();
+    answers.website = tmcSiteClean($('#fSite').value);
 
     sendToSheet(buildPayload('Безплатен анализ (квалификация)','Пълен'));
 
