@@ -2940,7 +2940,158 @@ function flashLimitHint() {
   hint.classList.add('show'); hint.classList.remove('pulse'); void hint.offsetWidth; hint.classList.add('pulse');
   setTimeout(() => hint.classList.remove('pulse'), 1100);
 }
-function submitForm() { window.location.href='/blagodarim'; }
+/* ═══════════════════════════════════════
+   ФОРМА → GOOGLE SHEETS (Apps Script)
+   Същата логика като script.js на главния сайт
+   ═══════════════════════════════════════ */
+
+/* Събира отговорите от допълнителните полета на всяка избрана услуга */
+function collectServiceFields() {
+  const result = {};
+  SERVICES.forEach(svc => {
+    if (!selected.includes(svc.id)) return;
+    const section = document.getElementById('fields-' + svc.id);
+    if (!section) return;
+    const lines = [];
+    section.querySelectorAll('select').forEach(sel => {
+      if (!sel.value) return;
+      const label = sel.closest('.field') && sel.closest('.field').querySelector('label');
+      lines.push((label ? label.textContent.trim() : '') + ': ' + sel.value);
+    });
+    section.querySelectorAll('input[type="text"],input[type="number"]').forEach(inp => {
+      if (!inp.value.trim()) return;
+      const label = inp.closest('.field') && inp.closest('.field').querySelector('label');
+      lines.push((label ? label.textContent.trim() : '') + ': ' + inp.value.trim());
+    });
+    section.querySelectorAll('textarea').forEach(ta => {
+      if (!ta.value.trim()) return;
+      const label = ta.closest('.field') && ta.closest('.field').querySelector('label');
+      lines.push((label ? label.textContent.trim() : '') + ': ' + ta.value.trim());
+    });
+    const cbGroups = {};
+    section.querySelectorAll('.cb-item').forEach(item => {
+      const cb = item.querySelector('input[type="checkbox"]');
+      if (!cb || !cb.checked) return;
+      const fieldEl  = item.closest('.field');
+      const groupKey = fieldEl && fieldEl.querySelector('label') ? fieldEl.querySelector('label').textContent.trim() : 'Избрано';
+      if (!cbGroups[groupKey]) cbGroups[groupKey] = [];
+      cbGroups[groupKey].push(item.textContent.trim());
+    });
+    Object.entries(cbGroups).forEach(([grp, vals]) => lines.push(grp + ': ' + vals.join(', ')));
+    if (lines.length > 0) result[svc.name] = lines.join(' | ');
+  });
+  return result;
+}
+
+function setSubmitState(state) {
+  const btn = document.getElementById('submit-btn');
+  if (!btn) return;
+  const lbl = btn.querySelector('span:not(.submit-arrow)');
+  if (state === 'loading') {
+    btn.disabled = true;
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.7';
+    if (lbl) lbl.textContent = 'ИЗПРАЩАНЕ...';
+  } else {
+    btn.disabled = false;
+    btn.style.pointerEvents = '';
+    btn.style.opacity = '';
+    if (lbl) lbl.textContent = 'ИЗПРАТИ ЗАПИТВАНЕ';
+  }
+}
+
+function showFeedback(type) {
+  const success = document.getElementById('form-success');
+  const error   = document.getElementById('form-error');
+  if (success) success.style.display = type === 'success' ? 'flex' : 'none';
+  if (error)   error.style.display   = type === 'error'   ? 'flex' : 'none';
+  if (type !== 'none') {
+    const el = type === 'success' ? success : error;
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function showValidationError(fieldId, message) {
+  clearValidationErrors();
+  const field = document.getElementById(fieldId);
+  if (!field) return;
+  field.classList.add('field-error');
+  field.focus();
+  const hint = document.createElement('p');
+  hint.className = 'field-validation-msg';
+  hint.textContent = message;
+  field.parentNode.appendChild(hint);
+}
+
+function clearValidationErrors() {
+  document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+  document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
+}
+
+/* Контекст за Meta: същият eventID отива и към сървъра, и към пиксела,
+   за да не се брои лийдът два пъти при CAPI дедупликация. */
+function tmcCtx(prefix) {
+  const ck = n => { const m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; };
+  let fbc = ck('_fbc');
+  if (!fbc) { const m = location.search.match(/[?&]fbclid=([^&]+)/); if (m) fbc = 'fb.1.' + Date.now() + '.' + m[1]; }
+  return {
+    eventID: (prefix || 'ev') + '.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10),
+    fbp: ck('_fbp'), fbc: fbc,
+    eventSourceUrl: location.href, userAgent: navigator.userAgent
+  };
+}
+
+function submitForm() {
+  showFeedback('none');
+  const name    = (document.getElementById('f-name')    || {}).value || '';
+  const email   = (document.getElementById('f-email')   || {}).value || '';
+  const phone   = (document.getElementById('f-phone')   || {}).value || '';
+  const message = (document.getElementById('f-message') || {}).value || '';
+  const serviceNames = selected.map(id => { const s = SERVICES.find(x => x.id === id); return s ? s.name : id; });
+  const service = serviceNames.join(', ') || 'Не е избрана услуга';
+
+  if (!name.trim())  { showValidationError('f-name',  'Моля, въведете вашето име.'); return; }
+  if (!email.trim()) { showValidationError('f-email', 'Моля, въведете имейл адрес.'); return; }
+  clearValidationErrors();
+
+  const svcFields = collectServiceFields();
+  const details   = Object.entries(svcFields).map(([n, a]) => '[' + n + '] ' + a).join(' || ');
+
+  const t = tmcCtx('lead');
+
+  const payload = {
+    name: name.trim(), email: email.trim(), phone: phone.trim(),
+    service, message: message.trim(), details,
+    submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+    source: 'marketing-clinic.com',
+    eventID: t.eventID, fbp: t.fbp, fbc: t.fbc,
+    eventSourceUrl: t.eventSourceUrl, userAgent: t.userAgent
+  };
+  Object.entries(svcFields).forEach(([n, a]) => {
+    payload[n.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')] = a;
+  });
+
+  setSubmitState('loading');
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload), mode: 'no-cors', keepalive: true
+  })
+  .then(() => {
+    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'website_form' }); } catch (e) {}
+    try {
+      if (typeof fbq === 'function') {
+        fbq('init', '1351953120302144', {
+          em: email.trim().toLowerCase(),
+          ph: phone.replace(/\D/g, ''),
+          fn: name.trim().toLowerCase()
+        });
+        fbq('track', 'Lead', {}, { eventID: t.eventID });
+      }
+    } catch (e) {}
+    window.location.href = '/blagodarim';
+  })
+  .catch(() => { setSubmitState('idle'); showFeedback('error'); });
+}
 /* ── Floating particles in #kontakt ── */
 (function(){
   var container = document.getElementById('k-particles');
