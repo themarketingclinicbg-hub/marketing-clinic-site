@@ -131,6 +131,12 @@ em.accent{font-style:italic;color:var(--green2)}
 .field .err{display:none;margin-top:7px;font-size:12.5px;line-height:1.45;color:#9E4E4A}
 .field.has-err input{border-color:#9E4E4A}
 .field.has-err .err{display:block}
+.phonerow{display:grid;grid-template-columns:minmax(132px,auto) 1fr;gap:8px}
+.phonerow select{width:100%;border:1.5px solid var(--border);border-radius:11px;background:var(--card);font-family:inherit;font-size:16px;font-weight:400;padding:15px 30px 15px 14px;color:var(--fg);outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%231E3A2F' stroke-width='2' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 11px center}
+.phonerow select:focus{border-color:var(--green)}
+.field.has-err select{border-color:#9E4E4A}
+.field .ok{display:none;margin-top:7px;font-size:12.5px;color:var(--green2)}
+.field.is-ok .ok{display:block}
 .consent{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:18px 0 4px;line-height:1.5}
 .consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--green);flex-shrink:0}
 .consent a{color:var(--green2);font-weight:500}
@@ -241,15 +247,20 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
       <label for="fName">Име</label>
       <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
     </div>
-    <div class="field">
-      <label for="fPhone">Телефон</label>
-      <input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+359 88 000 0000">
+    <div class="field" id="fPhoneRow">
+      <label for="fPhone">Телефон <em>(само цифри)</em></label>
+      <div class="phonerow">
+        <select id="fCode" aria-label="Код на държавата"></select>
+        <input id="fPhone" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="888 123 456">
+      </div>
+      <div class="err" id="fPhoneErr"></div>
+      <div class="ok" id="fPhoneOk"></div>
     </div>
     <label class="consent">
       <input type="checkbox" id="fConsent">
       <span>Съгласявам се The Marketing Clinic да се свърже с мен за безплатния Екшън План и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Планът е безплатен и без ангажимент.</span>
     </label>
-    <div class="qnote">Без спам и без досадни обаждания. Телефонът е, за да ви намерим, ако имейлът се загуби в спам папката.</div>
+    <div class="qnote">Изберете кода на държавата и въведете номера <b>само с цифри</b>, без интервали, тирета и водеща нула. Телефонът е, за да ви намерим, ако имейлът се загуби в спам папката. Без спам и без досадни обаждания.</div>
   </div>
 </section>
 
@@ -437,7 +448,111 @@ const funnel = (function(){
     }
   }
 
-  function validPhone(v){ return v.replace(/\D/g,'').length >= 8; }
+  /* ===== КОД НА ДЪРЖАВАТА + ВАЛИДАЦИЯ НА ТЕЛЕФОНА =====
+     min/max са броят цифри СЛЕД кода на държавата (без водеща нула). */
+  const COUNTRIES = [
+    {iso:'BG', name:'България',          code:'359', min:8,  max:9,  ex:'888 123 456'},
+    {iso:'GR', name:'Гърция',            code:'30',  min:10, max:10, ex:'691 234 5678'},
+    {iso:'RO', name:'Румъния',           code:'40',  min:9,  max:9,  ex:'721 234 567'},
+    {iso:'RS', name:'Сърбия',            code:'381', min:8,  max:9,  ex:'63 123 4567'},
+    {iso:'MK', name:'Северна Македония', code:'389', min:8,  max:8,  ex:'70 123 456'},
+    {iso:'TR', name:'Турция',            code:'90',  min:10, max:10, ex:'532 123 4567'},
+    {iso:'DE', name:'Германия',          code:'49',  min:9,  max:11, ex:'151 2345 6789'},
+    {iso:'AT', name:'Австрия',           code:'43',  min:9,  max:13, ex:'664 123 4567'},
+    {iso:'CH', name:'Швейцария',         code:'41',  min:9,  max:9,  ex:'79 123 45 67'},
+    {iso:'IT', name:'Италия',            code:'39',  min:9,  max:11, ex:'312 345 6789'},
+    {iso:'ES', name:'Испания',           code:'34',  min:9,  max:9,  ex:'612 345 678'},
+    {iso:'FR', name:'Франция',           code:'33',  min:9,  max:9,  ex:'612 345 678'},
+    {iso:'NL', name:'Нидерландия',       code:'31',  min:9,  max:9,  ex:'612 345 678'},
+    {iso:'BE', name:'Белгия',            code:'32',  min:8,  max:9,  ex:'470 12 34 56'},
+    {iso:'GB', name:'Великобритания',    code:'44',  min:9,  max:10, ex:'7400 123456'},
+    {iso:'IE', name:'Ирландия',          code:'353', min:9,  max:9,  ex:'85 123 4567'},
+    {iso:'PT', name:'Португалия',        code:'351', min:9,  max:9,  ex:'912 345 678'},
+    {iso:'PL', name:'Полша',             code:'48',  min:9,  max:9,  ex:'512 345 678'},
+    {iso:'CZ', name:'Чехия',             code:'420', min:9,  max:9,  ex:'601 123 456'},
+    {iso:'SK', name:'Словакия',          code:'421', min:9,  max:9,  ex:'901 123 456'},
+    {iso:'HU', name:'Унгария',           code:'36',  min:9,  max:9,  ex:'201 234 567'},
+    {iso:'HR', name:'Хърватия',          code:'385', min:8,  max:9,  ex:'91 234 5678'},
+    {iso:'SI', name:'Словения',          code:'386', min:8,  max:8,  ex:'31 234 567'},
+    {iso:'CY', name:'Кипър',             code:'357', min:8,  max:8,  ex:'96 123 456'},
+    {iso:'SE', name:'Швеция',            code:'46',  min:7,  max:9,  ex:'70 123 45 67'},
+    {iso:'DK', name:'Дания',             code:'45',  min:8,  max:8,  ex:'20 12 34 56'},
+    {iso:'NO', name:'Норвегия',          code:'47',  min:8,  max:8,  ex:'406 12 345'},
+    {iso:'FI', name:'Финландия',         code:'358', min:6,  max:10, ex:'40 123 4567'},
+    {iso:'UA', name:'Украйна',           code:'380', min:9,  max:9,  ex:'50 123 4567'},
+    {iso:'MD', name:'Молдова',           code:'373', min:8,  max:8,  ex:'60 123 456'},
+    {iso:'US', name:'САЩ / Канада',      code:'1',   min:10, max:10, ex:'201 555 0123'},
+    {iso:'XX', name:'Друга държава',     code:'',    min:8,  max:15, ex:'49 151 2345678'}
+  ];
+
+  const codeSel = $('#fCode');
+  COUNTRIES.forEach(function(c, i){
+    var o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = c.code ? (c.name + ' +' + c.code) : (c.name + ' (с код)');
+    codeSel.appendChild(o);
+  });
+  codeSel.value = '0'; // България по подразбиране
+
+  function country(){ return COUNTRIES[+codeSel.value] || COUNTRIES[0]; }
+
+  /* Само цифри в полето. Водещите нули не влизат в международния номер. */
+  function phoneNational(){
+    var d = $('#fPhone').value.replace(/\D/g,'');
+    if(country().code === '' && d.indexOf('00') === 0) d = d.slice(2);
+    return d.replace(/^0+/, '');
+  }
+
+  function fullPhone(){
+    var d = phoneNational();
+    if(!d) return '';
+    return '+' + (country().code || '') + d;
+  }
+
+  /* Празен низ = валиден. Иначе връща какво точно липсва. */
+  function phoneError(){
+    var c = country(), d = phoneNational(), raw = $('#fPhone').value.replace(/\D/g,'');
+    if(!raw) return 'Моля, въведете телефонния си номер, само с цифри.';
+    if(!d)   return 'Номерът не може да е само нули.';
+    var need = (c.min === c.max) ? (c.min + ' цифри') : (c.min + ' до ' + c.max + ' цифри');
+    var where = c.code ? ('след +' + c.code) : 'заедно с кода на държавата';
+    if(d.length < c.min){
+      var left = c.min - d.length;
+      return 'Номерът е непълен: липсват още ' + left + (left === 1 ? ' цифра' : ' цифри') +
+             '. За ' + c.name + ' се въвеждат ' + need + ' ' + where + ', например ' + c.ex + '.';
+    }
+    if(d.length > c.max){
+      return 'Номерът е с ' + (d.length - c.max) + ' цифри повече от нужното. За ' + c.name +
+             ' се въвеждат ' + need + ' ' + where + ', например ' + c.ex + '.';
+    }
+    return '';
+  }
+
+  /* Съобщението под полето: грешка при непълен номер, потвърждение при пълен. */
+  (function(){
+    var el = $('#fPhone'), row = $('#fPhoneRow'), box = $('#fPhoneErr'), okbox = $('#fPhoneOk');
+    function paint(force){
+      var msg = phoneError();
+      var typed = el.value.replace(/\D/g,'').length > 0;
+      row.classList.remove('has-err','is-ok');
+      box.textContent = ''; okbox.textContent = '';
+      if(msg && (force || typed)){ box.textContent = msg; row.classList.add('has-err'); }
+      else if(!msg && typed){ okbox.textContent = 'Номерът е пълен: ' + fullPhone(); row.classList.add('is-ok'); }
+    }
+    el.addEventListener('input', function(){
+      /* режем всичко, което не е цифра, още докато се пише */
+      var clean = el.value.replace(/\D/g,'');
+      if(clean !== el.value) el.value = clean;
+      paint(false); refreshNext();
+    });
+    el.addEventListener('blur', function(){ paint(true); });
+    codeSel.addEventListener('change', function(){
+      var c = country();
+      el.placeholder = c.ex;
+      paint(el.value.replace(/\D/g,'').length > 0);
+      refreshNext();
+    });
+  })();
 
 /* ===== ВАЛИДАЦИЯ: полето приема САМО сайт или социален профил ===== */
 function tmcSiteError(raw){
@@ -469,7 +584,7 @@ function tmcSiteClean(raw){
     let ok = false;
     if(cur === CONTACT_STEP){
       ok = $('#fName').value.trim().length > 1 &&
-           validPhone($('#fPhone').value) &&
+           phoneError() === '' &&
            $('#fConsent').checked;
     } else if(cur === FINAL_STEP){
       ok = /.+@.+\..+/.test($('#fEmail').value.trim()) && tmcSiteError($('#fSite').value) === '';
@@ -532,6 +647,7 @@ function tmcSiteClean(raw){
       ' | Канали: ' + ((answers.channels || []).join(', ') || '-') +
       ' | Бюджет: ' + (answers.budget || '-') +
       ' | Спънка: ' + (answers.problem || '-') +
+      ' | Държава: ' + (answers.phoneCountry || '-') +
       ' | Оборот: ' + (answers.revenue || '-') +
       ' | Роля: ' + (answers.role || '-');
   }
@@ -550,6 +666,7 @@ function tmcSiteClean(raw){
       problem: answers.problem || '',
       revenue: answers.revenue || '',
       role: answers.role || '',
+      phoneCountry: answers.phoneCountry || '',
       submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
       source: 'Landing /ads novi-reklami' + utmText,
       leadId: leadId,
@@ -575,13 +692,14 @@ function tmcSiteClean(raw){
   function sendPartial(){
     if(partialSent) return;
     answers.name  = $('#fName').value.trim();
-    answers.phone = $('#fPhone').value.trim();
-    if(!answers.name || !validPhone(answers.phone)) return;
+    answers.phone = fullPhone();
+    answers.phoneCountry = country().iso + ' (+' + (country().code || '?') + ')';
+    if(!answers.name || phoneError() !== '') return;
     partialSent = true;
 
     sendToSheet(buildPayload('Екшън План (частичен, име и телефон)','Непълен', partialEventID));
 
-    try { if(typeof gtag === 'function') gtag('event','generate_lead_partial',{source:GA_SOURCE}); } catch(e){}
+    try { if(typeof gtag === 'function') gtag('event','generate_lead_partial',{source:GA_SOURCE, phone_country:(country().iso||'')}); } catch(e){}
     try { if(typeof fbq === 'function') fbq('trackCustom','PartialLead',{content_name:GA_SOURCE},{eventID:partialEventID}); } catch(e){}
   }
 
@@ -603,18 +721,19 @@ function tmcSiteClean(raw){
   function submit(){
     answers.name    = $('#fName').value.trim();
     answers.email   = $('#fEmail').value.trim();
-    answers.phone   = $('#fPhone').value.trim();
+    answers.phone   = fullPhone();
+    answers.phoneCountry = country().iso + ' (+' + (country().code || '?') + ')';
     answers.website = tmcSiteClean($('#fSite').value);
 
     sendToSheet(buildPayload('Екшън План (нови реклами)','Пълен', leadEventID));
 
     // GA4 + Meta Lead с Advanced Matching + eventID за CAPI дедупликация (както на сайта)
-    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:GA_SOURCE}); } catch(e){}
+    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:GA_SOURCE, phone_country:(country().iso||'')}); } catch(e){}
     try {
       if(typeof fbq === 'function'){
         fbq('init','1351953120302144',{
           em: answers.email.toLowerCase(),
-          ph: answers.phone.replace(/\D/g,''),
+          ph: answers.phone.replace(/\D/g,''),   // вече е с код на държавата → по-добро съвпадение
           fn: answers.name.toLowerCase()
         });
         fbq('track','Lead',{},{eventID:leadEventID});
@@ -629,8 +748,21 @@ function tmcSiteClean(raw){
 })();
 </script>
 
-<!-- ===== META PIXEL + CAPI helpers · един файл за целия сайт ===== -->
-<script src="/tracking.js"></script>
+<!-- ===== META PIXEL (deferred) ===== -->
+<script>
+  window.addEventListener('load', function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1351953120302144');
+    fbq('track', 'PageView');
+  });
+</script>
 <noscript><img height="1" width="1" style="display:none" decoding="async"
 src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
 /></noscript>
