@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Търсите решение на проблема? · Вземи Екшън Плана | The Marketing Clinic</title>
-<meta name="description" content="Търсите решение на проблема с рекламата и продажбите? Попълнете формата за 2 минути и вземете безплатния Екшън План като персонализирана презентация: всеки проблем канал по канал плюс конкретни стъпки. Без ангажимент.">
+<title>Това, което не виждате, ви струва най-скъпо | The Marketing Clinic</title>
+<meta name="description" content="За собственици на средни и големи бизнеси. Рекламата, която ви доведе тук, показва един теч. Отговорете на няколко въпроса и до 24 часа получавате персонализирана презентация за цялата ви дигитална структура.">
 <meta name="theme-color" content="#1E3A2F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -23,7 +23,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="https://marketing-clinic.com/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="https://marketing-clinic.com/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="https://marketing-clinic.com/favicon-192.png">
@@ -59,15 +59,13 @@ em.accent{font-style:italic;color:var(--green2)}
 
 /* ===== TOP BAR ===== */
 .topbar{background:rgba(245,240,232,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);position:relative;z-index:50;border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top)}
-.topbar .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+.topbar .row{display:flex;align-items:center;justify-content:center;padding:14px 0;gap:12px}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--green)}
 .logo svg{width:30px;height:30px;flex-shrink:0}
 .logo-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.05}
-.callbtn{display:flex;align-items:center;gap:7px;color:var(--green);text-decoration:none;font-weight:500;font-size:12.5px;letter-spacing:.02em;border:1px solid var(--border);border-radius:999px;padding:8px 15px;white-space:nowrap}
-.callbtn:active{background:var(--secondary)}
 
 /* ===== PROGRESS ===== */
-.progress-shell{padding:0 0 14px}
+.progress-shell{padding-bottom:14px}
 .progress-meta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .pbar-track{height:5px;background:rgba(30,58,47,.1);border-radius:99px;overflow:hidden}
 .pbar-fill{height:100%;width:12%;background:linear-gradient(90deg,var(--green2),var(--green));border-radius:99px;transition:width .35s ease}
@@ -85,25 +83,30 @@ em.accent{font-style:italic;color:var(--green2)}
     var(--bg);
   color:var(--fg);padding:40px 0 36px;
 }
-.badge{display:inline-block;background:var(--green);color:var(--cream);font-size:10.5px;font-weight:500;letter-spacing:.18em;padding:8px 15px;border-radius:999px;margin-bottom:20px;text-transform:uppercase}
-.hero h1{font-size:clamp(32px,8.4vw,50px);margin-bottom:16px;color:var(--green);letter-spacing:-.02em}
-.hero h1 .hl{font-style:italic;color:var(--green2)}
-.hero .sub{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:26px}
+.audience{display:block;background:var(--green);color:rgba(245,240,232,.86);font-size:12.5px;font-weight:400;letter-spacing:.03em;padding:11px 16px;text-align:center;line-height:1.45}
+.audience b{color:var(--cream);font-weight:600;letter-spacing:.05em}
+.hero{text-align:center}
+.hero h1{margin-bottom:18px;color:var(--green);line-height:1.05}
+.hero h1 .big{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(27px,7.2vw,44px);letter-spacing:.005em;text-transform:uppercase;line-height:1.08;margin-bottom:10px}
+.hero h1 .hl{display:block;font-style:italic;font-weight:700;font-size:clamp(26px,7vw,42px);color:var(--green2)}
+.nb{white-space:nowrap}
+.hero .sub{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:26px;max-width:520px;margin-left:auto;margin-right:auto}
 .hero .sub b{color:var(--green);font-weight:500}
 .startbtn{display:block;width:100%;border:none;cursor:pointer;background:var(--green);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:18px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(30,58,47,.22);transition:transform .15s ease,background .2s}
 .startbtn:hover{transform:translateY(-1px);background:var(--green2)}
-.micro{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:12.5px;margin-top:14px}
-.micro svg{flex:0 0 auto}
-.herostats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.hstat{background:var(--card);padding:16px 10px;text-align:center}
+.scarcity{display:block;text-align:center;color:var(--muted);font-size:12.5px;margin-top:15px;line-height:1.5;max-width:400px;margin-left:auto;margin-right:auto}
+.scarcity i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green2);margin-right:8px;vertical-align:middle}
+.herostats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:28px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+@media(min-width:560px){.herostats{grid-template-columns:repeat(4,1fr)}}
+.hstat{background:var(--card);padding:17px 10px;text-align:center;display:flex;flex-direction:column;justify-content:center}
 .hstat b{display:block;font-size:26px;color:var(--green);font-weight:600;font-family:'Cormorant Garamond',serif;line-height:1}
-.hstat small{color:var(--muted);font-size:11px;line-height:1.35;display:block;margin-top:5px}
+.hstat small{color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;line-height:1.4;display:block;margin-top:6px}
 .trustrow{display:flex;flex-wrap:wrap;gap:9px 18px;justify-content:center;margin-top:24px}
 .trustrow span{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px}
 .trustrow svg{flex:0 0 auto}
 
 /* ===== QUESTION CARD ===== */
-.qcard{padding:28px 0 128px}
+.qcard{padding-top:28px;padding-bottom:128px}
 .kicker{color:var(--green2);font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
 .qcard h2{font-size:29px;color:var(--green);margin-bottom:10px;letter-spacing:-.01em}
 .qcard .qsub{color:var(--muted);font-size:14.5px;margin-bottom:22px;line-height:1.6}
@@ -150,7 +153,7 @@ em.accent{font-style:italic;color:var(--green2)}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
 
 /* ===== THANK YOU ===== */
-.thanks{padding:44px 0 64px}
+.thanks{padding-top:44px;padding-bottom:64px}
 .thanks h2{font-size:34px;color:var(--green);margin-bottom:12px;letter-spacing:-.01em}
 .thanks .tsub{color:var(--muted);font-size:15.5px;margin-bottom:28px;line-height:1.65}
 .nextsteps{display:grid;gap:14px;margin-bottom:28px}
@@ -183,12 +186,9 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
         </svg>
         <div class="logo-text">Marketing<br>Clinic</div>
       </a>
-      <a class="callbtn" href="tel:+359889378000">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
-        Обадете се
-      </a>
     </div>
   </div>
+  <div class="audience"><b>ВНИМАНИЕ</b> за собственици на <b>СРЕДНИ</b> и <b>ГОЛЕМИ БИЗНЕСИ</b>!!!</div>
   <div class="progress-shell wrap" id="progressShell" style="display:none">
     <div class="progress-meta"><span>Стъпка <b id="pNow">1</b> от <b id="pTotal">6</b></span><span id="pPct">12%</span></div>
     <div class="pbar-track"><div class="pbar-fill" id="pBar"></div></div>
@@ -199,23 +199,15 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
 <section class="step active" data-step="0">
   <div class="hero">
     <div class="wrap">
-      <div class="badge">Безплатно · Без ангажимент · 2 минути</div>
-      <h1>Търсите решение на проблема? <span class="hl">Попълнете формата за 2 минути.</span></h1>
-      <p class="sub">Отговаряте на няколко кратки въпроса и получавате <b>безплатния Екшън План</b> като персонализирана презентация: всеки проблем, който спъва бизнеса ви канал по канал (Facebook, Instagram, Google, сайт, проследяване) плюс конкретни стъпки. Без ангажимент, без обвързване.</p>
+      <h1><span class="big">Това, което не виждате, ви струва <span class="nb">най-скъпо</span></span> <span class="hl">Показваме ви го за 24 часа.</span></h1>
+      <p class="sub">Рекламата, която ви доведе тук, <b>ПОКАЗВА ЕДИН ТЕЧ</b>. 6 въпроса и до 24 часа имате <b>ПЕРСОНАЛИЗИРАНА</b> презентация за <b>ЦЯЛАТА ВИ ДИГИТАЛНА СТРУКТУРА</b>!</p>
       <button class="startbtn" onclick="funnel.start()">Вземи Екшън Плана</button>
-      <div class="micro">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
-        Не ви продаваме нищо. Показваме ви къде текат парите ви.
-      </div>
+      <div class="scarcity"><i></i>Приемаме до 5 бизнеса седмично, за да отделим внимание на всеки.</div>
       <div class="herostats">
+        <div class="hstat"><b>+150</b><small>прегледани бизнеса за 2 месеца</small></div>
         <div class="hstat"><b>8</b><small>прегледани направления</small></div>
-        <div class="hstat"><b>0 €</b><small>цена за вас, без уловки</small></div>
-        <div class="hstat"><b>48ч</b><small>планът при вас</small></div>
-      </div>
-      <div class="trustrow">
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>2 минути за попълване</span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Без карта и без абонамент</span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Данните ви остават при нас</span>
+        <div class="hstat"><b>3</b><small>най-скъпи реклами</small></div>
+        <div class="hstat"><b>24ч</b><small>планът при вас</small></div>
       </div>
     </div>
   </div>
@@ -229,9 +221,9 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     <p class="qsub">Това определя как гледаме на числата ви и с кои канали започваме.</p>
     <div class="opts" data-name="business" data-mode="single">
       <button class="opt" data-val="Онлайн магазин / e-commerce">Онлайн магазин<small>e-commerce, продажби онлайн</small></button>
-      <button class="opt" data-val="Локален бизнес / услуга">Локален бизнес или услуга<small>салон, клиника, сервиз, ресторант</small></button>
+      <button class="opt" data-val="Верига обекти / услуга">Верига обекти или услуга<small>клиники, хотели, ресторанти, сервизи</small></button>
       <button class="opt" data-val="Услуги B2B">Услуги към бизнеси (B2B)</button>
-      <button class="opt" data-val="Личен бранд / експерт">Личен бранд или експерт<small>консултант, коуч, инфопродукти</small></button>
+      <button class="opt" data-val="Производство / търговия на едро">Производство или търговия на едро</button>
       <button class="opt" data-val="Друго">Друго</button>
     </div>
   </div>
@@ -258,7 +250,7 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     </div>
     <label class="consent">
       <input type="checkbox" id="fConsent">
-      <span>Съгласявам се The Marketing Clinic да се свърже с мен за безплатния Екшън План и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Планът е безплатен и без ангажимент.</span>
+      <span>Съгласявам се The Marketing Clinic да се свърже с мен за Екшън Плана и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>. Без ангажимент.</span>
     </label>
     <div class="qnote">Изберете кода на държавата и въведете номера <b>само с цифри</b>, без интервали, тирета и водеща нула. Телефонът е, за да ви намерим, ако имейлът се загуби в спам папката. Без спам и без досадни обаждания.</div>
   </div>
@@ -269,13 +261,13 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   <div class="wrap qcard">
     <div class="kicker">Реклама сега</div>
     <h2>Къде рекламирате в момента?</h2>
-    <p class="qsub">Изберете всичко, което важи. Ако още не рекламирате, изберете последното.</p>
+    <p class="qsub">Изберете всичко, което важи в момента.</p>
     <div class="opts" data-name="channels" data-mode="multi">
       <button class="opt" data-val="Facebook / Instagram">Facebook и Instagram</button>
       <button class="opt" data-val="Google">Google (Търсене, YouTube)</button>
       <button class="opt" data-val="TikTok">TikTok</button>
       <button class="opt" data-val="Инфлуенсъри / органика">Инфлуенсъри или само органика</button>
-      <button class="opt" data-val="Още не рекламирам">Още не рекламирам</button>
+      <button class="opt" data-val="Само органика и препоръки">Само органика и препоръки</button>
     </div>
   </div>
 </section>
@@ -287,11 +279,11 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     <h2>Какъв е месечният ви рекламен бюджет?</h2>
     <p class="qsub">Само за реклама, без възнаграждение за агенция. Приблизително е достатъчно.</p>
     <div class="opts" data-name="budget" data-mode="single">
-      <button class="opt" data-val="До 250 €">До 250 €</button>
-      <button class="opt" data-val="250 до 750 €">250 до 750 €</button>
-      <button class="opt" data-val="750 до 2500 €">750 до 2500 €</button>
-      <button class="opt" data-val="Над 2500 €">Над 2500 €</button>
-      <button class="opt" data-val="Още не заделям бюджет">Още не заделям бюджет</button>
+      <button class="opt" data-val="До 1000 €">До 1000 €</button>
+      <button class="opt" data-val="1000 до 3000 €">1000 до 3000 €</button>
+      <button class="opt" data-val="3000 до 10 000 €">3000 до 10 000 €</button>
+      <button class="opt" data-val="10 000 до 30 000 €">10 000 до 30 000 €</button>
+      <button class="opt" data-val="Над 30 000 €">Над 30 000 €</button>
     </div>
   </div>
 </section>
@@ -317,7 +309,7 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   <div class="wrap qcard">
     <div class="kicker">Последна стъпка</div>
     <h2>Готово! Къде да изпратим Екшън Плана?</h2>
-    <p class="qsub" id="contactSub">Безплатният ви Екшън План пристига до 48 часа като персонализирана презентация: симптом и рецепта канал по канал, плюс приоритети в график. Безплатно и без ангажимент.</p>
+    <p class="qsub" id="contactSub">Екшън Планът ви пристига до 24 часа като персонализирана презентация: симптом и рецепта канал по канал, плюс приоритети в график.</p>
     <div class="field">
       <label for="fEmail">Имейл <em>(тук отива планът)</em></label>
       <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="vie@primer.com">
@@ -338,7 +330,7 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     <p class="tsub">Благодарим, <b id="cName">приятел</b>. Ето какво следва оттук нататък:</p>
     <div class="nextsteps">
       <div class="ns"><div class="n">1</div><p><b>Анализираме маркетинга ви канал по канал</b>Преглеждаме Facebook, Instagram, Google, сайта и проследяването ви, за да намерим къде текат парите.</p></div>
-      <div class="ns"><div class="n">2</div><p><b>Екшън Планът пристига в имейла ви до 48 часа</b>Симптом, рецепта и приоритет за всеки канал, плюс график за действие, като персонализирана презентация. Повечето стъпки са за 0 €</p></div>
+      <div class="ns"><div class="n">2</div><p><b>Екшън Планът пристига в имейла ви до 24 часа</b>Симптом, рецепта и приоритет за всеки канал, плюс график за действие, като персонализирана презентация. Повечето стъпки може да поеме вашият екип.</p></div>
       <div class="ns"><div class="n">3</div><p><b>Ако числата ви харесат, говорим</b>Кратък разговор, в който минаваме през плана и следващите стъпки. Само ако вие поискате.</p></div>
     </div>
     <div class="dmbox">
@@ -361,7 +353,7 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
   <div class="wrap">
     <div class="fl">The Marketing Clinic</div>
     marketing-clinic.com · +359 889 378 000 · themarketingclinicbg@gmail.com · ул. Христо Ботев 8, Сандански 2800<br><br>
-    Прогнозите се базират на данни от активните ни клиенти и текущия пазар в България. Реалният резултат зависи от офертата, маржовете и изпълнението. Екшън Планът е безплатен и без ангажимент. Това не е финансов съвет.
+    Прогнозите се базират на данни от активните ни клиенти и текущия пазар в България. Реалният резултат зависи от офертата, маржовете и изпълнението. Екшън Планът е без ангажимент. Това не е финансов съвет.
   </div>
 </footer>
 
