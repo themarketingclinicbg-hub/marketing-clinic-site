@@ -900,6 +900,18 @@ function sendPartial(beacon){
   partialSent = true; saveState();
   sendToSheet(buildPayload('Екшън План (частичен, име и телефон)','Непълен', partialEventID), !!beacon);
   ga('generate_lead_partial', {source:GA_SOURCE, phone_country:country().iso || ''});
+  /* Advanced matching още оттук: PartialLead тръгва с данни за съвпадение,
+     а не анонимен. Вдига Event Match Quality и на следващите събития. */
+  try{
+    if(typeof fbq === 'function'){
+      fbq('init', PIXEL_ID, {
+        ph: answers.phone.replace(/\D/g,''),
+        fn: answers.name.toLowerCase(),
+        external_id: leadId,
+        country: (country().iso || '').toLowerCase()
+      });
+    }
+  }catch(e){}
   fb('trackCustom','PartialLead',{content_name:GA_SOURCE},{eventID:partialEventID});
 }
 
