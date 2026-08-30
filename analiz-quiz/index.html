@@ -42,8 +42,18 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1351953120302144');
-fbq('track','PageView');
+(function(){
+  /* Устойчив external_id: един и същ при всяко посещение на този браузър.
+     Свързва PageView → PartialLead → Lead в един човек и вдига match quality. */
+  var uid = '';
+  try{
+    uid = localStorage.getItem('tmc_uid') || '';
+    if(!uid){ uid = 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2,10); localStorage.setItem('tmc_uid', uid); }
+  }catch(e){}
+  window.__tmcUid = uid;
+  fbq('init','1351953120302144', uid ? {external_id:uid} : {});
+  fbq('track','PageView');
+})();
 </script>
 
 <!-- ===== GA4 · опашката работи веднага, библиотеката се тегли по-късно ===== -->
@@ -878,11 +888,33 @@ function buildPayload(service, status, eventID){
     phoneCountry: answers.phoneCountry || '',
     submittedAt: new Date().toLocaleString('bg-BG', {timeZone:'Europe/Sofia'}),
     source: 'Landing /ads novi-reklami' + utmText,
-    leadId: leadId, externalId: leadId, status: status, eventID: eventID,
+    firstName: nameParts(answers.name).fn, lastName: nameParts(answers.name).ln,
+    leadId: leadId, externalId: UID, status: status, eventID: eventID,
     fbp: ck('_fbp'), fbc: fbc(),
     eventSourceUrl: location.href, userAgent: navigator.userAgent,
     pixelId: PIXEL_ID
   };
+}
+
+/* ---------- ДАННИ ЗА СЪВПАДЕНИЕ (Advanced Matching) ----------
+   Meta очаква собствено име в `fn` и фамилия в `ln`, нормализирани:
+   без пунктуация, малки букви. Пълно име в `fn` не съвпада с никого
+   и сваля Event Match Quality до нула. */
+var UID = window.__tmcUid || leadId;
+function nameParts(full){
+  var p = (full || '').trim().toLowerCase().replace(/[.,''"`]/g,'').split(/\s+/).filter(Boolean);
+  return {fn: p[0] || '', ln: p.length > 1 ? p[p.length-1] : ''};
+}
+function userData(withEmail){
+  var n = nameParts(answers.name), d = {};
+  if(withEmail && answers.email) d.em = answers.email.trim().toLowerCase();
+  if(answers.phone) d.ph = answers.phone.replace(/\D/g,'');
+  if(n.fn) d.fn = n.fn;
+  if(n.ln) d.ln = n.ln;
+  if(UID) d.external_id = UID;
+  var c = (country().iso || '').toLowerCase();
+  if(c && c !== 'xx') d.country = c;   /* "Друга държава" не е валиден ISO код */
+  return d;
 }
 
 /* Стойност на лийда за Meta — за оптимизация по стойност по-нататък */
@@ -901,18 +933,11 @@ function sendPartial(beacon){
   sendToSheet(buildPayload('Екшън План (частичен, име и телефон)','Непълен', partialEventID), !!beacon);
   ga('generate_lead_partial', {source:GA_SOURCE, phone_country:country().iso || ''});
   /* Advanced matching още оттук: PartialLead тръгва с данни за съвпадение,
-     а не анонимен. Вдига Event Match Quality и на следващите събития. */
-  try{
-    if(typeof fbq === 'function'){
-      fbq('init', PIXEL_ID, {
-        ph: answers.phone.replace(/\D/g,''),
-        fn: answers.name.toLowerCase(),
-        external_id: leadId,
-        country: (country().iso || '').toLowerCase()
-      });
-    }
-  }catch(e){}
-  fb('trackCustom','PartialLead',{content_name:GA_SOURCE},{eventID:partialEventID});
+     а не анонимен. Подаваме ги и през init, и в самото събитие — така работи
+     независимо коя от двете конвенции чете версията на пиксела. */
+  var ud = userData(false);
+  try{ if(typeof fbq === 'function') fbq('init', PIXEL_ID, ud); }catch(e){}
+  fb('trackCustom','PartialLead',{content_name:GA_SOURCE},{eventID:partialEventID, user_data:ud});
 }
 
 function submit(){
@@ -929,16 +954,12 @@ function submit(){
 
   sendToSheet(buildPayload('Екшън План (нови реклами)','Пълен', leadEventID), false);
   ga('generate_lead', {source:GA_SOURCE, phone_country:country().iso || '', value:leadValue(), currency:'EUR'});
+  var ud = userData(true);
   try{
     if(typeof fbq === 'function'){
-      fbq('init', PIXEL_ID, {
-        em: answers.email.toLowerCase(),
-        ph: answers.phone.replace(/\D/g,''),
-        fn: answers.name.toLowerCase(),
-        external_id: leadId,
-        country: (country().iso || '').toLowerCase()
-      });
-      fbq('track','Lead', {content_name:GA_SOURCE, value:leadValue(), currency:'EUR'}, {eventID:leadEventID});
+      fbq('init', PIXEL_ID, ud);
+      fbq('track','Lead', {content_name:GA_SOURCE, value:leadValue(), currency:'EUR'},
+          {eventID:leadEventID, user_data:ud});
     }
   }catch(e){}
 
