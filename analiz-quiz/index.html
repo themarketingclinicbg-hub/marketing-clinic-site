@@ -143,6 +143,9 @@ em.accent{font-style:italic;color:var(--green2)}
 .field.has-err select{border-color:#9E4E4A}
 .field .ok{display:none;margin-top:7px;font-size:12.5px;color:var(--green2)}
 .field.is-ok .ok{display:block}
+.nosite{display:flex;gap:9px;align-items:center;margin-top:10px}
+.nosite input{width:17px;height:17px;accent-color:var(--green);flex:0 0 auto}
+.nosite label{font-size:12.5px;color:var(--muted);cursor:pointer;font-weight:400;margin:0}
 .consent{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:18px 0 4px;line-height:1.5}
 .consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--green);flex-shrink:0}
 .consent a{color:var(--green2);font-weight:500}
@@ -318,14 +321,16 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
     <div class="kicker">Последна стъпка</div>
     <h2>Готово! Къде да изпратим Екшън Плана?</h2>
     <p class="qsub" id="contactSub">До 24 часа Екшън Планът е при вас: диагноза и решение канал по канал, с време, цена и отговорник до всяка стъпка.</p>
-    <div class="field">
+    <div class="field" id="fEmailRow">
       <label for="fEmail">Имейл <em>(тук отива планът)</em></label>
       <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="vie@primer.com">
+      <div class="err" id="fEmailErr"></div>
     </div>
     <div class="field" id="fSiteRow">
       <label for="fSite">Сайт или социален профил</label>
       <input id="fSite" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="firma.bg, instagram.com/firma или @firma">
       <div class="err" id="fSiteErr"></div>
+      <div class="nosite"><input type="checkbox" id="fNoSite"><label for="fNoSite">Нямам сайт и профил</label></div>
     </div>
     <div class="qnote">Минаваме през него като ваш клиент: скорост, проследяване и път до офертата. Ако нямате сайт, сложете линк към Instagram или Facebook профила си.</div>
   </div>
@@ -451,7 +456,12 @@ const funnel = (function(){
   /* ===== КОД НА ДЪРЖАВАТА + ВАЛИДАЦИЯ НА ТЕЛЕФОНА =====
      min/max са броят цифри СЛЕД кода на държавата (без водеща нула). */
   const COUNTRIES = [
-    {iso:'BG', name:'България',          code:'359', min:8,  max:9,  ex:'888 123 456'},
+    {iso:'BG', name:'България',          code:'359', min:8,  max:9,  ex:'888 123 456',
+     /* 9 цифри = мобилен или стационарен; 8 цифри се приемат само за
+        стационарен (започва с 2 до 6). Така отрязан мобилен като 88812345
+        или 79959020 не минава за пълен номер. */
+     re: /^(?:[2-6]\d{7}|[2-9]\d{8})$/,
+     reErr: 'Номерът не е пълен. Мобилните в България са 9 цифри след +359, например 888 123 456.'},
     {iso:'GR', name:'Гърция',            code:'30',  min:10, max:10, ex:'691 234 5678'},
     {iso:'RO', name:'Румъния',           code:'40',  min:9,  max:9,  ex:'721 234 567'},
     {iso:'RS', name:'Сърбия',            code:'381', min:8,  max:9,  ex:'63 123 4567'},
@@ -509,6 +519,16 @@ const funnel = (function(){
     return '+' + (country().code || '') + d;
   }
 
+  /* Форматът, който отива в таблицата. Интервалите са задължителни:
+     без тях Google Sheets вижда "+359888123456" като число, превръща го
+     в 359888123456 и плюсът изчезва. С интервали клетката остава текст.
+     Надолу по веригата (Meta, Apps Script) интервалите се махат така или иначе. */
+  function phoneDisplay(){
+    var d = phoneNational();
+    if(!d) return '';
+    return '+' + (country().code || '') + ' ' + d.replace(/(\d{3})(?=\d)/g, '$1 ');
+  }
+
   /* Празен низ = валиден. Иначе връща какво точно липсва. */
   function phoneError(){
     var c = country(), d = phoneNational(), raw = $('#fPhone').value.replace(/\D/g,'');
@@ -525,6 +545,7 @@ const funnel = (function(){
       return 'Номерът е с ' + (d.length - c.max) + ' цифри повече от нужното. За ' + c.name +
              ' се въвеждат ' + need + ' ' + where + ', например ' + c.ex + '.';
     }
+    if(c.re && !c.re.test(d)) return c.reErr || ('Номерът не изглежда валиден за ' + c.name + '. Пример: ' + c.ex + '.');
     return '';
   }
 
@@ -537,7 +558,7 @@ const funnel = (function(){
       row.classList.remove('has-err','is-ok');
       box.textContent = ''; okbox.textContent = '';
       if(msg && (force || typed)){ box.textContent = msg; row.classList.add('has-err'); }
-      else if(!msg && typed){ okbox.textContent = 'Номерът е пълен: ' + fullPhone(); row.classList.add('is-ok'); }
+      else if(!msg && typed){ okbox.textContent = 'Номерът е пълен: ' + phoneDisplay(); row.classList.add('is-ok'); }
     }
     el.addEventListener('input', function(){
       /* режем всичко, което не е цифра, още докато се пише */
@@ -580,6 +601,39 @@ function tmcSiteClean(raw){
 }
 
 
+  /* Имейлът е единственият канал, по който планът стига до човека.
+     Стар вариант приемаше "мария иванова@gmail.com" и "a@@b..c". */
+  function emailError(){
+    var e = ($('#fEmail').value || '').trim();
+    if(!e) return 'Моля, въведете имейл.';
+    if(/\s/.test(e)) return 'Имейлът не може да съдържа интервали.';
+    if(/\.\./.test(e)) return 'Проверете имейла, има две точки една до друга.';
+    if((e.match(/@/g) || []).length !== 1) return 'Проверете имейла. Пример: ime@firma.bg';
+    if(!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/.test(e))
+      return 'Проверете имейла. Пример: ime@firma.bg';
+    return '';
+  }
+  (function(){
+    var el = $('#fEmail'), row = $('#fEmailRow'), box = $('#fEmailErr');
+    if(!el) return;
+    function paint(force){
+      var msg = emailError();
+      if(msg && (force || el.value.trim())){ box.textContent = msg; row.classList.add('has-err'); }
+      else { row.classList.remove('has-err'); box.textContent = ''; }
+    }
+    el.addEventListener('input', function(){ paint(false); });
+    el.addEventListener('blur',  function(){ paint(true); });
+  })();
+
+  /* Изход за човек без сайт и без профил, за да не се запъне на последната стъпка */
+  const noSite = $('#fNoSite');
+  noSite.addEventListener('change', function(){
+    const el = $('#fSite');
+    el.disabled = noSite.checked;
+    if(noSite.checked){ el.value = ''; $('#fSiteRow').classList.remove('has-err'); }
+    refreshNext();
+  });
+
   function refreshNext(){
     let ok = false;
     if(cur === CONTACT_STEP){
@@ -587,7 +641,7 @@ function tmcSiteClean(raw){
            phoneError() === '' &&
            $('#fConsent').checked;
     } else if(cur === FINAL_STEP){
-      ok = /.+@.+\..+/.test($('#fEmail').value.trim()) && tmcSiteError($('#fSite').value) === '';
+      ok = emailError() === '' && (noSite.checked || tmcSiteError($('#fSite').value) === '');
     } else {
       const grp = document.querySelector('.step.active .opts');
       if(grp){
@@ -680,63 +734,93 @@ function tmcSiteClean(raw){
   }
 
   function sendToSheet(payload){
+    var body = JSON.stringify(payload);
+    function beacon(){
+      try {
+        if(navigator.sendBeacon) navigator.sendBeacon(GOOGLE_SCRIPT_URL, new Blob([body], {type:'text/plain;charset=UTF-8'}));
+      } catch(e){}
+    }
     try {
       fetch(GOOGLE_SCRIPT_URL, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload), mode:'no-cors', keepalive:true
-      }).catch(function(){});
-    } catch(e){}
+        body: body, mode:'no-cors', keepalive:true
+      }).catch(beacon);          // мрежата падна → втори опит по друг път
+    } catch(e){ beacon(); }
   }
 
   /* Частичен лийд: изпраща се веднага щом има име + телефон + съгласие */
   function sendPartial(){
     if(partialSent) return;
     answers.name  = $('#fName').value.trim();
-    answers.phone = fullPhone();
+    answers.phone = phoneDisplay();
     answers.phoneCountry = country().iso + ' (+' + (country().code || '?') + ')';
     if(!answers.name || phoneError() !== '') return;
     partialSent = true;
 
     sendToSheet(buildPayload('Екшън План (частичен, име и телефон)','Непълен', partialEventID));
 
-    try { if(typeof gtag === 'function') gtag('event','generate_lead_partial',{source:GA_SOURCE, phone_country:(country().iso||'')}); } catch(e){}
-    try { if(typeof fbq === 'function') fbq('trackCustom','PartialLead',{content_name:GA_SOURCE},{eventID:partialEventID}); } catch(e){}
+    /* Тук е истинският лийд: има име, телефон и съгласие. Затова тук се праща
+       СТАНДАРТНОТО събитие Lead, което Meta брои и по което може да оптимизира.
+       Преди тук се пращаше custom събитие PartialLead, което не се вижда като лийд. */
+    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:GA_SOURCE, phone_country:(country().iso||''), stage:'kontakt'}); } catch(e){}
+    try {
+      if(typeof fbq === 'function'){
+        fbq('init','1351953120302144',{
+          ph: answers.phone.replace(/\D/g,''),
+          fn: answers.name.toLowerCase()
+        });
+        fbq('track','Lead',{content_name:'kontakt'},{eventID:partialEventID});
+      }
+    } catch(e){}
   }
 
-  function start(){ show(ALL_STEPS[0]); }
+  function start(){ show(ALL_STEPS[0]); pushStep(); }
 
   function next(){
     const vis = visibleSteps();
     const idx = vis.indexOf(cur);
+    if(idx === -1) return;                 // вече сме на благодарствената страница
     if(cur === CONTACT_STEP) sendPartial();
-    if(idx < vis.length - 1){ show(vis[idx + 1]); return; }
-    if(idx === vis.length - 1){ submit(); }
+    if(idx < vis.length - 1){ show(vis[idx + 1]); pushStep(); return; }
+    submit();
   }
+
+  /* Системният бутон Назад да връща една стъпка, вместо да изхвърля човека от страницата */
+  function pushStep(){ try { history.pushState({tmcStep:cur}, '', location.href); } catch(e){} }
+  window.addEventListener('popstate', function(){
+    const vis = visibleSteps(), idx = vis.indexOf(cur);
+    if(idx > 0) show(vis[idx - 1]);
+  });
   function back(){
     const vis = visibleSteps();
     const idx = vis.indexOf(cur);
     if(idx > 0) show(vis[idx - 1]);
   }
 
+  let submitted = false;
   function submit(){
+    if(submitted) return;                  // двоен клик да не праща два записа
+    submitted = true;
+    btnNext.disabled = true;
     answers.name    = $('#fName').value.trim();
     answers.email   = $('#fEmail').value.trim();
-    answers.phone   = fullPhone();
+    answers.phone   = phoneDisplay();
     answers.phoneCountry = country().iso + ' (+' + (country().code || '?') + ')';
-    answers.website = tmcSiteClean($('#fSite').value);
+    answers.website = noSite.checked ? 'Няма сайт и профил' : tmcSiteClean($('#fSite').value);
 
     sendToSheet(buildPayload('Екшън План (нови реклами)','Пълен', leadEventID));
 
-    // GA4 + Meta Lead с Advanced Matching + eventID за CAPI дедупликация (както на сайта)
-    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:GA_SOURCE, phone_country:(country().iso||'')}); } catch(e){}
+    /* Второ събитие Lead, на края на въпросите. Внимание: човек, който мине
+       и двете стъпки, се брои като ДВА лийда в Meta. Така е поискано. */
+    try { if(typeof gtag === 'function') gtag('event','generate_lead',{source:GA_SOURCE, phone_country:(country().iso||''), stage:'kray'}); } catch(e){}
     try {
       if(typeof fbq === 'function'){
         fbq('init','1351953120302144',{
           em: answers.email.toLowerCase(),
-          ph: answers.phone.replace(/\D/g,''),   // вече е с код на държавата → по-добро съвпадение
+          ph: answers.phone.replace(/\D/g,''),
           fn: answers.name.toLowerCase()
         });
-        fbq('track','Lead',{},{eventID:leadEventID});
+        fbq('track','Lead',{content_name:'pulna_zayavka'},{eventID:leadEventID});
       }
     } catch(e){}
 
