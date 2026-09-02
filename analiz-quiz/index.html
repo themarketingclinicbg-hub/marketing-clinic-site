@@ -192,6 +192,16 @@ em.accent{font-style:italic;color:var(--green2)}
 .loader li{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:13.5px;line-height:1.4;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;text-align:left}
 .loader li.on{opacity:1;transform:none;color:var(--fg)}
 .loader li i{flex:0 0 auto;width:17px;height:17px;border-radius:50%;background:var(--gold);color:var(--green);font-style:normal;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.bonus{max-width:470px;margin:0 auto 22px;background:var(--gold-faint);border:1px dashed var(--gold-soft);border-radius:var(--radius);padding:16px 18px 15px;text-align:left}
+.bonus .bkick{display:flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px;justify-content:center}
+.bonus .btitle{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;line-height:1.2;color:var(--green);text-align:center;margin-bottom:6px}
+.bonus .btxt{font-size:12.5px;line-height:1.55;color:var(--muted);text-align:center;margin-bottom:13px}
+.bprev{display:grid;gap:7px}
+.brow{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--gold);border-radius:8px;padding:9px 11px}
+.bmask{flex:1;display:grid;gap:4px}
+.bmask i{display:block;height:6px;border-radius:99px;background:rgba(30,58,47,.16)}
+.bmask i:nth-child(2){width:62%;background:rgba(30,58,47,.10)}
+.brow b{flex:0 0 auto;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--gold);line-height:1}
 .notget{max-width:620px;margin:26px auto 0;background:var(--green);border-radius:var(--radius);padding:24px 22px;color:rgba(245,240,232,.78)}
 .notget h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:var(--cream);margin-bottom:14px;text-align:center}
 .notget ul{list-style:none;display:grid;gap:11px}
@@ -280,6 +290,16 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
       <div class="badge-micro">Безплатно · Без ангажимент · 60 секунди</div>
       <h1><span>Проблемът е един от <em>осем</em>.</span><span class="hl">Проверяваме и осемте.</span></h1>
       <p class="sub">Отговори на <b>8 бързи въпроса</b> и до <b>24 часа</b> получаваш безплатен Екшън План: къде точно губиш клиенти канал по канал, кои разходи не се връщат и с колко, и какво се поправя първо. Без ангажимент и без обвързване.</p>
+      <div class="bonus">
+        <div class="bkick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#A8834B" stroke-width="2.4"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Бонус в края</div>
+        <div class="btitle">Първата ти диагноза идва още на екрана</div>
+        <p class="btxt">Щом минеш осемте въпроса, веднага виждаш трите неща, които най-вероятно ти струват най-скъпо. Екшън Планът идва след това.</p>
+        <div class="bprev">
+          <div class="brow"><span class="bmask"><i></i><i></i></span><b>88%</b></div>
+          <div class="brow"><span class="bmask"><i></i><i></i></span><b>69%</b></div>
+          <div class="brow"><span class="bmask"><i></i><i></i></span><b>68%</b></div>
+        </div>
+      </div>
       <button class="startbtn" onclick="funnel.start()">Вземи безплатния Екшън План →</button>
       <div class="micro">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="2.4"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
@@ -1040,9 +1060,25 @@ const funnel = (function(){
 })();
 </script>
 
-<!-- ===== META PIXEL (deferred) ===== -->
-  <!-- Meta Pixel + CAPI helpers (един файл за целия сайт) -->
-  <script src="/tracking.js"></script>
+<!-- ===== META PIXEL =====
+     Базовият snippet е ВГРАДЕН тук нарочно. Преди се разчиташе на
+     /tracking.js, който не е качен в репото и връщаше 404, тоест fbq
+     изобщо не съществуваше на тази страница и нито едно събитие не
+     тръгваше. Вграден, фунията не зависи от външен файл.
+     Ако някога качиш /tracking.js, guard-ът if(f.fbq) return; пази от
+     двойно зареждане. -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1351953120302144');
+fbq('track', 'PageView');
+</script>
 <noscript><img height="1" width="1" style="display:none" decoding="async"
 src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
 /></noscript>
