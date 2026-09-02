@@ -1,0 +1,116 @@
+/* ═══════════════════════════════════════════════════════════════════
+   TMC · Meta tracking (пиксел + подготовка за Conversions API)
+
+   ЕДНО МЯСТО за целия сайт. Всяка страница зарежда само този файл.
+
+   ▸ За да включиш Stape CAPI Gateway: смени САМО FB_LOADER по-долу.
+     Нищо друго не се пипа. Направи го чак след като поддомейнът
+     capig.marketing-clinic.com отговаря, иначе пикселът спира навсякъде.
+   ═══════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var PIXEL_ID = '1351953120302144';
+
+  /* ▼▼▼ STAPE ПРЕВКЛЮЧВАТЕЛ ▼▼▼ */
+  var FB_LOADER = 'https://connect.facebook.net/en_US/fbevents.js';
+  /* След като gateway-ят работи, замени горния ред с този (Stape ти дава точния път):
+     var FB_LOADER = 'https://capig.marketing-clinic.com/LOADER_PATH/fbevents.js';
+     ▲▲▲ STAPE ПРЕВКЛЮЧВАТЕЛ ▲▲▲ */
+
+  /* Стандартният Meta snippet, но с наш loader URL. */
+  !function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!f._fbq) f._fbq = n;
+    n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+    t = b.createElement(e); t.async = !0; t.src = v;
+    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+  }(window, document, 'script', FB_LOADER);
+
+  /* ── Помощни ────────────────────────────────────────────────── */
+
+  function uid(prefix) {
+    return (prefix || 'ev') + '.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function cookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+
+  /* Ако _fbc още не е записан (първи зареждане от реклама), но в URL-а има
+     fbclid, сглобяваме fbc сами. Това вдига Event Match Quality точно при
+     най-ценния трафик: хората, дошли директно от реклама. */
+  function fbc() {
+    var c = cookie('_fbc');
+    if (c) return c;
+    var m = location.search.match(/[?&]fbclid=([^&]+)/);
+    return m ? 'fb.1.' + Date.now() + '.' + m[1] : '';
+  }
+
+  function norm(v) {
+    return v ? String(v).trim().toLowerCase() : '';
+  }
+
+  function digits(v) {
+    return v ? String(v).replace(/\D/g, '') : '';
+  }
+
+  /* ── Публично API ───────────────────────────────────────────── */
+
+  var TMC = {
+
+    pixelId: PIXEL_ID,
+
+    /* Контекстът, който сървърът трябва да получи, за да прати СЪЩОТО
+       събитие към Meta. Извикай го ПРЕДИ да пратиш данните към таблицата,
+       после подай същия eventID и на пиксела. Така Meta дедупликира. */
+    ctx: function (prefix) {
+      return {
+        eventID: uid(prefix || 'ev'),
+        fbp: cookie('_fbp'),
+        fbc: fbc(),
+        eventSourceUrl: location.href,
+        userAgent: navigator.userAgent
+      };
+    },
+
+    /* Lead с Advanced Matching. eventID идва отвън, за да съвпадне
+       с този, който вече е изпратен към сървъра. */
+    lead: function (user, eventID, custom) {
+      try {
+        if (typeof fbq === 'undefined') return;
+        user = user || {};
+        var am = {};
+        if (norm(user.email)) am.em = norm(user.email);
+        if (digits(user.phone)) am.ph = digits(user.phone);
+        if (norm(user.name)) am.fn = norm(user.name).split(' ')[0];
+        if (Object.keys(am).length) fbq('init', PIXEL_ID, am);
+        fbq('track', 'Lead', custom || {}, { eventID: eventID || uid('lead') });
+      } catch (e) {}
+    },
+
+    /* Общо събитие с eventID (ViewContent, InitiateCheckout и т.н.). */
+    track: function (name, custom, eventID) {
+      try {
+        if (typeof fbq === 'undefined') return;
+        fbq('track', name, custom || {}, { eventID: eventID || uid('ev') });
+      } catch (e) {}
+    },
+
+    trackCustom: function (name, custom, eventID) {
+      try {
+        if (typeof fbq === 'undefined') return;
+        fbq('trackCustom', name, custom || {}, { eventID: eventID || uid('cev') });
+      } catch (e) {}
+    }
+  };
+
+  window.TMC = TMC;
+
+  /* ── PageView ───────────────────────────────────────────────── */
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView', {}, { eventID: uid('pv') });
+
+})();
