@@ -86,7 +86,7 @@ em.accent{font-style:italic;color:var(--green2)}
     radial-gradient(ellipse 760px 460px at 108% -12%, rgba(42,80,64,.10), transparent 60%),
     radial-gradient(ellipse 640px 460px at -12% 112%, rgba(30,58,47,.08), transparent 60%),
     var(--bg);
-  color:var(--fg);padding:40px 0 36px;text-align:center;
+  color:var(--fg);padding:58px 0 36px;text-align:center;
 }
 .badge{display:inline-block;background:var(--green);color:var(--gold2);border:1px solid var(--gold-soft);font-size:10.5px;font-weight:600;letter-spacing:.14em;padding:9px 18px;border-radius:999px;margin-bottom:11px;text-transform:uppercase;box-shadow:0 6px 20px rgba(168,131,75,.16)}
 .badge b{color:var(--cream);font-weight:600}
@@ -286,8 +286,6 @@ footer .fl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px
 <section class="step active" data-step="0">
   <div class="hero">
     <div class="wrap">
-      <div class="badge">За бизнеси с рекламен бюджет <b>1 000 до 10 000 €</b> на месец</div>
-      <div class="badge-micro">Безплатно · Без ангажимент · 60 секунди</div>
       <h1><span>Проблемът е един от <em>осем</em>.</span><span class="hl">Проверяваме и осемте.</span></h1>
       <p class="sub">Отговори на <b>8 бързи въпроса</b> и до <b>24 часа</b> получаваш безплатен Екшън План: къде точно губиш клиенти канал по канал, кои разходи не се връщат и с колко, и какво се поправя първо. Без ангажимент и без обвързване.</p>
       <div class="bonus">
@@ -601,6 +599,26 @@ const funnel = (function(){
       });
     } catch(e){}
   }
+  /* UTM параметрите от линка на рекламата, за да се вижда кой креатив
+     е донесъл лийда. Влиза и в частичния, и в пълния ред. */
+  function utmText(){
+    try{
+      var q = new URLSearchParams(location.search);
+      var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      var parts = keys.map(function(k){ return q.get(k) ? k.replace('utm_','') + '=' + q.get(k) : ''; }).filter(Boolean);
+      return parts.length ? ' | ' + parts.join(' | ') : '';
+    }catch(e){ return ''; }
+  }
+  function ck(n){ var m = document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+  function sendToSheet(payload){
+    try{
+      fetch(GOOGLE_SCRIPT_URL, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload), mode:'no-cors', keepalive:true
+      }).catch(function(){});
+    }catch(e){}
+  }
+
   function trackLead(){
     if(leadSent) return;
     leadSent = true;
@@ -612,6 +630,36 @@ const funnel = (function(){
       amInit();
       if(typeof fbq === 'function') fbq('track','Lead',{content_name:'kontakti'},{eventID:leadEventID});
     } catch(e){}
+
+    /* ЧАСТИЧЕН РЕД В ТАБЛИЦАТА.
+       Пуска се веднага, за да не се губи контактът, ако човекът се откаже
+       по средата. eventID е СЪЩИЯТ като на пълния ред по-късно, за да
+       дедупликира Meta двата server-side Lead-а в едно събитие. */
+    var nm = $('#fName').value.trim();
+    var em = $('#fEmail').value.trim();
+    var ph = phoneDisplay();
+    var st = $('#fSite').value.trim();
+    var detP = 'ЧАСТИЧНА ЗАЯВКА (спрял след контактите)' +
+               ' | Сайт: ' + (st || '-') +
+               ' | Бизнес: -' +
+               ' | Канали: -' +
+               ' | Бюджет: -' +
+               ' | Спънка: -' +
+               ' | Оборот: -' +
+               ' | Роля: -';
+    sendToSheet({
+      name: nm, email: em, phone: ph,
+      service: 'Екшън План · ЧАСТИЧНА заявка',
+      status: 'partial',
+      message: detP,
+      details: detP,
+      website: st,
+      business: '', channels: '', budget: '', problem: '', revenue: '', role: '',
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads kvalifikacia-analiz · ЧАСТИЧНА' + utmText(),
+      eventID: leadEventID, fbp: ck('_fbp'), fbc: ck('_fbc'),
+      eventSourceUrl: location.href, userAgent: navigator.userAgent
+    });
   }
   const answers = {};
   let cur = 0;
@@ -740,7 +788,8 @@ const funnel = (function(){
     var _ck=function(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():'';};
     const payload = {
       name: answers.name, email: answers.email, phone: answers.phone,
-      service: 'Безплатен анализ (квалификация)',
+      service: 'Екшън План · ПЪЛНА заявка',
+      status: 'complete',
       message: det,
       details: det,
       business: answers.business || '',
@@ -751,7 +800,7 @@ const funnel = (function(){
       revenue: answers.revenue || '',
       role: answers.role || '',
       submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
-      source: 'Landing /ads kvalifikacia-analiz',
+      source: 'Landing /ads kvalifikacia-analiz · ПЪЛНА' + utmText(),
       eventID: _eid, fbp: _ck('_fbp'), fbc: _ck('_fbc'),
       eventSourceUrl: location.href, userAgent: navigator.userAgent
     };
