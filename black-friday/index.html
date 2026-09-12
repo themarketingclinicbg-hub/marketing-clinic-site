@@ -9,6 +9,32 @@
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#0B1410">
 
+<!-- ===== FAVICON (както на главния сайт) ===== -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- ===== OG / SHARE ===== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marketing Clinic">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Black Friday, планиран както трябва | The Marketing Clinic">
+<meta property="og:description" content="Безплатна консултация и екшън план за Black Friday рекламите ви: кога тръгват, с каква оферта, с какъв бюджет. До 24 часа.">
+<meta property="og:url" content="https://marketing-clinic.com/black-friday">
+<meta property="og:image" content="https://marketing-clinic.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ===== GOOGLE ANALYTICS 4 (същият като на главния сайт) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GY5QBP207K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GY5QBP207K');
+</script>
+
 <!-- ===== FONTS ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -602,20 +628,18 @@
   })();
 </script>
 
-<!-- ===== META PIXEL (deferred) ===== -->
+<!-- ===== META PIXEL (същият сетъп като на quiz фунията) ===== -->
 <script>
-  window.addEventListener('load', function() {
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1351953120302144');
-    fbq('track', 'PageView');
-  });
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1351953120302144');
+  fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" decoding="async"
 src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
@@ -627,10 +651,30 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
   /* Google Sheets Web App URL (същият като на marketing-clinic.com) */
   var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 
+  var PIXEL_ID = '1351953120302144';
+
+  /* UTM параметрите от линка на рекламата, за да се вижда кой креатив
+     е донесъл лийда. Влиза в колоната source, както в quiz фунията. */
+  function utmText() {
+    try {
+      var q = new URLSearchParams(location.search);
+      var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      var parts = keys.map(function(k){ return q.get(k) ? k.replace('utm_','') + '=' + q.get(k) : ''; }).filter(Boolean);
+      return parts.length ? ' | ' + parts.join(' | ') : '';
+    } catch (e) { return ''; }
+  }
+  /* _fbp и _fbc пътуват към таблицата, за да може Apps Script да прати
+     server-side Lead към CAPI със същия eventID (дедупликация). */
+  function ck(n) { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+
+  var leadSent = false;
+
   document.getElementById('lead-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    if (leadSent) return;
+    leadSent = true;
+
     var submitBtn = document.getElementById('submit-btn');
-    var originalText = submitBtn.textContent;
     submitBtn.textContent = 'Изпращане...';
     submitBtn.disabled = true;
 
@@ -640,44 +684,51 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     var business = (document.getElementById('business').value || '').trim();
     var link = (document.getElementById('link').value || '').trim();
 
-    /* Ключовете съвпадат 1:1 с таблицата на главния сайт */
+    var eventID = 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+
+    /* 1) Събитията тръгват веднага и не зависят от таблицата. */
+    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'black_friday' }); } catch (err) {}
+    try {
+      if (typeof fbq === 'function') {
+        /* Advanced Matching преди Lead-а */
+        fbq('init', PIXEL_ID, {
+          em: email.toLowerCase(),
+          ph: phone.replace(/\D/g, ''),
+          fn: name.toLowerCase()
+        });
+        fbq('track', 'Lead', { content_name: 'black-friday' }, { eventID: eventID });
+      }
+    } catch (err) {}
+
+    /* 2) Редът в таблицата — ключовете са 1:1 с quiz фунията и главния сайт. */
     var payload = {
       name: name, email: email, phone: phone,
       service: 'Black Friday екшън план',
+      status: 'complete',
       message: '',
       details: 'Бизнес: ' + (business || '-') + ' || Сайт/IG: ' + (link || '-'),
+      business: business,
+      website: link,
       submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
-      source: 'Landing /ads black-friday'
+      source: 'Landing /ads black-friday' + utmText(),
+      eventID: eventID, fbp: ck('_fbp'), fbc: ck('_fbc'),
+      eventSourceUrl: location.href, userAgent: navigator.userAgent
     };
 
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload), mode: 'no-cors'
-    })
-    .then(function() {
-      /* Meta Lead + Advanced Matching + eventID за CAPI дедупликация (както на сайта) */
-      try {
-        if (typeof fbq !== 'undefined') {
-          fbq('init', '1351953120302144', {
-            em: email.toLowerCase(),
-            ph: phone.replace(/\D/g, ''),
-            fn: name.toLowerCase()
-          });
-          fbq('track', 'Lead', {}, { eventID: 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10) });
-        }
-      } catch (err) {}
+    try {
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload), mode: 'no-cors', keepalive: true
+      }).catch(function () {});
+    } catch (err) {}
 
-      document.getElementById('lead-form').style.display = 'none';
-      var ok = document.getElementById('form-success');
-      ok.style.display = 'block';
-      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      if (window.hideStickyCta) window.hideStickyCta();
-    })
-    .catch(function() {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      alert('Възникна грешка. Моля, опитай отново или ни пиши на hello@marketing-clinic.com');
-    });
+    /* 3) Благодарността се показва веднага — no-cors отговорът е непрозрачен
+       и не носи информация дали редът е записан. */
+    document.getElementById('lead-form').style.display = 'none';
+    var ok = document.getElementById('form-success');
+    ok.style.display = 'block';
+    ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (window.hideStickyCta) window.hideStickyCta();
   });
 </script>
 
