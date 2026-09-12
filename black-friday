@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Marketing Clinic | Безплатна консултация и Black Friday екшън план</title>
+<meta name="description" content="Безплатна консултация и екшън план за Black Friday рекламите ви: кога тръгват, с каква оферта, с какъв бюджет и какво остава като печалба. За бизнеси с рекламен бюджет над 3 000 €/месец.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#0B1410">
+
+<!-- ===== FONTS ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap&subset=cyrillic,latin">
+
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:       #0B1410;
+    --bg-2:     #0F1D17;
+    --surface:  #13241C;
+    --surface-2:#182E24;
+    --green:    #1E3A2E;
+    --cream:    #F5F1E8;
+    --cream-2:  #FBF9F3;
+    --ink:      #1C1C1A;
+    --muted:    #9AA79F;
+    --muted-2:  #6F7C74;
+    --line:     rgba(245,241,232,.12);
+    --line-2:   rgba(245,241,232,.06);
+    --gold:     #C9A063;
+    --gold-dk:  #B08D57;
+    --white:    #FFFFFF;
+    --red:      #C4736E;
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--cream);
+    line-height: 1.6;
+    background: var(--bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .narrow { max-width: 700px; margin-left: auto; margin-right: auto; }
+  .centered { text-align: center; }
+
+  /* ===== TECH GRID BACKDROP ===== */
+  .grid-bg { position: relative; }
+  .grid-bg::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(245,241,232,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,241,232,.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 78%);
+            mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 78%);
+  }
+  .grid-bg > * { position: relative; z-index: 1; }
+
+  .kicker {
+    display: inline-block; font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: 2.4px; text-transform: uppercase;
+    font-weight: 500; color: var(--gold); margin-bottom: 18px;
+  }
+  .kicker::before { content: '// '; opacity: .55; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--white); }
+  h1 { font-size: clamp(32px, 4.9vw, 54px); line-height: 1.1; letter-spacing: -0.6px; }
+  h1 em { font-style: italic; color: var(--gold); }
+  h2 { font-size: clamp(26px, 3.5vw, 38px); line-height: 1.18; letter-spacing: -0.3px; }
+  .lead { font-size: 16.5px; color: var(--muted); line-height: 1.68; }
+  .lead .hl { color: var(--cream); font-weight: 600; }
+
+  section { padding: 96px 0; border-top: 1px solid var(--line-2); }
+  .sec-dark { background: var(--bg); }
+  .sec-panel { background: var(--bg-2); }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky; top: 0; z-index: 800;
+    background: rgba(11,20,16,.88); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line); padding: 16px 0;
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 13px; }
+  .brand-mark { width: 36px; height: 36px; flex-shrink: 0; }
+  .brand-name { font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--cream); letter-spacing: .3px; }
+  .brand-tag { font-family: var(--mono); font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted-2); margin-top: 3px; }
+  .header-cta {
+    background: var(--gold); color: #14201A; border: none;
+    padding: 12px 22px; border-radius: 4px; text-decoration: none;
+    font-weight: 700; font-size: 12.5px; letter-spacing: .8px; text-transform: uppercase;
+    transition: background .18s ease;
+  }
+  .header-cta:hover { background: #DDB776; }
+
+  /* ===== HERO ===== */
+  .hero { padding: 60px 0 88px; background: linear-gradient(180deg, #0D1913 0%, var(--bg) 70%); }
+  .hero .lead { margin: 18px auto 0; max-width: 620px; }
+
+  .bf-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,160,99,.38);
+    background: rgba(201,160,99,.07); border-radius: 3px; padding: 8px 16px; margin-bottom: 22px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ===== COUNTDOWN ===== */
+  .cd-wrap { margin: 34px auto 0; max-width: 560px; }
+  .cd-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+  .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .cd-cell { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 6px; }
+  .cd-n { font-family: var(--mono); font-weight: 700; font-size: clamp(22px, 5vw, 30px); color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+  .cd-u { font-family: var(--mono); font-size: 9.5px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted-2); margin-top: 8px; }
+
+  /* ===== FORM ===== */
+  .form-card {
+    max-width: 580px; margin: 34px auto 0;
+    background: var(--white); color: var(--ink); padding: 36px; border-radius: 12px;
+    border: 1px solid rgba(245,241,232,.14);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    text-align: left;
+  }
+  .form-head { font-family: var(--mono); font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 20px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row label {
+    display: block; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--green); margin-bottom: 7px;
+  }
+  .form-row label .opt { color: #8C877D; text-transform: none; letter-spacing: 0; }
+  .form-row input {
+    width: 100%; padding: 14px 15px; font-size: 16px; font-family: inherit;
+    color: var(--ink); background: #F7F5EF;
+    border: 1px solid #E4DECF; border-radius: 6px;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .form-row input::placeholder { color: #ABA79D; }
+  .form-row input:focus { outline: none; border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(30,58,46,.12); }
+  .btn-submit {
+    width: 100%; margin-top: 8px; background: var(--green); color: var(--cream);
+    border: none; border-radius: 6px; padding: 17px; min-height: 50px;
+    font-family: var(--sans); font-size: 13.5px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer;
+    transition: background .18s ease;
+  }
+  .btn-submit:hover { background: #14261D; }
+  .form-note { font-family: var(--mono); font-size: 10.5px; color: #8C877D; text-align: center; margin-top: 14px; line-height: 1.7; letter-spacing: .3px; }
+
+  .trust { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted-2); }
+  .trust span::before { content: '· '; color: var(--gold); }
+
+  /* ===== QUALIFIER ===== */
+  .qual {
+    display: inline-block; margin: 20px auto 0; padding: 9px 20px;
+    border: 1px solid var(--line); border-radius: 999px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .qual strong { color: var(--gold); font-weight: 700; }
+
+  /* ===== QUOTES (message match) ===== */
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; text-align: left; }
+  .quote { background: var(--surface); border: 1px solid var(--line); border-left: 2px solid var(--gold); border-radius: 0 10px 10px 0; padding: 28px 26px; }
+  .quote .q { font-family: var(--serif); font-size: 19px; line-height: 1.35; color: var(--white); margin-bottom: 14px; }
+  .quote .a { font-size: 14.5px; line-height: 1.68; color: var(--muted); }
+
+  .mods-note { font-family: var(--mono); font-size: 12px; letter-spacing: .6px; color: var(--muted-2); margin-top: 22px; }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-block; font-family: var(--sans);
+    font-weight: 700; font-size: 13.5px; letter-spacing: 1.1px;
+    text-transform: uppercase; text-decoration: none; cursor: pointer;
+    padding: 17px 36px; border-radius: 6px; border: none; min-height: 48px;
+    background: var(--cream); color: #14201A;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .btn:hover { background: var(--white); transform: translateY(-2px); }
+
+  /* ===== MODULES (какво получаваш) ===== */
+  .mods { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 48px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .mod { background: var(--bg); padding: 32px 30px; text-align: left; transition: background .2s ease; }
+  .mod:hover { background: var(--surface); }
+  .mod-id { font-family: var(--mono); font-size: 11px; letter-spacing: 1.6px; color: var(--gold); margin-bottom: 14px; }
+  .mod h3 { font-size: 18.5px; line-height: 1.32; margin-bottom: 10px; }
+  .mod p { font-size: 14.5px; color: var(--muted); line-height: 1.68; }
+
+  /* ===== TIMELINE ===== */
+  .tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 48px; text-align: left; }
+  .tl-step { position: relative; padding-top: 22px; border-top: 1px solid var(--line); }
+  .tl-step::before { content: ''; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .tl-when { font-family: var(--mono); font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .tl-step h3 { font-size: 17px; line-height: 1.32; margin-bottom: 8px; }
+  .tl-step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ===== SPLIT ===== */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+  .split-col { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 32px; text-align: left; }
+  .split-col h3 { font-size: 18px; margin-bottom: 18px; }
+  .split-col.no h3 { color: var(--red); }
+  .split-col ul { list-style: none; }
+  .split-col li { position: relative; padding: 8px 0 8px 28px; font-size: 15px; color: var(--cream); line-height: 1.55; }
+  .split-col.yes li::before { content: ''; position: absolute; left: 3px; top: 12px; width: 6px; height: 11px; border: solid var(--gold); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .split-col.no li::before { content: ''; position: absolute; left: 2px; top: 17px; width: 12px; height: 1.5px; background: var(--red); }
+
+  /* ===== FAQ ===== */
+  .faq { max-width: 740px; margin: 40px auto 0; text-align: left; }
+  .faq-item { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; background: var(--surface); overflow: hidden; }
+  .faq-item summary {
+    cursor: pointer; padding: 20px 24px; list-style: none;
+    font-family: var(--sans); font-weight: 600; font-size: 16px; color: var(--cream);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 22px; font-weight: 400; color: var(--gold); line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item .faq-a { padding: 0 24px 22px; color: var(--muted); font-size: 15px; line-height: 1.72; }
+
+  /* ===== BOTTOM CTA ===== */
+  .cta-bottom { background: var(--bg-2); text-align: center; padding: 92px 0; }
+  .cta-bottom .lead { margin: 16px auto 30px; max-width: 520px; }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+    display: none; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(11,20,16,.97); backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%); transition: transform .25s ease;
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta a {
+    display: block; text-align: center; background: var(--cream); color: #14201A;
+    font-weight: 700; font-size: 13.5px; letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; border-radius: 6px; padding: 15px; min-height: 48px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer { background: #08100C; color: var(--muted); padding: 36px 0; font-size: 13.5px; border-top: 1px solid var(--line-2); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-brand { font-family: var(--serif); font-weight: 700; font-size: 16px; color: var(--cream); }
+  .footer-tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 1.3px; text-transform: uppercase; margin-top: 4px; color: var(--muted-2); }
+  .footer-links a { color: var(--muted); text-decoration: none; margin-left: 22px; transition: color .15s ease; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px) {
+    section { padding: 68px 0; }
+    .hero { padding: 44px 0 66px; }
+    .mods { grid-template-columns: 1fr; }
+    .quotes { grid-template-columns: 1fr; }
+    .tl { grid-template-columns: 1fr 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .header-cta { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links a { margin: 0 11px; }
+    .sticky-cta { display: block; }
+    body { padding-bottom: 72px; }
+  }
+  @media (max-width: 520px) {
+    section { padding: 56px 0; }
+    .container { padding: 0 20px; }
+    .hero { padding: 34px 0 54px; }
+    h1 { font-size: clamp(26px, 8vw, 34px); }
+    h2 { font-size: clamp(23px, 7vw, 29px); }
+    .tl { grid-template-columns: 1fr; }
+    .form-card { padding: 24px 20px; margin-top: 26px; }
+    .mod { padding: 26px 22px; }
+    .split-col { padding: 26px 22px; }
+    .cd-cell { padding: 12px 4px; }
+    .bf-tag { font-size: 10px; letter-spacing: 1.2px; padding: 7px 12px; gap: 8px; }
+    .qual { font-size: 10px; letter-spacing: 1px; padding: 8px 14px; }
+    .quote { padding: 24px 20px; }
+    .quote .q { font-size: 17.5px; }
+    .faq-item summary { font-size: 15px; padding: 18px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#F5F1E8" stroke-width="8"/>
+        <line x1="58" y1="58" x2="88" y2="88" stroke="#F5F1E8" stroke-width="10" stroke-linecap="round"/>
+        <rect x="24" y="43" width="4" height="8"  fill="#C9A063" rx="1"/>
+        <rect x="31" y="39" width="4" height="12" fill="#C9A063" rx="1"/>
+        <rect x="38" y="34" width="4" height="17" fill="#C9A063" rx="1"/>
+        <rect x="45" y="29" width="4" height="22" fill="#C9A063" rx="1"/>
+      </svg>
+      <div class="brand-text">
+        <div class="brand-name">The Marketing Clinic</div>
+        <div class="brand-tag">Диагностицираме · Предписваме · Растем</div>
+      </div>
+    </div>
+    <a href="#plan" class="header-cta">Безплатна консултация</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero grid-bg" id="plan">
+  <div class="container centered">
+    <div class="bf-tag"><span class="dot"></span> Black Friday 2026 · Безплатна консултация и екшън план</div>
+    <h1>Black Friday, <em>планиран както трябва.</em></h1>
+    <p class="lead">Безплатна <span class="hl">КОНСУЛТАЦИЯ И ЕКШЪН ПЛАН</span> за рекламите ви: кога тръгват, с каква оферта, с какъв бюджет и какво остава като печалба. <span class="hl">Персонализирана презентация до 24 часа.</span></p>
+    <div class="qual">За бизнеси с рекламен бюджет над <strong>3 000 €/месец</strong></div>
+
+    <div class="cd-wrap">
+      <div class="cd-label" id="cdLabel">До Black Friday остават</div>
+      <div class="cd" id="cd">
+        <div class="cd-cell"><div class="cd-n" id="cdD">--</div><div class="cd-u">дни</div></div>
+        <div class="cd-cell"><div class="cd-n" id="cdH">--</div><div class="cd-u">часа</div></div>
+        <div class="cd-cell"><div class="cd-n" id="cdM">--</div><div class="cd-u">мин</div></div>
+        <div class="cd-cell"><div class="cd-n" id="cdS">--</div><div class="cd-u">сек</div></div>
+      </div>
+    </div>
+
+    <form class="form-card" id="lead-form">
+      <div class="form-head">Заявка за безплатна консултация и екшън план</div>
+      <div class="form-row">
+        <label for="name">Име</label>
+        <input type="text" id="name" name="name" placeholder="Иван Петров">
+      </div>
+      <div class="form-row">
+        <label for="phone">Телефонен номер</label>
+        <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="ivan@firma.bg">
+      </div>
+      <div class="form-row">
+        <label for="business">Бизнес / индустрия <span class="opt">(по избор)</span></label>
+        <input type="text" id="business" name="business" placeholder="напр. e-commerce, ресторант, услуги">
+      </div>
+      <div class="form-row">
+        <label for="link">Сайт или социална мрежа (за прегледа)</label>
+        <input type="text" id="link" name="link" required placeholder="firma.bg или линк към профил">
+      </div>
+      <button type="submit" class="btn-submit" id="submit-btn">Искам консултацията и плана</button>
+      <p class="form-note">
+        С изпращането се съгласявате да се свържем с вас относно екшън плана.<br>
+        Не споделяме данните ви. Никога.
+      </p>
+    </form>
+
+    <div id="form-success" style="display:none; max-width:580px; margin:26px auto 0; text-align:center; padding:38px; background:var(--surface); border:1px solid var(--line); border-radius:12px;">
+      <h3 style="font-size:23px; margin-bottom:10px;">Заявката е приета.</h3>
+      <p style="color:var(--muted); font-size:15px;">До 24 часа получавате екшън плана като персонализирана презентация на имейла и се уговаряме за консултацията, на която минаваме през нея заедно.</p>
+    </div>
+
+    <div class="trust">
+      <span>План до 24 часа</span>
+      <span>0 € за консултацията</span>
+      <span>Без ангажимент</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПОЗНАТО ЛИ ВИ Е ===== -->
+<section class="sec-dark">
+  <div class="container centered">
+    <span class="kicker">Познато ли ви е</span>
+    <h2>Три изречения, които струват най-много пари</h2>
+    <p class="lead narrow">Ако някое от тях е било казано във вашия бизнес, планът отговаря точно на него.</p>
+
+    <div class="quotes">
+      <div class="quote">
+        <p class="q">„Пускаме рекламите на 20-ти ноември. Както миналата година."</p>
+        <p class="a">И после сезонът бил слаб. Аудиториите, които купуват на Black Friday, се събират седмици по-рано — на 20-ти вече се плаща най-скъпата цена за най-студената публика.</p>
+      </div>
+      <div class="quote">
+        <p class="q">„ROAS-ът е 4.1x, всичко е наред."</p>
+        <p class="a">ROAS-ът показва половината. Отстъпки, по-скъпи CPM, доставка, връщания и такси са другата половина — и решават дали сезонът е бил печеливш.</p>
+      </div>
+      <div class="quote">
+        <p class="q">„Ще го измислим през ноември."</p>
+        <p class="a">12 седмици подготовка или 12 дни паника. Оферта, креативи, наличности и трекинг не се подреждат в последната седмица.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КАКВО ПОЛУЧАВАТЕ ===== -->
+<section class="sec-panel">
+  <div class="container centered">
+    <span class="kicker">Какво получавате</span>
+    <h2>Целият ви Black Friday, разглобен на части</h2>
+    <p class="lead narrow">Не стратегия на 40 страници, а работен план: кое се пуска, кога, с какъв бюджет и какво се очаква от него.</p>
+
+    <div class="mods">
+      <div class="mod">
+        <div class="mod-id">MOD_01</div>
+        <h3>Одит на текущите реклами</h3>
+        <p>Гледаме активните ви реклами, креативите и дали Pixel-ът мери правилно. Показваме кое гори бюджет и кое може да мащабира за Black Friday.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-id">MOD_02</div>
+        <h3>Black Friday офертата ви</h3>
+        <p>Каква да е отстъпката, какъв бъндъл, какъв праг за безплатна доставка. Оферта, която се откроява в най-шумната седмица от годината.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-id">MOD_03</div>
+        <h3>Креативи и hooks за периода</h3>
+        <p>Конкретни ъгли и първи 3 секунди за видеата, разделени по студена, топла и retargeting аудитория. С примери, не с теория.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-id">MOD_04</div>
+        <h3>Бюджет и структура на кампаниите</h3>
+        <p>Как се разпределя бюджетът по фази, кога се вдига, кога се спира. Структура на кампаниите, за да не се самоканибализират.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-id">MOD_05</div>
+        <h3>Календар до 30 ноември</h3>
+        <p>Ден по ден: кога стартира warm-up, кога тръгва офертата, кога е последният push. Знаете точно какво се пуска и кога.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-id">MOD_06</div>
+        <h3>Реалната сметка: ROAS срещу печалба</h3>
+        <p>Отстъпки, по-скъпи CPM, доставка, връщания и такси. Смятаме какво остава като печалба в евро, а не само какъв е ROAS-ът.</p>
+      </div>
+    </div>
+    <p class="mods-note">Плюс безплатна консултация на живо, на която минаваме през плана заедно и отговаряме на всеки ваш въпрос.</p>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="sec-dark">
+  <div class="container centered">
+    <span class="kicker">Графикът</span>
+    <h2>12 седмици подготовка или 12 дни паника</h2>
+    <p class="lead narrow">Аудиториите, които ще купят на 27 ноември, се събират сега. Ето как изглежда планът във времето.</p>
+
+    <div class="tl">
+      <div class="tl-step">
+        <div class="tl-when">Фаза 01 · Веднага</div>
+        <h3>Диагностика и оферта</h3>
+        <p>Одит на рекламите, фиксиране на офертата и поправка на течовете в Pixel и трекинга.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when">Фаза 02 · 4–6 седмици преди</div>
+        <h3>Warm-up на аудиториите</h3>
+        <p>Съдържание и видеа, които пълнят retargeting аудиториите, докато рекламата е още евтина.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when">Фаза 03 · 2–3 седмици преди</div>
+        <h3>Тест на креативите</h3>
+        <p>Тестваме ъглите с малък бюджет, за да влезете в седмицата с доказани победители.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when">Фаза 04 · Последните 10 дни</div>
+        <h3>Мащабиране</h3>
+        <p>Бюджетът отива само в това, което работи. Финален push и затваряне на сезона.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ЗА КОГО ===== -->
+<section class="sec-panel">
+  <div class="container centered">
+    <span class="kicker">Честно</span>
+    <h2>Този план не е за всички.</h2>
+    <p class="lead narrow">Предпочитаме да ви откажем предварително, отколкото да си загубим взаимно времето.</p>
+    <div class="split">
+      <div class="split-col yes">
+        <h3>За вас е, ако...</h3>
+        <ul>
+          <li>Имате реални продажби и рекламен бюджет над 3 000 €/месец.</li>
+          <li>Вече харчите за реклами, но не знаете кое носи печалба.</li>
+          <li>Искате да влезете в сезона с план, а не на импровизация.</li>
+        </ul>
+      </div>
+      <div class="split-col no">
+        <h3>Не е за вас, ако...</h3>
+        <ul>
+          <li>Още нямате продукт, сайт или клиенти.</li>
+          <li>Търсите безплатна идея, която само да копирате.</li>
+          <li>Няма да направите нищо след плана.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec-dark">
+  <div class="container centered">
+    <span class="kicker">Въпроси</span>
+    <h2>Често задавани въпроси</h2>
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>Наистина ли е безплатно?</summary>
+        <div class="faq-a">Да, напълно. Правим го, защото когато видите конкретна стойност, е по-вероятно да продължим заедно. Затова приемаме ограничен брой бизнеси.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Не е ли твърде рано за Black Friday?</summary>
+        <div class="faq-a">Точно обратното. Аудиториите, креативите и офертата се подготвят седмици по-рано. Който тръгва в средата на ноември, плаща по-скъпи импресии за по-студена публика.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Вече работим с агенция. Има ли смисъл?</summary>
+        <div class="faq-a">Да. Планът е независим поглед отвън и не изисква да сменяте никого. Ако агенцията ви върши работа, ще го видите в одита; ако планът за тази година е „както миналата", ще го видите също.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Колко време отнема да го получим?</summary>
+        <div class="faq-a">До 24 часа след заявката получавате персонализираната презентация и се уговаряме за консултацията, на която я разглеждаме заедно.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Какво следва след консултацията?</summary>
+        <div class="faq-a">Планът е ваш и можете да го изпълните сами — извън рекламния бюджет повечето стъпки не струват нищо. Ако искате ние да поемем изпълнението, ви казваме как работим. Без задължение и без натиск.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="cta-bottom grid-bg">
+  <div class="container centered">
+    <span class="kicker">Последна стъпка</span>
+    <h2>Влезте в Black Friday с план, не с надежда.</h2>
+    <p class="lead">Безплатна консултация и екшън план за рекламите ви, в персонализирана презентация, до 24 часа.</p>
+    <a href="#plan" class="btn">Безплатна консултация и екшън план &#8594;</a>
+    <div style="margin-top:8px;"><span class="qual">За бизнеси с рекламен бюджет над <strong>3 000 €/месец</strong></span></div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">The Marketing Clinic</div>
+      <div class="footer-tag">Диагностицираме · Предписваме · Растем</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:hello@marketing-clinic.com">hello@marketing-clinic.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61579207195363" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/marketingclinic.bg/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#plan">Безплатна консултация и екшън план &#8594;</a>
+</div>
+
+<!-- ===== COUNTDOWN ===== -->
+<script>
+  (function () {
+    /* Black Friday 2026: 27 ноември, 00:00 българско време (UTC+2) */
+    var target = new Date('2026-11-27T00:00:00+02:00').getTime();
+    var d = document.getElementById('cdD'), h = document.getElementById('cdH'),
+        m = document.getElementById('cdM'), s = document.getElementById('cdS'),
+        label = document.getElementById('cdLabel');
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        label.textContent = 'Black Friday е тук';
+        d.textContent = h.textContent = m.textContent = s.textContent = '00';
+        return;
+      }
+      var sec = Math.floor(diff / 1000);
+      d.textContent = pad(Math.floor(sec / 86400));
+      h.textContent = pad(Math.floor(sec % 86400 / 3600));
+      m.textContent = pad(Math.floor(sec % 3600 / 60));
+      s.textContent = pad(sec % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+<!-- ===== STICKY CTA CONTROLLER ===== -->
+<script>
+  (function () {
+    var bar = document.getElementById('stickyCta');
+    var form = document.getElementById('lead-form');
+    var submitted = false;
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        var vis = entries[0].isIntersecting;
+        bar.classList.toggle('show', !vis && !submitted);
+      }, { threshold: 0.05 });
+      io.observe(form);
+    }
+    window.hideStickyCta = function () { submitted = true; bar.classList.remove('show'); };
+  })();
+</script>
+
+<!-- ===== META PIXEL (deferred) ===== -->
+<script>
+  window.addEventListener('load', function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1351953120302144');
+    fbq('track', 'PageView');
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none" decoding="async"
+src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- ===== FORM SUBMISSION HANDLER (същият метод като главния сайт) ===== -->
+<script>
+  /* Google Sheets Web App URL (същият като на marketing-clinic.com) */
+  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
+
+  document.getElementById('lead-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var submitBtn = document.getElementById('submit-btn');
+    var originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Изпращане...';
+    submitBtn.disabled = true;
+
+    var name = (document.getElementById('name').value || '').trim();
+    var email = (document.getElementById('email').value || '').trim();
+    var phone = (document.getElementById('phone').value || '').trim();
+    var business = (document.getElementById('business').value || '').trim();
+    var link = (document.getElementById('link').value || '').trim();
+
+    /* Ключовете съвпадат 1:1 с таблицата на главния сайт */
+    var payload = {
+      name: name, email: email, phone: phone,
+      service: 'Black Friday екшън план',
+      message: '',
+      details: 'Бизнес: ' + (business || '-') + ' || Сайт/IG: ' + (link || '-'),
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads black-friday'
+    };
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), mode: 'no-cors'
+    })
+    .then(function() {
+      /* Meta Lead + Advanced Matching + eventID за CAPI дедупликация (както на сайта) */
+      try {
+        if (typeof fbq !== 'undefined') {
+          fbq('init', '1351953120302144', {
+            em: email.toLowerCase(),
+            ph: phone.replace(/\D/g, ''),
+            fn: name.toLowerCase()
+          });
+          fbq('track', 'Lead', {}, { eventID: 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10) });
+        }
+      } catch (err) {}
+
+      document.getElementById('lead-form').style.display = 'none';
+      var ok = document.getElementById('form-success');
+      ok.style.display = 'block';
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (window.hideStickyCta) window.hideStickyCta();
+    })
+    .catch(function() {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      alert('Възникна грешка. Моля, опитай отново или ни пиши на hello@marketing-clinic.com');
+    });
+  });
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/149291807.js"></script>
+<!-- End of HubSpot Embed Code -->
+</body>
+</html>
