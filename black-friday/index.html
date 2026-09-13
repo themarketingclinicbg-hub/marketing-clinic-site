@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Marketing Clinic | Безплатна консултация и Black Friday екшън план</title>
-<meta name="description" content="Безплатна консултация и екшън план за Black Friday рекламите ви: кога тръгват, с каква оферта, с какъв бюджет и какво остава като печалба. За бизнеси с рекламен бюджет над 3 000 €/месец.">
+<title>The Marketing Clinic | Black Friday списък 2026</title>
+<meta name="description" content="Влезте в списъка за Black Friday: безплатна консултация и екшън план за рекламите ви, по реда на записване. Ограничен брой места за сезона.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#0B1410">
@@ -18,8 +18,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Marketing Clinic">
 <meta property="og:locale" content="bg_BG">
-<meta property="og:title" content="Black Friday, планиран както трябва | The Marketing Clinic">
-<meta property="og:description" content="Безплатна консултация и екшън план за Black Friday рекламите ви: кога тръгват, с каква оферта, с какъв бюджет. До 24 часа.">
+<meta property="og:title" content="Black Friday списък 2026 | The Marketing Clinic">
+<meta property="og:description" content="Безплатна консултация и екшън план за Black Friday рекламите ви. Ограничен брой места, по реда на записване.">
 <meta property="og:url" content="https://marketing-clinic.com/black-friday">
 <meta property="og:image" content="https://marketing-clinic.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -202,6 +202,9 @@
   .quote .q { font-family: var(--serif); font-size: 19px; line-height: 1.35; color: var(--white); margin-bottom: 14px; }
   .quote .a { font-size: 14.5px; line-height: 1.68; color: var(--muted); }
 
+  /* ===== STEPS (как работи списъкът) ===== */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 46px; text-align: left; }
+
   .mods-note { font-family: var(--mono); font-size: 12px; letter-spacing: .6px; color: var(--muted-2); margin-top: 22px; }
 
   /* ===== BUTTONS ===== */
@@ -287,6 +290,7 @@
     .hero { padding: 44px 0 66px; }
     .mods { grid-template-columns: 1fr; }
     .quotes { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
     .tl { grid-template-columns: 1fr 1fr; }
     .split { grid-template-columns: 1fr; }
     .header-cta { display: none; }
@@ -333,16 +337,16 @@
         <div class="brand-tag">Диагностицираме · Предписваме · Растем</div>
       </div>
     </div>
-    <a href="#plan" class="header-cta">Безплатна консултация</a>
+    <a href="#plan" class="header-cta">Влез в списъка</a>
   </div>
 </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero grid-bg" id="plan">
   <div class="container centered">
-    <div class="bf-tag"><span class="dot"></span> Black Friday 2026 · Безплатна консултация и екшън план</div>
+    <div class="bf-tag"><span class="dot"></span> Black Friday 2026 · Списък на чакащите</div>
     <h1>Black Friday, <em>планиран както трябва.</em></h1>
-    <p class="lead">Безплатна <span class="hl">КОНСУЛТАЦИЯ И ЕКШЪН ПЛАН</span> за рекламите ви: кога тръгват, с каква оферта, с какъв бюджет и какво остава като печалба. <span class="hl">Персонализирана презентация до 24 часа.</span></p>
+    <p class="lead">Влизате в <span class="hl">СПИСЪКА ЗА BLACK FRIDAY</span> и получавате безплатна консултация и екшън план за рекламите си. <span class="hl">Ограничен брой места, по реда на записване.</span></p>
     <div class="qual">За бизнеси с рекламен бюджет над <strong>3 000 €/месец</strong></div>
 
     <div class="cd-wrap">
@@ -356,41 +360,37 @@
     </div>
 
     <form class="form-card" id="lead-form">
-      <div class="form-head">Заявка за безплатна консултация и екшън план</div>
+      <div class="form-head">Записване в Black Friday списъка</div>
       <div class="form-row">
         <label for="name">Име</label>
         <input type="text" id="name" name="name" placeholder="Иван Петров">
-      </div>
-      <div class="form-row">
-        <label for="phone">Телефонен номер</label>
-        <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
       </div>
       <div class="form-row">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required placeholder="ivan@firma.bg">
       </div>
       <div class="form-row">
-        <label for="business">Бизнес / индустрия <span class="opt">(по избор)</span></label>
-        <input type="text" id="business" name="business" placeholder="напр. e-commerce, ресторант, услуги">
+        <label for="phone">Телефонен номер</label>
+        <input type="tel" id="phone" name="phone" placeholder="+359 88 ...">
       </div>
       <div class="form-row">
-        <label for="link">Сайт или социална мрежа (за прегледа)</label>
-        <input type="text" id="link" name="link" required placeholder="firma.bg или линк към профил">
+        <label for="link">Сайт или социална мрежа <span class="opt">(по избор)</span></label>
+        <input type="text" id="link" name="link" placeholder="firma.bg или линк към профил">
       </div>
-      <button type="submit" class="btn-submit" id="submit-btn">Искам консултацията и плана</button>
+      <button type="submit" class="btn-submit" id="submit-btn">Запишете ме в списъка</button>
       <p class="form-note">
-        С изпращането се съгласявате да се свържем с вас относно екшън плана.<br>
+        30 секунди. С изпращането се съгласявате да се свържем с вас за Black Friday плана.<br>
         Не споделяме данните ви. Никога.
       </p>
     </form>
 
     <div id="form-success" style="display:none; max-width:580px; margin:26px auto 0; text-align:center; padding:38px; background:var(--surface); border:1px solid var(--line); border-radius:12px;">
-      <h3 style="font-size:23px; margin-bottom:10px;">Заявката е приета.</h3>
-      <p style="color:var(--muted); font-size:15px;">До 24 часа получавате екшън плана като персонализирана презентация на имейла и се уговаряме за консултацията, на която минаваме през нея заедно.</p>
+      <h3 style="font-size:23px; margin-bottom:10px;">Вие сте в списъка.</h3>
+      <p style="color:var(--muted); font-size:15px;">Мястото ви е запазено. Свързваме се по реда на записване — ако тази седмица има свободен слот, ще се чуем до 24 часа. Дотогава не е нужно да правите нищо.</p>
     </div>
 
     <div class="trust">
-      <span>План до 24 часа</span>
+      <span>Записване за 30 секунди</span>
       <span>0 € за консултацията</span>
       <span>Без ангажимент</span>
     </div>
@@ -421,8 +421,35 @@
   </div>
 </section>
 
-<!-- ===== КАКВО ПОЛУЧАВАТЕ ===== -->
+<!-- ===== КАК РАБОТИ СПИСЪКЪТ ===== -->
 <section class="sec-panel">
+  <div class="container centered">
+    <span class="kicker">Как работи списъкът</span>
+    <h2>Три стъпки, едната е ваша</h2>
+    <p class="lead narrow">Записвате се веднъж и спирате да мислите за това. Останалото е при нас.</p>
+
+    <div class="steps">
+      <div class="tl-step">
+        <div class="tl-when">Стъпка 01 · Днес</div>
+        <h3>Записвате се</h3>
+        <p>30 секунди, без въпросници. Мястото ви се запазва по реда на записване.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when">Стъпка 02 · Преди да се чуем</div>
+        <h3>Преглеждаме бизнеса ви</h3>
+        <p>Гледаме активните ви реклами, офертата и сайта, за да не ви задаваме въпроси, на които можем да си отговорим сами.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when">Стъпка 03 · Когато дойде редът ви</div>
+        <h3>Получавате плана и консултацията</h3>
+        <p>Персонализирана презентация с Black Friday плана и разговор, на който минаваме през нея заедно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КАКВО ПОЛУЧАВАТЕ ===== -->
+<section class="sec-dark">
   <div class="container centered">
     <span class="kicker">Какво получавате</span>
     <h2>Целият ви Black Friday, разглобен на части</h2>
@@ -460,12 +487,12 @@
         <p>Отстъпки, по-скъпи CPM, доставка, връщания и такси. Смятаме какво остава като печалба в евро, а не само какъв е ROAS-ът.</p>
       </div>
     </div>
-    <p class="mods-note">Плюс безплатна консултация на живо, на която минаваме през плана заедно и отговаряме на всеки ваш въпрос.</p>
+    <p class="mods-note">Всичко това го получава всеки от списъка, когато дойде редът му. Безплатно, без ангажимент.</p>
   </div>
 </section>
 
 <!-- ===== TIMELINE ===== -->
-<section class="sec-dark">
+<section class="sec-panel">
   <div class="container centered">
     <span class="kicker">Графикът</span>
     <h2>12 седмици подготовка или 12 дни паника</h2>
@@ -497,18 +524,18 @@
 </section>
 
 <!-- ===== ЗА КОГО ===== -->
-<section class="sec-panel">
+<section class="sec-dark">
   <div class="container centered">
     <span class="kicker">Честно</span>
-    <h2>Този план не е за всички.</h2>
-    <p class="lead narrow">Предпочитаме да ви откажем предварително, отколкото да си загубим взаимно времето.</p>
+    <h2>Този списък не е за всички.</h2>
+    <p class="lead narrow">Местата са ограничени, затова предпочитаме да ви откажем предварително, отколкото да си загубим взаимно времето.</p>
     <div class="split">
       <div class="split-col yes">
         <h3>За вас е, ако...</h3>
         <ul>
           <li>Имате реални продажби и рекламен бюджет над 3 000 €/месец.</li>
           <li>Вече харчите за реклами, но не знаете кое носи печалба.</li>
-          <li>Искате да влезете в сезона с план, а не на импровизация.</li>
+          <li>Готови сте да чуете плана сега, а не през третата седмица на ноември.</li>
         </ul>
       </div>
       <div class="split-col no">
@@ -516,7 +543,7 @@
         <ul>
           <li>Още нямате продукт, сайт или клиенти.</li>
           <li>Търсите безплатна идея, която само да копирате.</li>
-          <li>Няма да направите нищо след плана.</li>
+          <li>Записвате се „за всеки случай", без да смятате да действате.</li>
         </ul>
       </div>
     </div>
@@ -524,26 +551,30 @@
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="sec-dark">
+<section class="sec-panel">
   <div class="container centered">
     <span class="kicker">Въпроси</span>
     <h2>Често задавани въпроси</h2>
     <div class="faq">
       <details class="faq-item" open>
+        <summary>Какво точно значи „списък"?</summary>
+        <div class="faq-a">Приемаме ограничен брой бизнеси за сезона, защото всеки план се прави на ръка. Записването пази реда ви. Когато се освободи място, се свързваме с вас — по реда на записване, не по бюджет.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Кога ще се чуем?</summary>
+        <div class="faq-a">Ако тази седмица има свободен слот — до 24 часа. Ако не, ви пишем с реалния срок. Няма да чакате в неведение.</div>
+      </details>
+      <details class="faq-item">
         <summary>Наистина ли е безплатно?</summary>
-        <div class="faq-a">Да, напълно. Правим го, защото когато видите конкретна стойност, е по-вероятно да продължим заедно. Затова приемаме ограничен брой бизнеси.</div>
+        <div class="faq-a">Да, напълно. Правим го, защото когато видите конкретна стойност, е по-вероятно да продължим заедно. Точно затова местата са ограничени.</div>
       </details>
       <details class="faq-item">
         <summary>Не е ли твърде рано за Black Friday?</summary>
-        <div class="faq-a">Точно обратното. Аудиториите, креативите и офертата се подготвят седмици по-рано. Който тръгва в средата на ноември, плаща по-скъпи импресии за по-студена публика.</div>
+        <div class="faq-a">Точно обратното. Аудиториите, креативите и офертата се подготвят седмици по-рано. Който тръгва в средата на ноември, плаща по-скъпи импресии за по-студена публика. Затова и списъкът се пълни сега.</div>
       </details>
       <details class="faq-item">
         <summary>Вече работим с агенция. Има ли смисъл?</summary>
         <div class="faq-a">Да. Планът е независим поглед отвън и не изисква да сменяте никого. Ако агенцията ви върши работа, ще го видите в одита; ако планът за тази година е „както миналата", ще го видите също.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Колко време отнема да го получим?</summary>
-        <div class="faq-a">До 24 часа след заявката получавате персонализираната презентация и се уговаряме за консултацията, на която я разглеждаме заедно.</div>
       </details>
       <details class="faq-item">
         <summary>Какво следва след консултацията?</summary>
@@ -557,9 +588,9 @@
 <section class="cta-bottom grid-bg">
   <div class="container centered">
     <span class="kicker">Последна стъпка</span>
-    <h2>Влезте в Black Friday с план, не с надежда.</h2>
-    <p class="lead">Безплатна консултация и екшън план за рекламите ви, в персонализирана презентация, до 24 часа.</p>
-    <a href="#plan" class="btn">Безплатна консултация и екшън план &#8594;</a>
+    <h2>Влезте в списъка, докато има места.</h2>
+    <p class="lead">Безплатна консултация и екшън план за Black Friday рекламите ви. Записването отнема 30 секунди.</p>
+    <a href="#plan" class="btn">Влезте в Black Friday списъка &#8594;</a>
     <div style="margin-top:8px;"><span class="qual">За бизнеси с рекламен бюджет над <strong>3 000 €/месец</strong></span></div>
   </div>
 </section>
@@ -581,7 +612,7 @@
 
 <!-- ===== STICKY MOBILE CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="#plan">Безплатна консултация и екшън план &#8594;</a>
+  <a href="#plan">Влезте в Black Friday списъка &#8594;</a>
 </div>
 
 <!-- ===== COUNTDOWN ===== -->
@@ -681,13 +712,12 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
     var name = (document.getElementById('name').value || '').trim();
     var email = (document.getElementById('email').value || '').trim();
     var phone = (document.getElementById('phone').value || '').trim();
-    var business = (document.getElementById('business').value || '').trim();
     var link = (document.getElementById('link').value || '').trim();
 
     var eventID = 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
 
     /* 1) Събитията тръгват веднага и не зависят от таблицата. */
-    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'black_friday' }); } catch (err) {}
+    try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'black_friday_lista' }); } catch (err) {}
     try {
       if (typeof fbq === 'function') {
         /* Advanced Matching преди Lead-а */
@@ -696,21 +726,21 @@ src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"
           ph: phone.replace(/\D/g, ''),
           fn: name.toLowerCase()
         });
-        fbq('track', 'Lead', { content_name: 'black-friday' }, { eventID: eventID });
+        fbq('track', 'Lead', { content_name: 'black-friday-lista' }, { eventID: eventID });
       }
     } catch (err) {}
 
     /* 2) Редът в таблицата — ключовете са 1:1 с quiz фунията и главния сайт. */
     var payload = {
       name: name, email: email, phone: phone,
-      service: 'Black Friday екшън план',
-      status: 'complete',
+      service: 'Black Friday списък',
+      status: 'waitlist',
       message: '',
-      details: 'Бизнес: ' + (business || '-') + ' || Сайт/IG: ' + (link || '-'),
-      business: business,
+      details: 'Записване в Black Friday списъка || Сайт/IG: ' + (link || '-'),
+      business: '',
       website: link,
       submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
-      source: 'Landing /ads black-friday' + utmText(),
+      source: 'Landing /ads black-friday · СПИСЪК' + utmText(),
       eventID: eventID, fbp: ck('_fbp'), fbc: ck('_fbc'),
       eventSourceUrl: location.href, userAgent: navigator.userAgent
     };
