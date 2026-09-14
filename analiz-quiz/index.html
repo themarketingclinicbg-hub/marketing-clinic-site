@@ -368,6 +368,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+/* Изключваме автоматичното засичане на събития от Meta.
+   То пускаше SubscribedButtonClick при всеки клик по бутон и
+   цапаше отчета. Нашите събития се пращат ръчно от кода.
+   Advanced Matching не страда, защото го подаваме сами при
+   PartialLead и при Lead. */
+fbq('set', 'autoConfig', false, '1351953120302144');
 fbq('init', '1351953120302144');
 fbq('track', 'PageView');
 </script>
