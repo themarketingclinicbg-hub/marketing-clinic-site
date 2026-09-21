@@ -1721,7 +1721,7 @@ footer{
         <span class="mini-card-link">ОТКРИЙ <span class="arr">→</span></span>
       </div>
     </a>
-    <a href="bezplatna-prezentaciya.html" class="mini-card reveal" style="transition-delay:.1s;--c1:#A15636;--c2:#733D26">
+    <a href="bezplatna-prezentaciya.html" class="mini-card reveal" data-service="seo" style="transition-delay:.1s;--c1:#A15636;--c2:#733D26">
       <div class="mini-card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div>
       <div class="mini-card-body">
         <h3>SEO Оптимизация</h3>
@@ -2270,7 +2270,7 @@ footer{
               <button type="button" class="pick-btn" data-pick="content"   onclick="toggleService('content')">Съдържание</button>
               <button type="button" class="pick-btn" data-pick="strategy"  onclick="toggleService('strategy')">Маркетинг стратегия</button>
               <button type="button" class="pick-btn" data-pick="web"       onclick="toggleService('web')">Уеб Дизайн</button>
-              <button type="button" class="pick-btn" data-pick="leadgen"   onclick="toggleService('leadgen')">Нови клиенти</button>
+              <button type="button" class="pick-btn" data-pick="seo"      onclick="toggleService('seo')">SEO Оптимизация</button>
               <button type="button" class="pick-btn" data-pick="fullstack" onclick="toggleService('fullstack')">Всичко в едно</button>
               <button type="button" class="pick-btn pick-btn-free" data-pick="bezplaten" onclick="toggleService('bezplaten')">★ Безплатен анализ</button>
             </div>
@@ -2288,7 +2288,7 @@ footer{
           <div id="fields-content" class="svc-fields"><p class="svc-fields-label">Съдържание</p><div class="field"><label>За кои платформи?</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Instagram</label><label class="cb-item"><input type="checkbox"> Facebook</label><label class="cb-item"><input type="checkbox"> TikTok</label><label class="cb-item"><input type="checkbox"> LinkedIn</label></div></div></div>
           <div id="fields-strategy" class="svc-fields"><p class="svc-fields-label">Маркетинг стратегия</p><div class="field"><label>Основна бизнес цел</label><textarea rows="2" placeholder="Напр. увеличаване на продажбите с 30%..."></textarea></div><div class="field"><label>Основен канал в момента</label><select><option value="">Избери...</option><option>Социални мрежи</option><option>Google</option><option>Препоръки</option><option>Нямаме ясен канал</option></select></div></div>
           <div id="fields-web" class="svc-fields"><p class="svc-fields-label">Уеб Дизайн</p><div class="field"><label>Имате ли вече сайт?</label><select><option value="">Избери...</option><option>Да, искаме редизайн</option><option>Не, правим нов</option></select></div><div class="field"><label>Платформа</label><select><option value="">Без предпочитание</option><option>WordPress</option><option>Shopify</option><option>Custom разработка</option></select></div></div>
-          <div id="fields-leadgen" class="svc-fields"><p class="svc-fields-label">Нови клиенти</p><div class="field"><label>Какъв тип клиент търсите?</label><textarea rows="2" placeholder="Опишете вашия идеален клиент..."></textarea></div><div class="field"><label>Follow-up процес</label><select><option value="">Избери...</option><option>Имаме CRM</option><option>Обаждаме се ръчно</option><option>Нямаме ясен процес</option></select></div></div>
+          <div id="fields-seo" class="svc-fields"><p class="svc-fields-label">SEO Оптимизация</p><div class="field"><label>Уебсайт (URL)</label><input type="text" placeholder="www.example.bg"></div><div class="field"><label>Основна цел</label><select><option value="">Избери...</option><option>Повече трафик</option><option>По-добри позиции по ключови думи</option><option>Локално SEO</option></select></div></div>
           <div id="fields-fullstack" class="svc-fields"><p class="svc-fields-label">Всичко в едно</p><div class="field"><label>Кои услуги искате в пакета?</label><div class="checkbox-group"><label class="cb-item"><input type="checkbox"> Стратегия</label><label class="cb-item"><input type="checkbox"> Meta и Google Ads</label><label class="cb-item"><input type="checkbox"> Съдържание</label><label class="cb-item"><input type="checkbox"> Уеб дизайн</label><label class="cb-item"><input type="checkbox"> Брандинг</label></div></div><div class="field"><label>Желан срок за старт</label><select><option value="">Избери...</option><option>Веднага</option><option>Следващия месец</option><option>В рамките на 3 месеца</option></select></div></div>
 
           <div class="kf-group" id="kfg-msg" style="margin-bottom:12px">
@@ -2427,7 +2427,7 @@ const SERVICES = [
   { id: 'content',   name: 'Съдържание' },
   { id: 'strategy',  name: 'Маркетинг стратегия' },
   { id: 'web',       name: 'Уеб Дизайн' },
-  { id: 'leadgen',   name: 'Нови клиенти' },
+  { id: 'seo',       name: 'SEO Оптимизация' },
   { id: 'fullstack', name: 'Всичко в едно' },
   { id: 'bezplaten', name: 'Безплатен анализ' },
 ];
