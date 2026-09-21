@@ -76,7 +76,7 @@
       "https://www.facebook.com/profile.php?id=61579207195363",
       "https://www.instagram.com/marketingclinic.bg/"
     ],
-    "foundingDate":"2022","areaServed":"Bulgaria","inLanguage":"bg","priceRange":"$$"
+    "foundingDate":"2021","areaServed":"Bulgaria","inLanguage":"bg","priceRange":"$$"
   }
   </script>
 
@@ -1635,7 +1635,7 @@ footer{
     <div class="stat-label">Приход от реклама</div>
   </div>
   <div class="stat-item reveal" style="transition-delay:.16s">
-    <div class="stat-num">4<span style="font-size:18px;opacity:.45">г.</span></div>
+    <div class="stat-num">5<span style="font-size:18px;opacity:.45">г.</span></div>
     <div class="stat-label">Опит в бранша</div>
   </div>
   <div class="stat-item reveal" style="transition-delay:.24s">
@@ -1805,7 +1805,7 @@ footer{
           <div class="avp-mini-l">Приход / лев</div>
         </div>
         <div class="avp-mini">
-          <div class="avp-mini-v"><span data-count="4">0</span><span class="avp-mini-u">г.</span></div>
+          <div class="avp-mini-v"><span data-count="5">0</span><span class="avp-mini-u">г.</span></div>
           <div class="avp-mini-l">Опит в бранша</div>
         </div>
       </div>
@@ -1838,7 +1838,6 @@ footer{
       </div>
     </div>
   </div>
-    </div>
   </div>
 </section>
 
@@ -1960,6 +1959,7 @@ footer{
 #faq{background:#FAF8F4;padding:0;position:relative;overflow:hidden}
 #faq::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(42,80,64,.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
 #faq::after{content:'';position:absolute;top:0;right:0;width:260px;height:260px;background:conic-gradient(from 225deg at 100% 0%,rgba(200,169,110,.18),rgba(200,169,110,.04) 40%,transparent 60%);pointer-events:none}
+@keyframes spin-slow-bp{to{transform:rotate(360deg)}}
 .faq-layout{display:grid;grid-template-columns:360px 1fr;position:relative;z-index:1}
 .faq-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 52px 80px 60px;border-right:1px solid rgba(42,80,64,.1);overflow:hidden;background:#FAF8F4}
 .faq-sticky-corner{position:absolute;top:0;left:0;width:3px;height:80px;background:linear-gradient(to bottom,#C8A96E,transparent)}
@@ -1972,33 +1972,36 @@ footer{
 .faq-divider::before{content:'';flex:1;height:1px;background:linear-gradient(to right,#C8A96E,rgba(200,169,110,.2))}
 .faq-divider-diamond{width:6px;height:6px;background:#C8A96E;transform:rotate(45deg);flex-shrink:0}
 .faq-sub{font-size:14px;line-height:1.8;color:rgba(42,80,64,.5);margin-bottom:40px;max-width:260px}
-.faq-count-badge{display:inline-flex;flex-direction:column;border:1px solid rgba(200,169,110,.4);padding:16px 22px;width:fit-content;position:relative;overflow:hidden;background:rgba(200,169,110,.04)}
-.faq-count-badge::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C8A96E,rgba(200,169,110,.3))}
+.faq-count-badge{display:inline-flex;flex-direction:column;padding:16px 22px;width:fit-content;position:relative;overflow:hidden;background:rgba(200,169,110,.04);isolation:isolate}
+.faq-count-badge::before{content:'';position:absolute;inset:-1px;z-index:-1;background:conic-gradient(from var(--angle,0deg),#C8A96E 0%,rgba(200,169,110,.15) 30%,rgba(42,80,64,.35) 55%,rgba(200,169,110,.15) 80%,#C8A96E 100%);animation:faqBadgeRotate 7s linear infinite}
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes faqBadgeRotate{to{--angle:360deg}}
 .faq-count-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;line-height:1;color:#2A5040}
 .faq-count-num .accent-gold{color:#C8A96E}
 .faq-count-lbl{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,169,110,.65);margin-top:6px}
 .faq-deco{position:absolute;bottom:60px;right:24px;width:80px;height:80px;opacity:.14}
-.faq-deco svg{animation:spin-slow 25s linear infinite}
+.faq-deco svg{animation:spin-slow-bp 25s linear infinite;transform-origin:40px 40px}
 .faq-progress{position:absolute;right:0;top:0;bottom:0;width:2px;background:rgba(200,169,110,.12)}
 .faq-progress-bar{width:100%;height:0%;background:linear-gradient(to bottom,#C8A96E,rgba(200,169,110,.3));transition:height .1s linear}
 .faq-accordion{padding:80px 72px 80px 64px;display:flex;flex-direction:column}
-.faq-item-v2{position:relative;border-bottom:1px solid rgba(42,80,64,.1);cursor:pointer;overflow:hidden}
-.faq-item-v2:first-child{border-top:1px solid rgba(42,80,64,.1)}
-.faq-item-v2::before{content:attr(data-num);position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:130px;font-weight:700;line-height:1;color:rgba(200,169,110,.06);pointer-events:none;user-select:none;transition:color .4s,transform .4s;z-index:0}
-.faq-item-v2:hover::before{color:rgba(200,169,110,.1);transform:translateY(-50%) scale(1.04)}
-.faq-item-v2.open::before{color:rgba(200,169,110,.09)}
+.faq-item-v2{position:relative;border:1px solid rgba(42,80,64,.1);border-radius:8px;cursor:pointer;overflow:hidden;background:#FBF9F5;box-shadow:0 3px 14px rgba(42,80,64,.04);transition:box-shadow .4s ease,border-color .4s ease,transform .35s ease}
+.faq-item-v2:hover{box-shadow:0 22px 44px rgba(42,80,64,.13);border-color:rgba(200,169,110,.45);transform:translateY(-3px)}
+.faq-item-v2.open{border-color:#2A5040;box-shadow:0 22px 44px rgba(42,80,64,.16);transform:translateY(-1px)}
+.faq-item-v2::before{content:attr(data-num);position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:700;line-height:1;color:rgba(200,169,110,.07);pointer-events:none;user-select:none;transition:color .4s,transform .4s;z-index:0}
+.faq-item-v2:hover::before{color:rgba(200,169,110,.11);transform:translateY(-50%) scale(1.04)}
+.faq-item-v2.open::before{color:rgba(200,169,110,.1)}
 .faq-hover-fill{position:absolute;inset:0;background:#2A5040;transform:translateX(-101%);transition:transform .45s cubic-bezier(.16,1,.3,1);pointer-events:none;z-index:1}
 .faq-item-v2:hover .faq-hover-fill,.faq-item-v2.open .faq-hover-fill{transform:translateX(0)}
-.faq-item-v2::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#C8A96E,rgba(200,169,110,.3));transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:3}
+.faq-item-v2::after{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(to bottom,#C8A96E,rgba(200,169,110,.3));transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:3}
 .faq-item-v2.open::after,.faq-item-v2:hover::after{transform:scaleY(1)}
-.faq-trigger{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:24px 16px 24px 20px;user-select:none;position:relative;z-index:2}
-.faq-num{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:.08em;color:rgba(200,169,110,.55);width:26px;flex-shrink:0;transition:color .3s}
-.faq-item-v2:hover .faq-num,.faq-item-v2.open .faq-num{color:#C8A96E}
+.faq-trigger{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:22px 24px 22px 22px;user-select:none;position:relative;z-index:2}
+.faq-num{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;letter-spacing:.01em;color:#C8A96E;width:36px;height:36px;flex-shrink:0;border:1px solid rgba(200,169,110,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease,border-color .35s ease}
+.faq-item-v2:hover .faq-num,.faq-item-v2.open .faq-num{background:#C8A96E;color:#2A5040;border-color:#C8A96E}
 .faq-q-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;line-height:1.25;color:#2A5040;padding-right:12px;transition:color .35s}
 .faq-item-v2:hover .faq-q-text,.faq-item-v2.open .faq-q-text{color:#F5F0E8}
-.faq-icon{width:34px;height:34px;flex-shrink:0;border:1px solid rgba(42,80,64,.2);display:flex;align-items:center;justify-content:center;position:relative;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.34,1.56,.64,1)}
+.faq-icon{width:34px;height:34px;flex-shrink:0;border:1px solid rgba(42,80,64,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.34,1.56,.64,1)}
 .faq-item-v2:hover .faq-icon{border-color:rgba(200,169,110,.5)}
-.faq-item-v2.open .faq-icon{background:#C8A96E;border-color:#C8A96E;transform:rotate(45deg)}
+.faq-item-v2.open .faq-icon{background:#C8A96E;border-color:#C8A96E;transform:rotate(135deg)}
 .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:#2A5040;transition:background .3s}
 .faq-icon::before{width:12px;height:1px}
 .faq-icon::after{width:1px;height:12px}
@@ -2006,7 +2009,7 @@ footer{
 .faq-item-v2.open .faq-icon::before,.faq-item-v2.open .faq-icon::after{background:#2A5040}
 .faq-body{overflow:hidden;max-height:0;transition:max-height .55s cubic-bezier(.16,1,.3,1);position:relative;z-index:2}
 .faq-body.open{max-height:300px}
-.faq-body-inner{padding:2px 20px 26px 46px;font-size:15px;line-height:1.85;color:rgba(245,240,232,.55);max-width:580px;transform:translateY(10px);opacity:0;transition:transform .45s ease .08s,opacity .45s ease .08s}
+.faq-body-inner{padding:2px 24px 26px 78px;font-size:15px;line-height:1.85;color:rgba(245,240,232,.55);max-width:560px;transform:translateY(10px);opacity:0;transition:transform .45s ease .08s,opacity .45s ease .08s}
 .faq-body.open .faq-body-inner{transform:translateY(0);opacity:1}
 .faq-bottom-cta{margin-top:56px}
 .faq-cta-btn{display:inline-flex;align-items:center;gap:16px;padding:17px 36px;background:#2A5040;border:1px solid #2A5040;color:#F5F0E8;text-decoration:none;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-family:'DM Sans',sans-serif;position:relative;overflow:hidden;transition:color .3s,box-shadow .3s,transform .2s}
@@ -2018,6 +2021,7 @@ footer{
 .faq-cta-btn:hover .faq-cta-arrow{transform:translateX(5px)}
 .faq-particle{position:absolute;pointer-events:none;border-radius:50%;background:rgba(200,169,110,.35);animation:faq-float linear infinite}
 @keyframes faq-float{0%{opacity:0;transform:translateY(0) scale(1)}15%{opacity:.7}85%{opacity:.4}100%{opacity:0;transform:translateY(-100px) scale(.5)}}
+.faq-items-list{display:flex;flex-direction:column;gap:16px}
 @media(max-width:960px){
   .faq-layout{grid-template-columns:1fr}
   .faq-sticky{position:relative;height:auto;padding:72px 36px 48px 36px;border-right:none;border-bottom:1px solid rgba(42,80,64,.1)}
@@ -2039,12 +2043,15 @@ footer{
       <div class="faq-divider" aria-hidden="true"><div class="faq-divider-diamond"></div></div>
       <p class="faq-sub">Всичко което искаш да знаеш преди да решиш да работиш с нас.</p>
       <div class="faq-count-badge" aria-label="10 въпроса">
-        <span class="faq-count-num"><span class="count-up" data-target="10">0</span></span>
+        <span class="faq-count-num"><span class="count-up" data-target="10">0</span><span class="accent-gold">+</span></span>
         <span class="faq-count-lbl">Отговора на въпросите ти</span>
       </div>
       <div class="faq-progress" aria-hidden="true"><div class="faq-progress-bar" id="faq-prog"></div></div>
+      <div class="faq-deco" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="36" stroke="#C8A96E" stroke-width="1"/><circle cx="40" cy="40" r="24" stroke="#C8A96E" stroke-width=".6" stroke-dasharray="3 5"/><circle cx="40" cy="40" r="10" stroke="#C8A96E" stroke-width=".6"/><line x1="4" y1="40" x2="76" y2="40" stroke="#C8A96E" stroke-width=".6"/><line x1="40" y1="4" x2="40" y2="76" stroke="#C8A96E" stroke-width=".6"/><line x1="14" y1="14" x2="66" y2="66" stroke="#C8A96E" stroke-width=".5"/><line x1="66" y1="14" x2="14" y2="66" stroke="#C8A96E" stroke-width=".5"/><circle cx="40" cy="40" r="2.5" fill="#C8A96E"/></svg></div>
     </div>
     <div class="faq-accordion" id="faq-accordion" role="list">
+
+      <div class="faq-items-list" id="faq-items-list">
 
       <div class="faq-item-v2 reveal" data-num="01" style="transition-delay:0.00s">
         <div class="faq-hover-fill" aria-hidden="true"></div>
@@ -2162,6 +2169,7 @@ footer{
           <span class="faq-cta-arrow" aria-hidden="true">→</span>
         </a>
       </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2200,7 +2208,7 @@ footer{
           <span class="k-stat-lbl">Отговор</span>
         </div>
         <div class="k-stat" role="listitem">
-          <span class="k-stat-num"><span class="count-up" data-target="4">0</span><span class="suffix">г.</span></span>
+          <span class="k-stat-num"><span class="count-up" data-target="5">0</span><span class="suffix">г.</span></span>
           <span class="k-stat-lbl">Опит</span>
         </div>
       </div>
@@ -2501,29 +2509,30 @@ function submitForm() { window.location.href='/blagodarim'; }
   }
 })();
 
-/* ── Count-up animation ── */
+/* ── Count-up animation (per-element — each counter fires when IT comes into view) ── */
 (function(){
-  var done=false;
+  function animate(el){
+    var target=parseFloat(el.getAttribute('data-target'));
+    var dur=1600,start=performance.now();
+    (function tick(now){
+      var p=Math.min((now-start)/dur,1);
+      var ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(ease*target);
+      if(p<1) requestAnimationFrame(tick);
+    })(start);
+  }
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.count-up').forEach(function(el){el.textContent=el.getAttribute('data-target');});
+    return;
+  }
   var io=new IntersectionObserver(function(entries){
-    if(done) return;
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
-      done=true;
-      document.querySelectorAll('.count-up').forEach(function(el){
-        var target=parseInt(el.getAttribute('data-target'),10);
-        var dur=1800,start=performance.now();
-        (function tick(now){
-          var p=Math.min((now-start)/dur,1);
-          var ease=1-Math.pow(1-p,3);
-          el.textContent=Math.round(ease*target);
-          if(p<1) requestAnimationFrame(tick);
-        })(start);
-      });
-      io.disconnect();
+      animate(e.target);
+      io.unobserve(e.target);
     });
-  },{threshold:0.3});
-  var sec=document.getElementById('kontakt');
-  if(sec) io.observe(sec);
+  },{threshold:0.4});
+  document.querySelectorAll('.count-up').forEach(function(el){io.observe(el);});
 })();
 
 /* ── Floating label for kf-group ── */
@@ -2615,31 +2624,6 @@ document.addEventListener('DOMContentLoaded', () => { renderAll(); });
     p.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(Math.random()*100).toFixed(1)+'%;bottom:'+-(Math.random()*20+5)+'px;animation-duration:'+(Math.random()*14+10).toFixed(1)+'s;animation-delay:'+(Math.random()*18).toFixed(1)+'s;opacity:'+(Math.random()*.4+.15).toFixed(2);
     container.appendChild(p);
   }
-})();
-
-/* ── Count-up ── */
-(function(){
-  var done=false;
-  var io=new IntersectionObserver(function(entries){
-    if(done)return;
-    entries.forEach(function(e){
-      if(!e.isIntersecting)return;
-      done=true;
-      document.querySelectorAll('.count-up').forEach(function(el){
-        var target=parseInt(el.getAttribute('data-target'),10);
-        var dur=1800,start=performance.now();
-        (function tick(now){
-          var p=Math.min((now-start)/dur,1);
-          var ease=1-Math.pow(1-p,3);
-          el.textContent=Math.round(ease*target);
-          if(p<1)requestAnimationFrame(tick);
-        })(start);
-      });
-      io.disconnect();
-    });
-  },{threshold:0.3});
-  var sec=document.getElementById('kontakt');
-  if(sec)io.observe(sec);
 })();
 
 /* ── Floating label kf-group ── */
