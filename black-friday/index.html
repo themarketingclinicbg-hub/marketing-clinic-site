@@ -482,14 +482,14 @@ const funnel=(function(){
     else{const o=document.querySelector('.step.active .opts');if(o){const k=o.dataset.name;ok=o.dataset.mode==='multi'?(ans[k]&&ans[k].length>0):!!ans[k]}}
     $('#btnNext').disabled=!ok;
   }
-  function start(){try{typeof fbq==='function'&&fbq('trackCustom','FunnelStart',{content_name:SRC})}catch(e){} gt('funnel_start'); show(ORDER[0])}
+  function start(){gt('funnel_start'); show(ORDER[0])}
   function next(){ if(cur===CONTACT){submit();return} const i=ORDER.indexOf(cur); if(i<ORDER.length-1)show(ORDER[i+1]) }
   function back(){ const i=ORDER.indexOf(cur); if(i>0)show(ORDER[i-1]) }
 
   function submit(){
     leadId=uid('lead'); fbAM(); post(record());
-    window.__tmcLeadOK=true; setTimeout(function(){window.__tmcLeadOK=false},10000);
     gt('generate_lead',{stage:'zavarshena',budget:ans.budget||'',revenue:ans.revenue||''});
+    gt('sign_up',{stage:'zavarshena',budget:ans.budget||''});
     try{fbAM();typeof fbq==='function'&&fbq('track','Lead',{content_name:'growth_scan'},{eventID:leadId});typeof fbq==='function'&&fbq('track','CompleteRegistration',{content_name:'growth_scan',status:true},{eventID:uid('cr')})}catch(e){}
     $('#cName').textContent=$('#fName').value.trim()||'приятел';
     const L=$('#loader'); L.classList.add('on');
@@ -582,18 +582,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 /* Изключваме автоматичното засичане на събития от Meta.
    Нашите събития се пращат ръчно от кода. */
-/* ПАЗАЧ: Meta понякога сама решава, че даден клик е Lead (inferred events),
-   без нашия код да я вика. Такъв Lead не стига до Meta: пропускаме Lead и
-   CompleteRegistration само в момента, в който ние ги пращаме. */
-(function(){
-  window.__tmcLeadOK=false;
-  function blocked(u){try{u=String(u);if(u.indexOf('facebook.com/tr')<0)return false;var m=u.match(/[?&]ev=([^&]+)/);var ev=m?decodeURIComponent(m[1]):'';return (ev==='Lead'||ev==='CompleteRegistration')&&!window.__tmcLeadOK}catch(e){return false}}
-  var I=window.Image;
-  window.Image=function(){var im=new I(),v='';try{Object.defineProperty(im,'src',{set:function(x){v=x;if(!blocked(x)){try{im.setAttribute('src',x)}catch(e){}}},get:function(){return v}})}catch(e){}return im};
-  var f=window.fetch;if(f)window.fetch=function(u){try{if(blocked(u&&u.url||u))return Promise.resolve(new Response(''))}catch(e){}return f.apply(this,arguments)};
-  var b=navigator.sendBeacon&&navigator.sendBeacon.bind(navigator);
-  if(b)navigator.sendBeacon=function(u,d){try{if(blocked(u))return true}catch(e){}return b(u,d)};
-})();
 fbq('set', 'autoConfig', false, '1351953120302144');
 fbq('init', '1351953120302144');
 fbq('track', 'PageView');
