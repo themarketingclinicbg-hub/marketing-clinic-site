@@ -79,6 +79,16 @@
 .faq summary::after{content:"+";position:absolute;right:0;top:11px;font-size:20px;color:var(--gold);font-weight:400}
 .faq details[open] summary::after{content:"×"}
 .faq details p{font-size:13.5px;line-height:1.6;color:var(--muted);padding:0 0 14px}
+.formcard{max-width:460px;margin:0 auto 26px;background:var(--card);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:var(--radius);padding:24px 20px 20px;text-align:left;box-shadow:var(--shadow)}
+.formcard h3{font-size:clamp(21px,5vw,26px);color:var(--green);text-align:center;margin-bottom:7px}
+.formcard .fsub{color:var(--muted);font-size:13px;line-height:1.55;text-align:center;margin:0 auto 18px;max-width:340px}
+.formcard .micro{margin-top:10px;font-size:11.5px}
+.formcard .consent{margin-top:14px}
+.formcard .phonerow{grid-template-columns:1fr;gap:8px}
+@media(min-width:420px){.formcard .phonerow{grid-template-columns:minmax(150px,auto) 1fr}}
+.startbtn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none;filter:none}
+.startbtn:disabled:hover{transform:none}
+.qcard{padding-bottom:70px}
 .qbadge{display:inline-block;background:var(--gold-faint);border:1px solid var(--gold-soft);color:var(--green);border-radius:999px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:5px 11px;margin-bottom:12px}
 .planpeek{margin-top:26px}
 .proof{margin-top:22px}
@@ -111,10 +121,6 @@
       </a>
     </div>
   </div>
-  <div class="progress-shell wrap" id="progressShell" style="display:none">
-    <div class="progress-meta"><span>Стъпка <b id="pNow">1</b> от <b id="pTotal">9</b></span><span id="pPct">11%</span></div>
-    <div class="pbar-track"><div class="pbar-fill" id="pBar"></div></div>
-  </div>
 </div>
 
 <!-- ===== STEP 0 · HERO ===== -->
@@ -132,9 +138,43 @@
         <div class="doc bonus2"><span class="dn">+</span><b>Black Friday стратегия</b><small>оферта, календар, бюджети</small></div>
       </div>
 
-      <button class="startbtn" onclick="funnel.start()">Вземи и 3-те безплатно →</button>
-      <div class="micro">8 въпроса · под 2 минути · отговор до 24 часа</div>
+      <div class="formcard" id="leadForm">
+    
+    <h3>Попълни и трите документа са твои</h3>
+    <p class="fsub">Оставяш данните си, ние преглеждаме магазина ти и се обаждаме до 24 часа.</p>
+    <div class="field">
+      <label for="fName">Име</label>
+      <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
+    </div>
+    <div class="field" id="fPhoneRow">
+      <label for="fPhone">Телефон <em>(само цифри)</em></label>
+      <div class="phonerow">
+        <select id="fCode" aria-label="Код на държавата"></select>
+        <input id="fPhone" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="888 123 456">
+      </div>
+      <div class="err" id="fPhoneErr"></div>
+      <div class="ok" id="fPhoneOk"></div>
+    </div>
+    <div class="field">
+      <label for="fSite">Сайт на магазина</label>
+      <input id="fSite" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="magazin.bg">
+    </div>
+    <div class="field">
+      <label for="fEmail">Имейл</label>
+      <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="ti@magazin.bg">
+    </div>
+    <label class="consent">
+      <input type="checkbox" id="fConsent">
+      <span>Съгласявам се The Marketing Clinic да се свърже с мен и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>.</span>
+    </label>
+    <div class="assure">
+      <div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Без спам. Данните ти остават между нас.</div>
+    </div>
+    <button class="startbtn" id="btnSend" onclick="funnel.submit()" disabled style="margin-top:20px">Вземи и 3-те безплатно →</button>
+    <div class="micro">Отговаряме до 24 часа. Без ангажимент.</div>
+  </div>
 
+      
       <div class="spots">
         <div class="srow"><b>Свободни места</b><span><span class="spotsLeftTxt">3</span> от 3</span></div>
         <div class="seats" id="seats"></div>
@@ -184,161 +224,14 @@
       </div>
 
       <div class="restart">
-        <button class="startbtn" onclick="funnel.start()">Вземи и 3-те безплатно →</button>
+        <button class="startbtn" onclick="funnel.toForm()">Вземи и 3-те безплатно →</button>
         <div class="micro">Отговаряме до 24 часа.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== STEP 1 · ПЛАТФОРМА ===== -->
-<section class="step" data-step="1">
-  <div class="wrap qcard">
-    <div class="kicker">1 от 8</div>
-    <h2>На каква платформа е магазинът ти?</h2>
-    <div class="opts" data-name="platform" data-mode="single">
-      <button class="opt" data-val="Shopify">Shopify</button>
-      <button class="opt" data-val="WooCommerce">WooCommerce</button>
-      <button class="opt" data-val="OpenCart / CS-Cart / Magento">OpenCart, CS-Cart или Magento</button>
-      <button class="opt" data-val="Собствена платформа">Собствена платформа</button>
-      <button class="opt" data-val="Друго">Друго</button>
-    </div>
-  </div>
-</section>
 
-<!-- ===== STEP 2 · САЙТ ===== -->
-<section class="step" data-step="2">
-  <div class="wrap qcard">
-    <div class="kicker">2 от 8</div>
-    <h2>Какъв е адресът на магазина?</h2>
-    <p class="qsub">Върху него правим анализа и сравнението с конкурентите.</p>
-    <div class="field">
-      <label for="fSite">Сайт</label>
-      <input id="fSite" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="magazin.bg">
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 3 · ОБОРОТ ===== -->
-<section class="step" data-step="3">
-  <div class="wrap qcard">
-    <div class="kicker">3 от 8</div>
-    <h2>Месечен оборот на магазина?</h2>
-    <p class="qsub">Приблизително е достатъчно. Остава между нас.</p>
-    <div class="opts" data-name="revenue" data-mode="single">
-      <button class="opt" data-val="До 10 000 €">До 10 000 €</button>
-      <button class="opt" data-val="10 000 до 30 000 €">10 000 до 30 000 €</button>
-      <button class="opt" data-val="30 000 до 100 000 €">30 000 до 100 000 €</button>
-      <button class="opt" data-val="Над 100 000 €">Над 100 000 €</button>
-      <button class="opt" data-val="Предпочитам да не казвам">Предпочитам да не казвам</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 4 · БЮДЖЕТ ===== -->
-<section class="step" data-step="4">
-  <div class="wrap qcard">
-    <div class="kicker">4 от 8</div>
-    <h2>Колко даваш месечно за реклама?</h2>
-    <p class="qsub">Само медиен бюджет.</p>
-    <div class="opts" data-name="budget" data-mode="single">
-      <button class="opt" data-val="До 1000 €">До 1000 €</button>
-      <button class="opt" data-val="1000 до 3000 €">1000 до 3000 €</button>
-      <button class="opt" data-val="3000 до 10 000 €">3000 до 10 000 €</button>
-      <button class="opt" data-val="Над 10 000 €">Над 10 000 €</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 5 · СПЪНКА ===== -->
-<section class="step" data-step="5">
-  <div class="wrap qcard">
-    <div class="kicker">5 от 8</div>
-    <h2>Кое те спира да скалираш?</h2>
-    <div class="opts" data-name="problem" data-mode="single">
-      <button class="opt" data-val="Вдигам бюджета и ROAS пада">Вдигам бюджета и ROAS-ът пада</button>
-      <button class="opt" data-val="Продажби има, печалба няма">Продажби има, печалба не остава</button>
-      <button class="opt" data-val="Не знам кои реклами реално продават">Не знам кои реклами продават</button>
-      <button class="opt" data-val="Креативите се изхабяват бързо">Креативите се изхабяват бързо</button>
-      <button class="opt" data-val="Нямам ясен план и приоритети">Нямам ясен план</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 6 · BLACK FRIDAY ===== -->
-<section class="step" data-step="6">
-  <div class="wrap qcard">
-    <div class="kicker">6 от 8</div>
-    <h2>Как мина Black Friday миналата година?</h2>
-    <div class="opts" data-name="bf" data-mode="single">
-      <button class="opt" data-val="Най-силният ни месец">Най-силният ни месец</button>
-      <button class="opt" data-val="Продажби на малък марж">Много продажби, малък марж</button>
-      <button class="opt" data-val="Без ясна стратегия">Намаление, без стратегия</button>
-      <button class="opt" data-val="Не участвахме">Не участвахме</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 7 · КОГА ===== -->
-<section class="step" data-step="7">
-  <div class="wrap qcard">
-    <div class="kicker">7 от 8</div>
-    <h2>Кога можеш да започнеш?</h2>
-    <p class="qsub">Местата са 3 и са за старт до 1 октомври.</p>
-    <div class="opts" data-name="start" data-mode="single">
-      <button class="opt" data-val="Веднага, до 1 октомври">Веднага, до 1 октомври</button>
-      <button class="opt" data-val="През октомври">През октомври</button>
-      <button class="opt" data-val="Само проучвам">Само проучвам</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 8 · РОЛЯ ===== -->
-<section class="step" data-step="8">
-  <div class="wrap qcard">
-    <div class="kicker">8 от 8</div>
-    <h2>Ти си...</h2>
-    <div class="opts" data-name="role" data-mode="single">
-      <button class="opt" data-val="Собственик">Собственик</button>
-      <button class="opt" data-val="Управител">Управител</button>
-      <button class="opt" data-val="Маркетинг мениджър">Маркетинг мениджър</button>
-      <button class="opt" data-val="Друго">Друго</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEP 9 · КОНТАКТ ===== -->
-<section class="step" data-step="9">
-  <div class="wrap qcard">
-    <div class="qbadge">Последна стъпка</div>
-    <h2>Къде да ти пишем?</h2>
-    <p class="qsub">Обаждаме се до 24 часа, уговаряме разговора и получаваш трите документа.</p>
-    <div class="field">
-      <label for="fName">Име</label>
-      <input id="fName" type="text" autocomplete="given-name" placeholder="напр. Мария">
-    </div>
-    <div class="field">
-      <label for="fEmail">Имейл</label>
-      <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="ti@magazin.bg">
-    </div>
-    <div class="field" id="fPhoneRow">
-      <label for="fPhone">Телефон <em>(само цифри)</em></label>
-      <div class="phonerow">
-        <select id="fCode" aria-label="Код на държавата"></select>
-        <input id="fPhone" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="888 123 456">
-      </div>
-      <div class="err" id="fPhoneErr"></div>
-      <div class="ok" id="fPhoneOk"></div>
-    </div>
-    <label class="consent">
-      <input type="checkbox" id="fConsent">
-      <span>Съгласявам се The Marketing Clinic да се свърже с мен и приемам <a href="https://marketing-clinic.com/privacy-policy.html" target="_blank" rel="noopener">политиката за поверителност</a>.</span>
-    </label>
-    <div class="assure">
-      <div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2A5040" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Без спам. Данните ти остават между нас.</div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== STEP 10 · БЛАГОДАРИМ ===== -->
 <section class="step" data-step="10">
@@ -357,36 +250,17 @@
   </div>
 </section>
 
-<!-- ===== STEP 11 · ПЪРВА ДИАГНОЗА ===== -->
-<section class="step" data-step="11">
-  <div class="wrap diag">
-    <div class="dk">Първа диагноза</div>
-    <h2>Ето какво най-вероятно спира скалирането ти</h2>
-    <p class="dsub">На база отговорите ти. Точните числа идват с анализа.</p>
-    <div class="dcards" id="dCards"></div>
-    <div class="dnote">Оценка на база отговорите ти, не измерване на твоя акаунт.</div>
-    <button class="startbtn" onclick="funnel.toThanks()">Какво следва →</button>
-  </div>
-</section>
-
 <!-- ===== ЕКРАН ЗА ОБРАБОТКА ===== -->
 <div class="loader" id="loader">
   <div class="ring"></div>
-  <h3>Обработваме отговорите ти</h3>
+  <h3>Записваме заявката ти</h3>
   <ul>
     <li id="ld1"><i>1</i>Сравняваме с бенчмарка за твоя оборот</li>
     <li id="ld2"><i>2</i>Проверяваме готовността за Black Friday</li>
-    <li id="ld3"><i>3</i>Подреждаме трите най-скъпи спънки</li>
+    <li id="ld3"><i>3</i>Подготвяме прегледа на магазина ти</li>
   </ul>
 </div>
 
-<!-- ===== NAV (fixed) ===== -->
-<div class="navrow" id="navRow" style="display:none">
-  <div class="inner">
-    <button class="btn-back" id="btnBack" onclick="funnel.back()">←</button>
-    <button class="btn-primary" id="btnNext" onclick="funnel.next()" disabled><span id="btnNextTxt">Продължи</span></button>
-  </div>
-</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -401,15 +275,15 @@
 /* ===== НАСТРОЙКИ (сменяй тук) ===== */
 const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
 const SPOTS_TOTAL=3;           // общо места
-const SPOTS_LEFT=3;            // колко са свободни в момента (намаляй ръчно при нов клиент)
-const DEADLINE='2026-10-01T00:00:00+03:00'; // краен срок за старт
+const SPOTS_LEFT=3;            // свободни в момента (намаляй ръчно)
+const DEADLINE='2026-10-01T00:00:00+03:00';
 const SRC='growth_scan';
 
 const funnel=(function(){
-  const ORDER=[1,2,3,4,5,6,7,8,9], SITE=2, CONTACT=9, PIXEL='1351953120302144';
+  const PIXEL='1351953120302144';
   const $=s=>document.querySelector(s);
   const steps=[...document.querySelectorAll('.step')];
-  const ans={}; let cur=0, leadId=null;
+  let sent=false, leadId=null;
 
   /* ---------- места и обратно броене ---------- */
   document.querySelectorAll('.spotsLeftTxt').forEach(e=>e.textContent=SPOTS_LEFT);
@@ -418,9 +292,9 @@ const funnel=(function(){
   const dl=new Date(DEADLINE).getTime(), pad=n=>String(n).padStart(2,'0');
   function tick(){
     let ms=dl-Date.now();
-    if(ms<=0){$('#cdown').style.display='none';$('#cdLabel').textContent='Приемът за Black Friday приключи. Кандидатствай за следващия.';return}
-    const d=Math.floor(ms/864e5);ms-=d*864e5;const h=Math.floor(ms/36e5);ms-=h*36e5;const m=Math.floor(ms/6e4);ms-=m*6e4;const s=Math.floor(ms/1e3);
-    $('#cdD').textContent=pad(d);$('#cdH').textContent=pad(h);$('#cdM').textContent=pad(m);$('#cdS').textContent=pad(s);
+    if(ms<=0){$('#cdown').style.display='none';$('#cdLabel').textContent='Приемът за Black Friday приключи.';return}
+    const d=Math.floor(ms/864e5);ms-=d*864e5;const h=Math.floor(ms/36e5);ms-=h*36e5;const m=Math.floor(ms/6e4);ms-=m*6e4;const sec=Math.floor(ms/1e3);
+    $('#cdD').textContent=pad(d);$('#cdH').textContent=pad(h);$('#cdM').textContent=pad(m);$('#cdS').textContent=pad(sec);
   }
   tick(); setInterval(tick,1000);
 
@@ -445,69 +319,43 @@ const funnel=(function(){
   function post(r){try{r._id=r._id||'r'+Date.now()+Math.random().toString(36).slice(2,7);const a=obGet();a.push(r);obSet(a);const how=send(JSON.stringify(r));how==='beacon'?obDel(r._id):how&&setTimeout(()=>obDel(r._id),4000)}catch(e){}}
   try{flush();addEventListener('pageshow',flush);addEventListener('online',flush);document.addEventListener('visibilitychange',()=>{document.visibilityState==='visible'&&flush()});addEventListener('pagehide',flush)}catch(e){}
 
-  function summary(){
-    return 'Платформа: '+(ans.platform||'-')+' | Сайт: '+($('#fSite').value.trim()||'-')+' | Оборот: '+(ans.revenue||'-')+' | Бюджет: '+(ans.budget||'-')+' | Спънка: '+(ans.problem||'-')+' | BF миналата година: '+(ans.bf||'-')+' | Старт: '+(ans.start||'-')+' | Роля: '+(ans.role||'-');
-  }
-  function record(){
-    const status='complete';
-    const s=summary();
-    return {name:$('#fName').value.trim(),email:$('#fEmail').value.trim(),phone:phonePretty(),
-      service:'Growth Scan · заявка',status,
-      message:s,details:s,website:$('#fSite').value.trim(),
-      business:'Еком · '+(ans.platform||'-'),channels:'BF: '+(ans.bf||'-')+' | Старт: '+(ans.start||'-'),
-      budget:ans.budget||'',problem:ans.problem||'',revenue:ans.revenue||'',role:ans.role||'',
-      platform:ans.platform||'',bf:ans.bf||'',start:ans.start||'',
-      submittedAt:new Date().toLocaleString('bg-BG',{timeZone:'Europe/Sofia'}),
-      source:'Landing /ads growth-scan'+utm(),
-      eventID:leadId,fbp:cookie('_fbp'),fbc:cookie('_fbc'),eventSourceUrl:location.href,userAgent:navigator.userAgent};
-  }
+  /* ---------- екрани ---------- */
+  function show(n){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===n));scrollTo({top:0,behavior:'smooth'})}
+  function toForm(){gt('funnel_start');const c=$('#leadForm');if(c){c.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>{const f=$('#fName');f&&f.focus({preventScroll:true})},600)}}
 
-  /* ---------- навигация ---------- */
-  function show(n){
-    steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===n)); cur=n; scrollTo({top:0,behavior:'smooth'});
-    const inQ=ORDER.includes(n);
-    $('#progressShell').style.display=inQ?'':'none'; $('#navRow').style.display=inQ?'':'none';
-    if(inQ){
-      const i=ORDER.indexOf(n)+1, pct=Math.round(i/ORDER.length*100);
-      $('#pNow').textContent=i;$('#pTotal').textContent=ORDER.length;$('#pBar').style.width=pct+'%';$('#pPct').textContent=pct+'%';
-      $('#btnBack').style.visibility=i===1?'hidden':'visible';
-      $('#btnNextTxt').textContent=n===CONTACT?'Вземи 3-те документа':'Продължи';
-      echoes(); gt('funnel_step',{step_index:i,step_id:n,step_total:ORDER.length}); validate();
-    }
-  }
   function validate(){
-    let ok=false;
-    if(cur===CONTACT) ok=$('#fName').value.trim().length>1&&/.+@.+\..+/.test($('#fEmail').value.trim())&&phoneErr()===''&&$('#fConsent').checked;
-    else if(cur===SITE) ok=$('#fSite').value.trim().length>3;
-    else{const o=document.querySelector('.step.active .opts');if(o){const k=o.dataset.name;ok=o.dataset.mode==='multi'?(ans[k]&&ans[k].length>0):!!ans[k]}}
-    $('#btnNext').disabled=!ok;
+    const ok=$('#fName').value.trim().length>1
+      && /.+@.+\..+/.test($('#fEmail').value.trim())
+      && phoneErr()===''
+      && $('#fSite').value.trim().length>3
+      && $('#fConsent').checked;
+    $('#btnSend').disabled=!ok;
+    return ok;
   }
-  function start(){gt('funnel_start'); show(ORDER[0])}
-  function next(){ if(cur===CONTACT){submit();return} const i=ORDER.indexOf(cur); if(i<ORDER.length-1)show(ORDER[i+1]) }
-  function back(){ const i=ORDER.indexOf(cur); if(i>0)show(ORDER[i-1]) }
+  ['#fName','#fEmail','#fPhone','#fSite'].forEach(sel=>$(sel).addEventListener('input',validate));
+  $('#fConsent').addEventListener('change',validate);
 
   function submit(){
-    leadId=uid('lead'); fbAM(); post(record());
-    gt('generate_lead',{stage:'zavarshena',budget:ans.budget||'',revenue:ans.revenue||''});
-    gt('sign_up',{stage:'zavarshena',budget:ans.budget||''});
-    try{fbAM();typeof fbq==='function'&&fbq('track','Lead',{content_name:'growth_scan'},{eventID:leadId});typeof fbq==='function'&&fbq('track','CompleteRegistration',{content_name:'growth_scan',status:true},{eventID:uid('cr')})}catch(e){}
-    $('#cName').textContent=$('#fName').value.trim()||'приятел';
+    if(sent||!validate())return; sent=true; $('#btnSend').disabled=true;
+    leadId=uid('lead'); fbAM();
+    const name=$('#fName').value.trim(), email=$('#fEmail').value.trim(), site=$('#fSite').value.trim();
+    const msg='Сайт: '+(site||'-');
+    post({name:name,email:email,phone:phonePretty(),
+      service:'Growth Scan · заявка',status:'complete',
+      message:msg,details:msg,website:site,
+      business:'Еком',channels:'',budget:'',problem:'',revenue:'',role:'',
+      submittedAt:new Date().toLocaleString('bg-BG',{timeZone:'Europe/Sofia'}),
+      source:'Landing /ads growth-scan'+utm(),
+      eventID:leadId,fbp:cookie('_fbp'),fbc:cookie('_fbc'),eventSourceUrl:location.href,userAgent:navigator.userAgent});
+    gt('generate_lead',{stage:'zayavka'});
+    gt('sign_up',{stage:'zayavka'});
+    try{typeof fbq==='function'&&fbq('track','Lead',{content_name:'growth_scan'},{eventID:leadId});
+        typeof fbq==='function'&&fbq('track','CompleteRegistration',{content_name:'growth_scan',status:true},{eventID:uid('cr')})}catch(e){}
+    $('#cName').textContent=name||'приятел';
     const L=$('#loader'); L.classList.add('on');
-    ['#ld1','#ld2','#ld3'].forEach((s,i)=>setTimeout(()=>{$(s).classList.add('on')},250+620*i));
-    setTimeout(()=>{L.classList.remove('on');renderDiag();show(11)},2300);
+    ['#ld1','#ld2','#ld3'].forEach((sel,i)=>setTimeout(()=>{$(sel).classList.add('on')},250+600*i));
+    setTimeout(()=>{L.classList.remove('on');show(10)},2200);
   }
-
-  document.querySelectorAll('.opts').forEach(o=>{
-    const k=o.dataset.name, mode=o.dataset.mode;
-    o.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
-      const v=b.dataset.val;
-      if(mode==='multi'){ans[k]=ans[k]||[];const j=ans[k].indexOf(v);j>-1?(ans[k].splice(j,1),b.classList.remove('sel')):(ans[k].push(v),b.classList.add('sel'));validate()}
-      else{ans[k]=v;o.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');validate();setTimeout(()=>{cur!==CONTACT&&next()},260)}
-    }));
-  });
-  ['#fSite','#fName','#fEmail','#fPhone'].forEach(s=>$(s).addEventListener('input',validate));
-  $('#fConsent').addEventListener('change',validate);
-  $('#fSite').addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('#btnNext').disabled)next()});
 
   /* ---------- телефон ---------- */
   const C=[{n:'България',c:'359',min:8,max:9,ex:'888 123 456',re:/^(?:[2-6]\d{7}|[2-9]\d{8})$/,reErr:'Номерът не е пълен. Мобилните в България са 9 цифри след +359, например 888 123 456.'},{n:'Гърция',c:'30',min:10,max:10,ex:'691 234 5678'},{n:'Румъния',c:'40',min:9,max:9,ex:'721 234 567'},{n:'Сърбия',c:'381',min:8,max:9,ex:'63 123 4567'},{n:'Северна Македония',c:'389',min:8,max:8,ex:'70 123 456'},{n:'Турция',c:'90',min:10,max:10,ex:'532 123 4567'},{n:'Германия',c:'49',min:9,max:11,ex:'151 2345 6789'},{n:'Австрия',c:'43',min:9,max:13,ex:'664 123 4567'},{n:'Италия',c:'39',min:9,max:11,ex:'312 345 6789'},{n:'Испания',c:'34',min:9,max:9,ex:'612 345 678'},{n:'Франция',c:'33',min:9,max:9,ex:'612 345 678'},{n:'Нидерландия',c:'31',min:9,max:9,ex:'612 345 678'},{n:'Великобритания',c:'44',min:9,max:10,ex:'7400 123456'},{n:'Полша',c:'48',min:9,max:9,ex:'512 345 678'},{n:'Чехия',c:'420',min:9,max:9,ex:'601 123 456'},{n:'Хърватия',c:'385',min:8,max:9,ex:'91 234 5678'},{n:'Кипър',c:'357',min:8,max:8,ex:'96 123 456'},{n:'САЩ / Канада',c:'1',min:10,max:10,ex:'201 555 0123'},{n:'Друга държава',c:'',min:8,max:15,ex:'49 151 2345678'}];
@@ -535,32 +383,7 @@ const funnel=(function(){
     sel.addEventListener('change',()=>{inp.placeholder=cc().ex;paint(inp.value.replace(/\D/g,'').length>0);validate()});
   })();
 
-  /* ---------- ехо съобщения ---------- */
-  const ECHO_A={'Shopify':'При <b>Shopify</b> най-честата дупка е CAPI: продажбите се отчитат двойно или изобщо не стигат до Meta.','WooCommerce':'При <b>WooCommerce</b> най-често губим продажби между плъгините за пиксела и feed-а.','OpenCart / CS-Cart / Magento':'При тези платформи проследяването почти винаги е вързано ръчно, и точно там изтича информацията.','Собствена платформа':'При собствена платформа проверяваме първо дали всяка покупка изобщо стига до рекламните системи.','Друго':'Ще проверим как платформата ти подава продажбите към рекламните системи.'};
-  const ECHO_B={'До 1000 €':'С този бюджет всеки грешен тест боли. Затова планът започва от поправките, които не струват пари.','1000 до 3000 €':'На този бюджет разликата идва от <b>приоритета</b>: кои 2 или 3 неща да се направят първо.','3000 до 10 000 €':'На този бюджет обикновено спира скалирането, а не продажбите. Точно там е фокусът ни.','Над 10 000 €':'На този бюджет и 10% изтичане са хиляди евро месечно. Одитът започва оттам.'};
-  const ECHO_C={'Най-силният ни месец':'Страхотно. Тогава целта е да го надминем <b>с по-висок марж</b>, не само с повече продажби.','Продажби на малък марж':'Това е най-честият BF капан. Тази година строим офертата около марж, а не около процент намаление.','Без ясна стратегия':'Тази година ще има план ден по ден, от загряването до Cyber Monday.','Не участвахме':'Тогава стартът до 1 октомври е още по-важен: трябват ни поне 4 седмици за тестове.'};
-  function echoes(){[['#echoA',ECHO_A,ans.platform],['#echoB',ECHO_B,ans.budget],['#echoC',ECHO_C,ans.bf]].forEach(([id,map,v])=>{const el=$(id);if(!el)return;const t=v&&map[v];if(t){el.innerHTML=t;el.style.display='block'}else el.style.display='none'})}
-
-  /* ---------- първа диагноза ---------- */
-  const D=[
-    {t:'Скалирате с креативи, които не издържат по-голям бюджет',d:'Когато бюджетът се вдигне, същите 2 или 3 реклами стигат до по-студени хора и цената на покупка скача. Решението е система за креативи, не по-голям бюджет.',base:24,prob:{'Вдигам бюджета и ROAS пада':30,'Креативите се изхабяват бързо':26},bf:{},bud:{high:12,low:0}},
-    {t:'Проследяването не отчита всички продажби',d:'Ако Meta и Google виждат само част от покупките, алгоритъмът оптимизира на сляпо и режете точно рекламите, които продават.',base:22,prob:{'Не знам кои реклами реално продават':32,'Вдигам бюджета и ROAS пада':10},bf:{},bud:{high:8,low:6}},
-    {t:'Меряте ROAS, а не печалбата след рекламата',d:'Висок ROAS на продукт с нисък марж пак е загуба. Без марж по продукт и обща възвръщаемост (MER) скалирате това, което не трябва.',base:22,prob:{'Продажби има, печалба няма':34,'Нямам ясен план и приоритети':10},bf:{'Продажби на малък марж':16},bud:{high:10,low:0}},
-    {t:'Black Friday офертата се строи около намаление, а не около марж',d:'Процентът намаление е най-скъпият начин да продадеш. Пакети, подаръци над сума и ранен достъп носят същия обем с по-висок марж.',base:20,prob:{'Продажби има, печалба няма':14},bf:{'Продажби на малък марж':24,'Без ясна стратегия':18,'Не участвахме':10},bud:{}},
-    {t:'Няма загрели аудитории за Black Friday',d:'Който влиза в BF без имейл списък, ранен достъп и топъл ремаркетинг, купува всеки клиент на най-скъпата реклама в годината.',base:20,prob:{},bf:{'Не участвахме':24,'Без ясна стратегия':18,'Най-силният ни месец':4},bud:{low:6}},
-    {t:'Старите клиенти не се връщат',d:'Имейл и SMS потоците (изоставена количка, след покупка, повторна покупка) са най-евтините ви продажби. При повечето магазини са изключени или стари.',base:19,prob:{'Продажби има, печалба няма':12,'Нямам ясен план и приоритети':10},bf:{'Най-силният ни месец':8},bud:{}},
-    {t:'Продуктовият feed губи показвания',d:'Лоши заглавия, липсващи атрибути и грешни категории правят каталожните реклами по-скъпи и по-невидими, отколкото трябва.',base:18,prob:{'Вдигам бюджета и ROAS пада':8,'Не знам кои реклами реално продават':8},bf:{},bud:{high:6}},
-    {t:'Всичко се прави наведнъж, без приоритет',d:'Когато няма ред, най-скъпите поправки чакат, а времето отива в дребни промени, които не местят числата.',base:18,prob:{'Нямам ясен план и приоритети':34},bf:{'Без ясна стратегия':8},bud:{low:8}}
-  ];
-  function tier(){const b=ans.budget||'';return/3000 до 10 000|Над 10 000/.test(b)?'high':/До 1000|1000 до 3000/.test(b)?'low':'mid'}
-  function renderDiag(){
-    const t=tier();
-    const top=D.map(x=>({x,s:x.base+(x.prob[ans.problem]||0)+(x.bf[ans.bf]||0)+(x.bud[t]||0)})).sort((a,b)=>b.s-a.s).slice(0,3);
-    const mx=top[0].s||1;
-    $('#dCards').innerHTML=top.map((o,i)=>{let p=Math.round(o.s/mx*88)-i;p=Math.max(54,Math.min(88,p));return'<div class="dcard"><div class="dtop"><b>'+o.x.t+'</b><span class="dpct">'+p+'%</span></div><div class="dbar"><i style="width:'+p+'%"></i></div><p>'+o.x.d+'</p></div>'}).join('');
-  }
-
-  return {start,next,back,toThanks:()=>show(10)};
+  return {toForm:toForm, submit:submit};
 })();
 </script>
 
