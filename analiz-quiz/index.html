@@ -789,25 +789,49 @@ footer a{text-decoration:none}
     };
     var body = JSON.stringify(payload);
 
-    // Изпращаме ВЕДНЪЖ (без повторни опити → без дублирани редове в таблицата)
+    // ---- 1) Meta събитията се пускат ВЕДНАГА при валидно изпращане ----
+    // Същите събития и параметри като старата фуния (Lead + CompleteRegistration,
+    // content_name 'growth_scan'), за да ги хващат и съществуващите custom conversions.
+    fireConversion(email, phone, parts, eventID);
+
+    // ---- 2) Записваме в таблицата ВЕДНЪЖ (без повторни опити → без дубли) ----
     var sentOk = false;
     try { sentOk = !!(navigator.sendBeacon && navigator.sendBeacon(C.ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }))); } catch(e){}
-    var req = sentOk ? Promise.resolve() :
-      fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: body, keepalive: true });
-
-    req.then(function(){
-        try {
-          fbq('init', C.PIXEL_ID, { em: email, ph: phone.replace(/\D/g,''), fn: (parts[0]||'').toLowerCase(), ln: (parts.slice(1).join(' ')||'').toLowerCase(), country: 'bg' });
-          fbq('track', 'Lead', { content_name: 'Екшън План', content_category: V }, { eventID: eventID });
-        } catch(e){}
-        ga('generate_lead', { form_name: 'action_plan' });
-        showDone(name, email, website);
-      })
-      .catch(function(){
-        sending = false; btn.disabled = false; btn.innerHTML = BTN_HTML;
-        $('formErr').style.display = 'block';
-      });
+    if (!sentOk){
+      try { fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: body, keepalive: true }).catch(function(){}); } catch(e){}
+    }
+    showDone(name, email, website);
   });
+
+
+  /* ---------- конверсия към Meta + GA4 ---------- */
+  function pixelImg(ev, eid, extra){
+    // резервен вариант, ако fbevents.js не се е заредил
+    try {
+      var q = 'id=' + C.PIXEL_ID + '&ev=' + ev + '&eid=' + encodeURIComponent(eid) + '&dl=' + encodeURIComponent(location.href) + '&noscript=1' + (extra || '');
+      (new Image()).src = 'https://www.facebook.com/tr?' + q;
+    } catch(e){}
+  }
+  function fireConversion(email, phone, parts, eventID){
+    var crID = eventID + '-cr';
+    var data = { content_name: 'growth_scan', content_category: 'action_plan_' + V, offer: 'Екшън План', variant: V };
+    var ok = false;
+    try {
+      if (typeof fbq === 'function'){
+        fbq('init', C.PIXEL_ID, { em: email, ph: phone.replace(/\D/g,''), fn: (parts[0]||'').toLowerCase(), ln: (parts.slice(1).join(' ')||'').toLowerCase(), country: 'bg' });
+        fbq('track', 'Lead', data, { eventID: eventID });
+        fbq('track', 'CompleteRegistration', { content_name: 'growth_scan', status: true, variant: V }, { eventID: crID });
+        ok = true;
+      }
+    } catch(e){}
+    if (!ok){
+      pixelImg('Lead', eventID, '&cd[content_name]=growth_scan&cd[variant]=' + V);
+      pixelImg('CompleteRegistration', crID, '&cd[content_name]=growth_scan');
+    }
+    ga('generate_lead', { form_name: 'action_plan' });
+    ga('sign_up', { method: 'action_plan' });
+    console.info('[Екшън План] Lead изпратен към Meta, eventID:', eventID);
+  }
 
   function showDone(name, email, website){
     form.hidden = true; $('done').hidden = false; sticky.classList.remove('show');
