@@ -3,31 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Безплатен Growth Scan · Виж къде губиш клиенти онлайн | The Marketing Clinic</title>
-<meta name="description" content="Остави 4 данни и до 24 часа получаваш Growth Scan — диагноза по 8 канала, трите най-скъпи грешки и приоритетен план.">
+<title>Безплатен Екшън План · The Marketing Clinic</title>
+<meta name="description" content="Безплатен Екшън План за Meta рекламите ти: повече запитвания, по-ниска цена. До 24 часа знаеш какво да оправиш първо.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1E3A2F">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0F2A20">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600&display=swap">
 
-<!-- ================= CONFIG ================= -->
+<!-- ================= НАСТРОЙКИ ================= -->
 <script>
   window.GS_CONFIG = {
     PIXEL_ID: '1351953120302144',
     GA_ID: 'G-GY5QBP207K',
-    // Постави тук СЪЩИЯ Google Apps Script URL, който ползва /analiz-quiz/
-    ENDPOINT: 'PASTE_YOUR_APPS_SCRIPT_URL_HERE',
-    SOURCE: 'growth-scan'
+    ENDPOINT: 'PASTE_YOUR_APPS_SCRIPT_URL_HERE', // Apps Script Web App URL (/exec)
+    SOURCE: 'action-plan',
+    BOOKING_URL: '',        // линк към календар за разговор (празно = скрито)
+    PLANS_PER_WEEK: 10      // колко плана реално правите на седмица
   };
 </script>
 
-<!-- Meta Pixel (autoConfig изключен — само PageView + един Lead) -->
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -38,385 +38,779 @@ fbq('set','autoConfig',false,window.GS_CONFIG.PIXEL_ID);
 fbq('init',window.GS_CONFIG.PIXEL_ID);
 fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1351953120302144&ev=PageView&noscript=1"></noscript>
 
-<!-- GA4 -->
+<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GY5QBP207K"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());gtag('config',window.GS_CONFIG.GA_ID);
 </script>
 
+<!-- Вариант по реклама (ставя се преди рендер, за да няма "примигване") -->
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var v = (q.get('v') || '').toLowerCase();
+  var hint = ((q.get('utm_content')||'') + ' ' + (q.get('utm_campaign')||'')).toLowerCase();
+  if (!/^(clients|leads|ecom)$/.test(v)){
+    v = /ecom|shop|magazin|store|магазин/.test(hint) ? 'ecom' : /lead|zapit|запит/.test(hint) ? 'leads' : 'clients';
+  }
+  window.GS_VARIANT = v;
+  document.documentElement.setAttribute('data-v', v);
+})();
+</script>
+
 <style>
-:root{--bg:#F5F0E8;--bg2:#EDE7DB;--card:#FBF8F2;--secondary:#F0EADD;--green:#1E3A2F;--green2:#2A5040;--border:rgba(30,58,47,.14);--fg:#1E3A2F;--muted:rgba(30,58,47,.62);--cream:#F5F0E8;--shadow:0 14px 44px rgba(30,58,47,.14);--shadow-sm:0 4px 18px rgba(30,58,47,.08);--gold:#A8834B;--gold2:#C9A465;--gold-soft:rgba(168,131,75,.30);--gold-faint:rgba(168,131,75,.10);--err:#A13A2B;--radius:14px}
+:root{--cream:#F5F0E8;--cream2:#EDE7DB;--card:#FBF8F2;--green:#1E3A2F;--green2:#2A5040;--deep:#0F2A20;--deep2:#163428;--gold:#B8914F;--gold2:#D4AE6A;--border:rgba(30,58,47,.14);--fg:#1E3A2F;--muted:rgba(30,58,47,.66);--err:#A13A2B;--radius:14px;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--cond:"Oswald","Arial Narrow",Impact,sans-serif;--serif:"Cormorant Garamond",Georgia,serif}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-weight:300;color:var(--fg);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100dvh;overflow-x:hidden}
-.serif{font-family:"Cormorant Garamond","Times New Roman",Georgia,serif}
+body{font-family:var(--sans);color:var(--fg);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,a,input,label{touch-action:manipulation}
 a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+[hidden]{display:none!important}
+b,strong{font-weight:600}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 
-/* top bar */
-.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:21px;letter-spacing:.2px;text-decoration:none}
-.brand b{color:var(--gold);font-weight:600}
-.top .tel{font-size:14px;font-weight:500;text-decoration:none;opacity:.8}
+/* варианти: показва само текста за текущата реклама */
+html[data-v="clients"] [data-only]:not([data-only~="clients"]),
+html[data-v="leads"] [data-only]:not([data-only~="leads"]),
+html[data-v="ecom"] [data-only]:not([data-only~="ecom"]){display:none!important}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"intro card" "more card";grid-template-rows:auto 1fr;column-gap:48px;align-items:start;padding:28px 0 56px}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-size:16px;font-weight:700;letter-spacing:.3px;color:var(--cream);background:var(--green);border-radius:999px;padding:18px 30px;box-shadow:0 10px 26px rgba(15,42,32,.28);transition:transform .15s,background .15s,box-shadow .15s;text-decoration:none;text-align:center}
+.btn:hover{background:var(--green2);transform:translateY(-1px)}
+.btn:active{transform:scale(.985)}
+.btn[disabled]{opacity:.7;cursor:wait;transform:none}
+.btn-block{width:100%}
+.btn-gold{background:var(--gold);color:#1a1408;box-shadow:0 10px 30px rgba(184,145,79,.35)}
+.btn-gold:hover{background:var(--gold2)}
+.btn-outline{background:transparent;color:var(--gold2);border:2px solid var(--gold);box-shadow:0 0 24px rgba(212,174,106,.25)}
+.btn-outline:hover{background:rgba(212,174,106,.1)}
+.upper{text-transform:uppercase;letter-spacing:1.2px}
+@media (hover:none){.btn:hover{transform:none}}
+
+/* ---------- logo ---------- */
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:34px;height:34px;flex:0 0 auto}
+.logo span{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1}
+
+/* ========== HERO ========== */
+.hero{position:relative;overflow:hidden}
+.hero-top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.hero-top .tel{font-size:14px;font-weight:600;text-decoration:none;opacity:.85}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:"intro card" "more card";grid-template-rows:auto 1fr;column-gap:56px;align-items:start;padding:22px 0 68px}
 .h-intro{grid-area:intro}.h-more{grid-area:more}.hero .card{grid-area:card}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);background:var(--gold-faint);border:1px solid var(--gold-soft);padding:6px 12px;border-radius:99px}
-.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:block}
-h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(38px,5.4vw,60px);line-height:1.02;letter-spacing:-.5px;margin:18px 0 18px}
-h1 span{display:block}
-h1 em{font-style:italic;color:var(--gold)}
-h1 .hl{color:var(--green2)}
-.lead{font-size:18px;color:var(--muted);max-width:520px}
-.lead strong{color:var(--fg);font-weight:500}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;padding:9px 18px;border-radius:999px;border:1.5px solid currentColor}
 
-.gets{list-style:none;margin:28px 0 0;display:grid;gap:12px}
-.gets li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
-.gets .ck{flex:0 0 22px;height:22px;border-radius:50%;background:var(--green);color:var(--cream);display:grid;place-items:center;font-size:12px;margin-top:1px}
+/* светъл хедър (реклама 1) */
+html[data-v="clients"] .hero{background:var(--cream);color:var(--green)}
+.h1-cond{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:clamp(44px,5.8vw,70px);line-height:.98;letter-spacing:-.5px;margin:18px 0 18px;color:var(--green)}
+.h1-cond .box{display:inline-block;background:var(--green);color:var(--cream);padding:0 .14em;margin:.06em 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.h1-cond small{display:block;font-size:.72em}
+.tagline{font-size:19px;font-weight:600;color:var(--gold)}
 
-.stats{display:flex;gap:26px;margin-top:30px;padding-top:24px;border-top:1px solid var(--border)}
-.stats div{font-size:13px;color:var(--muted);line-height:1.35}
-.stats b{display:block;font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:600;color:var(--fg);line-height:1}
+/* тъмен хедър (реклами 2 и 3) */
+html[data-v="leads"] .hero,html[data-v="ecom"] .hero{background:radial-gradient(1200px 520px at 50% 115%,rgba(212,174,106,.22),transparent 60%),linear-gradient(180deg,#0B2219,var(--deep));color:var(--cream)}
+html[data-v="leads"] .hero .logo span,html[data-v="ecom"] .hero .logo span{color:var(--cream)}
+.h1-sans{font-family:var(--sans);font-weight:800;font-size:clamp(38px,5.2vw,64px);line-height:1.05;letter-spacing:-1.2px;margin:20px 0 16px}
+.h1-sans em{font-style:normal;color:var(--gold2)}
+.sub{font-size:18px;max-width:560px;opacity:.86}
+.sub b{opacity:1}
 
-/* form card */
-.card{background:var(--card);border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);box-shadow:var(--shadow);padding:30px 28px 26px;position:sticky;top:20px}
-.card h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:30px;line-height:1.1;margin-bottom:6px}
-.card .sub{font-size:14.5px;color:var(--muted);margin-bottom:22px}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+.bul{list-style:none;display:grid;gap:11px;margin-top:26px}
+.bul li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.ck{flex:0 0 22px;height:22px;border-radius:50%;background:var(--green);color:var(--cream);display:grid;place-items:center;font-size:12px;margin-top:1px}
+html[data-v="leads"] .ck,html[data-v="ecom"] .ck{background:var(--gold);color:#1a1408}
+
+/* мини-лист "Ново запитване" (реклама 2) */
+.feed{margin-top:30px;display:grid;gap:8px;max-width:460px}
+.feed .row{display:flex;align-items:center;gap:14px;padding:11px 16px;border-radius:14px;background:rgba(30,58,47,.06);border:1px solid var(--border)}
+html[data-v="leads"] .feed .row,html[data-v="ecom"] .feed .row{background:rgba(255,255,255,.05);border-color:rgba(245,240,232,.08)}
+.feed .ic{flex:0 0 38px;height:38px;border-radius:10px;background:var(--cream);display:grid;place-items:center}
+.feed .ic svg{width:20px;height:20px}
+.feed .t{flex:1;font-size:14px;line-height:1.25}
+.feed .t b{display:block;font-size:14.5px}
+.feed .t span{opacity:.65;font-size:12.5px}
+.feed .p{font-weight:800;font-size:22px;color:var(--gold)}
+.feed .row:nth-child(n+3){opacity:.9}
+.feed .row:last-child{opacity:.55}
+.feed-note{font-size:12px;opacity:.6;margin-top:8px}
+
+/* ---------- form card ---------- */
+.card{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.18);padding:28px 26px 22px;position:sticky;top:18px}
+.card-tag{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.card-tag .val{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500;white-space:nowrap}
+.card-tag .val b{color:var(--green);font-weight:800}
+.card h2{font-weight:800;font-size:26px;line-height:1.12;letter-spacing:-.5px;margin-bottom:6px}
+.card .csub{font-size:14.5px;color:var(--muted);margin-bottom:20px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
 .field label span{color:var(--muted);font-weight:400}
-.field input{width:100%;font:inherit;font-weight:400;font-size:16px;color:var(--fg);background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 15px;outline:none;transition:border-color .15s,box-shadow .15s}
-.field input::placeholder{color:rgba(30,58,47,.38)}
+.field input{width:100%;font:inherit;font-size:16px;color:var(--fg);background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 15px;outline:none;transition:border-color .15s,box-shadow .15s}
+.field input::placeholder{color:rgba(30,58,47,.36)}
 .field input:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(42,80,64,.10)}
 .field.bad input{border-color:var(--err);box-shadow:0 0 0 4px rgba(161,58,43,.08)}
 .field .msg{display:none;font-size:12.5px;color:var(--err);margin-top:5px}
 .field.bad .msg{display:block}
-.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:6px 0 18px;cursor:pointer}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12.8px;color:var(--muted);margin:4px 0 16px;cursor:pointer}
 .consent input{margin-top:3px;width:17px;height:17px;accent-color:var(--green);flex:0 0 auto}
 .consent a{text-decoration:underline}
 .consent.bad{color:var(--err)}
-.btn-primary{width:100%;border:0;cursor:pointer;font:inherit;font-size:17px;font-weight:600;color:var(--cream);background:var(--green);border-radius:var(--radius);padding:17px 20px;box-shadow:0 8px 22px rgba(30,58,47,.25);transition:transform .15s,background .15s}
-.btn-primary:hover{background:var(--green2);transform:translateY(-1px)}
-.btn-primary:active{transform:scale(.985)}
-.btn-primary[disabled]{opacity:.7;cursor:wait;transform:none}
-.fine{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px}
+.card .btn{border-radius:14px}
+.fine{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:12px}
+.fine span::before{content:"✓ ";color:var(--gold);font-weight:700}
+.slots{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border);font-size:13px;color:var(--muted);text-align:center}
+.slots b{color:var(--fg)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-err{display:none;background:rgba(161,58,43,.08);color:var(--err);border-radius:10px;padding:10px 12px;font-size:13.5px;margin-bottom:14px}
 
 /* success */
-.done{display:none;text-align:center;padding:14px 4px}
-.done .big{width:62px;height:62px;border-radius:50%;background:var(--green);color:var(--cream);display:grid;place-items:center;font-size:28px;margin:4px auto 16px}
-.done h2{margin-bottom:10px}
+.done{text-align:center;padding:8px 2px;animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.done .big{width:60px;height:60px;border-radius:50%;background:var(--green);color:var(--cream);display:grid;place-items:center;font-size:27px;margin:4px auto 14px}
+.done h2{margin-bottom:8px}
 .done p{color:var(--muted);font-size:15px}
-.done .steps{text-align:left;margin:20px 0 0;display:grid;gap:10px;font-size:14.5px}
+.done .steps{text-align:left;margin:18px 0 0;display:grid;gap:10px;font-size:14.5px}
 .done .steps div{display:flex;gap:10px}
-.done .steps b{flex:0 0 24px;height:24px;border-radius:50%;background:var(--gold-faint);border:1px solid var(--gold-soft);color:var(--gold);display:grid;place-items:center;font-size:12px}
+.done .steps b{flex:0 0 24px;height:24px;border-radius:50%;background:rgba(184,145,79,.12);border:1px solid rgba(184,145,79,.35);color:var(--gold);display:grid;place-items:center;font-size:12px}
+.upsell{margin-top:20px;background:var(--deep);color:var(--cream);border-radius:14px;padding:18px;text-align:left}
+.upsell h4{font-size:19px;font-weight:800;line-height:1.15;margin-bottom:6px}
+.upsell p{color:rgba(245,240,232,.78);font-size:14px;margin-bottom:14px}
+.upsell .btn{width:100%;box-shadow:none;border-radius:12px}
+.done .call{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;text-decoration:underline}
 
-/* channels */
-section.block{padding:56px 0;border-top:1px solid var(--border)}
-.block h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(30px,4vw,42px);line-height:1.08;margin-bottom:10px}
-.block .intro{color:var(--muted);max-width:620px;margin-bottom:28px}
-.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.ch{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 16px}
-.ch .n{font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--gold);font-weight:600}
-.ch h4{font-size:15px;font-weight:500;margin:4px 0 4px}
-.ch p{font-size:13px;color:var(--muted);line-height:1.45}
+/* ========== SECTIONS ========== */
+section{padding:80px 0}
+section + section{border-top:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+h3{font-weight:800;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-1px;margin-bottom:14px}
+h3 em{font-style:normal;color:var(--gold)}
+.lede{font-size:17.5px;color:var(--muted);max-width:660px}
+.lede b{color:var(--fg)}
+.center{text-align:center}.center .lede{margin:0 auto}
+.cta-row{text-align:center;margin-top:42px}
+.cta-row .note{font-size:13px;color:var(--muted);margin-top:10px}
 
-.not{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.not div{background:var(--secondary);border-radius:var(--radius);padding:16px 18px;font-size:14px;color:var(--muted)}
-.not b{color:var(--fg);font-weight:500}
+.dark{background:var(--deep);color:var(--cream)}
+.dark .lede{color:rgba(245,240,232,.75)}
+.dark .lede b{color:var(--cream)}
+.dark h3 em{color:var(--gold2)}
+.dark + section{border-top:0}
 
-.cta2{text-align:center;padding:56px 0 64px;border-top:1px solid var(--border)}
-.cta2 a{display:inline-block;text-decoration:none;max-width:360px;width:100%}
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.ba > div{border-radius:20px;padding:28px}
+.ba .before{background:rgba(245,240,232,.05);border:1px solid rgba(245,240,232,.1)}
+.ba .after{background:linear-gradient(160deg,rgba(212,174,106,.16),rgba(212,174,106,.04));border:1px solid rgba(212,174,106,.35)}
+.ba h4{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:16px}
+.ba .before h4{color:rgba(245,240,232,.6)}
+.ba .after h4{color:var(--gold2)}
+.ba ul{list-style:none;display:grid;gap:12px;font-size:16px}
+.ba .before li::before{content:"✕  ";color:#d77b6b;font-weight:700}
+.ba .after li::before{content:"✓  ";color:var(--gold2);font-weight:700}
+.ba .before li{color:rgba(245,240,232,.72)}
 
-footer{background:var(--green);color:rgba(245,240,232,.75);font-size:13px;padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
+/* method */
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.ch{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;transition:transform .15s,box-shadow .15s}
+.ch:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,58,47,.08)}
+.ch .n{font-family:var(--cond);font-size:26px;color:var(--gold);font-weight:700;line-height:1}
+.ch h4{font-size:15.5px;font-weight:700;margin:8px 0 5px}
+.ch p{font-size:13.5px;color:var(--muted);line-height:1.45}
+.ch .q{font-size:12.5px;color:var(--green2);margin-top:10px;font-style:italic}
+
+/* report */
+.report-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+.report{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 60px rgba(30,58,47,.14);overflow:hidden}
+.report .rh{background:var(--deep);color:var(--cream);padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.report .rh b{font-size:17px;font-weight:800}
+.report .rh b em{font-style:normal;color:var(--gold2)}
+.report .rh span{font-size:12px;opacity:.7}
+.report .rb{padding:20px}
+.score{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.ring{width:74px;height:74px;border-radius:50%;background:conic-gradient(var(--gold) 0 58%,var(--cream2) 58% 100%);display:grid;place-items:center}
+.ring span{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:22px;font-weight:800}
+.score div{font-size:14px;color:var(--muted)}
+.score div b{display:block;color:var(--fg);font-size:16px}
+.rrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--border);font-size:14px}
+.tag{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:99px}
+.tag.r{background:rgba(161,58,43,.1);color:var(--err)}
+.tag.y{background:rgba(184,145,79,.12);color:var(--gold)}
+.tag.g{background:rgba(42,80,64,.1);color:var(--green2)}
+.report .sample{font-size:11.5px;color:var(--muted);text-align:center;padding:10px;background:var(--cream2)}
+.rlist{list-style:none;display:grid;gap:16px;margin-top:24px}
+.rlist li{display:flex;gap:14px}
+.rlist .num{flex:0 0 34px;height:34px;border-radius:10px;background:rgba(184,145,79,.12);border:1px solid rgba(184,145,79,.35);color:var(--gold);display:grid;place-items:center;font-family:var(--cond);font-size:18px;font-weight:700}
+.rlist b{display:block;font-size:16px}
+.rlist span{font-size:14.5px;color:var(--muted)}
+
+/* stack */
+.stack{max-width:700px;margin:40px auto 0;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 60px rgba(30,58,47,.12);overflow:hidden}
+.srow{display:flex;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid var(--border);font-size:15.5px}
+.srow span:last-child{color:var(--muted);white-space:nowrap}
+.srow.bonus{background:rgba(184,145,79,.08)}
+.srow.bonus span:first-child::before{content:"БОНУС · ";font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gold)}
+.stotal{padding:24px;text-align:center;background:var(--deep);color:var(--cream)}
+.stotal .t{font-size:15px;opacity:.8}
+.stotal .p{font-weight:800;font-size:46px;line-height:1.1;color:var(--gold2);letter-spacing:-1px}
+.stotal .w{font-size:13.5px;opacity:.75;margin-top:4px}
+
+/* leaks */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px}
+.tcard .lbl{color:var(--gold);letter-spacing:1px;font-size:12px;font-weight:700;text-transform:uppercase}
+.tcard .res{font-weight:800;font-size:22px;line-height:1.15;letter-spacing:-.4px;margin:10px 0 8px}
+.tcard p{font-size:14.5px;color:var(--muted)}
+
+/* guarantee */
+.guar{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid rgba(184,145,79,.4);border-radius:22px;padding:34px;max-width:880px;margin:0 auto}
+.seal{width:120px;height:120px;border-radius:50%;background:var(--deep);color:var(--cream);display:grid;place-items:center;text-align:center;box-shadow:0 0 0 6px var(--cream),0 0 0 7px rgba(184,145,79,.45)}
+.seal b{font-family:var(--cond);font-size:44px;line-height:.9;color:var(--gold2);display:block}
+.seal span{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase}
+.guar h3{font-size:clamp(26px,3.4vw,36px);margin-bottom:10px}
+.guar p{color:var(--muted);font-size:16px}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+.fit > div{border-radius:18px;padding:26px}
+.fit .yes{background:var(--card);border:1px solid var(--border)}
+.fit .no{background:var(--cream2)}
+.fit h4{font-size:15px;font-weight:700;margin-bottom:12px}
+.fit ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.fit .yes li::before{content:"✓  ";color:var(--green2);font-weight:700}
+.fit .no li::before{content:"✕  ";color:var(--err);font-weight:700}
+.fit .no li{color:var(--muted)}
+
+/* faq */
+.faq{max-width:780px;margin:34px auto 0}
+.faq details{border-bottom:1px solid var(--border);padding:18px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-size:17px;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--gold);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);font-size:15.5px;margin-top:10px;max-width:700px}
+
+/* final */
+.final{background:radial-gradient(900px 420px at 50% 120%,rgba(212,174,106,.25),transparent 60%),var(--deep);color:var(--cream);text-align:center}
+.final h3 em{color:var(--gold2)}
+.final .lede{color:rgba(245,240,232,.78);margin:0 auto}
+.final .btn{margin-top:30px;min-width:340px}
+.ps{max-width:680px;margin:48px auto 0;text-align:left;border-top:1px solid rgba(245,240,232,.16);padding-top:28px;font-size:15.5px;color:rgba(245,240,232,.85)}
+.ps p{margin-bottom:12px}
+.ps b{color:var(--gold2)}
+
+footer{background:#08190f;color:rgba(245,240,232,.6);font-size:13px;padding:24px 0 calc(90px + env(safe-area-inset-bottom))}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between}
 footer a{text-decoration:none}
 
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(245,240,232,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--border);transform:translateY(110%);transition:transform .25s}
+.sticky.show{transform:none}
+.sticky .btn{width:100%;padding:15px}
+@media (min-width:901px){.sticky{display:none}footer{padding-bottom:24px}}
+
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr;grid-template-areas:"intro" "card" "more";row-gap:24px;padding-top:10px}
-  .gets{margin-top:4px}
-  h1{margin:14px 0 12px}
-  .lead{font-size:16.5px}
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:"intro" "card" "more";row-gap:24px;padding-top:6px}
   .card{position:static}
-  .grid8{grid-template-columns:repeat(2,1fr)}
-  .not{grid-template-columns:1fr}
+  .sub{font-size:16.5px}
+  .report-wrap,.ba{grid-template-columns:1fr;gap:26px}
+  .grid8{grid-template-columns:1fr 1fr}
+  .tgrid,.fit{grid-template-columns:1fr}
+  .guar{grid-template-columns:1fr;text-align:center;justify-items:center;padding:28px 22px}
+  section{padding:60px 0}
 }
 @media (max-width:480px){
   .wrap{padding:0 16px}
-  .card{padding:24px 18px 20px}
-  .stats{gap:18px}
-  .stats b{font-size:27px}
-  .top .tel{display:none}
+  .hero-top .tel{display:none}
+  .h1-cond{font-size:46px;margin:14px 0 14px}
+  .h1-sans{font-size:36px;letter-spacing:-.8px}
+  .card{padding:22px 18px 18px}
+  .grid8{grid-template-columns:1fr}
+  .srow{padding:14px 18px;font-size:14.5px}
+  .final .btn{min-width:0;width:100%}
+  .pill{font-size:11px;letter-spacing:1.6px;padding:8px 14px}
 }
-@media (hover:none){.btn-primary:hover{transform:none}}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="top">
-    <a class="brand" href="https://marketing-clinic.com/">The Marketing <b>Clinic</b></a>
-    <a class="tel" href="tel:+359889378000">+359 889 378 000</a>
-  </header>
-
-  <main class="hero">
-    <div class="h-intro">
-      <span class="eyebrow"><i></i>Безплатен Growth Scan</span>
-      <h1><span>Проблемът е един от <em>осем</em>.</span><span class="hl">Проверяваме и осемте.</span></h1>
-      <p class="lead">Остави <strong>4 данни</strong> — без въпросници. Преглеждаме сайта и рекламите ти и <strong>до 24 часа</strong> получаваш Growth Scan: къде точно губиш клиенти и какво да оправиш първо.</p>
+<!-- ================= HERO (сменя се според рекламата) ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <a class="logo" href="https://marketing-clinic.com/" aria-label="The Marketing Clinic">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="13" stroke="currentColor" stroke-width="3"/><path d="M26.5 26.5L36 36" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><rect x="10" y="18" width="2.8" height="5" rx="1" fill="currentColor"/><rect x="14.4" y="15.5" width="2.8" height="7.5" rx="1" fill="currentColor"/><rect x="18.8" y="13" width="2.8" height="10" rx="1" fill="currentColor"/><rect x="23.2" y="10.5" width="2.8" height="12.5" rx="1" fill="currentColor"/></svg>
+        <span>Marketing Clinic</span>
+      </a>
+      <a class="tel" href="tel:+359889378000">+359 889 378 000</a>
     </div>
 
-    <div class="h-more">
-      <ul class="gets">
-        <li><span class="ck">✓</span><span>Обзор с ключовите ти числа на един екран</span></li>
-        <li><span class="ck">✓</span><span>Диагноза и решение по всеки от 8-те канала</span></li>
-        <li><span class="ck">✓</span><span>Трите най-скъпи грешки, подредени по цена</span></li>
-        <li><span class="ck">✓</span><span>Приоритети: веднага, тази седмица, този месец</span></li>
-      </ul>
-
-      <div class="stats">
-        <div><b>30 сек</b>за попълване</div>
-        <div><b>24 ч</b>до готов скан</div>
-        <div><b>0 €</b>без ангажимент</div>
-      </div>
-    </div>
-
-    <aside class="card" id="scan">
-      <form id="gsForm" novalidate>
-        <h2>Вземи своя Growth Scan</h2>
-        <p class="sub">Попълни и си готов. Останалото го правим ние.</p>
-        <div class="form-err" id="formErr">Нещо се обърка при изпращането. Опитай пак или ни звънни на +359 889 378 000.</div>
-
-        <div class="field" data-f="name">
-          <label for="name">Име</label>
-          <input id="name" name="name" type="text" autocomplete="name" placeholder="Иван Петров" required>
-          <div class="msg">Напиши името си.</div>
+    <div class="hero-grid">
+      <div class="h-intro">
+        <!-- Реклама 1 · светла -->
+        <div data-only="clients">
+          <h1 class="h1-cond">Намери своите<br><span class="box">потенциални клиенти</span><br><small>с The Marketing Clinic</small></h1>
+          <p class="tagline">Не за тези, които тепърва започват.</p>
+          <p class="sub" style="margin-top:12px">Вземи безплатен <b>Екшън План</b> за рекламите си. До 24 часа знаеш къде губиш клиенти и какво да оправиш първо.</p>
         </div>
-        <div class="field" data-f="phone">
-          <label for="phone">Телефон</label>
-          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="088 123 4567" required>
-          <div class="msg">Въведи валиден телефон (напр. 0881234567 или +359881234567).</div>
+        <!-- Реклама 2 · тъмна -->
+        <div data-only="leads">
+          <span class="pill">Повече запитвания | По-ниска цена</span>
+          <h1 class="h1-sans">Запитванията не спират, когато <em>системата е правилна.</em></h1>
+          <p class="sub">Безплатен <b>Екшън План</b>: какво точно да промениш в рекламите, сайта и проследяването, за да падне цената на запитване още в първите 30 дни.</p>
         </div>
-        <div class="field" data-f="email">
-          <label for="email">Имейл</label>
-          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ivan@firma.bg" required>
-          <div class="msg">Въведи валиден имейл.</div>
-        </div>
-        <div class="field" data-f="website">
-          <label for="website">Сайт <span>(или линк към FB/IG профил)</span></label>
-          <input id="website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="firma.bg" required>
-          <div class="msg">Постави адрес на сайт или профил.</div>
-        </div>
-
-        <!-- honeypot срещу ботове -->
-        <div class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
-
-        <label class="consent" id="consentWrap">
-          <input type="checkbox" id="consent" required>
-          <span>Съгласен съм с <a href="https://marketing-clinic.com/privacy/" target="_blank" rel="noopener">политиката за поверителност</a>. Без спам и без обаждания в неработно време.</span>
-        </label>
-
-        <button class="btn-primary" type="submit" id="submitBtn">Вземи безплатния Growth Scan →</button>
-        <p class="fine">🔒 Данните ти остават само при нас.</p>
-      </form>
-
-      <div class="done" id="done">
-        <div class="big">✓</div>
-        <h2>Готово, <span id="doneName">приятелю</span>!</h2>
-        <p>Заявката е приета. Ето какво следва:</p>
-        <div class="steps">
-          <div><b>1</b><span>Преглеждаме сайта и рекламите ти по 8-те канала.</span></div>
-          <div><b>2</b><span>До 24 часа получаваш Growth Scan на имейла си.</span></div>
-          <div><b>3</b><span>Звъним за 15 минути да минем през приоритетите — само ако искаш.</span></div>
+        <!-- Реклама 3 · тъмна, e-com -->
+        <div data-only="ecom">
+          <span class="pill">За онлайн магазини · €5k–€10k/месец</span>
+          <h1 class="h1-sans">Пълен <em>Екшън План</em> за Meta рекламите на твоя <em>онлайн магазин.</em></h1>
+          <p class="sub">За магазини с оборот <b>€5k–€10k на месец</b>, които искат по-нисък CPA и по-висок AOV и ROAS. Доказана система, без договор.</p>
         </div>
       </div>
-    </aside>
-  </main>
 
-  <section class="block">
-    <h3>Какво проверяваме</h3>
-    <p class="intro">Не шаблон, а реален преглед на твоите канали и данни — сравнен с активни клиенти на българския пазар.</p>
-    <div class="grid8">
-      <div class="ch"><div class="n">01</div><h4>Офер и позициониране</h4><p>Ясно ли е защо да изберат теб.</p></div>
-      <div class="ch"><div class="n">02</div><h4>Сайт и конверсия</h4><p>Скорост, мобилно, пътят до запитване.</p></div>
-      <div class="ch"><div class="n">03</div><h4>Meta реклами</h4><p>Структура, креативи, цена на резултат.</p></div>
-      <div class="ch"><div class="n">04</div><h4>Google</h4><p>Search, YouTube, изгубени търсения.</p></div>
-      <div class="ch"><div class="n">05</div><h4>Проследяване</h4><p>Pixel, CAPI, GA4 — верни ли са числата.</p></div>
-      <div class="ch"><div class="n">06</div><h4>Креатив и съдържание</h4><p>Хукове, формати, умора на рекламите.</p></div>
-      <div class="ch"><div class="n">07</div><h4>Обработка на лийдове</h4><p>Колко бързо и как се отговаря.</p></div>
-      <div class="ch"><div class="n">08</div><h4>Ретаргетинг и задържане</h4><p>Какво става с тези, които не купиха.</p></div>
+      <!-- ================= ФОРМАТА ================= -->
+      <aside class="card" id="scan">
+        <form id="gsForm" novalidate>
+          <div class="card-tag"><span>Безплатен Екшън План</span><span class="val">стойност <s>990 €</s> · <b>0 €</b></span></div>
+          <h2 data-only="clients leads">Къде да пратим твоя Екшън План?</h2>
+          <h2 data-only="ecom">Заяви Екшън План за магазина си</h2>
+          <p class="csub">4 полета · 30 секунди. Останалото го правим ние.</p>
+          <div class="form-err" id="formErr">Нещо се обърка при изпращането. Опитай пак или ни звънни на <a href="tel:+359889378000">+359 889 378 000</a>.</div>
+
+          <div class="field" data-f="name">
+            <label for="name">Име</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Иван Петров">
+            <div class="msg">Напиши името си.</div>
+          </div>
+          <div class="field" data-f="phone">
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="088 123 4567">
+            <div class="msg">Въведи валиден телефон (напр. 0881234567 или +359881234567).</div>
+          </div>
+          <div class="field" data-f="email">
+            <label for="email">Имейл</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ivan@firma.bg" autocapitalize="off" spellcheck="false">
+            <div class="msg">Въведи валиден имейл.</div>
+          </div>
+          <div class="field" data-f="website">
+            <label for="website"><span data-only="clients leads" style="color:inherit;font-weight:600">Сайт</span><span data-only="ecom" style="color:inherit;font-weight:600">Линк към магазина</span> <span data-only="clients leads">(или FB/IG профил)</span></label>
+            <input id="website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="firma.bg" autocapitalize="off" spellcheck="false">
+            <div class="msg">Постави адрес на сайт или профил (напр. firma.bg).</div>
+          </div>
+
+          <div class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+
+          <label class="consent" id="consentWrap">
+            <input type="checkbox" id="consent">
+            <span>Съгласен съм с <a href="/privacy-policy/" target="_blank" rel="noopener">политиката за поверителност</a>. Без спам и без обаждания в неработно време.</span>
+          </label>
+
+          <button class="btn btn-block upper" type="submit" id="submitBtn"><span data-only="clients leads">Вземи безплатен Екшън План →</span><span data-only="ecom">Заяви безплатен Екшън План →</span></button>
+          <div class="fine"><span>Без договор</span><span>Без достъп до акаунти</span><span>До 24 ч</span></div>
+          <div class="slots">Правим плановете ръчно, само <b data-plans>10</b> на седмица.</div>
+        </form>
+
+        <div class="done" id="done" hidden>
+          <div class="big">✓</div>
+          <h2>Готово, <span id="doneName"></span>!</h2>
+          <p>Заявката ти е приета. Ето какво следва:</p>
+          <div class="steps">
+            <div><b>1</b><span>Преглеждаме <strong id="doneSite">сайта ти</strong> и рекламите по 8-те точки.</span></div>
+            <div><b>2</b><span>До 24 часа получаваш Екшън Плана на <strong id="doneEmail"></strong>.</span></div>
+            <div><b>3</b><span>Звъним ти за 15 минути, за да минем през приоритетите.</span></div>
+          </div>
+          <div class="upsell" id="upsell">
+            <h4>Искаш да минем през плана на живо?</h4>
+            <p>Избери си час сега. Показваме ти резултатите и отговаряме на въпросите ти за 15 минути, без продажби.</p>
+            <a class="btn btn-gold" id="bookBtn" href="#" target="_blank" rel="noopener">Избери час за разговор →</a>
+          </div>
+          <a class="call" href="tel:+359889378000">Или ни звънни: +359 889 378 000</a>
+        </div>
+      </aside>
+
+      <div class="h-more">
+        <ul class="bul" data-only="clients leads">
+          <li><span class="ck">✓</span><span><b>Трите най-скъпи грешки</b> в рекламите ти, подредени по цена</span></li>
+          <li><span class="ck">✓</span><span>Какво да промениш, за да <b>падне цената на запитване</b></span></li>
+          <li><span class="ck">✓</span><span><b>План с приоритети</b>: днес, тази седмица, този месец</span></li>
+        </ul>
+        <ul class="bul" data-only="ecom">
+          <li><span class="ck">✓</span><span><b>По-нисък CPA</b>: къде Meta харчи бюджета ти на вятъра</span></li>
+          <li><span class="ck">✓</span><span><b>По-висок AOV</b>: бъндъли, ъпсели, праг за безплатна доставка</span></li>
+          <li><span class="ck">✓</span><span><b>По-висок ROAS</b>: структура на кампаниите, креативи, проследяване</span></li>
+        </ul>
+
+        <!-- визуалът от реклама 2 -->
+        <div class="feed" aria-label="Пример: как пада цената">
+          <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A2F" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span><span class="t"><b data-only="clients leads">Ново запитване</b><b data-only="ecom">Нова поръчка</b><span>Facebook и Instagram</span></span><span class="p">42 €</span></div>
+          <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A2F" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span><span class="t"><b data-only="clients leads">Ново запитване</b><b data-only="ecom">Нова поръчка</b><span>Facebook и Instagram</span></span><span class="p">28 €</span></div>
+          <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A2F" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span><span class="t"><b data-only="clients leads">Ново запитване</b><b data-only="ecom">Нова поръчка</b><span>Facebook и Instagram</span></span><span class="p">19 €</span></div>
+          <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A2F" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span><span class="t"><b data-only="clients leads">Ново запитване</b><b data-only="ecom">Нова поръчка</b><span>Facebook и Instagram</span></span><span class="p">15 €</span></div>
+          <div class="feed-note"><span data-only="clients leads">Цена на запитване, когато системата е правилна (илюстрация).</span><span data-only="ecom">Цена на поръчка (CPA), когато системата е правилна (илюстрация).</span></div>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <section class="block">
-    <h3>Какво <em class="serif" style="color:var(--gold)">не</em> е Growth Scan</h3>
-    <p class="intro">За да сме честни от самото начало.</p>
-    <div class="not">
-      <div><b>Не е гаранция за резултат.</b> Прогнозите са базирани на данни от активни клиенти и българския пазар.</div>
-      <div><b>Не е одит на счетоводство, екип или продукт.</b> Фокусът е само маркетинговата фуния.</div>
-      <div><b>Не е шаблон.</b> Персонализиран е за твоите канали и данни.</div>
-      <div><b>Не е финансов съвет.</b> Даваме маркетингова диагноза и приоритети.</div>
-    </div>
-  </section>
-
-  <div class="cta2">
-    <a href="#scan" class="btn-primary">Вземи безплатния Growth Scan →</a>
   </div>
-</div>
+</header>
+
+<!-- ================= ПРЕДИ / СЛЕД ================= -->
+<section class="dark">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Системата</div>
+      <h3>Проблемът рядко е рекламата. <em>Проблемът е системата.</em></h3>
+      <p class="lede">Сменяш креативи, агенции и бюджети, а резултатът е същият. Течът обикновено е една стъпка по-надолу: в сайта, в проследяването или в това какво става след клика.</p>
+    </div>
+    <div class="ba">
+      <div class="before">
+        <h4>Без система</h4>
+        <ul>
+          <li data-only="clients leads">Запитванията идват на талази и поскъпват всеки месец</li>
+          <li data-only="ecom">CPA расте, а ROAS пада всеки път, когато вдигнеш бюджета</li>
+          <li>Пикселът брои грешни неща и Meta оптимизира за тях</li>
+          <li>Сайтът губи хората на телефон, преди да видят офертата</li>
+          <li data-only="clients leads">Лийдът чака часове за отговор и пише на конкурент</li>
+          <li data-only="ecom">Всеки клиент купува по един продукт и не се връща</li>
+        </ul>
+      </div>
+      <div class="after">
+        <h4>С Екшън Плана</h4>
+        <ul>
+          <li data-only="clients leads">Постоянен поток запитвания на по-ниска цена</li>
+          <li data-only="ecom">По-нисък CPA и стабилен ROAS при по-голям бюджет</li>
+          <li>Meta учи от верните сигнали (Pixel + CAPI)</li>
+          <li>Сайт, който превръща клика в <span data-only="clients leads">запитване</span><span data-only="ecom">поръчка</span></li>
+          <li data-only="clients leads">Всяко запитване получава отговор в първия час</li>
+          <li data-only="ecom">По-висок AOV чрез бъндъли, ъпсели и праг за доставка</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-row"><a href="#scan" class="btn btn-outline" data-scroll>Вземи безплатен Екшън План →</a></div>
+  </div>
+</section>
+
+<!-- ================= МЕТОДЪТ ================= -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Какво проверяваме</div>
+      <h3>8 точки. <em>Един Екшън План.</em></h3>
+      <p class="lede">Не шаблонен одит, а преглед на твоите канали и данни, сравнен с активни клиенти на българския пазар. <b>Проблемът е един от осем. Проверяваме и осемте.</b></p>
+    </div>
+    <div class="grid8">
+      <div class="ch"><div class="n">01</div><h4>Офер и позициониране</h4><p>Ясно ли е за 3 секунди защо да изберат теб.</p><div class="q">„Защо не ни избират?"</div></div>
+      <div class="ch"><div class="n">02</div><h4 data-only="clients leads">Сайт и конверсия</h4><h4 data-only="ecom">Магазин и checkout</h4><p>Скорост, мобилна версия, пътят до <span data-only="clients leads">запитване</span><span data-only="ecom">поръчка</span>.</p><div class="q" data-only="clients leads">„Кликват, но не пишат."</div><div class="q" data-only="ecom">„Слагат в количката и изчезват."</div></div>
+      <div class="ch"><div class="n">03</div><h4>Meta реклами</h4><p>Структура, аудитории, креативи, цена на резултат.</p><div class="q">„Резултатът стана скъп."</div></div>
+      <div class="ch"><div class="n">04</div><h4>Google</h4><p>Search, Shopping, YouTube, пропуснати търсения.</p><div class="q">„Търсят ни, но не ни намират."</div></div>
+      <div class="ch"><div class="n">05</div><h4>Проследяване</h4><p>Pixel, CAPI, GA4: верни ли са числата изобщо.</p><div class="q">„Meta казва едно, касата друго."</div></div>
+      <div class="ch"><div class="n">06</div><h4>Креатив и съдържание</h4><p>Хукове, формати, умора на рекламите.</p><div class="q">„Работеше, после спря."</div></div>
+      <div class="ch"><div class="n">07</div><h4 data-only="clients leads">Обработка на лийдове</h4><h4 data-only="ecom">AOV и оферти</h4><p data-only="clients leads">Колко бързо и как се отговаря на запитване.</p><p data-only="ecom">Бъндъли, ъпсели, праг за безплатна доставка.</p><div class="q" data-only="clients leads">„Лийдовете са некачествени."</div><div class="q" data-only="ecom">„Средната поръчка е ниска."</div></div>
+      <div class="ch"><div class="n">08</div><h4>Ретаргетинг и задържане</h4><p>Какво става с тези, които не купиха първия път.</p><div class="q">„Идват веднъж и изчезват."</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= КАКВО ПОЛУЧАВАШ ================= -->
+<section>
+  <div class="wrap">
+    <div class="report-wrap">
+      <div>
+        <div class="kicker">Какво получаваш</div>
+        <h3>Един документ. <em>Ясни приоритети.</em></h3>
+        <p class="lede">Без 40 страници теория. Екшън План, който прочиташ за 5 минути и започваш да прилагаш още днес.</p>
+        <ul class="rlist">
+          <li><span class="num">1</span><div><b>Обзор на един екран</b><span>Ключовите ти числа и оценка по всяка от 8-те точки.</span></div></li>
+          <li><span class="num">2</span><div><b>Трите най-скъпи грешки</b><span>Подредени по това колко <span data-only="clients leads">клиенти</span><span data-only="ecom">продажби</span> и пари ти струват.</span></div></li>
+          <li><span class="num">3</span><div><b>Решение за всяка точка</b><span>Конкретно какво да се промени, не „подобрете UX-а".</span></div></li>
+          <li><span class="num">4</span><div><b>План с приоритети</b><span>Какво днес, какво тази седмица, какво този месец.</span></div></li>
+        </ul>
+      </div>
+      <div class="report" aria-label="Примерен Екшън План">
+        <div class="rh"><b>Екшън <em>План</em></b><span>firma.bg · примерен</span></div>
+        <div class="rb">
+          <div class="score"><div class="ring"><span>58</span></div><div><b>Обща оценка: 58/100</b>3 критични теча · 2 бързи победи</div></div>
+          <div class="rrow"><span data-only="clients leads">Сайт и конверсия</span><span data-only="ecom">Магазин и checkout</span><span class="tag r">Критично</span></div>
+          <div class="rrow"><span>Проследяване (Pixel/CAPI)</span><span class="tag r">Критично</span></div>
+          <div class="rrow"><span data-only="clients leads">Обработка на лийдове</span><span data-only="ecom">AOV и оферти</span><span class="tag r">Критично</span></div>
+          <div class="rrow"><span>Meta реклами</span><span class="tag y">За подобрение</span></div>
+          <div class="rrow"><span>Офер и позициониране</span><span class="tag y">За подобрение</span></div>
+          <div class="rrow"><span>Google</span><span class="tag g">Добре</span></div>
+        </div>
+        <div class="sample">Примерна визуализация. Твоят план е с реални данни за твоя бизнес.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ОФЕРТА / VALUE STACK ================= -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Всичко, което влиза</div>
+      <h3>Това обикновено струва <em>990 €.</em></h3>
+      <p class="lede">Толкова струва тази работа като самостоятелен одит. Правим я безплатно за ограничен брой бизнеси всяка седмица.</p>
+    </div>
+    <div class="stack">
+      <div class="srow"><span>Одит на Meta рекламите (структура, аудитории, креативи)</span><span>290 €</span></div>
+      <div class="srow"><span>Проверка на проследяването (Pixel, CAPI, GA4)</span><span>150 €</span></div>
+      <div class="srow"><span data-only="clients leads">Преглед на сайта и конверсията</span><span data-only="ecom">Преглед на магазина и checkout-а</span><span>190 €</span></div>
+      <div class="srow"><span>Трите най-скъпи грешки, подредени по цена</span><span>120 €</span></div>
+      <div class="srow"><span>Екшън План с приоритети за 30 дни</span><span>150 €</span></div>
+      <div class="srow bonus"><span>15-минутен разговор, в който минаваме през плана</span><span>90 €</span></div>
+      <div class="stotal">
+        <div class="t">Обща стойност <s>990 €</s></div>
+        <div class="p">Днес: 0 €</div>
+        <div class="w">Без договор · без карта · без ангажимент</div>
+      </div>
+    </div>
+    <div class="cta-row"><a href="#scan" class="btn upper" data-scroll>Вземи безплатен Екшън План →</a></div>
+  </div>
+</section>
+
+<!-- ================= ТРИТЕ ТЕЧА ================= -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">От практиката</div>
+      <h3>Трите теча, които виждаме <em>най-често</em></h3>
+      <p class="lede">Ако рекламите ти „не работят", шансът е голям проблемът да е в някой от тези три.</p>
+    </div>
+    <div class="tgrid">
+      <div class="tcard"><div class="lbl">Точка 05 · Проследяване</div><div class="res">Пикселът брои грешното</div><p>Meta оптимизира за кликове или дублирани събития вместо за реални <span data-only="clients leads">запитвания</span><span data-only="ecom">покупки</span>. В отчета рекламите изглеждат добре, а резултатът не идва.</p></div>
+      <div class="tcard"><div class="lbl">Точка 02 · <span data-only="clients leads">Сайт</span><span data-only="ecom">Магазин</span></div><div class="res">Губиш хората на телефона</div><p>Бавно зареждане, дълга форма или checkout, бутон, който не се вижда. Плащаш за клик от човек, който така и не стига до офертата.</p></div>
+      <div class="tcard" data-only="clients leads"><div class="lbl">Точка 07 · Лийдове</div><div class="res">Запитването чака часове</div><p>Лийдът е най-горещ в първите минути. Когато отговорът дойде на другия ден, човекът често вече е писал на конкурент.</p></div>
+      <div class="tcard" data-only="ecom"><div class="lbl">Точка 07 · AOV</div><div class="res">Всяка поръчка е с един продукт</div><p>Без бъндъл, ъпсел или праг за безплатна доставка плащаш пълния CPA за най-малката възможна поръчка.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ГАРАНЦИЯ ================= -->
+<section>
+  <div class="wrap">
+    <div class="guar">
+      <div class="seal"><div><b>3+</b><span>гаранция</span></div></div>
+      <div>
+        <h3>Гаранция „Поне 3"</h3>
+        <p>Ако в Екшън Плана не намерим <b style="color:var(--fg)">поне 3 конкретни неща</b>, които да оправиш още тази седмица, ще ти го кажем директно. Няма да ти предлагаме нищо и няма да ти звъним повече. Рискуваш 30 секунди.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ЗА КОГО Е ================= -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">За кого е</div>
+      <h3>Не за тези, <em>които тепърва започват.</em></h3>
+      <p class="lede">Екшън Планът е за бизнеси, които вече имат оборот и пускат реклами, но знаят, че могат повече.</p>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h4>Подходящ е, ако:</h4>
+        <ul>
+          <li data-only="clients leads">Вече пускаш Meta реклами (или си пускал)</li>
+          <li data-only="ecom">Магазинът ти прави €5k–€10k на месец</li>
+          <li data-only="ecom">Пускаш Meta реклами и искаш по-нисък CPA</li>
+          <li data-only="clients leads">Имаш сайт или активен FB/IG профил</li>
+          <li>Искаш повече клиенти, не повече „харесвания"</li>
+          <li>Готов си да промениш нещо, ако видиш къде е течът</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h4>Не е подходящ, ако:</h4>
+        <ul>
+          <li>Тепърва стартираш и още нямаш продажби</li>
+          <li>Търсиш гаранция за резултат, без да промениш нищо</li>
+          <li>Искаш шаблонен PDF, който важи за всички</li>
+          <li>Искаш одит на счетоводство, екип или продукт</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Въпроси</div>
+      <h3>Преди да попълниш</h3>
+    </div>
+    <div class="faq">
+      <details><summary>Наистина ли е безплатно? Къде е уловката?</summary><p>Безплатно е. Правим го, защото част от бизнесите след Екшън Плана искат да оправим нещата заедно. Ако не искаш, планът си остава твой и можеш да го приложиш сам или с друг.</p></details>
+      <details><summary>Ще ми продавате ли нещо?</summary><p>Ще ти се обадим веднъж, за 15 минути, за да минем през плана. Ако нямаш нужда от помощ, казваш го и толкова. Без спам и без обаждания в неработно време.</p></details>
+      <details><summary>Трябва ли да ви давам достъп до рекламния акаунт?</summary><p>Не. Планът се прави по публично видимите неща: сайта, рекламите ти в Meta Ad Library, скорост, проследяване. Ако искаш по-дълбок анализ след това, ще те попитаме.</p></details>
+      <details><summary>Колко време отнема?</summary><p>30 секунди от теб за формата. До 24 часа (в работни дни) получаваш Екшън Плана на имейла си.</p></details>
+      <details><summary>Нямам сайт. Става ли?</summary><p>Да. Постави линк към Facebook или Instagram профила си и правим плана по него и по рекламите ти.</p></details>
+      <details><summary>Гарантирате ли резултат?</summary><p>Не. Екшън Планът е диагноза и приоритети, не гаранция. Прогнозите са базирани на данни от активни клиенти и българския пазар. Гарантираме само едно: ако не открием поне 3 конкретни неща за оправяне, ще ти го кажем директно.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ФИНАЛ ================= -->
+<section class="final">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--gold2)">Последна стъпка</div>
+    <h3 data-only="clients leads">Всеки ден без система е ден, в който <em>плащаш за клиенти, които губиш.</em></h3>
+    <h3 data-only="ecom">Всеки ден без система е ден, в който <em>плащаш пълен CPA за малки поръчки.</em></h3>
+    <p class="lede">4 полета, 30 секунди. До 24 часа знаеш къде е течът и какво да оправиш първо.</p>
+    <a href="#scan" class="btn btn-gold upper" data-scroll><span data-only="clients leads">Вземи безплатен Екшън План →</span><span data-only="ecom">Заяви безплатен Екшън План →</span></a>
+    <div class="ps">
+      <p><b>P.S.</b> Правим плановете ръчно, затова приемаме само <span data-plans>10</span> на седмица. Когато се запълнят, новите заявки минават за следващата седмица.</p>
+      <p><b>P.P.S.</b> Рискът е нулев: ако не намерим поне 3 неща за оправяне, ще ти го кажем директно и няма да ти предлагаме нищо.</p>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
-    <span>© The Marketing Clinic · ул. Христо Ботев 8, Сандански 2800</span>
+    <span>© The Marketing Clinic · ул. Христо Ботев 8, Сандански 2800 · <a href="/privacy-policy/">Поверителност</a></span>
     <span><a href="tel:+359889378000">+359 889 378 000</a> · <a href="mailto:themarketingclinicbg@gmail.com">themarketingclinicbg@gmail.com</a></span>
   </div>
 </footer>
 
+<div class="sticky" id="sticky"><a href="#scan" class="btn upper" data-scroll>Вземи безплатен Екшън План →</a></div>
+
 <script>
 (function(){
   var C = window.GS_CONFIG;
-  var form = document.getElementById('gsForm');
-  var btn = document.getElementById('submitBtn');
-  var sent = false;
+  var V = window.GS_VARIANT || 'clients';
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('gsForm');
+  var btn = $('submitBtn');
+  var BTN_HTML = btn.innerHTML;
+  var sending = false;
 
-  // --- UTM / fbclid (пазим ги за сесията) ---
+  function ga(ev, p){ p = p || {}; p.variant = V; try { gtag('event', ev, p); } catch(e){} }
+
+  if (V === 'ecom') { $('website').placeholder = 'moyat-magazin.bg'; document.title = 'Екшън План за Meta рекламите на онлайн магазина ти · The Marketing Clinic'; }
+  [].forEach.call(document.querySelectorAll('[data-plans]'), function(s){ s.textContent = +C.PLANS_PER_WEEK || 10; });
+
+  /* скрол към формата */
+  [].forEach.call(document.querySelectorAll('[data-scroll]'), function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      $('scan').scrollIntoView({behavior:'smooth', block:'start'});
+      if (!form.hidden) setTimeout(function(){ try { $('name').focus({preventScroll:true}); } catch(_){} }, 550);
+      ga('ap_cta_click');
+    });
+  });
+
+  /* sticky CTA на телефон */
+  var sticky = $('sticky');
+  function updSticky(){
+    var r = $('scan').getBoundingClientRect();
+    var out = r.bottom < 0 || r.top > window.innerHeight;
+    sticky.classList.toggle('show', out && r.bottom < 0 && !form.hidden);
+  }
+  window.addEventListener('scroll', updSticky, {passive:true});
+
+  /* UTM / fbclid */
   var qs = new URLSearchParams(location.search);
   var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
   var utm = {};
   UTM_KEYS.forEach(function(k){
     var v = qs.get(k);
-    try { if (v) sessionStorage.setItem('gs_'+k, v); else v = sessionStorage.getItem('gs_'+k); } catch(e){}
+    try { if (v) sessionStorage.setItem('ap_'+k, v); else v = sessionStorage.getItem('ap_'+k); } catch(e){}
     if (v) utm[k] = v;
   });
+  function getCookie(n){ var m = document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)')); return m ? decodeURIComponent(m[1]) : ''; }
+  function fbc(){ var c = getCookie('_fbc'); if (c) return c; return utm.fbclid ? 'fb.1.' + Date.now() + '.' + utm.fbclid : ''; }
+  function uuid(){ if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); return 'ap-' + Date.now() + '-' + Math.random().toString(36).slice(2,10); }
 
-  function getCookie(n){
-    var m = document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));
-    return m ? decodeURIComponent(m[1]) : '';
-  }
-  function fbc(){
-    var c = getCookie('_fbc');
-    if (c) return c;
-    return utm.fbclid ? 'fb.1.' + Date.now() + '.' + utm.fbclid : '';
-  }
-  function uuid(){
-    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
-    return 'gs-' + Date.now() + '-' + Math.random().toString(36).slice(2,10);
-  }
-
-  // --- нормализация ---
+  /* валидация */
   function normPhone(raw){
     var d = (raw||'').replace(/[^\d+]/g,'');
     if (d.indexOf('00') === 0) d = '+' + d.slice(2);
-    if (/^0\d{8,9}$/.test(d)) d = '+359' + d.slice(1);           // 0881234567 -> +359881234567
+    if (/^0\d{8,9}$/.test(d)) d = '+359' + d.slice(1);
     if (/^359\d{8,9}$/.test(d)) d = '+' + d;
-    if (/^\+\d{9,15}$/.test(d)) return d;
-    return '';
+    return /^\+\d{9,15}$/.test(d) ? d : '';
   }
   function normSite(raw){
-    var s = (raw||'').trim();
-    if (!s) return '';
+    var s = (raw||'').trim(); if (!s) return '';
     if (!/^https?:\/\//i.test(s)) s = 'https://' + s;
     try { var u = new URL(s); return u.hostname.indexOf('.') > 0 ? u.href : ''; } catch(e){ return ''; }
   }
   function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
+  function setBad(key, bad){ var el = form.querySelector('[data-f="'+key+'"]'); if (el) el.classList.toggle('bad', !!bad); }
+  ['name','phone','email','website'].forEach(function(k){ $(k).addEventListener('input', function(){ setBad(k,false); }); });
+  $('consent').addEventListener('change', function(){ $('consentWrap').classList.remove('bad'); });
 
-  function setBad(key, bad){
-    var el = form.querySelector('[data-f="'+key+'"]');
-    if (el) el.classList.toggle('bad', !!bad);
-  }
-  ['name','phone','email','website'].forEach(function(k){
-    document.getElementById(k).addEventListener('input', function(){ setBad(k,false); });
-  });
-  document.getElementById('consent').addEventListener('change', function(){
-    document.getElementById('consentWrap').classList.remove('bad');
-  });
+  var touched = false;
+  form.addEventListener('focusin', function(){ if (!touched){ touched = true; ga('ap_form_start'); } });
 
+  /* изпращане */
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
-    if (sent) return;
-    document.getElementById('formErr').style.display = 'none';
+    if (sending) return;
+    $('formErr').style.display = 'none';
 
-    var name = form.name.value.trim();
-    var phone = normPhone(form.phone.value);
-    var email = form.email.value.trim().toLowerCase();
-    var website = normSite(form.website.value);
-    var consent = document.getElementById('consent').checked;
+    var name = $('name').value.trim();
+    var phone = normPhone($('phone').value);
+    var email = $('email').value.trim().toLowerCase();
+    var website = normSite($('website').value);
+    var consent = $('consent').checked;
 
     var ok = true;
     if (name.length < 2){ setBad('name',true); ok=false; }
     if (!phone){ setBad('phone',true); ok=false; }
     if (!validEmail(email)){ setBad('email',true); ok=false; }
     if (!website){ setBad('website',true); ok=false; }
-    if (!consent){ document.getElementById('consentWrap').classList.add('bad'); ok=false; }
+    if (!consent){ $('consentWrap').classList.add('bad'); ok=false; }
     if (!ok){ var f = form.querySelector('.bad input'); if (f) f.focus(); return; }
 
-    // honeypot: бот → тихо "успех", без събитие
-    if (form.company.value){ showDone(name); return; }
+    if (form.company.value){ showDone(name, email, website); return; } // бот
 
-    sent = true;
-    btn.disabled = true;
-    btn.textContent = 'Изпращане…';
+    if (!/^https:\/\/script\.google\.com\//.test(C.ENDPOINT)){
+      console.error('[Екшън План] ENDPOINT не е настроен — лийдът НЕ е изпратен и Lead НЕ е пуснат.');
+      $('formErr').style.display = 'block';
+      return;
+    }
+
+    sending = true; btn.disabled = true; btn.textContent = 'Изпращане…';
 
     var eventID = uuid();
     var parts = name.split(/\s+/);
     var payload = {
-      eventID: eventID,
-      source: C.SOURCE,
-      name: name,
-      email: email,
-      phone: phone,
-      website: website,
-      business: '',
-      budget: '',
-      fbp: getCookie('_fbp'),
-      fbc: fbc(),
-      page_url: location.href.split('#')[0],
-      user_agent: navigator.userAgent,
-      ts: new Date().toISOString()
+      eventID: eventID, source: C.SOURCE + '-' + V,
+      name: name, email: email, phone: phone, website: website,
+      fbp: getCookie('_fbp'), fbc: fbc(),
+      page_url: location.href.split('#')[0], referrer: document.referrer || '',
+      user_agent: navigator.userAgent, ts: new Date().toISOString()
     };
-    for (var k in utm) payload[k] = utm[k];
-
-    function fireEvents(){
-      // Advanced Matching + ЕДИН Lead със същия eventID (дедупликация с CAPI)
-      try {
-        fbq('init', C.PIXEL_ID, {
-          em: email,
-          ph: phone.replace(/\D/g,''),
-          fn: (parts[0]||'').toLowerCase(),
-          ln: (parts.slice(1).join(' ')||'').toLowerCase(),
-          country: 'bg'
-        });
-        fbq('track', 'Lead', { content_name: 'Growth Scan', content_category: 'growth-scan' }, { eventID: eventID });
-      } catch(e){}
-      try { gtag('event', 'generate_lead', { form_name: 'growth_scan' }); } catch(e){}
-    }
-
+    UTM_KEYS.forEach(function(k){ payload[k] = utm[k] || ''; });
     var body = JSON.stringify(payload);
-    // text/plain = без CORS preflight към Apps Script
-    fetch(C.ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body, keepalive: true })
-      .then(function(){ fireEvents(); showDone(name); })
+
+    fetch(C.ENDPOINT, { method:'POST', body: body, headers:{'Content-Type':'text/plain;charset=utf-8'}, redirect:'follow' })
+      .then(function(r){ return r.json(); })
+      .then(function(j){ if (!j || j.ok !== true) throw new Error((j && j.error) || 'bad response'); })
+      .catch(function(err){
+        console.warn('[Екшън План] cors fail, retry no-cors', err);
+        return fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', body: body, headers:{'Content-Type':'text/plain;charset=utf-8'}, keepalive:true });
+      })
+      .then(function(){
+        try {
+          fbq('init', C.PIXEL_ID, { em: email, ph: phone.replace(/\D/g,''), fn: (parts[0]||'').toLowerCase(), ln: (parts.slice(1).join(' ')||'').toLowerCase(), country: 'bg' });
+          fbq('track', 'Lead', { content_name: 'Екшън План', content_category: V }, { eventID: eventID });
+        } catch(e){}
+        ga('generate_lead', { form_name: 'action_plan' });
+        showDone(name, email, website);
+      })
       .catch(function(){
-        // резервен вариант
-        var okBeacon = false;
-        try { okBeacon = navigator.sendBeacon && navigator.sendBeacon(C.ENDPOINT, new Blob([body], {type:'text/plain'})); } catch(e){}
-        if (okBeacon){ fireEvents(); showDone(name); }
-        else {
-          sent = false; btn.disabled = false;
-          btn.textContent = 'Вземи безплатния Growth Scan →';
-          document.getElementById('formErr').style.display = 'block';
-        }
+        sending = false; btn.disabled = false; btn.innerHTML = BTN_HTML;
+        $('formErr').style.display = 'block';
       });
   });
 
-  function showDone(name){
-    document.getElementById('doneName').textContent = (name.split(/\s+/)[0]) || 'приятелю';
-    form.style.display = 'none';
-    document.getElementById('done').style.display = 'block';
-    document.getElementById('scan').scrollIntoView({behavior:'smooth', block:'start'});
+  function showDone(name, email, website){
+    form.hidden = true; $('done').hidden = false; sticky.classList.remove('show');
+    $('doneName').textContent = (name.split(/\s+/)[0]) || '';
+    $('doneEmail').textContent = email;
+    try { $('doneSite').textContent = new URL(website).hostname.replace(/^www\./,''); } catch(e){}
+    if (C.BOOKING_URL){ $('bookBtn').href = C.BOOKING_URL; $('bookBtn').addEventListener('click', function(){ ga('ap_book_click'); }); }
+    else { $('upsell').hidden = true; }
+    $('scan').scrollIntoView({behavior:'smooth', block:'start'});
   }
 })();
 </script>
