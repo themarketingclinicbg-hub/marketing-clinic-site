@@ -784,7 +784,7 @@ footer a{text-decoration:none}
       business: V === 'ecom' ? 'Еком' : '', channels: '', budget: '', problem: '', revenue: '', role: '',
       submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
       source: 'Landing /ads action-plan-' + V + utmStr,
-      eventID: eventID, fbp: getCookie('_fbp'), fbc: fbc(),
+      eventID: eventID, _id: eventID, fbp: getCookie('_fbp'), fbc: fbc(),
       eventSourceUrl: location.href, userAgent: navigator.userAgent
     };
     var body = JSON.stringify(payload);
@@ -794,15 +794,26 @@ footer a{text-decoration:none}
     // content_name 'growth_scan'), за да ги хващат и съществуващите custom conversions.
     fireConversion(email, phone, parts, eventID);
 
-    // ---- 2) Записваме в таблицата ВЕДНЪЖ (без повторни опити → без дубли) ----
-    var sentOk = false;
-    try { sentOk = !!(navigator.sendBeacon && navigator.sendBeacon(C.ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }))); } catch(e){}
-    if (!sentOk){
-      try { fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: body, keepalive: true }).catch(function(){}); } catch(e){}
-    }
+    // ---- 2) Записваме в таблицата ----
+    // Основно: fetch no-cors с text/plain (както старата фуния, която реално пишеше в таблицата).
+    // sendBeacon се ползва САМО ако fetch гръмне (с Apps Script beacon-ът не стигаше до doPost).
+    // _id = eventID → скриптът пропуска повторения, така че резервният опит не прави дубли.
+    sendToSheet(body);
     showDone(name, email, website);
   });
 
+
+  /* ---------- запис в Google Sheets (Apps Script) ---------- */
+  function sendToSheet(body){
+    function beacon(){
+      try { return !!(navigator.sendBeacon && navigator.sendBeacon(C.ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }))); } catch(e){ return false; }
+    }
+    try {
+      fetch(C.ENDPOINT, { method: 'POST', mode: 'no-cors', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body, keepalive: true })
+        .then(function(){ console.info('[Екшън План] заявката е изпратена към таблицата'); })
+        .catch(function(err){ console.warn('[Екшън План] fetch fail → beacon', err); beacon(); });
+    } catch(e){ beacon(); }
+  }
 
   /* ---------- конверсия към Meta + GA4 ---------- */
   function pixelImg(ev, eid, extra){
@@ -814,18 +825,19 @@ footer a{text-decoration:none}
   }
   function fireConversion(email, phone, parts, eventID){
     var crID = eventID + '-cr';
-    var data = { content_name: 'growth_scan', content_category: 'action_plan_' + V, offer: 'Екшън План', variant: V };
+    // БЕЗ повторно fbq('init') — повторният init нулираше пиксела и Lead-ът не стигаше
+    // (в Test Events се виждаше само PageView). Данните за съвпадение (имейл/телефон)
+    // отиват към Meta от сървъра през MetaCAPI.gs със същия eventID.
     var ok = false;
     try {
       if (typeof fbq === 'function'){
-        fbq('init', C.PIXEL_ID, { em: email, ph: phone.replace(/\D/g,''), fn: (parts[0]||'').toLowerCase(), ln: (parts.slice(1).join(' ')||'').toLowerCase(), country: 'bg' });
-        fbq('track', 'Lead', data, { eventID: eventID });
-        fbq('track', 'CompleteRegistration', { content_name: 'growth_scan', status: true, variant: V }, { eventID: crID });
+        fbq('track', 'Lead', { content_name: 'growth_scan', content_category: 'action_plan_' + V }, { eventID: eventID });
+        fbq('track', 'CompleteRegistration', { content_name: 'growth_scan', status: true }, { eventID: crID });
         ok = true;
       }
-    } catch(e){}
+    } catch(e){ console.warn('[Екшън План] fbq грешка', e); }
     if (!ok){
-      pixelImg('Lead', eventID, '&cd[content_name]=growth_scan&cd[variant]=' + V);
+      pixelImg('Lead', eventID, '&cd[content_name]=growth_scan');
       pixelImg('CompleteRegistration', crID, '&cd[content_name]=growth_scan');
     }
     ga('generate_lead', { form_name: 'action_plan' });
@@ -837,7 +849,7 @@ footer a{text-decoration:none}
     form.hidden = true; $('done').hidden = false; sticky.classList.remove('show');
     $('doneName').textContent = (name.split(/\s+/)[0]) || '';
     $('doneEmail').textContent = email;
-    try { $('doneSite').textContent = new URL(website).hostname.replace(/^www\./,''); } catch(e){}
+    $('doneSite').textContent = ($('website').value || '').trim().replace(/^https?:\/\//i,'').replace(/^www\./,'').replace(/\/$/,'') || 'сайта ти';
     if (C.BOOKING_URL){ $('bookBtn').href = C.BOOKING_URL; $('bookBtn').addEventListener('click', function(){ ga('ap_book_click'); }); }
     else { $('upsell').hidden = true; }
     $('scan').scrollIntoView({behavior:'smooth', block:'start'});
