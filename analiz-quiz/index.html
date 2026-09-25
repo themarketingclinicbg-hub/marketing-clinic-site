@@ -20,7 +20,7 @@
   window.GS_CONFIG = {
     PIXEL_ID: '1351953120302144',
     GA_ID: 'G-GY5QBP207K',
-    ENDPOINT: 'PASTE_YOUR_APPS_SCRIPT_URL_HERE', // Apps Script Web App URL (/exec)
+    ENDPOINT: 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec', // същият Apps Script като другата фуния
     SOURCE: 'action-plan',
     BOOKING_URL: '',        // линк към календар за разговор (празно = скрито)
     PLANS_PER_WEEK: 10      // колко плана реално правите на седмица
@@ -772,24 +772,30 @@ footer a{text-decoration:none}
 
     var eventID = uuid();
     var parts = name.split(/\s+/);
+    // Същият формат като другата фуния (index_49), за да влиза в същата таблица
+    var utmStr = (function(){ var a = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].filter(function(k){ return utm[k]; }).map(function(k){ return k.replace('utm_','') + '=' + utm[k]; }); return a.length ? ' | ' + a.join(' | ') : ''; })();
+    var phonePretty = '+359 ' + phone.replace(/^\+359/, '').replace(/(\d{3})(?=\d)/g, '$1 ');
+    if (!/^\+359/.test(phone)) phonePretty = phone;
+    var msg = 'Сайт: ' + website;
     var payload = {
-      eventID: eventID, source: C.SOURCE + '-' + V,
-      name: name, email: email, phone: phone, website: website,
-      fbp: getCookie('_fbp'), fbc: fbc(),
-      page_url: location.href.split('#')[0], referrer: document.referrer || '',
-      user_agent: navigator.userAgent, ts: new Date().toISOString()
+      name: name, email: email, phone: phonePretty,
+      service: 'Екшън План · заявка', status: 'complete',
+      message: msg, details: msg, website: website,
+      business: V === 'ecom' ? 'Еком' : '', channels: '', budget: '', problem: '', revenue: '', role: '',
+      submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+      source: 'Landing /ads action-plan-' + V + utmStr,
+      eventID: eventID, fbp: getCookie('_fbp'), fbc: fbc(),
+      eventSourceUrl: location.href, userAgent: navigator.userAgent
     };
-    UTM_KEYS.forEach(function(k){ payload[k] = utm[k] || ''; });
     var body = JSON.stringify(payload);
 
-    fetch(C.ENDPOINT, { method:'POST', body: body, headers:{'Content-Type':'text/plain;charset=utf-8'}, redirect:'follow' })
-      .then(function(r){ return r.json(); })
-      .then(function(j){ if (!j || j.ok !== true) throw new Error((j && j.error) || 'bad response'); })
-      .catch(function(err){
-        console.warn('[Екшън План] cors fail, retry no-cors', err);
-        return fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', body: body, headers:{'Content-Type':'text/plain;charset=utf-8'}, keepalive:true });
-      })
-      .then(function(){
+    // Изпращаме ВЕДНЪЖ (без повторни опити → без дублирани редове в таблицата)
+    var sentOk = false;
+    try { sentOk = !!(navigator.sendBeacon && navigator.sendBeacon(C.ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }))); } catch(e){}
+    var req = sentOk ? Promise.resolve() :
+      fetch(C.ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: body, keepalive: true });
+
+    req.then(function(){
         try {
           fbq('init', C.PIXEL_ID, { em: email, ph: phone.replace(/\D/g,''), fn: (parts[0]||'').toLowerCase(), ln: (parts.slice(1).join(' ')||'').toLowerCase(), country: 'bg' });
           fbq('track', 'Lead', { content_name: 'Екшън План', content_category: V }, { eventID: eventID });
