@@ -674,5 +674,40 @@
   }
 })();
 </script>
+<script>
+/* ==== Suivi des clics de preference (GA4) — ne se declenche que si le consentement cookies a ete accepte ==== */
+(function(){
+  function mcTrack(name, params){
+    if (typeof window.gtag === 'function') { window.gtag('event', name, params); }
+  }
+  document.addEventListener('click', function(e){
+    var svc = e.target.closest('[data-service]');
+    if (svc) {
+      mcTrack('service_interest_click', {
+        service_id: svc.getAttribute('data-service'),
+        source: svc.classList.contains('mini-card') ? 'home_grid' : 'related_grid',
+        page_path: location.pathname
+      });
+    }
+    var pick = e.target.closest('.pick-btn[data-pick]');
+    if (pick) {
+      mcTrack('service_interest_click', {
+        service_id: pick.getAttribute('data-pick'),
+        source: 'contact_picker',
+        page_path: location.pathname
+      });
+    }
+    var cta = e.target.closest('a.btn, a.btn-outline');
+    if (cta) {
+      mcTrack('cta_click', {
+        label: (cta.textContent || '').trim().slice(0, 60),
+        href: cta.getAttribute('href') || '',
+        style: cta.classList.contains('btn-outline') ? 'secondary' : 'primary',
+        page_path: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
 </body>
 </html>
