@@ -512,14 +512,11 @@
 .donut-card{position:relative;background:linear-gradient(180deg,#FBF9F5 0%,#F5F0E8 100%);border:1px solid rgba(42,80,64,0.10);border-radius:4px;padding:30px 26px 24px;box-shadow:0 30px 70px rgba(42,80,64,.08)}
 .donut-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:64px;height:3px;background:linear-gradient(90deg,#C8A96E,#E8C87A,#C8A96E)}
 .donut-badge{position:absolute;top:16px;right:16px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#C8A96E;background:rgba(200,169,110,0.1);padding:5px 10px;border-radius:20px}
-.donut-seg{transform-box:fill-box;transform-origin:center;transition:stroke-dasharray 1.1s cubic-bezier(.65,0,.35,1);animation:donutFallback .9s ease forwards 1.5s}
-@keyframes donutFallback{to{stroke-dasharray:var(--seg) 439.8}}
-.reveal.visible .donut-seg{stroke-dasharray:var(--seg) 439.8;animation:none}
+.donut-seg{transform-box:fill-box;transform-origin:center}
 .donut-legend{margin-top:20px;display:flex;flex-direction:column;gap:9px}
 .donut-legend-row{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}
 .donut-legend-sw{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 .donut-legend-row strong{color:var(--green);margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:14px}
-@media(prefers-reduced-motion:reduce){.donut-seg{transition:none!important;animation:none!important;stroke-dasharray:var(--seg) 439.8!important}}
 
 /* ── PART 2: QUARTERLY ROADMAP (GANTT) ── */
 .gantt-wrap{display:flex;flex-direction:column;gap:16px;margin-top:40px}
@@ -766,10 +763,10 @@
           <span class="donut-badge">Бюджет преди стратегия</span>
           <svg viewBox="0 0 200 200" width="200" height="200" style="display:block;margin:0 auto" role="img" aria-label="Типично разпределение на маркетинг бюджета преди стратегия">
             <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(42,80,64,0.08)" stroke-width="26"/>
-            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#2A5040" stroke-width="26" stroke-dashoffset="0" transform="rotate(-90 100 100)" style="--seg:158.33;stroke-dasharray:0 439.8"/>
-            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#4B6B54" stroke-width="26" stroke-dashoffset="-158.33" transform="rotate(-90 100 100)" style="--seg:114.35;stroke-dasharray:0 439.8"/>
-            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#8AA290" stroke-width="26" stroke-dashoffset="-272.68" transform="rotate(-90 100 100)" style="--seg:83.56;stroke-dasharray:0 439.8"/>
-            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#C8A96E" stroke-width="26" stroke-dashoffset="-356.24" transform="rotate(-90 100 100)" style="--seg:83.56;stroke-dasharray:0 439.8"/>
+            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#2A5040" stroke-width="26" stroke-dasharray="158.33 439.8" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#4B6B54" stroke-width="26" stroke-dasharray="114.35 439.8" stroke-dashoffset="-158.33" transform="rotate(-90 100 100)"/>
+            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#8AA290" stroke-width="26" stroke-dasharray="83.56 439.8" stroke-dashoffset="-272.68" transform="rotate(-90 100 100)"/>
+            <circle class="donut-seg" cx="100" cy="100" r="70" fill="none" stroke="#C8A96E" stroke-width="26" stroke-dasharray="83.56 439.8" stroke-dashoffset="-356.24" transform="rotate(-90 100 100)"/>
             <text x="100" y="96" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#2A5040">4 канала</text>
             <text x="100" y="113" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(42,80,64,0.5)">без приоритет</text>
           </svg>
