@@ -2083,12 +2083,12 @@ a.grev-more:hover{color:#C8A96E;border-color:#C8A96E}
   function loadTracking(){
     try{
       var s1=document.createElement('script');
-      s1.async=true;s1.src='https://www.googletagmanager.com/gtag/js?id=G-GY5QBP207K';
+      s1.async=true;s1.src='https://www.googletagmanager.com/gtag/js?id=G-JL3CF6915L';
       document.head.appendChild(s1);
       window.dataLayer=window.dataLayer||[];
       function gtag(){dataLayer.push(arguments);}
       window.gtag=gtag;
-      gtag('js',new Date());gtag('config','G-GY5QBP207K');
+      gtag('js',new Date());gtag('config','G-JL3CF6915L');
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init','1351953120302144');fbq('track','PageView');
     }catch(e){}
@@ -2262,7 +2262,62 @@ function flashLimitHint() {
   hint.classList.add('show'); hint.classList.remove('pulse'); void hint.offsetWidth; hint.classList.add('pulse');
   setTimeout(() => hint.classList.remove('pulse'), 1100);
 }
-function submitForm() { window.location.href='/blagodarim'; }
+const HS_PORTAL_ID = '149419107';
+const HS_FORM_ID = 'b9c4834d-a1cd-474f-a68d-fc4aedac53ee';
+function submitForm() {
+  const btn = document.getElementById('submit-btn');
+  const errorBox = document.getElementById('form-error');
+  const successBox = document.getElementById('form-success');
+  if (errorBox) errorBox.style.display = 'none';
+  if (successBox) successBox.style.display = 'none';
+
+  const nameEl = document.getElementById('f-name');
+  const emailEl = document.getElementById('f-email');
+  const phoneEl = document.getElementById('f-phone');
+  const msgEl = document.getElementById('f-message');
+
+  const name = (nameEl && nameEl.value || '').trim();
+  const email = (emailEl && emailEl.value || '').trim();
+  const phone = (phoneEl && phoneEl.value || '').trim();
+  const message = (msgEl && msgEl.value || '').trim();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (emailEl) emailEl.focus();
+    if (errorBox) { errorBox.querySelector('p').textContent = 'Моля, въведи валиден имейл адрес.'; errorBox.style.display = 'flex'; }
+    return;
+  }
+
+  const servicesText = selected.map(id => { const s = SERVICES.find(x => x.id === id); return s ? s.name : id; }).join(', ');
+
+  const fields = [
+    { name: 'firstname', value: name },
+    { name: 'email', value: email },
+    { name: 'phone', value: phone },
+    { name: 'message', value: message },
+    { name: 'services_interested', value: servicesText }
+  ].filter(f => f.value);
+
+  let origText = null;
+  if (btn) { origText = btn.innerHTML; btn.setAttribute('disabled', 'true'); btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; btn.innerHTML = '<span>ИЗПРАЩАНЕ...</span>'; }
+
+  fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: fields,
+      context: { pageUri: window.location.href, pageName: document.title }
+    })
+  })
+  .then(function(res){
+    if (!res.ok) throw new Error('HubSpot submit failed: ' + res.status);
+    window.location.href = '/blagodarim';
+  })
+  .catch(function(err){
+    console.error(err);
+    if (btn) { btn.removeAttribute('disabled'); btn.style.opacity = ''; btn.style.pointerEvents = ''; btn.innerHTML = origText; }
+    if (errorBox) { errorBox.querySelector('p').textContent = 'Възникна проблем. Опитайте отново.'; errorBox.style.display = 'flex'; }
+  });
+}
 /* ── Floating particles in #kontakt ── */
 (function(){
   var container = document.getElementById('k-particles');
