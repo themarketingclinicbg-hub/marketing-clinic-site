@@ -2264,6 +2264,52 @@ function flashLimitHint() {
 }
 const HS_PORTAL_ID = '149419107';
 const HS_FORM_ID = 'b9c4834d-a1cd-474f-a68d-fc4aedac53ee';
+
+/* ── Запис в таблица (Google Sheets → може да се отваря/сваля като Excel) ──
+   Постави тук линка на уеб приложението от Google Apps Script (завършва на /exec). */
+const SHEET_WEBAPP_URL = 'ПОСТАВИ_ТУК_ЛИНКА_ОТ_APPS_SCRIPT';
+
+/* Събира отговорите от допълнителните въпроси за избраните услуги */
+function collectServiceAnswers() {
+  const lines = [];
+  selected.forEach(function(id){
+    const box = document.getElementById('fields-' + id);
+    if (!box) return;
+    const svc = SERVICES.find(function(x){ return x.id === id; });
+    const svcName = svc ? svc.name : id;
+    box.querySelectorAll('.field').forEach(function(field){
+      const lblEl = field.querySelector(':scope > label');
+      const q = lblEl ? lblEl.textContent.trim() : '';
+      let val = '';
+      const checks = field.querySelectorAll('input[type="checkbox"]');
+      if (checks.length) {
+        val = Array.prototype.filter.call(checks, function(c){ return c.checked; })
+          .map(function(c){ return (c.parentElement ? c.parentElement.textContent : '').trim(); })
+          .join(', ');
+      } else {
+        const inp = field.querySelector('input, select, textarea');
+        val = inp ? (inp.value || '').trim() : '';
+      }
+      if (val) lines.push(svcName + ' — ' + q + ': ' + val);
+    });
+  });
+  return lines.join('\n');
+}
+
+/* Изпраща реда към таблицата. Никога не блокира формата при грешка. */
+function saveToSheet(data) {
+  if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL.indexOf('https://') !== 0) return Promise.resolve();
+  const req = fetch(SHEET_WEBAPP_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    keepalive: true,
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data)
+  }).catch(function(err){ console.error('Sheet save failed', err); });
+  const timeout = new Promise(function(r){ setTimeout(r, 3000); });
+  return Promise.race([req, timeout]);
+}
+
 function submitForm() {
   const btn = document.getElementById('submit-btn');
   const errorBox = document.getElementById('form-error');
@@ -2300,6 +2346,16 @@ function submitForm() {
   let origText = null;
   if (btn) { origText = btn.innerHTML; btn.setAttribute('disabled', 'true'); btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; btn.innerHTML = '<span>ИЗПРАЩАНЕ...</span>'; }
 
+  const sheetSaved = saveToSheet({
+    name: name,
+    email: email,
+    phone: phone,
+    services: servicesText,
+    answers: collectServiceAnswers(),
+    message: message,
+    page: window.location.href
+  });
+
   fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -2310,7 +2366,7 @@ function submitForm() {
   })
   .then(function(res){
     if (!res.ok) throw new Error('HubSpot submit failed: ' + res.status);
-    window.location.href = '/blagodarim';
+    return sheetSaved.then(function(){ window.location.href = '/blagodarim'; });
   })
   .catch(function(err){
     console.error(err);
