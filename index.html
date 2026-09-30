@@ -2265,9 +2265,10 @@ function flashLimitHint() {
 const HS_PORTAL_ID = '149419107';
 const HS_FORM_ID = 'b9c4834d-a1cd-474f-a68d-fc4aedac53ee';
 
-/* ── Запис в таблица (Google Sheets → може да се отваря/сваля като Excel) ──
-   Постави тук линка на уеб приложението от Google Apps Script (завършва на /exec). */
-const SHEET_WEBAPP_URL = 'ПОСТАВИ_ТУК_ЛИНКА_ОТ_APPS_SCRIPT';
+/* ── Запис в таблицата MARKETING CLINIC LEADS (същият Apps Script като фунелите) ── */
+const SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyHUvZaZ4RP0tJyNQvT-nWsXbwszqF4QcDxE5I8TPB_9o91NpCYv53ML0pfRuN9pNR_/exec';
+function tmcCookie(n){ const m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+function tmcUtm(){ try { const q = new URLSearchParams(location.search); const a = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].map(function(k){ return q.get(k) ? k.replace('utm_','') + '=' + q.get(k) : ''; }).filter(Boolean); return a.length ? ' | ' + a.join(' | ') : ''; } catch(e) { return ''; } }
 
 /* Събира отговорите от допълнителните въпроси за избраните услуги */
 function collectServiceAnswers() {
@@ -2346,14 +2347,23 @@ function submitForm() {
   let origText = null;
   if (btn) { origText = btn.innerHTML; btn.setAttribute('disabled', 'true'); btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; btn.innerHTML = '<span>ИЗПРАЩАНЕ...</span>'; }
 
+  const extraAnswers = collectServiceAnswers();
   const sheetSaved = saveToSheet({
     name: name,
     email: email,
-    phone: phone,
-    services: servicesText,
-    answers: collectServiceAnswers(),
-    message: message,
-    page: window.location.href
+    phone: phone ? "'" + phone : '',   // апостроф → Sheets го пази като текст, не като формула (+359… дава #ERROR!)
+    service: (servicesText || 'Без избрана услуга') + ' · контактна форма',
+    status: 'complete',
+    message: message || '-',
+    details: extraAnswers,
+    business: '', channels: '', budget: '', problem: '', revenue: '', role: '',
+    submittedAt: new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }),
+    source: 'Сайт · контактна форма' + tmcUtm(),
+    eventID: 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10),
+    fbp: tmcCookie('_fbp'),
+    fbc: tmcCookie('_fbc'),
+    eventSourceUrl: location.href,
+    userAgent: navigator.userAgent
   });
 
   fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID, {
