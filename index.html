@@ -2339,7 +2339,9 @@ function submitForm() {
     { name: 'firstname', value: name },
     { name: 'email', value: email },
     { name: 'phone', value: phone },
-    { name: 'message', value: fullMessage }
+    { name: 'message', value: fullMessage },
+    // Отделно поле в HubSpot (Multiple checkboxes), стойностите се разделят с ";"
+    { name: 'services_interested', value: selected.map(id => { const s = SERVICES.find(x => x.id === id); return s ? s.name : id; }).join(';') }
   ].filter(f => f.value);
 
   let origText = null;
@@ -2350,13 +2352,30 @@ function submitForm() {
   const hutk = tmcCookie('hubspotutk');
   if (hutk) context.hutk = hutk;
 
-  fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fields: fields, context: context })
-  })
+  function hsSubmit(flds){
+    return fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: flds, context: context })
+    });
+  }
+
+  hsSubmit(fields)
   .then(function(res){
-    if (!res.ok) throw new Error('HubSpot submit failed: ' + res.status);
+    if (res.ok) return res;
+    // Предпазна мрежа: ако полето "services_interested" липсва/не приема стойността,
+    // пращаме запитването без него, за да не се загуби лийдът (услугите са и в message).
+    return res.text().then(function(body){
+      console.error('HubSpot отказа запитването:', res.status, body);
+      const rest = fields.filter(f => f.name !== 'services_interested');
+      if (rest.length === fields.length) throw new Error('HubSpot submit failed: ' + res.status);
+      return hsSubmit(rest).then(function(r2){
+        if (!r2.ok) return r2.text().then(function(b2){ throw new Error('HubSpot submit failed: ' + r2.status + ' ' + b2); });
+        return r2;
+      });
+    });
+  })
+  .then(function(){
     window.location.href = '/blagodarim';
   })
   .catch(function(err){
