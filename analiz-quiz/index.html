@@ -116,17 +116,6 @@ html[data-v="leads"] .hero,html[data-v="ecom"] .hero{background:radial-gradient(
 html[data-v="leads"] .hero .logo span,html[data-v="ecom"] .hero .logo span{color:var(--cream)}
 .h1-sans{font-family:var(--sans);font-weight:800;font-size:clamp(38px,5.2vw,64px);line-height:1.05;letter-spacing:-1.2px;margin:20px 0 16px}
 .h1-sans em{font-style:normal;color:var(--gold2)}
-/* заглавие по формулата: число отгоре, обещание отдолу */
-.h1-hook{font-family:var(--sans);font-weight:800;font-size:clamp(28px,3.3vw,40px);line-height:1.14;letter-spacing:-.8px;margin:18px 0 18px}
-.h1-hook .drop{display:block;font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:clamp(44px,5.4vw,72px);line-height:.95;letter-spacing:-.5px;margin-bottom:14px}
-.h1-hook .drop .n{white-space:nowrap}
-.h1-hook .drop s{text-decoration-thickness:.07em;text-decoration-color:#d77b6b;opacity:.5}
-.h1-hook .drop b{font-weight:700;color:var(--gold)}
-.h1-hook .drop .u{display:block;font-size:.46em;letter-spacing:2px;margin-top:6px;opacity:.9}
-.h1-hook mark{color:inherit;background:linear-gradient(transparent 60%,rgba(184,145,79,.38) 60%);padding:0 .06em}
-html[data-v="clients"] .h1-hook{color:var(--green)}
-html[data-v="leads"] .h1-hook .drop b{color:var(--gold2)}
-html[data-v="leads"] .h1-hook mark{background:linear-gradient(transparent 60%,rgba(212,174,106,.35) 60%)}
 .sub{font-size:18px;max-width:560px;opacity:.86}
 .sub b{opacity:1}
 
@@ -336,8 +325,6 @@ footer a{text-decoration:none}
   .hero-top .tel{display:none}
   .h1-cond{font-size:46px;margin:14px 0 14px}
   .h1-sans{font-size:36px;letter-spacing:-.8px}
-  .h1-hook{font-size:26px;letter-spacing:-.5px}
-  .h1-hook .drop{font-size:min(50px,12.5vw)}
   .card{padding:22px 18px 18px}
   .grid8{grid-template-columns:1fr}
   .srow{padding:14px 18px;font-size:14.5px}
@@ -361,15 +348,17 @@ footer a{text-decoration:none}
 
     <div class="hero-grid">
       <div class="h-intro">
-        <!-- Реклами 1 и 2 · едно заглавие, формула: callout → число → обещание → враг + срок -->
-        <div data-only="clients leads">
-          <span class="pill" data-only="clients">Не за тези, които тепърва започват</span>
-          <span class="pill" data-only="leads">Повече запитвания | По-ниска цена</span>
-          <h1 class="h1-hook">
-            <span class="drop"><span class="n">От <s>42&nbsp;€</s> на <b>15&nbsp;€</b></span> <span class="u">на запитване:</span></span>
-            системата, която кара рекламите ти да носят <mark>повече клиенти</mark> със същия бюджет
-          </h1>
-          <p class="sub">Без да вдигаш бюджета и без да сменяш поредната агенция. Безплатен <b>Екшън План</b>: до 24 часа знаеш <b>къде изтичат парите ти</b> (реклами, сайт, проследяване) и какво да оправиш първо, за да падне цената на запитване още <b>в първите 30 дни</b>.</p>
+        <!-- Реклама 1 · светла -->
+        <div data-only="clients">
+          <h1 class="h1-cond">Намери своите<br><span class="box">потенциални клиенти</span><br><small>с The Marketing Clinic</small></h1>
+          <p class="tagline">Не за тези, които тепърва започват.</p>
+          <p class="sub" style="margin-top:12px">Вземи безплатен <b>Екшън План</b> за рекламите си. До 24 часа знаеш къде губиш клиенти и какво да оправиш първо.</p>
+        </div>
+        <!-- Реклама 2 · тъмна -->
+        <div data-only="leads">
+          <span class="pill">Повече запитвания | По-ниска цена</span>
+          <h1 class="h1-sans">Запитванията не спират, когато <em>системата е правилна.</em></h1>
+          <p class="sub">Безплатен <b>Екшън План</b>: какво точно да промениш в рекламите, сайта и проследяването, за да падне цената на запитване още в първите 30 дни.</p>
         </div>
         <!-- Реклама 3 · тъмна, e-com -->
         <div data-only="ecom">
