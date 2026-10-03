@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
@@ -2090,7 +2090,7 @@ a.grev-more:hover{color:#C8A96E;border-color:#C8A96E}
       window.gtag=gtag;
       gtag('js',new Date());gtag('config','G-JL3CF6915L');
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','1351953120302144');fbq('track','PageView');
+      fbq('set','autoConfig',false,'1351953120302144');fbq('init','1351953120302144');fbq('track','PageView');
     }catch(e){}
     // HubSpot tracking code (портал 149468628) — само след съгласие
     try{
@@ -2376,7 +2376,24 @@ function submitForm() {
     });
   })
   .then(function(){
-    window.location.href = '/blagodarim';
+    // ✅ Запитването е записано в HubSpot → пращаме Lead към Meta и generate_lead към GA4.
+    // (Работи само ако посетителят е приел бисквитките — иначе пикселът не е зареден.)
+    const eventID = 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+    try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: 'kontaktna_forma',
+          content_category: servicesText || 'Сайт · контактна форма'
+        }, { eventID: eventID });
+      }
+    } catch (e) { console.warn('Meta Lead грешка', e); }
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { form_name: 'kontaktna_forma', services: servicesText });
+      }
+    } catch (e) {}
+    // малка пауза, за да тръгне събитието към Meta преди смяната на страницата
+    setTimeout(function(){ window.location.href = '/blagodarim'; }, 800);
   })
   .catch(function(err){
     console.error(err);
