@@ -23,3 +23,6 @@ body>footer .f-copy{flex:1 1 560px;margin:0!important;max-width:none!important;f
 body>footer .f-legal{display:flex;gap:6px 18px;flex-wrap:wrap}
 body>footer .f-legal a{font-size:12.5px;color:rgba(255,255,255,.8)}
 @media(max-width:700px){body>footer{padding-top:26px!important}body>footer .f-main{flex-direction:column;align-items:flex-start}body>footer .f-nav{justify-content:flex-start;gap:8px 18px;flex:none}}
+
+.st2-s b small{color:#44655a!important}
+.st2-s>span{color:#3d594d!important}
