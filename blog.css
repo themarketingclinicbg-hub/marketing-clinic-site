@@ -1,109 +1,107 @@
-/* Marketing Clinic · blog.css v2 : mise en page des guides et du blog (style uniquement) */
-html.p-blog:not(.p-hub)::after{content:"";position:fixed;top:0;left:0;width:100%;height:4px;background:#c8a96e;transform:scaleX(0);transform-origin:0 50%;z-index:2000;pointer-events:none}
+/* Marketing Clinic · blog.css v3 : guides, blog, contact, pages legales (style uniquement, nouveau modele vert/creme/cuivre) */
+html.p-blog:not(.p-hub)::after{content:"";position:fixed;top:0;left:0;width:100%;height:4px;background:#D69A5A;transform:scaleX(0);transform-origin:0 50%;z-index:2000;pointer-events:none}
 @supports (animation-timeline:scroll()){html.p-blog:not(.p-hub)::after{animation:mcRead linear both;animation-timeline:scroll(root)}}
 @keyframes mcRead{to{transform:scaleX(1)}}
 
-/* ---------- En-tête ---------- */
-html.p-blog .art-hero{padding:128px 20px 112px;color:#fcfdfc;background-image:linear-gradient(135deg,#2a5040 0%,#1d3a2f 100%)!important}
+/* ---------- En-tete ---------- */
+html.p-blog .art-hero{padding:132px 24px 120px;color:#F5F0E8;background-color:#11231B!important;background-image:radial-gradient(900px 480px at 50% -60px,rgba(184,115,51,.24),transparent 70%)!important}
 html.p-blog .art-in{max-width:800px;margin:0 auto}
-html.p-blog .art-crumb{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;position:static;height:auto;box-shadow:none;background:rgba(255,255,255,.1);padding:7px 14px;border-radius:999px;font-size:13px;line-height:1.4;color:rgba(252,253,252,.85)}
-html.p-blog .art-crumb a{color:#e8d3a2;text-decoration:none;font-weight:600}
+html.p-blog .art-crumb{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;position:static;height:auto;box-shadow:none;background:rgba(30,58,47,.85);border:1px solid rgba(245,240,232,.1);padding:7px 16px;border-radius:999px;font-size:13px;line-height:1.4;color:rgba(245,240,232,.78)}
+html.p-blog .art-crumb a{color:#E0A47A;text-decoration:none;font-weight:600}
 html.p-blog .art-crumb a:hover{text-decoration:underline}
-html.p-blog .art-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:clamp(34px,5.6vw,58px);line-height:1.08;letter-spacing:-.01em;margin:22px 0 0;color:#fff;max-width:18em}
-html.p-blog .art-hero h1::after{content:"";display:block;width:64px;height:4px;border-radius:4px;background:#c8a96e;margin-top:24px}
-html.p-blog .art-meta{display:flex;align-items:center;gap:10px;margin:18px 0 0;font-size:14px;color:rgba(252,253,252,.82)}
-html.p-blog .art-meta::before{content:"";width:8px;height:8px;border-radius:50%;background:#c8a96e;flex:none}
+html.p-blog .art-hero h1{font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:clamp(34px,5.4vw,62px);line-height:1.04;letter-spacing:-.04em;margin:24px 0 0;color:#F5F0E8;max-width:18em}
+html.p-blog .art-hero h1::after{content:"";display:block;width:64px;height:4px;border-radius:4px;background:#B87333;margin-top:26px}
+html.p-blog .art-meta{display:flex;align-items:center;gap:10px;margin:18px 0 0;font-size:14px;color:rgba(245,240,232,.78)}
+html.p-blog .art-meta::before{content:"";width:8px;height:8px;border-radius:50%;background:#D69A5A;flex:none}
 
 /* ---------- Carte de lecture ---------- */
-html.p-blog .art-page{padding-bottom:64px}
-html.p-blog .art-wrap{position:relative;max-width:800px;margin:-64px auto 0;padding:52px 56px 56px;background:#fff;border-radius:22px;box-shadow:0 18px 50px rgba(31,58,47,.13),0 2px 6px rgba(31,58,47,.06);color:#26332e;font-size:17.5px;line-height:1.82}
+html.p-blog .art-page{padding-bottom:72px;background:#11231B!important}
+html.p-blog .art-wrap{position:relative;max-width:800px;margin:-64px auto 0;padding:52px 56px 56px;background:#F5F0E8;border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.35);color:#1E2B25;font-size:17.5px;line-height:1.82}
 html.p-blog .art-wrap p{margin:0 0 18px}
-html.p-blog .art-wrap strong,html.p-blog .art-wrap b{color:#1f3d31;font-weight:700}
-html.p-blog .art-wrap a{color:#2a5040;text-decoration:underline;text-decoration-color:#c8a96e;text-decoration-thickness:2px;text-underline-offset:4px;transition:background .2s}
-html.p-blog .art-wrap a:hover{background:rgba(200,169,110,.22)}
-html.p-blog .art-lead{font-size:20px;line-height:1.7;color:#3a5a4c}
-html.p-blog .art-upd{font-size:14px;color:#5d6d66}
+html.p-blog .art-wrap strong,html.p-blog .art-wrap b{color:#11231B;font-weight:700}
+html.p-blog .art-wrap a{color:#8A4F1E;text-decoration:underline;text-decoration-color:#B87333;text-decoration-thickness:2px;text-underline-offset:4px;transition:background .2s}
+html.p-blog .art-wrap a:hover{background:rgba(184,115,51,.16)}
+html.p-blog .art-lead{font-size:20px;line-height:1.7;color:#2c4a3d}
+html.p-blog .art-upd{font-size:14px;color:#4a5a53}
 
-/* ---------- Résumé « Накратко » ---------- */
-html.p-blog .art-short{position:relative;background:#f1f6f3;border:1px solid #d9e6df;border-left:6px solid #c8a96e;border-radius:16px;padding:24px 28px;margin:0 0 12px}
-html.p-blog .art-short b{display:inline-block;font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#2a5040;padding:5px 12px;border-radius:999px;margin-bottom:12px}
-html.p-blog .art-short p{margin:0;font-size:18px;line-height:1.75;color:#22302b}
+/* ---------- Resume « Накратко » ---------- */
+html.p-blog .art-short{position:relative;background:#EAE2D4;border:1px solid rgba(30,58,47,.12);border-left:6px solid #B87333;border-radius:20px;padding:24px 28px;margin:0 0 12px}
+html.p-blog .art-short b{display:inline-block;font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#F5F0E8;background:#1E3A2F;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+html.p-blog .art-short p{margin:0;font-size:18px;line-height:1.75;color:#1E2B25}
 
 /* ---------- Titres ---------- */
 html.p-blog .art-wrap{counter-reset:mcsec}
-html.p-blog .art-wrap>h2:not(.hub-h){counter-increment:mcsec;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(30px,4vw,40px);line-height:1.15;color:#2a5040;margin:60px 0 18px;padding-top:26px;border-top:1px solid #e3ebe6}
-html.p-blog .art-wrap>h2:not(.hub-h)::before{content:counter(mcsec,decimal-leading-zero);display:block;font:700 13px Inter,sans-serif;letter-spacing:.16em;color:#7d5f22;margin-bottom:8px}
-html.p-blog .art-wrap h3{font-family:Inter,sans-serif;font-weight:700;font-size:19px;line-height:1.35;color:#2a5040;margin:34px 0 10px;padding-left:14px;border-left:4px solid #c8a96e}
+html.p-blog .art-wrap>h2:not(.hub-h){counter-increment:mcsec;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:clamp(28px,3.8vw,38px);line-height:1.12;letter-spacing:-.03em;color:#1E3A2F;margin:60px 0 18px;padding-top:26px;border-top:1px solid rgba(30,58,47,.16)}
+html.p-blog .art-wrap>h2:not(.hub-h)::before{content:counter(mcsec,decimal-leading-zero);display:block;font:700 13px Inter,sans-serif;letter-spacing:.16em;color:#8A4F1E;margin-bottom:8px}
+html.p-blog .art-wrap h3{font-family:Inter,sans-serif;font-weight:700;font-size:19px;line-height:1.35;color:#1E3A2F;margin:34px 0 10px;padding-left:14px;border-left:4px solid #B87333}
 
 /* ---------- Listes ---------- */
-html.p-blog .art-wrap ul,html.p-blog .art-wrap ol{list-style:none;margin:6px 0 24px;padding:20px 24px;background:#f6f8f6;border:1px solid #e3ebe6;border-radius:16px}
+html.p-blog .art-wrap ul,html.p-blog .art-wrap ol{list-style:none;margin:6px 0 24px;padding:20px 24px;background:#EAE2D4;border:1px solid rgba(30,58,47,.12);border-radius:20px}
 html.p-blog .art-wrap li{position:relative;margin:0;padding:10px 0 10px 38px;line-height:1.7}
-html.p-blog .art-wrap li+li{border-top:1px solid #e3ebe6}
-html.p-blog .art-wrap ul>li::before{content:"\2713";position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:#2a5040;color:#fff;font:700 13px/24px Inter,sans-serif;text-align:center}
+html.p-blog .art-wrap li+li{border-top:1px solid rgba(30,58,47,.14)}
+html.p-blog .art-wrap ul>li::before{content:"\2713";position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:#1E3A2F;color:#F5F0E8;font:700 13px/24px Inter,sans-serif;text-align:center}
 html.p-blog .art-wrap ol{counter-reset:mcli}
 html.p-blog .art-wrap ol>li{counter-increment:mcli}
-html.p-blog .art-wrap ol>li::before{content:counter(mcli);position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:#c8a96e;color:#1f2e28;font:700 13px/24px Inter,sans-serif;text-align:center}
+html.p-blog .art-wrap ol>li::before{content:counter(mcli);position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:#D69A5A;color:#11231B;font:700 13px/24px Inter,sans-serif;text-align:center}
 
 /* ---------- Tableaux ---------- */
-html.p-blog .art-wrap table{display:block;overflow-x:auto;width:100%;margin:10px 0 28px;border-collapse:separate;border-spacing:0;font-size:15.5px;line-height:1.5;border:1px solid #d9e6df;border-radius:14px}
-html.p-blog .art-wrap th,html.p-blog .art-wrap td{border:0;border-bottom:1px solid #e3ebe6;padding:13px 16px;text-align:left;vertical-align:top}
-html.p-blog .art-wrap th{background:#2a5040;color:#fff;font-weight:600}
-html.p-blog .art-wrap tbody tr:nth-child(even) td{background:#f6f8f6}
+html.p-blog .art-wrap table{display:block;overflow-x:auto;width:100%;margin:10px 0 28px;border-collapse:separate;border-spacing:0;font-size:15.5px;line-height:1.5;border:1px solid rgba(30,58,47,.18);border-radius:18px}
+html.p-blog .art-wrap th,html.p-blog .art-wrap td{border:0;border-bottom:1px solid rgba(30,58,47,.14);padding:13px 16px;text-align:left;vertical-align:top}
+html.p-blog .art-wrap th{background:#1E3A2F;color:#F5F0E8;font-weight:600}
+html.p-blog .art-wrap tbody tr:nth-child(even) td{background:#EAE2D4}
 html.p-blog .art-wrap tbody tr:last-child td{border-bottom:0}
-html.p-blog .art-wrap tbody td:first-child{font-weight:700;color:#2a5040}
+html.p-blog .art-wrap tbody td:first-child{font-weight:700;color:#1E3A2F}
 
-/* ---------- Questions fréquentes ---------- */
-html.p-blog .art-q{background:#fff;border:1px solid #d9e6df;border-radius:14px;margin:12px 0;padding:0;transition:border-color .2s,box-shadow .2s}
-html.p-blog .art-q[open]{border-color:#c8a96e;background:#fdfbf6;box-shadow:0 8px 22px rgba(31,58,47,.08)}
-html.p-blog .art-q summary{position:relative;list-style:none;cursor:pointer;padding:18px 58px 18px 22px;font:600 17px/1.45 Inter,sans-serif;color:#2a5040}
+/* ---------- Questions frequentes ---------- */
+html.p-blog .art-q{background:#FBF8F2;border:1px solid rgba(30,58,47,.16);border-radius:18px;margin:12px 0;padding:0;transition:border-color .2s,box-shadow .2s}
+html.p-blog .art-q[open]{border-color:#B87333;background:#FBF8F2;box-shadow:0 8px 22px rgba(17,35,27,.1)}
+html.p-blog .art-q summary{position:relative;list-style:none;cursor:pointer;padding:18px 58px 18px 22px;font:600 17px/1.45 Inter,sans-serif;color:#1E3A2F}
 html.p-blog .art-q summary::-webkit-details-marker{display:none}
-html.p-blog .art-q summary::after{content:"+";position:absolute;right:16px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#2a5040;color:#fff;font:600 20px/29px Inter,sans-serif;text-align:center;transition:transform .2s,background .2s}
-html.p-blog .art-q[open] summary::after{content:"\2212";background:#c8a96e;color:#1f2e28}
+html.p-blog .art-q summary::after{content:"+";position:absolute;right:16px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#1E3A2F;color:#F5F0E8;font:600 20px/29px Inter,sans-serif;text-align:center;transition:transform .2s,background .2s}
+html.p-blog .art-q[open] summary::after{content:"\2212";background:#D69A5A;color:#11231B}
 html.p-blog .art-q p{margin:0;padding:0 22px 20px;font-size:16.5px;line-height:1.75}
 
-/* ---------- Liens associés + appel à l'action ---------- */
-html.p-blog .art-svc{margin:30px 0 0;padding:20px 24px;background:#f8f4ea;border-radius:16px;font-size:16px;line-height:1.8}
-html.p-blog .art-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#2a5040 0%,#1d3a2f 100%);color:#fcfdfc;border-radius:22px;padding:44px 34px;margin:44px 0 0;text-align:center;box-shadow:0 16px 36px rgba(31,58,47,.22)}
-html.p-blog .art-wrap .art-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,36px);line-height:1.15;color:#fff;margin:0 0 12px;padding:0;border:0;counter-increment:none}
+/* ---------- Liens associes + appel a l'action ---------- */
+html.p-blog .art-svc{margin:30px 0 0;padding:20px 24px;background:#EAE2D4;border-radius:20px;font-size:16px;line-height:1.8}
+html.p-blog .art-cta{position:relative;overflow:hidden;background:#1E3A2F;background-image:radial-gradient(520px 260px at 50% -40px,rgba(184,115,51,.28),transparent 70%);color:#F5F0E8;border-radius:28px;padding:46px 34px;margin:44px 0 0;text-align:center;box-shadow:0 16px 36px rgba(17,35,27,.28)}
+html.p-blog .art-wrap .art-cta h2{font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.03em;font-size:clamp(26px,3.8vw,34px);line-height:1.12;color:#F5F0E8;margin:0 0 12px;padding:0;border:0;counter-increment:none}
 html.p-blog .art-wrap .art-cta h2::before{content:none}
-html.p-blog .art-cta p{color:rgba(252,253,252,.92);max-width:34em;margin:0 auto 24px;font-size:17px}
-html.p-blog .art-wrap a.art-btn{display:inline-flex;align-items:center;gap:10px;background:#c8a96e;color:#1f2e28;text-decoration:none;font:700 16px Inter,sans-serif;padding:16px 32px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.2);transition:transform .2s,background .2s}
+html.p-blog .art-cta p{color:rgba(245,240,232,.92);max-width:34em;margin:0 auto 24px;font-size:17px}
+html.p-blog .art-wrap a.art-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#D69A5A,#C98545 60%,#C27F40);color:#11231B;text-decoration:none;font:700 16px Inter,sans-serif;padding:16px 32px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
 html.p-blog .art-wrap a.art-btn::after{content:"\2192";font-size:18px}
-html.p-blog .art-wrap a.art-btn:hover{background:#e0c68c;transform:translateY(-2px)}
+html.p-blog .art-wrap a.art-btn:hover{background:linear-gradient(135deg,#D69A5A,#C98545 60%,#C27F40);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.3)}
 
 /* ---------- Blog (liste des guides) ---------- */
 html.p-blog .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:16px 0 8px}
-html.p-blog .art-wrap a.blog-card{display:block;background:#fff;border:1px solid #d9e6df;border-radius:14px;padding:20px;text-decoration:none;color:#22302b}
-html.p-blog .blog-card b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;line-height:1.2;color:#2a5040;margin-bottom:6px}
-html.p-blog .blog-card span{display:block;font-size:14.5px;line-height:1.55;color:#4a5a53}
-html.p-blog .blog-card:hover{border-color:#c8a96e}
+html.p-blog .art-wrap a.blog-card{display:block;background:#FBF8F2;border:1px solid rgba(30,58,47,.16);border-radius:20px;padding:20px;text-decoration:none;color:#1E2B25}
+html.p-blog .blog-card b{display:block;font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;font-size:21px;line-height:1.2;color:#1E3A2F;margin-bottom:6px}
+html.p-blog .blog-card span{display:block;font-size:14.5px;line-height:1.55;color:#3d4d46}
+html.p-blog .blog-card:hover{border-color:#B87333}
 html.p-blog .toc-main{margin-top:30px}
-html.p-blog .art-wrap h3.toc-h{font:700 13px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#4d5f57;margin:30px 0 10px;padding:0;border:0}
-html.p-blog .blog-grid>details.blog-post{background:#fff;border:1px solid #d9e6df;border-radius:16px;scroll-margin-top:84px;min-width:0;transition:box-shadow .2s,border-color .2s}
-html.p-blog .blog-grid>details.blog-post:hover{box-shadow:0 10px 26px rgba(31,58,47,.1);border-color:#c8a96e}
-html.p-blog .blog-grid>details.blog-post[open]{grid-column:1/-1;border-color:#c8a96e;box-shadow:0 10px 30px rgba(31,58,47,.12)}
-html.p-blog summary.blog-card{display:block;position:relative;list-style:none;cursor:pointer;padding:22px 54px 22px 22px;border-radius:16px}
+html.p-blog .art-wrap h3.toc-h{font:700 13px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#3d4d46;margin:30px 0 10px;padding:0;border:0}
+html.p-blog .blog-grid>details.blog-post{background:#FBF8F2;border:1px solid rgba(30,58,47,.16);border-radius:20px;scroll-margin-top:84px;min-width:0;transition:box-shadow .2s,border-color .2s}
+html.p-blog .blog-grid>details.blog-post:hover{box-shadow:0 10px 26px rgba(17,35,27,.12);border-color:#B87333}
+html.p-blog .blog-grid>details.blog-post[open]{grid-column:1/-1;border-color:#B87333;box-shadow:0 10px 30px rgba(17,35,27,.14)}
+html.p-blog summary.blog-card{display:block;position:relative;list-style:none;cursor:pointer;padding:22px 54px 22px 22px;border-radius:20px}
 html.p-blog summary.blog-card::-webkit-details-marker{display:none}
-html.p-blog summary.blog-card::after{content:"+";position:absolute;right:16px;top:20px;width:30px;height:30px;border-radius:50%;background:#2a5040;color:#fff;font:600 20px/29px Inter,sans-serif;text-align:center;border:0;transform:none}
-html.p-blog details[open]>summary.blog-card::after{content:"\2212";background:#c8a96e;color:#1f2e28;transform:none;top:20px}
-html.p-blog summary.blog-card:hover h2{color:#1e3b2f}
-html.p-blog .art-wrap summary.blog-card h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;line-height:1.2;font-weight:700;color:#2a5040;margin:0 0 8px;padding:0;border:0}
+html.p-blog summary.blog-card::after{content:"+";position:absolute;right:16px;top:20px;width:30px;height:30px;border-radius:50%;background:#1E3A2F;color:#F5F0E8;font:600 20px/29px Inter,sans-serif;text-align:center;border:0;transform:none}
+html.p-blog details[open]>summary.blog-card::after{content:"\2212";background:#D69A5A;color:#11231B;transform:none;top:20px}
+html.p-blog summary.blog-card:hover h2{color:#11231B}
+html.p-blog .art-wrap summary.blog-card h2{font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.025em;font-size:22px;line-height:1.2;color:#1E3A2F;margin:0 0 8px;padding:0;border:0}
 html.p-blog .art-wrap summary.blog-card h2::before{content:none}
-html.p-blog .post-body{padding:10px 26px 30px;border-top:1px solid #e3ebe6}
-html.p-blog .art-wrap .post-body h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(24px,3vw,30px);line-height:1.2;color:#2a5040;margin:34px 0 12px;padding-left:14px;border-left:4px solid #c8a96e}
-html.p-blog .art-wrap .post-body h4{font-family:Inter,sans-serif;font-size:17px;color:#2a5040;margin:22px 0 8px}
+html.p-blog .post-body{padding:10px 26px 30px;border-top:1px solid rgba(30,58,47,.14)}
+html.p-blog .art-wrap .post-body h3{font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.025em;font-size:clamp(22px,3vw,28px);line-height:1.2;color:#1E3A2F;margin:34px 0 12px;padding-left:14px;border-left:4px solid #B87333}
+html.p-blog .art-wrap .post-body h4{font-family:Inter,sans-serif;font-size:17px;color:#1E3A2F;margin:22px 0 8px}
 html.p-blog .art-wrap .post-body .art-short{margin-top:20px}
 
-/* La page d'accueil du blog garde un fond libre (pas de carte blanche) */
-html.p-hub .art-wrap{background:transparent;box-shadow:none;border-radius:0;margin-top:0;padding:48px 20px 20px}
-html.p-hub .art-hero{padding-bottom:64px}
+/* La page d'accueil du blog garde la meme carte que les autres pages */
+html.p-hub .art-hero{padding-bottom:110px}
 
 /* ---------- Mobile ---------- */
 @media(max-width:640px){
-html.p-blog .art-hero{padding:104px 18px 92px}
+html.p-blog .art-hero{padding:108px 18px 96px}
 html.p-blog .art-hero h1::after{margin-top:18px}
-html.p-blog .art-wrap{margin:-56px 12px 0;padding:30px 20px 34px;border-radius:18px;font-size:17px;line-height:1.78}
-html.p-hub .art-wrap{margin:0;padding:34px 16px 20px}
+html.p-blog .art-wrap{margin:-56px 12px 0;padding:30px 20px 34px;border-radius:24px;font-size:17px;line-height:1.78}
 html.p-blog .art-short{padding:20px 18px}
 html.p-blog .art-short p{font-size:17px}
 html.p-blog .art-wrap>h2:not(.hub-h){margin-top:46px}
